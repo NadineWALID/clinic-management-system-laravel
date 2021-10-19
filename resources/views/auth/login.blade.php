@@ -24,16 +24,7 @@
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
-            <div class="btn-group mt-4" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="user" id="doctor" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="doctor">Doctor</label>
-              
-                <input type="radio" class="btn-check" name="user" id="receptionist" autocomplete="off">
-                <label class="btn btn-outline-primary" for="receptionist">Receptionist</label>
-              
-                <input type="radio" class="btn-check" name="user" id="patient" autocomplete="off">
-                <label class="btn btn-outline-primary" for="patient">Patient</label>
-              </div>
+           
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">

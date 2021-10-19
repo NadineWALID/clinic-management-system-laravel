@@ -4,7 +4,7 @@
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
-
+          
         <form method="POST"   class="modal-content animate" action="{{ route('register') }}">
             @csrf
 
@@ -19,6 +19,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="phone_no" value="{{ __('Phone number:') }}" />
+                <x-jet-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')" required />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
@@ -28,16 +33,17 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div class="btn-group mt-4" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="user" id="doctor" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="doctor">Doctor</label>
-              
-                <input type="radio" class="btn-check" name="user" id="receptionist" autocomplete="off">
-                <label class="btn btn-outline-primary" for="receptionist">Receptionist</label>
-              
-                <input type="radio" class="btn-check" name="user" id="patient" autocomplete="off">
-                <label class="btn btn-outline-primary" for="patient">Patient</label>
-              </div>
+            <div class="mt-4">
+                <x-jet-label for="role_id" value="{{ __('Register As:') }}" />
+                <select name="role_id">
+                    <option value="1">Doctor</option>
+                    <option value="2">Receptionist</option>
+                    <option value="3">Patient</option>
+
+                </select>
+            </div>
+
+            
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
