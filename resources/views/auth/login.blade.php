@@ -10,7 +10,7 @@
                 {{ session('status') }}
             </div>
         @endif
-
+        <h1>Login</h1>
         <form method="POST" class="modal-content animate" action="{{ route('login') }}">
             @csrf
 

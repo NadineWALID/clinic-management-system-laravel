@@ -4,7 +4,7 @@
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
-          
+        <h2>Register</h2>
         <form method="POST"   class="modal-content animate" action="{{ route('register') }}">
             @csrf
 
@@ -19,7 +19,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="phone_no" value="{{ __('Phone number:') }}" />
+                <x-jet-label for="phone_no" value="{{ __('Phone number') }}" />
                 <x-jet-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')" required />
             </div>
 
@@ -34,7 +34,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="role_id" value="{{ __('Register As:') }}" />
+                <x-jet-label for="role_id" value="{{ __('Register As') }}" />
                 <select name="role_id">
                     <option value="1">Doctor</option>
                     <option value="2">Receptionist</option>
