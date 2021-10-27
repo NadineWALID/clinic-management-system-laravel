@@ -24,15 +24,15 @@ body {font-family: Arial, Helvetica, sans-serif;
 }
 div {
   border-radius: 5px;
-  padding: 12px;
+  padding: 2px;
   text-align:center;
 }
 
 /* Full-width input fields */
 input[type=text], input[type=password],input[type=email],select {
   width: 95%;
-  padding: 12px 10px ;
-  margin: 4px 0 t;
+  padding: 10px 4px ;
+  margin: 1px 0 t;
   display: inline-block ;
   border: 1px solid #ccc ;
   border-radius: 4px ;
@@ -63,7 +63,7 @@ button:hover {
 }
 
 
-The Modal (background)
+/*The Modal (background)*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
