@@ -1,6 +1,12 @@
- <x-app-layout>
+<x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
+  <style>
+            label
+            {
+               display: inline-block;
+            }
+        </style>
     <head>
       <!-- Required meta tags -->
       @include('admin.adminmaster')
@@ -13,7 +19,55 @@
         
         @include('admin.navbar') 
           <!-- partial -->
-          @include('admin.body')
+         <div class="container-fluid page-body-wrapper">
+               
+
+             <div class="container" Align="center" style="padding-top: 100px;">
+             @if(session()->has('message'))
+ 
+                   <div class="alert alert-success">
+                   <button type="button" class="close" data-dismiss="alert">
+                        x
+                   </button>
+                  {{session()->get('message')}}
+                   </div>
+
+ @endif
+                 <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data">
+                   @csrf
+                  <div style="padding:15px;">
+                   <label>Doctor Name</label>
+                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's name" required="">
+                  </div>
+                  
+                  <div style="padding:15px;">
+                   <label>Phone Number</label>
+                   <input type="text" style="color:black;" name="number" placeholder="Write phone number" required="">
+                  </div>
+
+                  <div style="padding:15px;">
+                   <label>Speciality</label>
+                   <select name="speciality" style="color:black; width: 200px;" required="">
+                       <option value="Pediatrician">Pediatrician</option>
+                       <option value="Dermatologist">Dermatologist</option>
+                       <option value="Cardiologist">Cardiologist</option>
+                       <option value="Endocrinologist">Endocrinologist</option>
+                   </select>
+                  </div>
+
+                  <div style="padding:15px;">
+                   <label>Doctor Image</label>
+                   <input type="file" name="file" required="">
+                  </div>
+
+                  <div style="padding:15px;">
+                   <input type="submit" class="btn btn-success">
+                  </div>
+
+                 </form>
+
+             </div>
+          </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <footer class="footer">

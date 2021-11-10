@@ -39,10 +39,9 @@
         </div> <!-- .row -->
       </div> <!-- .container -->
     </div> <!-- .topbar -->
-    
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">MED</span>ICA</a>
+         <a class="navbar-brand" href="#"><span class="text-primary">MED</span>ICA</a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">

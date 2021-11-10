@@ -25,9 +25,10 @@ class HomeController extends Controller
 
               }
 
-          }else{
-              return redirect()->back;
           }
+          else{
+              return redirect()->back;
+              }
       }
 
 }

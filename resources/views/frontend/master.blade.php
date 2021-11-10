@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+    #navbarSupport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+}
+    </style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,16 +36,13 @@
               <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
               <span class="divider">|</span>
               <a href="#"><span class="mai-mail text-primary"></span> medicaClinics@gmail.com</a>
-            </div>
-          </div>
-          <div class="col-sm-4 text-right text-sm">
-            <div class="social-mini-button">
               <a href="#"><span class="mai-logo-facebook-f"></span></a>
               <a href="#"><span class="mai-logo-twitter"></span></a>
               <a href="#"><span class="mai-logo-dribbble"></span></a>
               <a href="#"><span class="mai-logo-instagram"></span></a>
             </div>
           </div>
+          
         </div> <!-- .row -->
       </div> <!-- .container -->
     </div> <!-- .topbar -->
