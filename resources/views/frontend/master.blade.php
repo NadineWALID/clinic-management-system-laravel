@@ -10,6 +10,21 @@
   height: 50px;
    background-color: white;
 }
+#titlee{
+  position: relative;
+  left: 100px;
+}
+#copyright{
+  margin-left: 340px;
+}
+#socialmediafooter{
+  margin-left: -340px;
+
+}
+#socialmediaicons{
+  margin-left: -380px;
+
+}
     </style>
 <head>
   <meta charset="UTF-8">
@@ -32,7 +47,6 @@
     
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">MED</span>ICA</a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,11 +54,10 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupport">
+          <a class="navbar-brand" id="titlee" href="#"><span class="text-primary">MED</span>ICA</a>
+
+
           <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-              
-        <a class="navbar-brand" href="#"><span class="text-primary">MED</span>ICA</a>
-            </li>
             <li class="nav-item active">
               <a class="nav-link" href="#" >Home</a>
             </li>
@@ -61,7 +74,7 @@
             <a class="nav-link" href="#appointment">Make An Appointment</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#footer">More Information</a>
+            <a class="nav-link" href="#footer">Contact Us</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="register">Login / Register</a>
@@ -109,8 +122,8 @@
           <a href="#" class="footer-link">701-573-7582</a>
           <a href="#" class="footer-link">healthcare@temporary.net</a>
 
-          <h5 class="mt-3">Social Media</h5>
-          <div class="footer-sosmed mt-3">
+          <h5 class="mt-3" id="socialmediafooter">Social Media</h5>
+          <div class="footer-sosmed mt-3" id="socialmediaicons">
             <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
             <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
             <a href="#" target="_blank"><span class="mai-logo-google-plus-g"></span></a>
@@ -122,7 +135,7 @@
 
       <hr>
 
-      <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
+      <p id="copyright">Copyright &copy; 2021 <a href="#" target="_blank">Graduation project team</a>. All right reserved</p>
     </div>
   </footer>
 
