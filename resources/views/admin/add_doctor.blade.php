@@ -6,6 +6,14 @@
             {
                display: inline-block;
             }
+            #formid
+            {
+              outline-style: inset;
+              }
+              #doctorspec{
+                position: relative;
+                left: 10px;
+              }
         </style>
     <head>
       <!-- Required meta tags -->
@@ -33,21 +41,21 @@
                    </div>
 
  @endif
-                 <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data">
+                 <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data" id="formid">
                    @csrf
-                  <div style="padding:15px;">
+                  <div style="padding:20px; position: relative;">
                    <label>Doctor Name</label>
                    <input type="text" style="color:black;" name="name" placeholder="Write Doctor's name" required="">
                   </div>
                   
-                  <div style="padding:15px;">
+                  <div style="padding:20px;">
                    <label>Phone Number</label>
                    <input type="text" style="color:black;" name="number" placeholder="Write phone number" required="">
                   </div>
 
-                  <div style="padding:15px;">
+                  <div style="padding:20px; position: relative; left:-20px;">
                    <label>Speciality</label>
-                   <select name="speciality" style="color:black; width: 200px;" required="">
+                   <select id="doctorspec" name="speciality" style="color:black; width: 200px;" required="">
                        <option value="Pediatrician">Pediatrician</option>
                        <option value="Dermatologist">Dermatologist</option>
                        <option value="Cardiologist">Cardiologist</option>
@@ -55,12 +63,12 @@
                    </select>
                   </div>
 
-                  <div style="padding:15px;">
+                  <div style="padding:20px; position: relative; left:50px;">
                    <label>Doctor Image</label>
                    <input type="file" name="file" required="">
                   </div>
 
-                  <div style="padding:15px;">
+                  <div style="padding:20px; position: relative; left:10px;">
                    <input type="submit" class="btn btn-success">
                   </div>
 
