@@ -5,7 +5,6 @@
       <div class="container text-center wow zoomIn">
         <span class="subhead" style="color:black" >Let's make your life happier</span>
         <h1 class="display-4" style="color:black" >Healthy Living</h1>
-        <a href="#" class="btn btn-primary">Let's Consult</a>
       </div>
     </div>
   </div>

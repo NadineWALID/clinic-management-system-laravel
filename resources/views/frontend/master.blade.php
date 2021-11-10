@@ -8,6 +8,7 @@
   z-index: 9999;
   width: 100%;
   height: 50px;
+   background-color: white;
 }
     </style>
 <head>
@@ -28,24 +29,6 @@
   <div class="back-to-top"></div>
 
   <header>
-    <div class="topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 text-sm">
-            <div class="site-info">
-              <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
-              <span class="divider">|</span>
-              <a href="#"><span class="mai-mail text-primary"></span> medicaClinics@gmail.com</a>
-              <a href="#"><span class="mai-logo-facebook-f"></span></a>
-              <a href="#"><span class="mai-logo-twitter"></span></a>
-              <a href="#"><span class="mai-logo-dribbble"></span></a>
-              <a href="#"><span class="mai-logo-instagram"></span></a>
-            </div>
-          </div>
-          
-        </div> <!-- .row -->
-      </div> <!-- .container -->
-    </div> <!-- .topbar -->
     
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
@@ -58,6 +41,10 @@
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+              
+        <a class="navbar-brand" href="#"><span class="text-primary">MED</span>ICA</a>
+            </li>
             <li class="nav-item active">
               <a class="nav-link" href="#" >Home</a>
             </li>
@@ -74,6 +61,9 @@
             <a class="nav-link" href="#appointment">Make An Appointment</a>
             </li>
             <li class="nav-item">
+            <a class="nav-link" href="#footer">More Information</a>
+            </li>
+            <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="register">Login / Register</a>
             </li>
           </ul>
@@ -84,7 +74,7 @@
 
   @yield('content')
   
-  <footer class="page-footer">
+  <footer class="page-footer" id="footer">
     <div class="container">
       <div class="row px-md-3">
         <div class="col-sm-6 col-lg-3 py-3">
