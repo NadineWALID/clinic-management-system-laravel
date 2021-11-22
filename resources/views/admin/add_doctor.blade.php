@@ -40,7 +40,7 @@
                   {{session()->get('message')}}
                    </div>
 
- @endif
+            @endif
                  <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data" id="formid">
                    @csrf
                   <div style="padding:20px; position: relative;">
