@@ -50,7 +50,23 @@
                   
                   <div style="padding:20px;">
                    <label>Phone Number</label>
-                   <input type="text" style="color:black;" name="number" placeholder="Write phone number" required="">
+                   <input type="text" style="color:black;" name="phone_no" placeholder="Write phone number" required="">
+                  </div>
+
+
+                  <div style="padding:20px;">
+                   <label>Email</label>
+                   <input type="text" style="color:black;" name="email" placeholder="Write Email" required="">
+                  </div>
+
+                  <div style="padding:20px;">
+                   <label>Password</label>
+                   <input style="color:black;" type="password"  name="password" placeholder="Password" required="">
+                  </div>
+
+                  <div style="padding:20px;">
+                   <label>Password confirmation</label>
+                   <input style="color:black;" type="password" name="password_confirmation" placeholder="Confirm Password" required="">
                   </div>
 
                   <div style="padding:20px; position: relative; left:-20px;">
@@ -114,3 +130,4 @@
     </body>
     </html>
   </x-app-layout>
+

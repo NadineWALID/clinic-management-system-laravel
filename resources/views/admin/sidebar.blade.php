@@ -62,7 +62,31 @@
                 <span class="menu-icon">
                   <i class="mdi mdi-file-document-box"></i>
                 </span>
-                <span class="menu-title">Add Doctors</span>
+                <span class="menu-title">Register a new User</span>
+              </a>
+            </li>
+            <li class="nav-item menu-items">
+              <a class="nav-link" href="{{url('add_doctor_view')}}">
+                <span class="menu-icon">
+                  <i class="mdi mdi-file-document-box"></i>
+                </span>
+                <span class="menu-title">Add New Doctor</span>
+               </a>
+            </li>
+            <li class="nav-item menu-items">
+              <a class="nav-link" href="{{url('add_doctor_view')}}">
+                <span class="menu-icon">
+                  <i class="mdi mdi-file-document-box"></i>
+                </span>
+                <span class="menu-title">Make an Appointment</span>
+              </a>
+            </li>
+            <li class="nav-item menu-items">
+              <a class="nav-link" href="{{url('add_doctor_view')}}">
+                <span class="menu-icon">
+                  <i class="mdi mdi-file-document-box"></i>
+                </span>
+                <span class="menu-title">View patients order</span>
               </a>
             </li>
           </ul>
