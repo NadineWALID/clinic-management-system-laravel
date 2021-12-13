@@ -127,14 +127,16 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
     }
 
     if (inArray(state) && ch === ']') {
-      while (state.scopes.length && currentScope(state) !== "[") { state.scopes.pop(); }
+      if (currentScope(state) === "if") { state.scopes.pop(); }
+      while (currentScope(state) === "for") { state.scopes.pop(); }
       state.scopes.pop();
       state.nestedArrays--;
       state.leavingExpr = true;
     }
 
     if (inGenerator(state) && ch === ')') {
-      while (state.scopes.length && currentScope(state) !== "(") { state.scopes.pop(); }
+      if (currentScope(state) === "if") { state.scopes.pop(); }
+      while (currentScope(state) === "for") { state.scopes.pop(); }
       state.scopes.pop();
       state.nestedGenerators--;
       state.leavingExpr = true;
@@ -184,14 +186,18 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
     if (stream.match(/^\.?\d/, false)) {
       var imMatcher = RegExp(/^im\b/);
       var numberLiteral = false;
-      if (stream.match(/^0x\.[0-9a-f_]+p[\+\-]?[_\d]+/i)) { numberLiteral = true; }
-      // Integers
-      if (stream.match(/^0x[0-9a-f_]+/i)) { numberLiteral = true; } // Hex
-      if (stream.match(/^0b[01_]+/i)) { numberLiteral = true; } // Binary
-      if (stream.match(/^0o[0-7_]+/i)) { numberLiteral = true; } // Octal
       // Floats
-      if (stream.match(/^(?:(?:\d[_\d]*)?\.(?!\.)(?:\d[_\d]*)?|\d[_\d]*\.(?!\.)(?:\d[_\d]*))?([Eef][\+\-]?[_\d]+)?/i)) { numberLiteral = true; }
-      if (stream.match(/^\d[_\d]*(e[\+\-]?\d+)?/i)) { numberLiteral = true; } // Decimal
+      if (stream.match(/^\d*\.(?!\.)\d*([Eef][\+\-]?\d+)?/i)) { numberLiteral = true; }
+      if (stream.match(/^\d+\.(?!\.)\d*/)) { numberLiteral = true; }
+      if (stream.match(/^\.\d+/)) { numberLiteral = true; }
+      if (stream.match(/^0x\.[0-9a-f]+p[\+\-]?\d+/i)) { numberLiteral = true; }
+      // Integers
+      if (stream.match(/^0x[0-9a-f]+/i)) { numberLiteral = true; } // Hex
+      if (stream.match(/^0b[01]+/i)) { numberLiteral = true; } // Binary
+      if (stream.match(/^0o[0-7]+/i)) { numberLiteral = true; } // Octal
+      if (stream.match(/^[1-9]\d*(e[\+\-]?\d+)?/)) { numberLiteral = true; } // Decimal
+      // Zero by itself with no other piece of number.
+      if (stream.match(/^0(?![\dx])/i)) { numberLiteral = true; }
       if (numberLiteral) {
           // Integer literals may be "long"
           stream.match(imMatcher);
@@ -255,43 +261,41 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
   }
 
   function tokenCallOrDef(stream, state) {
-    for (;;) {
-      var match = stream.match(/^(\(\s*)/), charsAdvanced = 0;
-      if (match) {
-        if (state.firstParenPos < 0)
-          state.firstParenPos = state.scopes.length;
-        state.scopes.push('(');
-        charsAdvanced += match[1].length;
-      }
-      if (currentScope(state) == '(' && stream.match(/^\)/)) {
-        state.scopes.pop();
-        charsAdvanced += 1;
-        if (state.scopes.length <= state.firstParenPos) {
-          var isDefinition = stream.match(/^(\s*where\s+[^\s=]+)*\s*?=(?!=)/, false);
-          stream.backUp(charsAdvanced);
-          state.firstParenPos = -1;
-          state.tokenize = tokenBase;
-          if (isDefinition)
-            return "def";
-          return "builtin";
-        }
-      }
-      // Unfortunately javascript does not support multiline strings, so we have
-      // to undo anything done upto here if a function call or definition splits
-      // over two or more lines.
-      if (stream.match(/^$/g, false)) {
-        stream.backUp(charsAdvanced);
-        while (state.scopes.length > state.firstParenPos)
-          state.scopes.pop();
+    var match = stream.match(/^(\(\s*)/);
+    if (match) {
+      if (state.firstParenPos < 0)
+        state.firstParenPos = state.scopes.length;
+      state.scopes.push('(');
+      state.charsAdvanced += match[1].length;
+    }
+    if (currentScope(state) == '(' && stream.match(/^\)/)) {
+      state.scopes.pop();
+      state.charsAdvanced += 1;
+      if (state.scopes.length <= state.firstParenPos) {
+        var isDefinition = stream.match(/^(\s*where\s+[^\s=]+)*\s*?=(?!=)/, false);
+        stream.backUp(state.charsAdvanced);
         state.firstParenPos = -1;
+        state.charsAdvanced = 0;
         state.tokenize = tokenBase;
+        if (isDefinition)
+          return "def";
         return "builtin";
       }
-      if (!stream.match(/^[^()]+/)) {
-        stream.next()
-        return null
-      }
     }
+    // Unfortunately javascript does not support multiline strings, so we have
+    // to undo anything done upto here if a function call or definition splits
+    // over two or more lines.
+    if (stream.match(/^$/g, false)) {
+      stream.backUp(state.charsAdvanced);
+      while (state.scopes.length > state.firstParenPos)
+        state.scopes.pop();
+      state.firstParenPos = -1;
+      state.charsAdvanced = 0;
+      state.tokenize = tokenBase;
+      return "builtin";
+    }
+    state.charsAdvanced += stream.match(/^([^()]*)/)[1].length;
+    return state.tokenize(stream, state);
   }
 
   function tokenAnnotation(stream, state) {
@@ -385,6 +389,7 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
         nestedComments: 0,
         nestedGenerators: 0,
         nestedParameters: 0,
+        charsAdvanced: 0,
         firstParenPos: -1
       };
     },
@@ -402,9 +407,9 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
 
     indent: function(state, textAfter) {
       var delta = 0;
-      if ( textAfter === ']' || textAfter === ')' || /^end\b/.test(textAfter) ||
-           /^else/.test(textAfter) || /^catch\b/.test(textAfter) || /^elseif\b/.test(textAfter) ||
-           /^finally/.test(textAfter) ) {
+      if ( textAfter === ']' || textAfter === ')' || textAfter === "end" ||
+           textAfter === "else" || textAfter === "catch" || textAfter === "elseif" ||
+           textAfter === "finally" ) {
         delta = -1;
       }
       return (state.scopes.length + delta) * config.indentUnit;
