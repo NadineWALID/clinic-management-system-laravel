@@ -50,7 +50,7 @@
                           <a class="btn btn-danger" href="{{url('canceled',$appoint->id)}}">Cancel</a>
                       </td>
                       <td>
-                          <a class="btn btn-danger" href="{{url('delete_app',$appoint->id)}}">Delete</a>
+                          <a class="btn btn-danger" href="{{url('delete_app',$appoint->id)}}" onclick="return confirm('Are you sure you want to cancel this appointment')">Delete</a>
                       </td>
                   </tr>
                   @endforeach
