@@ -15,8 +15,8 @@
         @include('admin.navbar') 
           <!-- partial -->
           <div align="center" style="padding:100px;">
-          <table>
-                  <tr style="background-color:skyblue;">
+          <table style=" width:1000px;">
+                  <tr style="background-color:rgb(138, 235, 135);">
                       <th style="padding:10px; color:black;">Doctor Name</th>
                       <th style="padding:10px; color:black;">Phone Number</th>
                       <th style="padding:10px; color:black;">Speciality</th>
@@ -26,13 +26,13 @@
                   </tr>
 
                   @foreach($data as $doctor)
-                  <tr align="center" style="background-color:teal;">
+                  <tr align="center" style="background-color:rgb(23, 73, 29);">
                       <td>{{$doctor->name}}</td>
                       <td>{{$doctor->phone_number}}</td>
                       <td>{{$doctor->speciality}}</td>
                       <td><img height="100" width="100" src="doctorimage/{{$doctor->image}}"></td>
                       <td>
-                          <a class="btn btn-primary" href="{{url('updatedoctor',$doctor->id)}}">Update</a>
+                          <a class="btn btn-warning" href="{{url('updatedoctor',$doctor->id)}}">Update</a>
                       </td>
                       <td>
                           <a class="btn btn-danger" href="{{url('deletedoctor',$doctor->id)}}" onclick="return confirm('Are you sure you want to cancel this doctor')">Delete</a>

@@ -17,7 +17,7 @@
           
           <div align="center" style="padding:100px;">
               <table id="myTable2">
-                  <tr style="background-color:skyblue;">
+                  <tr style="background-color:rgb(138, 235, 135);">
                       <th onclick="sortTable(0)" style="padding:10px; color:black; cursor: pointer;">Patient Name</th>
                       <th style="padding:10px; color:black;">Email</th>
                       <th style="padding:10px; color:black;">Phone Number</th>
@@ -29,10 +29,11 @@
                       <th onclick="sortTable(8)" style="padding:10px; color:black; cursor: pointer;">Status</th>
                       <th style="padding:10px; color:black;">Approve Appointment</th>
                       <th style="padding:10px; color:black;">Cancel Appointment</th>
+                      <th style="padding:10px; color:black;">Delete Appointment</th>
                   </tr>
 
                   @foreach($data as $appoint)
-                  <tr align="center" style="background-color:teal;">
+                  <tr align="center" style="background-color:rgb(23, 73, 29);">
                       <td>{{$appoint->name}}</td>
                       <td>{{$appoint->email}}</td>
                       <td>{{$appoint->phone}}</td>
@@ -47,6 +48,9 @@
                       </td>
                       <td>
                           <a class="btn btn-danger" href="{{url('canceled',$appoint->id)}}">Cancel</a>
+                      </td>
+                      <td>
+                          <a class="btn btn-danger" href="{{url('delete_app',$appoint->id)}}" onclick="return confirm('Are you sure you want to cancel this appointment')">Delete</a>
                       </td>
                   </tr>
                   @endforeach

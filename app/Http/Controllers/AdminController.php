@@ -61,6 +61,13 @@ class AdminController extends Controller
       return redirect()->back();
     }
 
+    public function delete_app($id)
+    {
+      $data=appointment::find($id);
+      $data->delete();
+      return redirect()->back();
+    }
+
     public function showdoctors()
     {
        $data=doctor::all();
@@ -70,21 +77,27 @@ class AdminController extends Controller
     public function deletedoctor($id)
     {
        $data=doctor::find($id);
+       $data2=user::find($id);
        $data->delete();
+       $data2->delete();
        return redirect()->back();
     }
 
     public function updatedoctor($id)
     {
        $data=doctor::find($id);
+       //$data2=user::find($id);
        return view('admin.update_doctor',compact('data'));
     }
 
     public function editdoctor(Request $request, $id)
     {
        $doctor=doctor::find($id);
+      // $doctor2=user::find($id);
        $doctor->name=$request->name;
+      // $doctor2->name=$request->name;
        $doctor->phone_number=$request->phone_number;
+      // $doctor2->phone_no=$request->phone_no;
        $doctor->speciality=$request->speciality;
 
        $image=$request->file;
@@ -96,6 +109,7 @@ class AdminController extends Controller
        }
        
        $doctor->save();
+       //$doctor2->save();
        return redirect()->back()->with('message','Doctor Updated Successfully');
     }
 }
