@@ -14,8 +14,7 @@
             <td style="padding:10px; color:black;">{{$appoints->doctor}}</td>
             <td style="padding:10px; color:black;">{{$appoints->date}}</td>
             <td style="padding:10px; color:black;">{{$appoints->status}}</td>
-            <td style="padding:10px; color:black;"><a href="{{url('cancel_appoint',$appoints->id)}}"
-            onclick="return confirm('Are you sure you want to cancel this appointment')" class="bt btn-danger">Cancel</a></td>
+            <td><a href="{{url('cancel_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
         </tr>
         @endforeach
     </table>

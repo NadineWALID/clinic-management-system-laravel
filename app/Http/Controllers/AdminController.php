@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\User;
+use App\Models\Appointment;
 
 class AdminController extends Controller
 {
@@ -34,5 +35,27 @@ class AdminController extends Controller
        $user->role_id=1;
        $user->save();
        return redirect()->back()->with('message','Doctor Is Added Successfully');
+    }
+
+    public function showappointments()
+    {
+       $data=appointment::all();
+       return view('admin.showappointments',compact('data'));
+    }
+
+    public function approved($id)
+    {
+      $data=appointment::find($id);
+      $data->status='Approved';
+      $data->save();
+      return redirect()->back();
+    }
+
+    public function canceled($id)
+    {
+      $data=appointment::find($id);
+      $data->status='Canceled';
+      $data->save();
+      return redirect()->back();
     }
 }
