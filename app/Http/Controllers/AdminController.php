@@ -61,6 +61,13 @@ class AdminController extends Controller
       return redirect()->back();
     }
 
+    public function delete_app($id)
+    {
+      $data=appointment::find($id);
+      $data->delete();
+      return redirect()->back();
+    }
+
     public function showdoctors()
     {
        $data=doctor::all();

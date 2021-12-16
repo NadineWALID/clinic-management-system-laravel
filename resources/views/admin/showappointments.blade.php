@@ -29,6 +29,7 @@
                       <th onclick="sortTable(8)" style="padding:10px; color:black; cursor: pointer;">Status</th>
                       <th style="padding:10px; color:black;">Approve Appointment</th>
                       <th style="padding:10px; color:black;">Cancel Appointment</th>
+                      <th style="padding:10px; color:black;">Delete Appointment</th>
                   </tr>
 
                   @foreach($data as $appoint)
@@ -47,6 +48,9 @@
                       </td>
                       <td>
                           <a class="btn btn-danger" href="{{url('canceled',$appoint->id)}}">Cancel</a>
+                      </td>
+                      <td>
+                          <a class="btn btn-danger" href="{{url('delete_app',$appoint->id)}}">Delete</a>
                       </td>
                   </tr>
                   @endforeach
