@@ -59,7 +59,7 @@
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#" >Home</a>
+              <a class="nav-link" href="/" >Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#aboutus">About Us</a>
@@ -78,6 +78,10 @@
             </li>
             @if(Route::has('login'))
             @auth
+
+            <li class="nav-item">
+            <a class="nav-link" style="background-color:greenyellow;" href="{{url('myappointment')}}">My Appointments</a>
+            </li>
             <x-app-layout>
             </x-app-layout>
             @else
