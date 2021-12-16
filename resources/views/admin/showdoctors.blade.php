@@ -17,7 +17,7 @@
           <div align="center" style="padding:100px;">
           <table>
                   <tr style="background-color:skyblue;">
-                      <th style="padding:10px; color:black;">Name</th>
+                      <th style="padding:10px; color:black;">Doctor Name</th>
                       <th style="padding:10px; color:black;">Phone Number</th>
                       <th style="padding:10px; color:black;">Speciality</th>
                       <th style="padding:10px; color:black;">Photo</th>
@@ -32,7 +32,7 @@
                       <td>{{$doctor->speciality}}</td>
                       <td><img height="100" width="100" src="doctorimage/{{$doctor->image}}"></td>
                       <td>
-                          <a class="btn btn-primary" href="{{url('')}}">Update</a>
+                          <a class="btn btn-primary" href="{{url('updatedoctor',$doctor->id)}}">Update</a>
                       </td>
                       <td>
                           <a class="btn btn-danger" href="{{url('deletedoctor',$doctor->id)}}" onclick="return confirm('Are you sure you want to cancel this doctor')">Delete</a>

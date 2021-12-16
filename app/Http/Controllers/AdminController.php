@@ -21,7 +21,7 @@ class AdminController extends Controller
        $doctor= new doctor;
        $user= new user;
        $image=$request->file;
-       $imagename=time().'.'.$image->getClientoriginalExtension();
+       $imagename=time().'.'.$image->getClientOriginalExtension();
        $request->file->move('doctorimage',$imagename);
        $doctor->image=$imagename;
        $doctor->name=$request->name;
@@ -70,5 +70,30 @@ class AdminController extends Controller
        $data=doctor::find($id);
        $data->delete();
        return redirect()->back();
+    }
+
+    public function updatedoctor($id)
+    {
+       $data=doctor::find($id);
+       return view('admin.update_doctor',compact('data'));
+    }
+
+    public function editdoctor(Request $request, $id)
+    {
+       $doctor=doctor::find($id);
+       $doctor->name=$request->name;
+       $doctor->phone_number=$request->phone_number;
+       $doctor->speciality=$request->speciality;
+
+       $image=$request->file;
+       if($image)
+       {
+         $imagename=time().'.'.$image->getClientOriginalExtension();
+         $request->file->move('doctorimage',$imagename);
+         $doctor->image=$imagename;
+       }
+       
+       $doctor->save();
+       return redirect()->back()->with('message','Doctor Updated Successfully');
     }
 }

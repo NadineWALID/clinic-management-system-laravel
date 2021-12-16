@@ -27,9 +27,7 @@
         
         @include('admin.navbar') 
           <!-- partial -->
-         <div class="container-fluid page-body-wrapper">
-               
-
+      
              <div class="container" Align="center" style="padding-top: 100px;">
              @if(session()->has('message'))
  
@@ -85,7 +83,7 @@
                  </form>
 
              </div>
-          </div>
+          
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
