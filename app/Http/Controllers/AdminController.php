@@ -39,7 +39,7 @@ class AdminController extends Controller
        return redirect()->back()->with('message','Doctor Is Added Successfully');
     }
 
-    public function showappointments()
+    public function view_patients()
     {
        $data=appointment::all();
        return view('admin.showappointments',compact('data'));

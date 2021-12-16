@@ -4,15 +4,17 @@
               <a class="nav-link" href="#" >Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#aboutus">See Patient History</a>
+              <a class="nav-link" href="{{url('view_patients')}}" >See Patient History</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#doctors">Write A Prescription</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription </a>
             </li>
+            
+            
             
 @stop
 @section('content')
 <x-app-layout>
-    <h1>This is doctor</h1>
+ @include('frontend.homecontent')
 </x-app-layout>
 @stop

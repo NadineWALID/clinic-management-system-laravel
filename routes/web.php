@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DoctorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/doctor', [DoctorController::class,'homedoctor']);
+Route::get('/view_patients', [DoctorController::class,'addview']);
+Route::get('/addprescription', [DoctorController::class,'addprescription']);
 Route::get('/add_doctor_view', [AdminController::class,'addview']);
 Route::post('/upload_doctor', [AdminController::class,'upload']);
 Route::post('/appointment', [HomeController::class,'appointment']);

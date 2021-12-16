@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
+
+
+
 class HomeController extends Controller
 {
       public function redirect(){
@@ -48,6 +51,9 @@ class HomeController extends Controller
       {
           
         $user = User::where('email', '=', $request->email)->first();
+        if ($user === null) {
+          $user = User::where('phone_no', '=', $request->mobile)->first(); 
+        }
         $data = new appointment;
         $data->name=$request->name;
         $data->email=$request->email;
@@ -60,10 +66,10 @@ class HomeController extends Controller
         $data->status='In Progress';
         if ($user === null) {
          
-          
+          $data->save();
         } else {
           $data->user_id=$user->id;
-          
+          $data->save();
         }
           
          /* if(Auth::id())
