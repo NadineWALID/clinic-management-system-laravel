@@ -17,7 +17,7 @@
           
           <div align="center" style="padding:100px;">
               <table id="myTable2">
-                  <tr style="background-color:skyblue;">
+                  <tr style="background-color:rgb(138, 235, 135);">
                       <th onclick="sortTable(0)" style="padding:10px; color:black; cursor: pointer;">Patient Name</th>
                       <th style="padding:10px; color:black;">Email</th>
                       <th style="padding:10px; color:black;">Phone Number</th>
@@ -32,7 +32,7 @@
                   </tr>
 
                   @foreach($data as $appoint)
-                  <tr align="center" style="background-color:teal;">
+                  <tr align="center" style="background-color:rgb(23, 73, 29);">
                       <td>{{$appoint->name}}</td>
                       <td>{{$appoint->email}}</td>
                       <td>{{$appoint->phone}}</td>
