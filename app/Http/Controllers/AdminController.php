@@ -20,6 +20,12 @@ class AdminController extends Controller
     {
        $doctor= new doctor;
        $user= new user;
+       $user->email=$request->email;
+       $user->password=Hash::make($request->password);
+       $user->phone_no=$request->number;
+       $user->name=$request->name;
+       $user->role_id=1;
+       $user->save();
        $image=$request->file;
        $imagename=time().'.'.$image->getClientOriginalExtension();
        $request->file->move('doctorimage',$imagename);
@@ -27,13 +33,9 @@ class AdminController extends Controller
        $doctor->name=$request->name;
        $doctor->phone_number=$request->number;
        $doctor->speciality=$request->speciality;
+       $doctor->id=$user->id;
        $doctor->save();
-       $user->email=$request->email;
-       $user->password=Hash::make($request->password);
-       $user->phone_no=$request->number;
-       $user->name=$request->name;
-       $user->role_id=1;
-       $user->save();
+       
        return redirect()->back()->with('message','Doctor Is Added Successfully');
     }
 
