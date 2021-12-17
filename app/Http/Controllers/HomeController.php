@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
-
-
-
 class HomeController extends Controller
 {
       public function redirect(){
@@ -100,6 +97,12 @@ class HomeController extends Controller
           $data=appointment::find($id);
           $data->delete();
           return redirect()->back();
+      }
+      public function edit_appoint($id)
+      {
+        $data=appointment::find($id);
+        $data->save();
+        return view('user.edit_appointment',compact('data'));   
       }
 
 }

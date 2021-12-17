@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('user.master')
 @section('content')
 <div align="center" style="padding:70px;">
     <table id="myTable2">
@@ -7,6 +7,7 @@
             <th onclick="sortTable(1)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Date</th>
             <th onclick="sortTable(2)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Status</th>
             <th style="padding:10px; font-size:20px; color:darkred;">Cancel Appointment</th>
+            <th style="padding:10px; font-size:20px; color:darkred;">Edit Appointment</th>
         </tr>
 
         @foreach($appoint as $appoints)
@@ -15,6 +16,7 @@
             <td style="padding:10px; color:black;">{{$appoints->date}}</td>
             <td style="padding:10px; color:black;">{{$appoints->status}}</td>
             <td><a href="{{url('cancel_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
+            <td><a href="{{url('edit_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to edit this appointment')" class="btn btn-danger">Edit</a></td>
         </tr>
         @endforeach
         <script>
