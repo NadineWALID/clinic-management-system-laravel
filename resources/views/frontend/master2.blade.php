@@ -4,13 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
   <title>Medica</title>
   <link rel="stylesheet" href="../assets/css/maicons.css">
   <link rel="stylesheet" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
   <link rel="stylesheet" href="../assets/css/theme.css">
+  <style>
+ /*   #socialmediafooter{
+  margin-left: -340px;
+
+}
+#socialmediaicons{
+  margin-left: -380px;
+
+}         
+*/
+
+  </style>
 </head>
 <body>
 
@@ -100,8 +111,8 @@
           <a href="#" class="footer-link">701-573-7582</a>
           <a href="#" class="footer-link">healthcare@temporary.net</a>
 
-          <h5 class="mt-3">Social Media</h5>
-          <div class="footer-sosmed mt-3">
+          <h5 class="mt-3" id="socialmediafooter">Social Media</h5>
+          <div class="footer-sosmed mt-3" id="socialmediaicons">
             <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
             <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
             <a href="#" target="_blank"><span class="mai-logo-google-plus-g"></span></a>
@@ -113,7 +124,7 @@
 
       <hr>
 
-      <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
+      <p id="copyright">Copyright &copy; 2021 <a href="#" target="_blank">Graduation project team</a>. All rights reserved</p>
     </div>
   </footer>
 

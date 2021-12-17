@@ -30,7 +30,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
   <title>Medica</title>
   <link rel="stylesheet" href="../assets/css/maicons.css">
   <link rel="stylesheet" href="../assets/css/bootstrap.css">
@@ -54,7 +53,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupport">
-          <a class="navbar-brand" id="titlee" href="#"><span class="text-primary">MED</span>ICA</a>
+          <a class="navbar-brand" id="titlee" href="/"><span class="text-primary">MED</span>ICA</a>
 
 
           <ul class="navbar-nav ml-auto">
@@ -159,7 +158,7 @@
 
       <hr>
 
-      <p id="copyright">Copyright &copy; 2021 <a href="#" target="_blank">Graduation project team</a>. All right reserved</p>
+      <p id="copyright">Copyright &copy; 2021 <a href="#" target="_blank">Graduation project team</a>. All rights reserved</p>
     </div>
   </footer>
 
