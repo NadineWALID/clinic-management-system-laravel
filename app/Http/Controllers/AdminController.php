@@ -107,7 +107,7 @@ class AdminController extends Controller
     public function showpatients()
     {
        $Pdata=patient::all();
-       return view('admin.showpatients',compact('Pdata'));
+       return view('admin.show_patients',compact('Pdata'));
     }
 
 
