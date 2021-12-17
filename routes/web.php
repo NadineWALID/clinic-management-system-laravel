@@ -35,8 +35,16 @@ Route::get('/edit_appoint/{id}', [HomeController::class,'edit_appoint']);
 Route::get('/showappointments', [AdminController::class,'showappointments']);
 Route::get('/approved/{id}', [AdminController::class,'approved']);
 Route::get('/canceled/{id}', [AdminController::class,'canceled']);
+//Admin Dashboard : Manage Doctors
 Route::get('/showdoctors', [AdminController::class,'showdoctors']);
 Route::get('/delete_app/{id}', [AdminController::class,'delete_app']);
 Route::get('/deletedoctor/{id}', [AdminController::class,'deletedoctor']);
 Route::get('/updatedoctor/{id}', [AdminController::class,'updatedoctor']);
 Route::post('/editdoctor/{id}', [AdminController::class,'editdoctor']);
+//Admin Dashboard : Manage Patients
+Route::get('/add_patient_view', [AdminController::class,'add_patient_view']);
+Route::post('/upload_patient', [AdminController::class,'uploadPatient']);
+Route::get('/show_patients', [AdminController::class,'showpatients']);
+Route::get('/deletepatient/{id}', [AdminController::class,'deletepatient']);
+Route::get('/updatepatient/{id}', [AdminController::class,'updatepatient']);
+Route::post('/editpatient/{id}', [AdminController::class,'editpatient']);
