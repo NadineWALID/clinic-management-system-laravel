@@ -146,7 +146,6 @@ class AdminController extends Controller
        $user=user::find($id);
        $user->name=$Pdata->name;
        $user->phone_no=$Pdata->phone_number;
-       $user->age=$Pdata->age;
        $user->save();
        return view('admin.update_patient',compact('Pdata'));
     }
