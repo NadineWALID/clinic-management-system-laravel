@@ -9,12 +9,15 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription </a>
             </li>
+            <li class="nav-item active">
+            <x-app-layout></x-app-layout>
+            </li>
             
             
             
 @stop
 @section('content')
-<x-app-layout>
+
  @include('frontend.homecontent')
-</x-app-layout>
+
 @stop

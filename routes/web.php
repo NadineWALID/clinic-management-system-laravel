@@ -24,8 +24,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/doctor', [DoctorController::class,'homedoctor']);
-Route::get('/view_patients', [DoctorController::class,'addview']);
+Route::get('/view_patients', [DoctorController::class,'addview'])->name('view_patients');
 Route::get('/addprescription', [DoctorController::class,'addprescription']);
+Route::get('/addprescription/search', [DoctorController::class,'search'])->name('search');;
+
+
+
 Route::get('/add_doctor_view', [AdminController::class,'addview']);
 Route::post('/upload_doctor', [AdminController::class,'upload']);
 Route::post('/appointment', [HomeController::class,'appointment']);
