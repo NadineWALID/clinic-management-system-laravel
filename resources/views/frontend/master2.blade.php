@@ -5,23 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Medica</title>
+  <link href="doctor/css/style.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/maicons.css">
   <link rel="stylesheet" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
   <link rel="stylesheet" href="../assets/css/theme.css">
-  <style>
- /*   #socialmediafooter{
-  margin-left: -340px;
-
-}
-#socialmediaicons{
-  margin-left: -380px;
-
-}         
-*/
-
-  </style>
+  
+  
 </head>
 <body>
 
