@@ -47,20 +47,29 @@ class HomeController extends Controller
       public function appointment(Request $request)
       {
         
-        if(Auth::id())
-        {
-          $user=Auth::id();
-        }
-        else{
+        $data = new appointment;
+        if(Auth::id()){
+          $data->user_id=Auth::id();
+        }else{
           $user = User::where('email', '=', $request->email)->first();
           if ($user === null) {
             $user = User::where('phone_no', '=', $request->mobile)->first(); 
           }
 
+          if ($user === null){
+
+          }else{
+            $data->user_id=$user->id;
+          }
+
         }
+        
+         
+
+        
           
         
-        $data = new appointment;
+        
         $data->name=$request->name;
         $data->email=$request->email;
         $data->mobile=$request->mobile;
@@ -70,14 +79,8 @@ class HomeController extends Controller
         $data->history=$request->history;
         $data->medicine=$request->medicine;
         $data->status='In Progress';
-        if ($user === null) {
-         
-          $data->save();
-        } else {
-          $data->user_id=$user->id;
-          $data->save();
-        }
-          
+        $data->save();
+        
          /* if(Auth::id())
           {
           $data->user_id=Auth::user()->id;
