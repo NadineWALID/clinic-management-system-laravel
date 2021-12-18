@@ -18,8 +18,13 @@ class DoctorController extends Controller
               ->where('doctor', '=', $doctor)
               ->where('date','=',$date)
               ->get();
-        //$data=appointment::all();
-        return view('doctor.view_patients',compact('data'));
+            
+        
+       
+        $appointmentsToday =$data->count();
+        
+        
+        return view('doctor.view_patients',compact('data'),compact('appointmentsToday'));
     }
 
 

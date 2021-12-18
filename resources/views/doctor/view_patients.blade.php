@@ -10,11 +10,14 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription </a>
             </li>
+            <li class="nav-item active">
+            <x-app-layout></x-app-layout>
+            </li>
             
             
 @stop
 @section('content')
-<x-app-layout>
+
 
    <!-- ================Search Bar======================= -->
    <div class="preloader">
@@ -49,7 +52,7 @@
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-success">659</span></li>
+                                <li class="ms-auto"><span class="counter text-success">{{$appointmentsToday}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -118,6 +121,7 @@
                                             <th class="border-top-0">Medicine</th>
                                             <th class="border-top-0">View Patients History</th>
                                             <th class="border-top-0">Add a Prescription</th>
+                                            <th class="border-top-0">Remove</th>
                                             
                                         </tr>
                                     </thead>
@@ -135,6 +139,10 @@
                                             <td>
                                              <a class="btn btn-success" href="{{url('addprescription')}}">Write A Prescription</a>
                                             </td>
+                                            <td>
+                                             <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
+                                            </td>
+                                            
                                           
                                         </tr>
                                      @endforeach
@@ -370,5 +378,5 @@
     <script src="doctor/plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="doctor/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="doctor/js/pages/dashboards/dashboard1.js"></script>
-</x-app-layout>
+
 @stop

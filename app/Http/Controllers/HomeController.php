@@ -46,11 +46,20 @@ class HomeController extends Controller
 
       public function appointment(Request $request)
       {
-          
-        $user = User::where('email', '=', $request->email)->first();
-        if ($user === null) {
-          $user = User::where('phone_no', '=', $request->mobile)->first(); 
+        
+        if(Auth::id())
+        {
+          $user=Auth::id();
         }
+        else{
+          $user = User::where('email', '=', $request->email)->first();
+          if ($user === null) {
+            $user = User::where('phone_no', '=', $request->mobile)->first(); 
+          }
+
+        }
+          
+        
         $data = new appointment;
         $data->name=$request->name;
         $data->email=$request->email;

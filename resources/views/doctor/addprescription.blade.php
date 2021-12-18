@@ -9,12 +9,16 @@
             <li class="nav-item active">
               <a class="nav-link" href="#" >Add Prescription </a>
             </li>
+            <li class="nav-item active">
+            <x-app-layout></x-app-layout>
+            </li>
+
             
             
             
 @stop
 @section('content')
-<x-app-layout>
+
 <div class="page-section" id="appointment">
     <div class="container">
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">New Prescription</h1>
@@ -40,5 +44,5 @@
       </form>
     </div>
   </div> <!-- .page-section -->
-</x-app-layout>
+
 @stop
