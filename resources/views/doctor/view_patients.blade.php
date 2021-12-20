@@ -125,7 +125,7 @@
                                         <tr>
                                        
                                            <td>1</td>
-                                            <td class="txt-oflo">{{$user->name}}</td>
+                                            <td class="txt-oflo" >{{$user->name}}</td>
                                             <td>{{$user->history}}</td>
                                             <td class="txt-oflo">{{$user->medicine}}</td>
                                             <td>
@@ -136,12 +136,9 @@
                                             </td>
                                             <td>
                                              <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
-                                            </td>
-                                            
-                                          
+                                            </td>                              
                                         </tr>
                                      @endforeach
-                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -162,7 +159,7 @@
                                 <button type="submit" class="btn btn-success">Search</button>
                             </form>
                             <div class="table-responsive">
-                                <table class="table no-wrap">
+                                <table class="table no-wrap" id="patients_table">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">#</th>
@@ -170,8 +167,6 @@
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">View Patients History</th>
                                             <th class="border-top-0">Add a Prescription</th>
-                                            
-                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -188,9 +183,6 @@
                                             <td>
                                              <a class="btn btn-success" href="{{url('addprescription')}}">Write A Prescription</a>
                                             </td>
-                                            
-                                            
-                                          
                                         </tr>
                                      @endforeach
                                        

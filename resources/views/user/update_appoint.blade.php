@@ -1,22 +1,12 @@
-<<<<<<< HEAD
 @extends('user.master')
-=======
-@extends('frontend.master')
->>>>>>> 7632d0d0c2b607afd05250f5a85dd2b55fdd67f5
 @section('content')
 <div class="page-section" id="appointment">
     <div class="container">
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Make an Appointment</h1>
 
-<<<<<<< HEAD
       <form class="main-form" action="{{url('edit_appoint',$data->id)}}" method="POST" enctype="multipart/form-data">
           @csrf
         <div class="row mt-5">
-=======
-      <form class="main-form" action="{{url('edit_appoint',$data->id)}}" method="POST">
-          @csrf
-        <div class="row mt-5 ">
->>>>>>> 7632d0d0c2b607afd05250f5a85dd2b55fdd67f5
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
             <input type="text" name="name" class="form-control" placeholder="Full name" value="{{$data->name}}" readonly="readonly">
           </div>
@@ -47,8 +37,4 @@
       </form>
     </div>
   </div> <!-- .page-section -->
-<<<<<<< HEAD
   @stop
-=======
-  @stop
->>>>>>> 7632d0d0c2b607afd05250f5a85dd2b55fdd67f5

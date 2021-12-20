@@ -9,6 +9,9 @@
             #formid
             {
               outline-style: inset;
+              display:inline-block;
+              width:800px;
+              height:600px;
             }
               #doctorspec{
                 position: relative;
