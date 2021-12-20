@@ -32,7 +32,7 @@ class HomeController extends Controller
       }
 
       public function index()
-      {  
+      {
         if (Auth::id())
         {
           return redirect('home');
@@ -46,14 +46,14 @@ class HomeController extends Controller
 
       public function appointment(Request $request)
       {
-        
+
         $data = new appointment;
         if(Auth::id()){
           $data->user_id=Auth::id();
         }else{
           $user = User::where('email', '=', $request->email)->first();
           if ($user === null) {
-            $user = User::where('phone_no', '=', $request->mobile)->first(); 
+            $user = User::where('phone_no', '=', $request->mobile)->first();
           }
 
           if ($user === null){
@@ -63,13 +63,8 @@ class HomeController extends Controller
           }
 
         }
-        
-         
 
-        
-          
-        
-        
+
         $data->name=$request->name;
         $data->email=$request->email;
         $data->mobile=$request->mobile;
@@ -80,7 +75,7 @@ class HomeController extends Controller
         $data->medicine=$request->medicine;
         $data->status='In Progress';
         $data->save();
-        
+
          /* if(Auth::id())
           {
           $data->user_id=Auth::user()->id;
@@ -110,11 +105,24 @@ class HomeController extends Controller
           $data->delete();
           return redirect()->back();
       }
-      public function edit_appoint($id)
+
+      public function update_appoint($id)
       {
         $data=appointment::find($id);
         $data->save();
-        return view('user.edit_appointment',compact('data'));   
+        return view('user.update_appoint',compact('data'));
       }
+
+      public function edit_appoint(Request $request,$id)
+      {
+        $data=appointment::find($id);
+        $data->date=$request->date;
+        $data->history=$request->history;
+        $data->medicine=$request->medicine;
+        $data->save();
+        return redirect()->back()->with('message','Appointment updated Successfully');
+
+      }
+
 
 }
