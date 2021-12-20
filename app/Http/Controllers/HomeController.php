@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use DB;
 class HomeController extends Controller
 {
       public function redirect(){
@@ -95,8 +96,26 @@ class HomeController extends Controller
         if(Auth::id())
         {
           $userid=Auth::user()->id;
-          $appoint=appointment::where('user_id',$userid)->get();
-          return view('user.my_appointment',compact('appoint'));
+          $appoint=new appointment;
+        // $appoint=appointment::where('user_id',$userid)->get();
+         $appoint= DB::table('appointments')
+                 ->select('*')
+                 ->where('user_id','=',$userid)
+                 ->get();
+          //$doctor_id = $appoint->doctor;
+          foreach ($appoint as  $app) {
+            $doctor_id=$app->doctor;
+            $data2=new doctor;
+            $data2 = DB::table('doctors')
+                ->select('name')
+                ->where('id','LIKE', $doctor_id)
+                ->get();
+            foreach ( $data2 as  $app) {
+              $data=$app->name;
+            }
+            // process element here
+        }
+          return view('user.my_appointment',compact('appoint'),compact('data'));
         }
         else
         {
@@ -110,11 +129,19 @@ class HomeController extends Controller
           $data->delete();
           return redirect()->back();
       }
-      public function edit_appoint($id)
+      public function update_appoint($id)
       {
         $data=appointment::find($id);
+        return view('user.update_appoint',compact('data'));   
+      }
+      public function edit_appoint(Request $request,$id)
+      {
+        $data=appointment::find($id);
+        $data->date=$request->date;
+        $data->history=$request->history;
+        $data->medicine=$request->medicine;
         $data->save();
-        return view('user.edit_appointment',compact('data'));   
+        return redirect()->back()->with('message', 'Appointment Updated Successfully');  
       }
 
 }

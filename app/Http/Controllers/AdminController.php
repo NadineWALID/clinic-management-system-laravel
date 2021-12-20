@@ -135,7 +135,7 @@ class AdminController extends Controller
 
    public function updatedoctor($id)
    {
-      $data = patient::find($id);
+      $data = doctor::find($id);
       $user = user::find($id);
       $user->name = $data->name;
       $user->phone_no = $data->phone_number;
