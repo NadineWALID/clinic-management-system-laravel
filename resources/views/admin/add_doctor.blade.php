@@ -91,18 +91,18 @@
                        <option value="Dermatologist">Dermatologist</option>
                        <option value="Cardiologist">Cardiologist</option>
                        <option value="Endocrinologist">Endocrinologist</option>
-                       <option value="Endocrinologist">Allergists/Immunologists</option>
-                       <option value="Endocrinologist">Neurologists</option>
-                       <option value="Endocrinologist">Gastroenterologists</option>
-                       <option value="Endocrinologist">Hematologists</option>
-                       <option value="Endocrinologist">Medical Geneticists</option>
-                       <option value="Endocrinologist">Nephrologists</option>
-                       <option value="Endocrinologist">Obstetricians and Gynecologists</option>
-                       <option value="Endocrinologist">Oncologists</option>
-                       <option value="Endocrinologist">Ophthalmologists</option>
-                       <option value="Endocrinologist">Otolaryngologists</option>
-                       <option value="Endocrinologist">Physiatrists</option>
-                       <option value="Endocrinologist">Pulmonologists</option>
+                       <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+                       <option value="Neurologists">Neurologists</option>
+                       <option value="Gastroenterologists">Gastroenterologists</option>
+                       <option value="Hematologists">Hematologists</option>
+                       <option value="Medical Geneticists">Medical Geneticists</option>
+                       <option value="Nephrologists">Nephrologists</option>
+                       <option value="Obstetricians and Gynecologists">Obstetricians and Gynecologists</option>
+                       <option value="Oncologists">Oncologists</option>
+                       <option value="Ophthalmologists">Ophthalmologists</option>
+                       <option value="Otolaryngologists">Otolaryngologists</option>
+                       <option value="Physiatrists">Physiatrists</option>
+                       <option value="Pulmonologists">Pulmonologists</option>
                    </select>
                   </div>
 
