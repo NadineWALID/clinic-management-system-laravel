@@ -65,7 +65,7 @@
               <a class="nav-link" href="/">Doctors</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/">Make An Appointment</a>
+            <a class="nav-link" href="/">Make an Appointment</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#footer">Contact Us</a>

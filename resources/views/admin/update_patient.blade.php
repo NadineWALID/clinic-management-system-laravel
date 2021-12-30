@@ -48,13 +48,11 @@
                         <input style="color:grey;" type="text" name="phone_number" value="{{$Pdata->phone_number}}">
                     </div>
 
-                    <div style="padding:15px;">
-                        <label>Age</label>
-                        <input style="color:grey;" type="number" name="age" value="{{$Pdata->age}}">
-                    </div>
-
-    
-    
+                    <div style="padding:20px;">
+                        <label>date of birth</label>
+                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01"value="{{$Pdata->date_of_birth}}">
+                       </div> 
+                
                     <div style="padding:15px;">
                         <input type="submit" class="btn btn-primary">
                     </div>

@@ -70,7 +70,7 @@
               <a class="nav-link"  href="#news">News</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#appointment">Make An Appointment</a>
+            <a class="nav-link" href="#appointment">Make an Appointment</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#footer">Contact Us</a>
