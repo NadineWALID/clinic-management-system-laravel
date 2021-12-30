@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
-use App\Models\Token;
 use DB;
 class HomeController extends Controller
 {
@@ -68,6 +67,10 @@ class HomeController extends Controller
         
          
 
+        
+          
+        
+        
         $data->name=$request->name;
         $data->email=$request->email;
         $data->mobile=$request->mobile;
@@ -79,17 +82,10 @@ class HomeController extends Controller
         $data->status='In Progress';
         $data->save();
         
-         
-
-        if ( $data->user_id != null){
-        
-          $toke = new token;
-          $toke->doctor_id=$request->doctor;
-          $toke->user_id= $data->user_id;
-          $toke->save();
-
-        }
-
+         /* if(Auth::id())
+          {
+          $data->user_id=Auth::user()->id;
+          }*/
 
           $data->save();
           return redirect()->back()->with('message','Appointment Request Successful . We will contact you soon');
@@ -138,8 +134,6 @@ class HomeController extends Controller
         $data=appointment::find($id);
         return view('user.update_appoint',compact('data'));   
       }
-      
-      
       public function edit_appoint(Request $request,$id)
       {
         $data=appointment::find($id);
