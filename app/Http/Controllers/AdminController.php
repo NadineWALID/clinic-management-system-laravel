@@ -61,7 +61,7 @@ class AdminController extends Controller
       $user->save();
       $patient->name = $request->name;
       $patient->phone_number = $request->number;
-      $patient->age = $request->age;
+      $patient->date_of_birth = $request->date_of_birth;
       $patient->id = $user->id;
       $patient->save();
 

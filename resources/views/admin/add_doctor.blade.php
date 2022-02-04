@@ -4,14 +4,34 @@
   <style>
             label
             {
-               display: inline-block;
+              width: 100%;
+              margin: 8px 0;
+              display: inline-block;
+            
             }
+            input
+            {
+              width: 60%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              
+            }
+            input[type=submit] {
+            width: 40%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+             }
             #formid
             {
-              outline-style: inset;
               display:inline-block;
               width:800px;
-              height:600px;
+              height:740px;
             }
               #doctorspec{
                 position: relative;
@@ -71,6 +91,18 @@
                        <option value="Dermatologist">Dermatologist</option>
                        <option value="Cardiologist">Cardiologist</option>
                        <option value="Endocrinologist">Endocrinologist</option>
+                       <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+                       <option value="Neurologists">Neurologists</option>
+                       <option value="Gastroenterologists">Gastroenterologists</option>
+                       <option value="Hematologists">Hematologists</option>
+                       <option value="Medical Geneticists">Medical Geneticists</option>
+                       <option value="Nephrologists">Nephrologists</option>
+                       <option value="Obstetricians and Gynecologists">Obstetricians and Gynecologists</option>
+                       <option value="Oncologists">Oncologists</option>
+                       <option value="Ophthalmologists">Ophthalmologists</option>
+                       <option value="Otolaryngologists">Otolaryngologists</option>
+                       <option value="Physiatrists">Physiatrists</option>
+                       <option value="Pulmonologists">Pulmonologists</option>
                    </select>
                   </div>
 

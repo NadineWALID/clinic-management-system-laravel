@@ -1,7 +1,6 @@
 <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Dashboard</title>
-      <a class="navbar-brand" href="/"><span class="text-primary"> Back to </span>Home Page</a>
       <!-- plugins:css -->
       <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
       <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">

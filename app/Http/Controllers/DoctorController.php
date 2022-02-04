@@ -39,6 +39,7 @@ class DoctorController extends Controller
     public function search(Request $request){
         $pat=null;
         $search_text=$request->input('search');
+        echo "<h2>" .$search_text. "</h2>";
         $pat = DB::table('users')
               ->select('*')
               ->where('name','=',$search_text)
@@ -54,18 +55,6 @@ class DoctorController extends Controller
     }
     public function addprescription(){
         return view('doctor.addprescription');
-    }
-
-    public function addprescriptionuser($id)   
-    {
-    $data= DB::table('appointments')
-        ->select('name')
-        ->where('id','=',$id)
-        ->get();
-     
-      $date = date('d/m/Y',time());
-      
-      return view('doctor.addprescription');   
     }
    
 }

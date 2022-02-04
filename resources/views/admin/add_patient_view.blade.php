@@ -2,19 +2,39 @@
     <!DOCTYPE html>
       <html lang="en">
       <style>
-                label
-                {
-                   display: inline-block;
-                }
-                #formid
-                {
-                  outline-style: inset;
-                  display:inline-block;
-                }
-                  #doctorspec{
-                    position: relative;
-                    left: 10px;
-                  }
+                 label
+            {
+              width: 100%;
+              display: inline-block;
+            }
+            input
+            {
+              width: 60%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              
+            }
+            input[type=submit] {
+            width: 40%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+             }
+            #formid
+            {
+              display:inline-block;
+              width:800px;
+              height:740px;
+            }
+              #doctorspec{
+                position: relative;
+                left: 10px;
+              }
             </style>
         <head>
           <!-- Required meta tags -->
@@ -53,8 +73,8 @@
                       </div>
 
                       <div style="padding:20px;">
-                        <label>Age</label>
-                        <input type="number" style="color:black;" name="age" required="">
+                        <label>date of birth</label>
+                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
                        </div>
  
     

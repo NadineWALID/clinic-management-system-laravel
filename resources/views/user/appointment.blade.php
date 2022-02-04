@@ -13,7 +13,7 @@
             <input type="text" name="email" class="form-control" placeholder="Email address..">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" name="date" class="form-control">
+            <input type="datetime-local" name="date" class="form-control" min="2021-12-30T06:00" max="2022-09-30T09:00">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
             <select  name="doctor" id="departement" class="custom-select">

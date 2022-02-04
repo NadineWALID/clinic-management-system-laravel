@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-section" id="appointment">
     <div class="container">
-      <h1 class="text-center wow fadeInUp" style="font: size 200px;">Edid Appointment</h1>
+      <h1 class="text-center wow fadeInUp" style="font: size 200px;">Make an Appointment</h1>
 
       <form class="main-form" action="{{url('edit_appoint',$data->id)}}" method="POST" enctype="multipart/form-data">
           @csrf
