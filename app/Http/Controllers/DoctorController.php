@@ -12,7 +12,8 @@ class DoctorController extends Controller
 {
     public function addview(Request $request){
         $doctor=Auth::id();
-        $date = date('Y-m-d',time());
+        $date = date('Y-n-j',time());
+        echo "<h2>" . $date . "</h2>";
         $data= DB::table('appointments')
               ->select('*')
               ->where('doctor', '=', $doctor)
@@ -46,7 +47,7 @@ class DoctorController extends Controller
               ->orWhere('email', '=', $search_text)
               ->orWhere('phone_no', '=', $search_text)
               ->get();
-        return redirect()->back()->with('message', 'Search Successfully');
+        return redirect()->back()->with('message', 'Search Successful');
         
     }
 
