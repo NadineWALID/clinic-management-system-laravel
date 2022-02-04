@@ -95,7 +95,7 @@ class HomeController extends Controller
           return redirect()->back()->with('message','Appointment Request Successful . We will contact you soon');
       }
 
-      public function myappointment()
+      public function my_appointment()
       {
         if(Auth::id())
         {
@@ -119,7 +119,7 @@ class HomeController extends Controller
             }
             // process element here
         }
-          return view('user.my_appointment',compact('appoint'),compact('data'));
+          return view('user.my_appointment',compact('appoint'));
         }
         else
         {
