@@ -34,7 +34,7 @@ Route::get('/addprescription/search', [DoctorController::class,'search'])->name(
 Route::get('/add_doctor_view', [AdminController::class,'addview']);
 Route::post('/upload_doctor', [AdminController::class,'upload']);
 Route::post('/appointment', [HomeController::class,'appointment']);
-Route::get('/myappointment', [HomeController::class,'myappointment']);
+Route::get('/myappointment', [HomeController::class,'my_appointment']);
 Route::get('/update_appoint/{id}', [HomeController::class,'update_appoint']);
 Route::post('/edit_appoint/{id}', [HomeController::class,'edit_appoint']);
 Route::get('/edit_appoint/{id}', [HomeController::class,'edit_appoint']);

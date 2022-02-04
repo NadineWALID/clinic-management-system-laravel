@@ -12,7 +12,7 @@
 
         @foreach($appoint as $appoints)
         <tr style="background-color:greenyellow;" align="center">
-            <td style="padding:10px; color:black;">{{$data}}</td>
+            <td style="padding:10px; color:black;"></td>
             <td style="padding:10px; color:black;">{{$appoints->date}}</td>
             <td style="padding:10px; color:black;">{{$appoints->status}}</td>
             <td><a href="{{url('cancel_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
