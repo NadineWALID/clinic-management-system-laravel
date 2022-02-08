@@ -7,13 +7,32 @@
           @csrf
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" name="name" class="form-control" placeholder="Full name">
+            <input type="text" name="fname" class="form-control" placeholder="First name">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="email" class="form-control" placeholder="Email address..">
+            <input type="text" name="lname" class="form-control" placeholder="Last name">
+          </div>
+         
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+          <input type="text" name="email" class="form-control" placeholder="Email address..">
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <input type="text" name="phone"class="form-control" placeholder="Phone Number....">
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <textarea name="address" id="address" class="form-control" rows="6" placeholder="Address....."></textarea>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="datetime-local" name="date" class="form-control" min="2021-12-30T06:00" max="2022-09-30T09:00">
+            <label for="html">Gender :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="gender" id="departement" placeholder="Gender"class="custom-select">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Please Choose Your Doctor :</label>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
             <select  name="doctor" id="departement" class="custom-select">
@@ -25,17 +44,19 @@
             </select>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" name="mobile"class="form-control" placeholder="Mobile Number....">
+            <input type="date" name="date" class="form-control">
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" name="phone"class="form-control" placeholder="Phone Number....">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Time :</label>
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="history" id="history" class="form-control" rows="6" placeholder="Your/Your family medical history....."></textarea>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="time" id="time" class="custom-select">
+            <option value="11">11</option>
+            </select>
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="medicine" id="medicine" class="form-control" rows="6" placeholder="Enter the current medicine you take...."></textarea>
-          </div>
+         
+          
+         
       </div>
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
       </form>

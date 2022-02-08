@@ -71,14 +71,15 @@ class HomeController extends Controller
           
         
         
-        $data->name=$request->name;
+        $data->f_name=$request->fname;
+        $data->l_name=$request->fname;
         $data->email=$request->email;
-        $data->mobile=$request->mobile;
         $data->phone=$request->phone;
-        $data->doctor=$request->doctor;
+        $data->doctor_id=$request->doctor;
         $data->date=$request->date;
-        $data->history=$request->history;
-        $data->medicine=$request->medicine;
+        $data->time=$request->time;
+        $data->address=$request->address;
+        $data->gender=$request->gender;
         $data->status='In Progress';
         $data->save();
         
@@ -104,7 +105,7 @@ class HomeController extends Controller
                  ->get();
           //$doctor_id = $appoint->doctor;
           foreach ($appoint as  $app) {
-            $doctor_id=$app->doctor;
+            $doctor_id=$app->doctor_id;
             $data2=new doctor;
             $data2 = DB::table('doctors')
                 ->select('name')

@@ -45,27 +45,27 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Appointments Today</h3>
+                            <h3 class="box-title">Today's Date</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash"><canvas width="67" height="30"
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-success">{{$data->appointmentsToday}}</span></li>
+                                <li class="ms-auto"><span class="counter text-success">{{$data->date2}}</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Page Views</h3>
+                            <h3 class="box-title">Total Appointments Today</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash2"><canvas width="67" height="30"
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                                <li class="ms-auto"><span class="counter text-purple">{{$data->appointmentsToday}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -96,13 +96,7 @@
                             <div class="d-md-flex mb-3">
                                 <h3 class="box-title mb-0">List of patients today</h3>
                                 <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                                    <select class="form-select shadow-none row border-top">
-                                        <option>March 2021</option>
-                                        <option>April 2021</option>
-                                        <option>May 2021</option>
-                                        <option>June 2021</option>
-                                        <option>July 2021</option>
-                                    </select>
+                                
                                 </div>
                             </div>
                             
@@ -110,11 +104,11 @@
                                 <table class="table no-wrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">#</th>
+                                            
+                                            <th class="border-top-0">Time</th>
                                             <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">History</th>
-                                            <th class="border-top-0">Medicine</th>
-                                            <th class="border-top-0">View Patients History</th>
+                                            <th class="border-top-0">Address</th>
+                                            <th class="border-top-0">View Patient's History</th>
                                             <th class="border-top-0">Add a Prescription</th>
                                             <th class="border-top-0">Remove</th>
                                             
@@ -124,10 +118,11 @@
                                     @foreach($data as $user)
                                         <tr>
                                        
-                                           <td>1</td>
-                                            <td class="txt-oflo" >{{$user->name}}</td>
-                                            <td>{{$user->history}}</td>
-                                            <td class="txt-oflo">{{$user->medicine}}</td>
+                                            <td>{{$user->time}}</td>
+                                            <td class="txt-oflo" >{{$user->f_name}} {{$user->l_name}}</td>
+                                            <td>{{$user->address}}</td>
+                                            
+                                            
                                             <td>
                                              <a class="btn btn-success" href="{{url('addprescription')}}">View History</a>
                                             </td>
@@ -162,7 +157,7 @@
                                 <table class="table no-wrap" id="patients_table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">#</th>
+                                            
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">View Patients History</th>
@@ -173,7 +168,7 @@
                                     @foreach($data->data2 as $user)
                                         <tr>
                                        
-                                           <td>1</td>
+                                           
                                             <td class="txt-oflo">{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             

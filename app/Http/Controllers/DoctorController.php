@@ -12,11 +12,11 @@ class DoctorController extends Controller
 {
     public function addview(Request $request){
         $doctor=Auth::id();
-        $date = date('Y-n-j',time());
-        echo "<h2>" . $date . "</h2>";
+        $date = date('Y-m-d',time());
+        $date2 = date('d/m/Y',time());
         $data= DB::table('appointments')
               ->select('*')
-              ->where('doctor', '=', $doctor)
+              ->where('doctor_id', '=', $doctor)
               ->where('date','=',$date)
               ->get();
         $search_text= $request->get('search');
@@ -31,6 +31,7 @@ class DoctorController extends Controller
        
         $data->appointmentsToday=$appointmentsToday;
         $data->data2=$data2;
+        $data->date2=$date2;
         return view('doctor.view_patients',compact('data'));
     }
 

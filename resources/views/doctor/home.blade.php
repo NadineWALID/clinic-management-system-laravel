@@ -4,7 +4,7 @@
               <a class="nav-link" href="#" >Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('view_patients')}}" >See Patient History</a>
+              <a class="nav-link" href="{{url('view_patients')}}" >Today's Appointments</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription </a>

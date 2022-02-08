@@ -21,11 +21,11 @@
                       <th onclick="sortTable(0)" style="padding:10px; color:black; cursor: pointer;">Patient Name</th>
                       <th style="padding:10px; color:black;">Email</th>
                       <th style="padding:10px; color:black;">Phone Number</th>
-                      <th style="padding:10px; color:black;">Mobile</th>
                       <th onclick="sortTable(4)" style="padding:10px; color:black; cursor: pointer;">Doctor Name</th>
                       <th onclick="sortTable(5)" style="padding:10px; color:black; cursor: pointer;">Date</th>
-                      <th style="padding:10px; color:black;">History</th>
-                      <th style="padding:10px; color:black;">Medicine</th>
+                      <th style="padding:10px; color:black;">Time</th>
+                      <th style="padding:10px; color:black;">Gender</th>
+                      <th style="padding:10px; color:black;">Address</th>
                       <th onclick="sortTable(8)" style="padding:10px; color:black; cursor: pointer;">Status</th>
                       <th style="padding:10px; color:black;">Approve Appointment</th>
                       <th style="padding:10px; color:black;">Cancel Appointment</th>
@@ -34,14 +34,14 @@
 
                   @foreach($data as $appoint)
                   <tr align="center" style="background-color:rgb(23, 73, 29);">
-                      <td>{{$appoint->name}}</td>
+                      <td>{{$appoint->f_name}} {{$appoint->l_name}}</td>
                       <td>{{$appoint->email}}</td>
                       <td>{{$appoint->phone}}</td>
-                      <td>{{$appoint->mobile}}</td>
-                      <td>{{$appoint->doctor}}</td>
+                      <td>{{$appoint->doctor_id}}</td>
                       <td>{{$appoint->date}}</td>
-                      <td>{{$appoint->history}}</td>
-                      <td>{{$appoint->medicine}}</td>
+                      <td>{{$appoint->time}}</td>
+                      <td>{{$appoint->gender}}</td>
+                      <td>{{$appoint->address}}</td>
                       <td>{{$appoint->status}}</td>
                       <td>
                           <a class="btn btn-success" href="{{url('approved',$appoint->id)}}">Approve</a>
