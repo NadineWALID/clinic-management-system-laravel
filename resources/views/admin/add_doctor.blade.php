@@ -65,8 +65,12 @@
                  <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data" id="formid">
                    @csrf
                   <div style="padding:20px; position: relative;">
-                   <label>Doctor Name</label>
-                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's name" required="">
+                   <label>Doctor First Name</label>
+                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's first name" required="">
+                  </div>
+                  <div style="padding:20px; position: relative;">
+                   <label>Doctor Last Name</label>
+                   <input type="text" style="color:black;" name="lname" placeholder="Write Doctor's last name" required="">
                   </div>
                   
                   <div style="padding:20px;">

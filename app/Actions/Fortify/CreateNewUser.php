@@ -23,6 +23,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone_no'     => ['required', 'string','max:255', 'unique:users'],
             'password' => $this->passwordRules(),
@@ -31,6 +32,7 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'name' => $input['name'],
+            'lname' => $input['lname'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'role_id' => $input['role_id'],
@@ -43,6 +45,7 @@ class CreateNewUser implements CreatesNewUsers
         
         Validator::make($input->all(), [
             'name' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone_no'     => ['required', 'string','max:255', 'unique:users'],
             'password' => $this->passwordRules(),
@@ -51,6 +54,7 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'name' => $input->all()['name'],
+            'fname' => $input->all()['fname'],
             'email' => $input->all()['email'],
             'password' => Hash::make($input->all()['password']),
             'role_id' => '3',

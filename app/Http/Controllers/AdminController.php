@@ -34,6 +34,7 @@ class AdminController extends Controller
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
       $user->name = $request->name;
+      $user->lname = $request->lname;
       $user->role_id = 1;
       $user->save();
       $image = $request->file;
@@ -57,6 +58,7 @@ class AdminController extends Controller
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
       $user->name = $request->name;
+      $user->lname = $request->lname;
       $user->role_id = 3;
       $user->save();
       $patient->name = $request->name;
@@ -138,6 +140,7 @@ class AdminController extends Controller
       $data = doctor::find($id);
       $user = user::find($id);
       $user->name = $data->name;
+      $user->lname = $data->lname;
       $user->phone_no = $data->phone_number;
       $user->save();
       return view('admin.update_doctor', compact('data'));
@@ -148,6 +151,7 @@ class AdminController extends Controller
       $Pdata = patient::find($id);
       $user = user::find($id);
       $user->name = $Pdata->name;
+      $user->lname = $Pdata->lname;
       $user->phone_no = $Pdata->phone_number;
       $user->save();
       return view('admin.update_patient', compact('Pdata'));
