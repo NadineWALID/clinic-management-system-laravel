@@ -5,10 +5,13 @@
               <a class="nav-link" href="{{url('home')}}" >Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Today's Patients</a>
+              <a class="nav-link" href="#" >Today's Appointments</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription </a>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('mypatients')}}">My Patients</a>
             </li>
             <li class="nav-item active">
             <x-app-layout></x-app-layout>
@@ -142,51 +145,7 @@
                 </div>
 
 
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">Search Patients</h3>
-                                
-                            </div>
-                            <form role="search" type="get" action="{{ route('view_patients') }}" class="app-search d-none d-md-block me-3">
-                                <input type="text" name="search" placeholder="Search Patient..." class="form-control mt-0">
-                                <button type="submit" class="btn btn-success">Search</button>
-                            </form>
-                            <div class="table-responsive">
-                                <table class="table no-wrap" id="patients_table">
-                                    <thead>
-                                        <tr>
-                                            
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">View Patients History</th>
-                                            <th class="border-top-0">Add a Prescription</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($data->data2 as $user)
-                                        <tr>
-                                       
-                                           
-                                            <td class="txt-oflo">{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            
-                                            <td>
-                                             <a class="btn btn-success" href="{{url('addprescription')}}">View History</a>
-                                            </td>
-                                            <td>
-                                             <a class="btn btn-success" href="{{url('addprescription')}}">Write A Prescription</a>
-                                            </td>
-                                        </tr>
-                                     @endforeach
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-- ============================================================== -->
                  <!-- PRODUCTS YEARLY SALES -->
                 <!-- ============================================================== -->

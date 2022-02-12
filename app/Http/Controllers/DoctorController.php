@@ -38,7 +38,7 @@ class DoctorController extends Controller
 
     
 
-    public function search(Request $request){
+    /*public function search(Request $request){
         $pat=null;
         $search_text=$request->input('search');
         echo "<h2>" .$search_text. "</h2>";
@@ -50,6 +50,52 @@ class DoctorController extends Controller
               ->get();
         return redirect()->back()->with('message', 'Search Successful');
         
+    }*/
+
+    public function search(Request $request){
+        
+        $doctor=Auth::id();
+        
+        
+        if($request->ajax()){
+            $data = User :: join('tokens', 'users.id', '=', 'tokens.doctor_id')
+                           ->where ('doctor_id','like',$doctor)
+                           ->where ('phone_no','like','%'.$request->search.'%')
+                           ->orwhere ('name','like','%'.$request->search.'%')
+                           ->orwhere ('email','like','%'.$request->search.'%')
+                           ->get();
+    
+        }
+        $output='';
+        if(count($data)>0){
+           ;
+            foreach($data as $row){
+                $output .= '
+                 
+                 <tr>
+                 <td>'.$row->name.'</td>
+                 <td>'.$row->email.'</td>
+                 <td>'.$row->phone_no.'</td>
+                 <td>
+                    <a class="btn btn-success" href="">View History</a>
+                </td>
+                <td>
+                    <a class="btn btn-success" href="">Write a Prescription</a>
+                </td>
+                 </tr>
+                  ';
+            }
+
+            
+
+        }else{
+            $output .='No output';
+
+        }
+
+        return $output;
+        
+        
     }
 
     public function homedoctor(){
@@ -58,5 +104,27 @@ class DoctorController extends Controller
     public function addprescription(){
         return view('doctor.addprescription');
     }
+    public function mypatients(){
+        $doctor=Auth::id();
+        $date = date('Y-m-d',time());
+        
+        $data = User::join('tokens', 'users.id', '=', 'tokens.user_id')
+                ->get(['users.*']);
+                
+        return view('doctor.mypatients',compact('data'));
+    }
+  
+    function index()
+    {
+     return view('doctor.mypatients');
+    }
+
+    
+    
+
+
+    
+
+
    
 }
