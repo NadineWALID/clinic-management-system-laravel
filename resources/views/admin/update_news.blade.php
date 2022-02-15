@@ -36,53 +36,26 @@
 
             @endif
 
-            <form action="{{url('editdoctor',$data->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('edit_post',$data->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div style="padding:20px; position: relative;">
-                   <label>Doctor First Name</label>
-                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's first name" required="">
-                  </div>
-                  
-                  <div style="padding:20px; position: relative;">
-                   <label>Doctor Last Name</label>
-                   <input type="text" style="color:black;" name="lname" placeholder="Write Doctor's last name" required="">
-                  </div>
-
                 <div style="padding:15px;">
-                    <label>Phone Number</label>
-                    <input style="color:grey;" type="text" name="phone_number" value="{{$data->phone_number}}">
+                    <label>Title</label>
+                    <input style="color:grey;" type="text" name="title" value="{{$data->title}}">
                 </div>
 
                 <div style="padding:15px;">
-                    <label>Speciality</label>
-                    <select id="doctorspec" name="speciality" style="color:black; width: 200px;" required="">
-                       <option value="Pediatrician">Pediatrician</option>
-                       <option value="Dermatologist">Dermatologist</option>
-                       <option value="Cardiologist">Cardiologist</option>
-                       <option value="Endocrinologist">Endocrinologist</option>
-                       <option value="Allergists/Immunologists">Allergists/Immunologists</option>
-                       <option value="Neurologists">Neurologists</option>
-                       <option value="Gastroenterologists">Gastroenterologists</option>
-                       <option value="Hematologists">Hematologists</option>
-                       <option value="Medical Geneticists">Medical Geneticists</option>
-                       <option value="Nephrologists">Nephrologists</option>
-                       <option value="Obstetricians and Gynecologists">Obstetricians and Gynecologists</option>
-                       <option value="Oncologists">Oncologists</option>
-                       <option value="Ophthalmologists">Ophthalmologists</option>
-                       <option value="Otolaryngologists">Otolaryngologists</option>
-                       <option value="Physiatrists">Physiatrists</option>
-                       <option value="Pulmonologists">Pulmonologists</option>
-                   </select>
+                    <label>Description</label>
+                    <textarea style="color:grey;" type="text" name="description" value="{{$data->description}}"></textarea>
                 </div>
 
                 <div style="padding:15px;">
                     <label>Old Photo</label>
-                    <img height="150" width="150" src="doctorimage/{{$data->image}}">
+                    <img height="150" width="150" src="postimage/{{$data->image}}">
                 </div>
 
                 <div style="padding:15px;">
                     <label>Change Photo</label>
-                    <input type="file" name="file">
+                    <input type="file" name="image">
                 </div>
 
                 <div style="padding:15px;">

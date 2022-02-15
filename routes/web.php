@@ -58,3 +58,10 @@ Route::get('/show_patients', [AdminController::class,'showpatients']);
 Route::get('/deletepatient/{id}', [AdminController::class,'deletepatient']);
 Route::get('/updatepatient/{id}', [AdminController::class,'updatepatient']);
 Route::post('/editpatient/{id}', [AdminController::class,'editpatient']);
+//Admin Dashboard : Manage news
+Route::get('/add_post_view', [AdminController::class,'add_post']);
+Route::post('/upload_news', [AdminController::class,'upload_news']);
+Route::get('/update_post/{id}', [AdminController::class,'updatepost']);
+Route::post('/edit_post/{id}', [AdminController::class,'editpost']);
+Route::get('/deletepost/{id}', [AdminController::class,'delete_post']);
+Route::get('/show_news', [AdminController::class,'shownews']);

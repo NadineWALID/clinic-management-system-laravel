@@ -5,12 +5,13 @@
     <head>
         <!-- Required meta tags -->
         @include('admin.adminmaster')
+
+
         <style>
             table {
                 border-collapse: separate;
                 border-spacing: 0 15px;
             }
-
 
             th,
             td {
@@ -21,6 +22,7 @@
             }
 
         </style>
+
     </head>
 
     <body>
@@ -34,28 +36,24 @@
             <div align="center" style="padding:100px;">
                 <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
-                        <th style="color:black;">No</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">Patient's Name</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">Patient's lastName</th>
-                        <th style="padding:10px; color:black;">Phone Number</th>
-                        <th style="padding:10px; color:black;">date of birth</th>
+                        <th style="padding:10px; color:black;">Title</th>
+                        <th style="padding:10px; color:black;">description</th>
+                        <th style="padding:10px; color:black;">Image</th>
                         <th style="padding:10px; color:black;">Update</th>
                         <th style="padding:10px; color:black;">Delete</th>
                     </tr>
 
-                    @foreach ($Pdata as $patient)
+                    @foreach ($data as $posts)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
-                            <td>{{ ++$i }}</td>
-                            <td>{{ $patient->name }}</td>
-                            <td>{{ $patient->lname }}</td>
-                            <td>{{ $patient->phone_number }}</td>
-                            <td>{{ $patient->date_of_birth}}</td>
+                            <td>{{ $posts->title }}</td>
+                            <td>{{ $posts->description }}</td>
+                            <td><img height="100" width="100" src="postimage/{{ $posts->image }}"></td>
                             <td>
-                                <a class="btn btn-warning" href="{{ url('updatepatient', $patient->id) }}">Update</a>
+                                <a class="btn btn-warning" href="{{ url('update_post', $posts->id) }}">Update</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger" href="{{ url('deletepatient', $patient->id) }}"
-                                    onclick="return confirm('Are you sure you want to cancel this patient')">Delete</a>
+                                <a class="btn btn-danger" href="{{ url('deletepost', $posts->id) }}"
+                                    onclick="return confirm('Are you sure you want to cancel this doctor')">Delete</a>
                             </td>
                         </tr>
                     @endforeach

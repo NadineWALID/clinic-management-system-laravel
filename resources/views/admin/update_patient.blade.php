@@ -11,6 +11,7 @@
                     display:inline-block;
                     width:200px;
                 }
+                
             </style>
     
           @include('admin.adminmaster')
@@ -38,11 +39,15 @@
     
                 <form action="{{url('editpatient',$Pdata->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div style="padding:15px;">
-                        <label>Patient Name</label>
-                        <input style="color:grey;" type="text" name="name" value="{{$Pdata->name}}">
-                    </div>
-    
+                    <label>Patient First Name</label>
+                       <input type="text" style="color:black;" name="name" placeholder="Write patients's first name" required="">
+                      </div>
+
+                      <div style="padding:20px; position: relative;">
+                       <label>Patient Last Name</label>
+                       <input type="text" style="color:black;" name="lname" placeholder="Write patients's last name" required="">
+                      </div>
+
                     <div style="padding:15px;">
                         <label>Phone Number</label>
                         <input style="color:grey;" type="text" name="phone_number" value="{{$Pdata->phone_number}}">

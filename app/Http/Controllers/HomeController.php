@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\Posts;
 use DB;
 class HomeController extends Controller
 {
@@ -23,7 +24,8 @@ class HomeController extends Controller
 
               }else{
                 $doctor = doctor::all();
-                return view('user.home',compact('doctor'));
+                $post  = posts::all();
+                return view('user.home',compact('doctor'),compact('post'));
               }
 
           }
@@ -40,8 +42,9 @@ class HomeController extends Controller
         }
         else
         {
-          $doctor = doctor::all();
-       return view ('user.home',compact('doctor'));
+          $doctor = doctor::all(); 
+          $post  = posts::all();
+          return view('user.home',compact('doctor'),compact('post'));
         }
       }
 
