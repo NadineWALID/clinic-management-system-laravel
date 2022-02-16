@@ -6,32 +6,53 @@
 
       <form class="main-form" action="{{url('edit_appoint',$data->id)}}" method="POST" enctype="multipart/form-data">
           @csrf
-        <div class="row mt-5">
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" name="name" class="form-control" placeholder="Full name" value="{{$data->name}}" readonly="readonly">
+         <div class="row mt-5">
+         <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+            <input type="text" name="fname" class="form-control" placeholder="First name" value="{{$data->f_name}}" readonly="readonly">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="email" class="form-control" placeholder="Email address.." value="{{$data->email}}"readonly="readonly">
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" name="date" class="form-control" value="{{$data->date}}">
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <input  name="doctor" id="departement" class="custom-select" value="{{$data->doctor}}" readonly="readonly">
-
+            <input type="text" name="lname" class="form-control" placeholder="Last name" value="{{$data->l_name}}"readonly="readonly">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" name="mobile"class="form-control" placeholder="Mobile Number...." value="{{$data->mobile}}"readonly="readonly">
+          <input type="text" name="email" class="form-control" placeholder="Email address.." value="{{$data->email}}"readonly="readonly">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <input type="text" name="phone"class="form-control" placeholder="Phone Number...." value="{{$data->phone}}"readonly="readonly">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="history" id="history" class="form-control" rows="6" placeholder="Your/Your family medical history....." value="{{$data->history}}"></textarea>
+          <input type="address" name="address"class="form-control" placeholder="Phone Number...." value="{{$data->address}}"readonly="readonly">
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Gender :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+          <input type="text" name="gender" id="address"class="form-control"  value="{{$data->gender}}"readonly="readonly">
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Please Choose Your Doctor :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="doctor" id="departement" class="custom-select">
+                
+                @foreach($doctor as $doctors)
+              <option value="{{$doctors->id}}">{{$doctors->name}}
+            -->  speciality *{{$doctors->speciality}}*</option>
+                @endforeach
+            </select>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="medicine" id="medicine" class="form-control" rows="6" placeholder="Enter the current medicine you take...."value="{{$data->history}}"></textarea>
+            <input type="date" name="date" class="form-control">
           </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Time :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="time" id="time" class="custom-select">
+            <option value="11">11</option>
+            </select>
+          </div>
+          
+         
       </div>
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
       </form>

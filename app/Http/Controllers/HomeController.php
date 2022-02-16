@@ -75,7 +75,7 @@ class HomeController extends Controller
         
         
         $data->f_name=$request->fname;
-        $data->l_name=$request->fname;
+        $data->l_name=$request->lname;
         $data->email=$request->email;
         $data->phone=$request->phone;
         $data->doctor_id=$request->doctor;
@@ -101,25 +101,21 @@ class HomeController extends Controller
         {
           $userid=Auth::user()->id;
           $appoint=new appointment;
-        // $appoint=appointment::where('user_id',$userid)->get();
+          
+         
+                           
          $appoint= DB::table('appointments')
                  ->select('*')
                  ->where('user_id','=',$userid)
                  ->get();
-          //$doctor_id = $appoint->doctor;
-          foreach ($appoint as  $app) {
-            $doctor_id=$app->doctor_id;
-            $data2=new doctor;
-            $data2 = DB::table('doctors')
-                ->select('name')
-                ->where('id','LIKE', $doctor_id)
-                ->get();
-            foreach ( $data2 as  $app) {
-              $data=$app->name;
-            }
-            // process element here
-        }
-          return view('user.my_appointment',compact('appoint'));
+
+
+         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
+                 ->where ('appointments.user_id','like',$userid)
+                 ->get();
+          
+        
+          return view('user.my_appointment',compact('data'));
         }
         else
         {
@@ -136,14 +132,18 @@ class HomeController extends Controller
       public function update_appoint($id)
       {
         $data=appointment::find($id);
-        return view('user.update_appoint',compact('data'));   
+        
+        $doctor= DB::table('doctors')
+                 ->select('*')
+                 ->get();
+        return view('user.update_appoint',compact('data','doctor'));   
       }
       public function edit_appoint(Request $request,$id)
       {
         $data=appointment::find($id);
         $data->date=$request->date;
-        $data->history=$request->history;
-        $data->medicine=$request->medicine;
+        $data->doctor_id=$request->doctor;
+        $data->time=$request->time;
         $data->save();
         return redirect()->back()->with('message', 'Appointment Updated Successfully');  
       }
