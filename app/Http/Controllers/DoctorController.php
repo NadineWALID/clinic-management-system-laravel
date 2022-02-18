@@ -58,11 +58,11 @@ class DoctorController extends Controller
         
         
         if($request->ajax()){
-            $data = User :: join('tokens', 'users.id', '=', 'tokens.doctor_id')
+            $data = User :: join('tokens', 'users.id', '=', 'tokens.user_id')
                            ->where ('doctor_id','like',$doctor)
-                           ->where ('phone_no','like','%'.$request->search.'%')
-                           ->orwhere ('name','like','%'.$request->search.'%')
-                           ->orwhere ('email','like','%'.$request->search.'%')
+                           ->where ('users.phone_no','like','%'.$request->search.'%')
+                           ->orwhere ('users.name','like','%'.$request->search.'%')
+                           ->orwhere ('users.email','like','%'.$request->search.'%')
                            ->get();
     
         }
@@ -116,7 +116,10 @@ class DoctorController extends Controller
   
     function index()
     {
-     return view('doctor.mypatients');
+        $data = DB:: table('users')->orderBy('name')->cursorPaginate(15);
+     return view('doctor.mypatients',[
+         'data'=> $data
+     ]);
     }
 
     

@@ -54,11 +54,32 @@
                                         </tr>
                                     </thead>
                                     <tbody id="search_list">
-                                   
+                                      @foreach($data as $user)
+                                         <tr>
+                                       
+                                            
+                                            <td class="txt-oflo" >{{$user->name}} {{$user->lname}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->phone_no}}</td>
+                                            
+                                            <td>
+                                             <a class="btn btn-success" href="{{url('addprescription')}}">View History</a>
+                                            </td>
+                                            <td>
+                                             <a class="btn btn-success" href="{{url('addprescription')}}">Write A Prescription</a>
+                                            </td>
+                                            <td>
+                                             <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
+                                            </td>                              
+                                        </tr>
+                                     @endforeach
+                                    
                                     
                                        
                                     </tbody>
+                                   
                                 </table>
+                                {{$data-> links() }}
                             </div>
                         </div>
                     </div>

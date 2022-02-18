@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\Posts;
+use App\Models\token;
 
 
 class AdminController extends Controller
@@ -86,11 +87,16 @@ class AdminController extends Controller
       $data = appointment::all();
       return view('admin.showappointments', compact('data'));
    }
-
+    
    public function approved($id)
    {
+      
       $data = appointment::find($id);
       $data->status = 'Approved';
+      if ($data->user_id != null) {
+         $create = token::firstOrCreate(array('user_id' => $data->user_id,'doctor_id' => $data->doctor_id));
+      }
+
       $data->save();
       return redirect()->back();
    }
