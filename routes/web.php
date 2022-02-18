@@ -27,6 +27,7 @@ Route::get('/doctor', [DoctorController::class,'homedoctor']);
 Route::get('/view_patients', [DoctorController::class,'addview'])->name('view_patients');
 //Route::get('/mypatients', [DoctorController::class,'mypatients']);
 Route::get('/addprescription', [DoctorController::class,'addprescription']);
+Route::get('/write_prescription/{id}', [DoctorController::class,'write_prescription']);
 Route::get('/addprescription/search', [DoctorController::class,'search'])->name('search');;
 //////////////////////////////////////\
 Route::get('/mypatients', [DoctorController::class,'index']);

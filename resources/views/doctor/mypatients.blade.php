@@ -65,9 +65,7 @@
                                             <td>
                                              <a class="btn btn-success" href="{{url('addprescription')}}">View History</a>
                                             </td>
-                                            <td>
-                                             <a class="btn btn-success" href="{{url('addprescription')}}">Write A Prescription</a>
-                                            </td>
+                                            <td><a href="{{url('write_prescription',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
                                             <td>
                                              <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
                                             </td>                              

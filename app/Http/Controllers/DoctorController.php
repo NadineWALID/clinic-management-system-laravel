@@ -80,7 +80,8 @@ class DoctorController extends Controller
                     <a class="btn btn-success" href="">View History</a>
                 </td>
                 <td>
-                    <a class="btn btn-success" href="">Write a Prescription</a>
+                     
+                    <a class="btn btn-success" href="'.url('write_prescription',$user->id).'">Write a Prescription</a>
                 </td>
                  </tr>
                   ';
@@ -102,7 +103,12 @@ class DoctorController extends Controller
         return view('doctor.home');
     }
     public function addprescription(){
-        return view('doctor.addprescription');
+        $date = date('d/m/Y',time());
+        $doctor=Auth::id();
+        $data2 = User::find($doctor);
+
+
+        return view('doctor.addprescription',compact('date','data2'));
     }
     public function mypatients(){
         $doctor=Auth::id();
@@ -124,7 +130,15 @@ class DoctorController extends Controller
 
     
     
-
+    public function write_prescription($id)
+      {
+        $data=appointment::find($id);
+        $doctor=Auth::id();
+        $data2 = User::find($doctor);
+       
+        $date = date('d/m/Y',time());
+        return view('doctor.write_prescription',compact('data','date','data2'));   
+      }
 
     
 
