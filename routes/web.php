@@ -66,3 +66,10 @@ Route::get('/update_post/{id}', [AdminController::class,'updatepost']);
 Route::post('/edit_post/{id}', [AdminController::class,'editpost']);
 Route::get('/deletepost/{id}', [AdminController::class,'delete_post']);
 Route::get('/show_news', [AdminController::class,'shownews']);
+//Admin Dashboard : Manage admins
+Route::get('/add_admin', [AdminController::class,'add_admin_view']);
+Route::post('/upload_admin', [AdminController::class,'uploadAdmin']);
+Route::get('/show_admins', [AdminController::class,'showadmins']);
+Route::get('/deleteadmin/{id}', [AdminController::class,'deleteadmin']);
+Route::get('/updateadmin/{id}', [AdminController::class,'updateadmin']);
+Route::post('/editadmin/{id}', [AdminController::class,'editadmin']);

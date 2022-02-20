@@ -5,19 +5,19 @@
           </div>
           <ul class="nav">
             <li class="nav-item menu-items">
+                <a class="nav-link" href="{{url('showappointments')}}">
+                  <span class="menu-icon">
+                    <i class="mdi mdi-file-document-box"></i>
+                  </span>
+                  <span class="menu-title">Appointments</span>
+                </a>
+              </li>
+            <li class="nav-item menu-items">
               <a class="nav-link" href="{{url('add_doctor_view')}}">
                 <span class="menu-icon">
                   <i class="mdi mdi-file-document-box"></i>
                 </span>
                 <span class="menu-title">Add Doctors</span>
-              </a>
-            </li>
-            <li class="nav-item menu-items">
-              <a class="nav-link" href="{{url('showappointments')}}">
-                <span class="menu-icon">
-                  <i class="mdi mdi-file-document-box"></i>
-                </span>
-                <span class="menu-title">Appointments</span>
               </a>
             </li>
             <li class="nav-item menu-items">
@@ -44,6 +44,23 @@
                 <span class="menu-title">All Patients</span>
               </a>
             </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{url('add_admin')}}">
+                  <span class="menu-icon">
+                    <i class="mdi mdi-file-document-box"></i>
+                  </span>
+                  <span class="menu-title">Add Receptionist</span>
+                </a>
+              </li>
+              <li class="nav-item menu-items">
+                <a class="nav-link" href="{{url('show_admins')}}">
+                  <span class="menu-icon">
+                    <i class="mdi mdi-file-document-box"></i>
+                  </span>
+                  <span class="menu-title">All Receptionists</span>
+                </a>
+              </li>
+
             <li class="nav-item menu-items">
               <a class="nav-link" href="{{url('add_post_view')}}">
                 <span class="menu-icon">

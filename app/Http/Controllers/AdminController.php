@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\Posts;
+use App\Models\Admin;
 use App\Models\token;
 
 
@@ -31,6 +32,12 @@ class AdminController extends Controller
    {
 
       return view('admin.add_patient_view');
+   }
+
+   public function add_admin_view()
+   {
+
+      return view('admin.add_admin');
    }
 
 
@@ -80,6 +87,27 @@ class AdminController extends Controller
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
    }
 
+   public function uploadAdmin(Request $request)
+   {
+      $admin = new admin;
+      $user = new user;
+      $user->email = $request->email;
+      $user->password = Hash::make($request->password);
+      $user->phone_no = $request->number;
+      $user->name = $request->name;
+      $user->lname = $request->lname;
+      $user->role_id = 2;
+      $user->save();
+      $admin->name = $request->name;
+      $admin->lname = $request->lname;
+      $admin->phone_number = $request->number;
+      $admin->date_of_birth = $request->date_of_birth;
+      $admin->id = $user->id;
+      $admin->save();
+
+
+      return redirect()->back()->with('message', 'Admin Is Added Successfully');
+   }
 
 
    public function showappointments()
@@ -87,10 +115,10 @@ class AdminController extends Controller
       $data = appointment::all();
       return view('admin.showappointments', compact('data'));
    }
-    
+
    public function approved($id)
    {
-      
+
       $data = appointment::find($id);
       $data->status = 'Approved';
       if ($data->user_id != null) {
@@ -130,6 +158,13 @@ class AdminController extends Controller
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
+   public function showadmins()
+   {
+      $Adata = admin::all();
+      return view('admin.show_admins', compact('Adata'))
+         ->with('i', (request()->input('page', 1) - 1) * 5);
+   }
+
 
    public function deletedoctor($id)
    {
@@ -148,6 +183,16 @@ class AdminController extends Controller
       $Pdata2->delete();
       return redirect()->back();
    }
+
+   public function deleteadmin($id)
+   {
+      $Adata = admin::find($id);
+      $Adata2 = user::find($id);
+      $Adata->delete();
+      $Adata2->delete();
+      return redirect()->back();
+   }
+
 
 
    public function updatedoctor($id)
@@ -171,6 +216,18 @@ class AdminController extends Controller
       $user->save();
       return view('admin.update_patient', compact('Pdata'));
    }
+
+   public function updateadmin($id)
+   {
+      $Adata = admin::find($id);
+      $user = user::find($id);
+      $user->name = $Adata->name;
+      $user->lname = $Adata->lname;
+      $user->phone_no = $Adata->phone_number;
+      $user->save();
+      return view('admin.update_admin', compact('Adata'));
+   }
+
 
 
    public function editdoctor(Request $request, $id)
@@ -210,6 +267,18 @@ class AdminController extends Controller
       return redirect()->back()->with('message', 'Patient Updated Successfully');
    }
 
+   public function editadmin(Request $request, $id)
+   {
+      $admin = admin::find($id);
+      $admin->name = $request->name;
+      $admin->phone_number = $request->phone_number;
+
+      $admin->save();
+      return redirect()->back()->with('message', 'Admin Updated Successfully');
+   }
+
+
+
 
    public function upload_news(Request $request)
    {
@@ -223,7 +292,7 @@ class AdminController extends Controller
       $post->save();
       return redirect()->back()->with('message', 'Your Post Is Added Successfully');
    }
-    
+
    public function updatepost($id)
    {
       $data = posts::find($id);

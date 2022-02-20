@@ -37,30 +37,30 @@
 
                 @endif
 
-                <form action="{{url('editpatient',$Pdata->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('editadmin',$Adata->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div style="padding:20px; position: relative;">
-                    <label>Patient First Name</label>
-                       <input type="text" style="color:black;" name="name" placeholder="Write patients's first name" required="">
+                    <label>Receptionist's first name</label>
+                       <input size="23" type="text" style="color:black;" name="name" placeholder="Write receptionist's first name" required="">
                       </div>
 
                       <div style="padding:20px; position: relative;">
-                       <label>Patient Last Name</label>
-                       <input type="text" style="color:black;" name="lname" placeholder="Write patients's last name" required="">
+                       <label>Last name</label>
+                       <input size="23" type="text" style="color:black;" name="lname" placeholder="Write receptionist's last name" required="">
                       </div>
 
-                    <div style="padding:15px;">
+                    <div style="padding:15px; position: relative;">
                         <label>Phone Number</label>
-                        <input style="color:grey;" type="text" name="phone_number" value="{{$Pdata->phone_number}}">
+                        <input size="23" style="color:grey;" type="text" name="phone_number" value="{{$Adata->phone_number}}">
                     </div>
 
-                    <div style="padding:20px;">
-                        <label>date of birth</label>
-                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01"value="{{$Pdata->date_of_birth}}">
+                    <div style="padding:20px; position: relative;">
+                        <label>Date of birth</label>
+                        <input size="30" type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01"value="{{$Adata->date_of_birth}}">
                        </div>
 
-                    <div style="padding:15px;">
-                        <input type="submit" class="btn btn-success">
+                    <div style="padding:15px; position: relative;">
+                        <input width="70px" height="30px" type="submit" class="btn btn-success">
                     </div>
                 </form>
             </div>
