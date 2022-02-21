@@ -20,6 +20,12 @@
                 border: 1px solid rgba(26, 27, 26, 0.904);
                 padding: 5px;
             }
+            #searchinput{
+                padding: 25px;
+                margin-bottom: 5px;
+                background: rgb(211, 240, 208);
+            }
+
 
         </style>
 
@@ -37,7 +43,7 @@
 
             <form action="" style=" width:1000px;">
                 <div class="form-group">
-                    <input style="background-color:rgb(138, 235, 135);" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search doctors">
+                    <input id="searchinput" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search doctors">
                     <button style="padding:10px;" class="btn btn-success">Search</button>
                     <a href="{{url('/showdoctors')}}">
                         <button style="padding:10px;" class="btn btn-primary" type="button">Reset</button>
@@ -48,7 +54,7 @@
                     <tr style="background-color:rgb(138, 235, 135);">
                         <th style="color:black;">No</th>
                         <th style="padding:10px; color:black;">Doctor's Name</th>
-                        <th style="padding:10px; color:black;">Doctor's Last Name</th>
+                     <!--   <th style="padding:10px; color:black;">Doctor's Last Name</th>  -->
                         <th style="padding:10px; color:black;">Phone Number</th>
                         <th style="padding:10px; color:black;">Speciality</th>
                         <th style="padding:10px; color:black;">Photo</th>
@@ -59,8 +65,8 @@
                     @foreach ($data as $doctor)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             <td>{{ ++$i }}</td>
-                            <td>{{ $doctor->name }}</td>
-                            <td>{{ $doctor->lname }}</td>
+                            <td>{{ $doctor->name }} {{ $doctor->lname }}</td>
+                           <!-- <td>{{ $doctor->lname }}</td> -->
                             <td>{{ $doctor->phone_number }}</td>
                             <td>{{ $doctor->speciality }}</td>
                             <td><img height="100" width="100" src="doctorimage/{{ $doctor->image }}"></td>

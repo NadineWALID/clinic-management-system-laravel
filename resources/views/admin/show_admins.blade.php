@@ -35,8 +35,8 @@
                 <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                         <th style="color:black;">No</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">Receptionist's first name</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">last name</th>
+                        <th style="padding:10px; color:black; margin-left:500px;">Receptionist's Name</th>
+                      <!--  <th style="padding:10px; color:black; margin-left:500px;">last name</th> -->
                         <th style="padding:10px; color:black;">Phone Number</th>
                         <th style="padding:10px; color:black;">date of birth</th>
                         <th style="padding:10px; color:black;">Update</th>
@@ -46,8 +46,8 @@
                     @foreach ($Adata as $admin)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             <td>{{ ++$i }}</td>
-                            <td>{{ $admin->name }}</td>
-                            <td>{{ $admin->lname }}</td>
+                            <td>{{ $admin->name }} {{ $admin->lname }}</td>
+                          <!--  <td>{{ $admin->lname }}</td>  -->
                             <td>{{ $admin->phone_number }}</td>
                             <td>{{ $admin->date_of_birth}}</td>
                             <td>
