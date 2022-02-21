@@ -34,6 +34,16 @@
             @include('admin.navbar')
             <!-- partial -->
             <div align="center" style="padding:100px;">
+
+            <form action="" style=" width:1000px;">
+                <div class="form-group">
+                    <input style="background-color:rgb(138, 235, 135);" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search doctors">
+                    <button style="padding:10px;" class="btn btn-success">Search</button>
+                    <a href="{{url('/showdoctors')}}">
+                        <button style="padding:10px;" class="btn btn-primary" type="button">Reset</button>
+                    </a>
+                </div>
+            </form>
                 <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                         <th style="color:black;">No</th>
