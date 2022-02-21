@@ -28,10 +28,12 @@ Route::get('/view_patients', [DoctorController::class,'addview'])->name('view_pa
 //Route::get('/mypatients', [DoctorController::class,'mypatients']);
 Route::get('/addprescription', [DoctorController::class,'addprescription']);
 Route::get('/write_prescription/{id}', [DoctorController::class,'write_prescription']);
+Route::get('/write_prescription_my_patients/{id}', [DoctorController::class,'write_prescription_my_patients']);
 Route::get('/addprescription/search', [DoctorController::class,'search'])->name('search');;
 //////////////////////////////////////\
 Route::get('/mypatients', [DoctorController::class,'index']);
 Route::get("search",[DoctorController::class,'search']);
+Route::get("search2",[DoctorController::class,'search2']);
 
 
 

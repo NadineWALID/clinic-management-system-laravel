@@ -29,7 +29,7 @@
     </div>
        
         <div class="page-wrapper">
-           
+        <div class="container-fluid">
                
 
                 <div class="row">
@@ -39,12 +39,14 @@
                                 <h3 class="box-title mb-0">Search Patients:</h3>
                                 
                             </div>
+                            
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Patients" />
+                           </br>
                             <div class="table-responsive">
                                 <table class="table no-wrap" id="patients_table">
                                     <thead>
                                         <tr>
-                                            
+                                            <th class="border-top-0">Id</th>
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">Phone Number</th>
@@ -57,18 +59,18 @@
                                       @foreach($data as $user)
                                          <tr>
                                        
-                                            
+                                            <td>
+                                            <input type="text" name="hoppa"  id="hoppa" class="hoppa" style=" visibility: hidden;position: absolute;" value="{{$user->id}}">
+                                              {{$user->id}}</td>
                                             <td class="txt-oflo" >{{$user->name}} {{$user->lname}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->phone_no}}</td>
                                             
                                             <td>
-                                             <a class="btn btn-success" href="{{url('addprescription')}}">View History</a>
+                                             <a class="btn btn-success button" >View History</a>
                                             </td>
-                                            <td><a href="{{url('write_prescription',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
-                                            <td>
-                                             <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
-                                            </td>                              
+                                            <td><a href="{{url('write_prescription_my_patients',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
+                                                                         
                                         </tr>
                                      @endforeach
                                     
@@ -89,7 +91,10 @@
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
                 <!-- ============================================================== -->
-                
+                <div name="record"  id="record" class="record">
+
+
+                </div>
                
             </div>
             <!-- ============================================================== -->
@@ -102,6 +107,7 @@
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
+        </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -147,6 +153,30 @@
            });
       });
   </script>
+
+<script type="text/javascript">
+       $('.button').click(function(){
+        var currentRow = $(this).closest("tr");
+        var query = currentRow.find(".hoppa").val();
+        //var query=$('.hoppa').val();
+        $.ajax({
+        url:"search2",
+        type: "GET",
+        data: {'search2':query},
+               success:function(data){
+                $('#record').html(data);
+                console.log('done');
+               }
+        
+        
+         });
+
+       });
+
+
+       
+
+</script>
   @stop
 
 
