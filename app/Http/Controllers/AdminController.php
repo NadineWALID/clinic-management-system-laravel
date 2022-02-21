@@ -151,10 +151,19 @@ class AdminController extends Controller
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
-   public function showpatients()
+   public function showpatients(Request $request)
    {
-      $Pdata = patient::all();
-      return view('admin.show_patients', compact('Pdata'))
+      $search=$request['search'] ?? "";
+      if($search != "")
+      {
+         $Pdata = patient::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->get();
+      }
+      else
+      {
+         $Pdata = patient::all();
+      }
+      
+      return view('admin.show_patients', compact('Pdata','search'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
