@@ -144,17 +144,35 @@ class AdminController extends Controller
       return redirect()->back();
    }
 
-   public function showdoctors()
+   public function showdoctors(Request $request)
    {
-      $data = doctor::all();
-      return view('admin.showdoctors', compact('data'))
+      $search=$request['search'] ?? "";
+      if($search != "")
+      {
+         $data = doctor::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->orWhere('speciality','LIKE',"%$search%")->get();
+      }
+      else
+      {
+         $data = doctor::all();
+      }
+      
+      return view('admin.showdoctors', compact('data','search'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
-   public function showpatients()
+   public function showpatients(Request $request)
    {
-      $Pdata = patient::all();
-      return view('admin.show_patients', compact('Pdata'))
+      $search=$request['search'] ?? "";
+      if($search != "")
+      {
+         $Pdata = patient::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->get();
+      }
+      else
+      {
+         $Pdata = patient::all();
+      }
+      
+      return view('admin.show_patients', compact('Pdata','search'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
