@@ -32,6 +32,7 @@ Route::get('/addprescription/search', [DoctorController::class,'search'])->name(
 //////////////////////////////////////\
 Route::get('/mypatients', [DoctorController::class,'index']);
 Route::get("search",[DoctorController::class,'search']);
+Route::get("search2",[DoctorController::class,'search2']);
 
 
 
