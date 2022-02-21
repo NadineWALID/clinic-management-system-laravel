@@ -41,6 +41,7 @@
                             </div>
                             
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Patients" />
+                           </br>
                             <div class="table-responsive">
                                 <table class="table no-wrap" id="patients_table">
                                     <thead>
@@ -68,7 +69,7 @@
                                             <td>
                                              <a class="btn btn-success button" >View History</a>
                                             </td>
-                                            <td><a href="{{url('write_prescription',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
+                                            <td><a href="{{url('write_prescription_my_patients',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
                                                                          
                                         </tr>
                                      @endforeach
@@ -154,7 +155,9 @@
 
 <script type="text/javascript">
        $('.button').click(function(){
-        var query=$('.hoppa').val();
+        var currentRow = $(this).closest("tr");
+        var query = currentRow.find(".hoppa").val();
+        //var query=$('.hoppa').val();
         $.ajax({
         url:"search2",
         type: "GET",
@@ -168,7 +171,8 @@
          });
 
        });
-      
+
+
        
 
 </script>
