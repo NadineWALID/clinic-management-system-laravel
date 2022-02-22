@@ -56,9 +56,6 @@ class AdminController extends Controller
       $imagename = time() . '.' . $image->getClientOriginalExtension();
       $request->file->move('doctorimage', $imagename);
       $doctor->image = $imagename;
-      $doctor->name = $request->name;
-      $doctor->lname =$request->lname;
-      $doctor->phone_number = $request->number;
       $doctor->speciality = $request->speciality;
       $doctor->id = $user->id;
       $doctor->save();
@@ -216,11 +213,6 @@ class AdminController extends Controller
    public function updatedoctor($id)
    {
       $data = doctor::find($id);
-      $user = user::find($id);
-      $user->name = $data->name;
-      $user->lname = $data->lname;
-      $user->phone_no = $data->phone_number;
-      $user->save();
       return view('admin.update_doctor', compact('data'));
    }
 
@@ -251,10 +243,12 @@ class AdminController extends Controller
    public function editdoctor(Request $request, $id)
    {
       $doctor = doctor::find($id);
+      $user = user::find($id);
       // $doctor2=user::find($id);
-      $doctor->name = $request->name;
+      $user->name = $request->name;
+      $user->lname = $request->lname;
       // $doctor2->name=$request->name;
-      $doctor->phone_number = $request->phone_number;
+      $user->phone_number = $request->phone_number;
       // $doctor2->phone_no=$request->phone_no;
       $doctor->speciality = $request->speciality;
 
