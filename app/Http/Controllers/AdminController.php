@@ -65,7 +65,7 @@ class AdminController extends Controller
 
    public function uploadPatient(Request $request)
    {
-      $patient = new patient;
+      //$patient = new patient;
       $user = new user;
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
@@ -74,12 +74,12 @@ class AdminController extends Controller
       $user->lname = $request->lname;
       $user->role_id = 3;
       $user->save();
-      $patient->name = $request->name;
+    /*  $patient->name = $request->name;
       $patient->lname = $request->lname;
       $patient->phone_number = $request->number;
       $patient->date_of_birth = $request->date_of_birth;
       $patient->id = $user->id;
-      $patient->save();
+      $patient->save();*/
 
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
    }
@@ -146,11 +146,19 @@ class AdminController extends Controller
       $search=$request['search'] ?? "";
       if($search != "")
       {
-         $data = doctor::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->orWhere('speciality','LIKE',"%$search%")->get();
+         $data = User :: join('doctors', 'users.id', '=', 'doctors.id')
+                           ->where ('users.name','like',"%$search%")
+                           ->orwhere ('users.phone_no','like',"%$search%")
+                           ->orwhere ('users.lname','like',"%$search%")
+                           ->orwhere ('users.email','like',"%$search%")
+                           ->orwhere ('doctors.speciality','like',"%$search%")
+                           ->get();
+         //$data = doctor::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->orWhere('speciality','LIKE',"%$search%")->get();
       }
       else
       {
-         $data = doctor::all();
+         $data = User :: join('doctors', 'users.id', '=', 'doctors.id')
+                ->get();
       }
       
       return view('admin.showdoctors', compact('data','search'))
@@ -162,11 +170,14 @@ class AdminController extends Controller
       $search=$request['search'] ?? "";
       if($search != "")
       {
-         $Pdata = patient::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->get();
+         $Pdata = user::where('role_id','=','3')
+                  ->where('name','LIKE',"%$search%")
+                  ->orWhere('lname','LIKE',"%$search%")
+                  ->orWhere('phone_no','LIKE',"%$search%")->get();
       }
       else
       {
-         $Pdata = patient::all();
+         $Pdata = user::where('role_id','=','3')->get();
       }
       
       return view('admin.show_patients', compact('Pdata','search'))
@@ -218,12 +229,8 @@ class AdminController extends Controller
 
    public function updatepatient($id)
    {
-      $Pdata = patient::find($id);
-      $user = user::find($id);
-      $user->name = $Pdata->name;
-      $user->lname = $Pdata->lname;
-      $user->phone_no = $Pdata->phone_number;
-      $user->save();
+     
+      $Pdata = user::find($id);
       return view('admin.update_patient', compact('Pdata'));
    }
 
@@ -266,13 +273,13 @@ class AdminController extends Controller
 
    public function editpatient(Request $request, $id)
    {
-      $patient = patient::find($id);
+      $patient = user::find($id);
       // $patient2=user::find($id);
       $patient->name = $request->name;
       // $patient2->name=$request->name;
-      $patient->phone_number = $request->phone_number;
+      $patient->phone_no = $request->phone_number;
       // $patient2->phone_no=$request->phone_no;
-      $patient->age = $request->age;
+      $patient->date_of_birth = $request->age;
 
       $patient->save();
       //$patient2->save();

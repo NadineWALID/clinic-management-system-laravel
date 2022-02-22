@@ -67,7 +67,7 @@
                             <td>{{ ++$i }}</td>
                             <td>{{ $doctor->name }} {{ $doctor->lname }}</td>
                            <!-- <td>{{ $doctor->lname }}</td> -->
-                            <td>{{ $doctor->phone_number }}</td>
+                            <td>{{ $doctor->phone_no }}</td>
                             <td>{{ $doctor->speciality }}</td>
                             <td><img height="100" width="100" src="doctorimage/{{ $doctor->image }}"></td>
                             <td>
