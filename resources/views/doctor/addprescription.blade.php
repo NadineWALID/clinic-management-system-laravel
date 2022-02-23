@@ -23,10 +23,15 @@
 @section('content')
 
 <div class="page-section" id="appointment">
-    <div class="container">
+
+    <div class="container" >
+    <input type="text" name="search" id="search" class="form-control"  placeholder="Search Medications to Add to Prescription" />
+    </br></br>
+    <div class="prescription" style="border:double; width:60%;  margin: auto; align-items: center;">
+    </br></br>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Medica Health Center</h1>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Dr {{$data2->name}} {{$data2->lname}}</h1>
-      <form class="main-form" action="{{url('appointment')}}" method="POST">
+      <form class="main-form" action="{{url('appointment')}}" method="POST" style="  margin-left: 5%;  margin-right: 5%; " >
           @csrf
         <div class="row mt-5 ">
         
@@ -49,6 +54,9 @@
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <textarea name="diagnosis" id="diagnosis" class="form-control" rows="6" ></textarea>
           </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Medication :</label>
+        </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
             <input type="text" name="medicine" class="form-control" placeholder="Medicine">
           </div>
@@ -63,9 +71,16 @@
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <input type="date" name="date" class="form-control">
           </div>
+         
       </div>
-        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Save and Print</button>
-        
+     
+      </br></br>
+     </div>
+     </br></br>
+     <div >
+        <button type="submit" class="btn btn-primary"  style=" width:60%;  margin-left:20%;  ">Save and Print</button>
+     </div>
+     
       </form>
     </div>
   </div> <!-- .page-section -->

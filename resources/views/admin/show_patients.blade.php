@@ -53,8 +53,12 @@
                 <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                         <th style="color:black;">No</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">Patient's Blood Type</th>
+                        
                      <!--   <th style="padding:10px; color:black; margin-left:500px;">Patient's lastName</th> -->
+                        <th style="padding:10px; color:black;">Patient's Name</th>
+                        <th style="padding:10px; color:black;">Patient's Email</th>
+                        <th style="padding:10px; color:black;">Phone Number</th>
+                        <th style="padding:10px; color:black; margin-left:500px;">Patient's Blood Type</th>
                         <th style="padding:10px; color:black;">Patient's Height</th>
                         <th style="padding:10px; color:black;">Patient's Weight</th>
                         <th style="padding:10px; color:black;">date of birth</th>
@@ -66,16 +70,19 @@
                     @foreach ($Pdata as $patients)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             <td>{{ ++$i }}</td>
+                            <td>{{ $patients->name }}</td>
+                            <td>{{ $patients->lname }}</td>
+                            <td>{{ $patients->phone_no }}</td>
                             <td>{{ $patients->blood_type }}</td>
                             <td>{{ $patients->height }}</td>
                             <td>{{ $patients->weight }}</td>
                             <td>{{ $patients->date_of_birth}}</td>
                             <td>{{ $patients->gender }}</td>
                             <td>
-                                <a class="btn btn-warning" href="{{ url('updatepatient', $patient->id) }}">Update</a>
+                                <a class="btn btn-warning" href="{{ url('updatepatient', $patients->id) }}">Update</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger" href="{{ url('deletepatient', $patient->id) }}"
+                                <a class="btn btn-danger" href="{{ url('deletepatient', $patients->id) }}"
                                     onclick="return confirm('Are you sure you want to cancel this patient')">Delete</a>
                             </td>
                         </tr>

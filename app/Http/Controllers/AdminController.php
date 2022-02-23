@@ -69,13 +69,13 @@ class AdminController extends Controller
    {
       $patient = new patient;
       $user = new user;
-      /*$user->email = $request->email;
+      $user->email = $request->email;
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
       $user->name = $request->name;
       $user->lname = $request->lname;
       $user->role_id = 3;
-      $user->save();*/
+      $user->save();
       $patient->blood_type = $request->blood_type;
       $patient->height = $request->height;
       $patient->weight = $request->weight;
@@ -173,14 +173,17 @@ class AdminController extends Controller
       $search=$request['search'] ?? "";
       if($search != "")
       {
-         $Pdata = user::where('role_id','=','3')
+         $Pdata = user::join('patients', 'users.id', '=', 'patients.id')
                   ->where('name','LIKE',"%$search%")
                   ->orWhere('lname','LIKE',"%$search%")
                   ->orWhere('phone_no','LIKE',"%$search%")->get();
       }
       else
       {
-         $Pdata = user::where('role_id','=','3')->get();
+         $Pdata = User :: join('patients', 'users.id', '=', 'patients.id')
+                           ->get();
+         
+         //$Pdata = patient::all();
       }
       
       return view('admin.show_patients', compact('Pdata','search'))

@@ -62,6 +62,32 @@
                 @endif
                      <form action="{{url('upload_patient')}}" method="POST" enctype="multipart/form-data" id="formid">
                        @csrf
+                       <div style="padding:20px; position: relative;">
+                       <label>Patient First Name</label>
+                       <input type="text" style="color:black;" name="name" placeholder="Write patients's first name" required="">
+                      </div>
+                      <div style="padding:20px; position: relative;">
+                       <label>Patient Last Name</label>
+                       <input type="text" style="color:black;" name="lname" placeholder="Write patients's last name" required="">
+                      </div>
+                      
+                      <div style="padding:20px;">
+                       <label>Phone Number</label>
+                       <input type="number" style="color:black;" name="number" placeholder="Write phone number" required="">
+                      </div>
+
+                     
+ 
+    
+                      <div style="padding:20px;">
+                       <label>Email</label>
+                       <input type="email" style="color:black;" name="email" required="">
+                      </div>
+    
+                      <div style="padding:20px;">
+                       <label>Password</label>
+                       <input type="password" style="color:black;" name="password"  required autocomplete="new-password">
+                      </div>
                       <div style="padding:20px; position: relative;">
                        <label>Blood Type</label>
                        <select  name="blood_type" placeholder="Blood Type"class="custom-select">
