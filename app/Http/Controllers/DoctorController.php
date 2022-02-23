@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\Appointment;
+use App\Models\Records;
+use App\Models\Medication;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -36,10 +38,10 @@ class DoctorController extends Controller
         return view('doctor.view_patients',compact('data'));
     }
 
-
-    
-
-    
+    public function record()
+    {
+      return view('doctor.medical_record');
+    } 
 
     public function search(Request $request){
         
@@ -170,16 +172,10 @@ class DoctorController extends Controller
         }else{
             $output .='<h3 class="box-title mb-0">User does not have record</h3>';
 
-        }
-
-        
-        
+        }  
        
-       
-
         return $output;
-        
-        
+         
     }
 
     public function homedoctor(){
@@ -216,8 +212,6 @@ class DoctorController extends Controller
          'data'=> $data
      ]);
     }
-
-    
     
     public function write_prescription($id)
       {
@@ -238,7 +232,78 @@ class DoctorController extends Controller
         $date = date('d/m/Y',time());
         return view('doctor.write_prescription_my_patients',compact('data','date','data2'));   
       }
+      
+      public function add_record(Request $request)
+    {  
+        if(Auth::id())
+        {
+       $userid=Auth::user()->id;
+       $record=new records;
+       $record->user_id=$userid;
+       $record->medicine=$request->medicine;
+       $record->gender=$request->gender;
+       $record->diagnosis=$request->diagnosis;
+       $record->blood_type=$request->blood_type;
+       $record->allergies=$request->allergies;
+       $record->chronic_diseases=$request->chronic_diseases;
+       $labfile = $request->lab_file;
+       $lab = time() . '.' . $labfile->getClientOriginalExtension();
+       $request->lab_file->move('labs', $lab);
+       $record->lab_results = $lab;
 
+       $rd_file1 = $request->rd_file;
+       $rd = time() . '.' . $rd_file1->getClientOriginalExtension();
+       $request->rd_file->move('Radiology', $rd);
+       $record->radiology_image = $rd;
+       $record->save();
+       return redirect()->back()->with('message', 'Record Is Added Successfully');
+        }
+    }  
+
+    public function showrecords()
+    {
+       $record = records::all();
+       return view ('doctor.show_medicalrecords',comapact('record'));
+    }
+
+    public function updaterecord($id)
+    {
+       $data = records::find($id);
+       $data->save();
+       return view('doctor.update_records', compact('data'));
+    }
+   
+    public function edit_record(Request $request, $id)
+    {
+       $record = records::find($id);
+       $record->medicine = $request->medicine;
+       $record->gender = $request->gender;
+       $record->diagnosis=$request->diagnosis;
+       $record->blood_type=$request->blood_type;
+       $record->allergies=$request->allergies;
+       $record->chronic_diseases=$request->chronic_diseases;
+       $labfile = $request->lab_file;
+       if ($labfile) {
+          $lab = time() . '.' . $labfile->getClientOriginalExtension();
+          $request->lab_file->move('labs', $lab);
+          $record->lab_results = $lab;
+       }
+       $rdfile = $request->rd_file;
+       if ($rdfile) {
+          $rd = time() . '.' . $rdfile->getClientOriginalExtension();
+          $request->rd_file->move('labs', $rd);
+          $record->radiology_image = $rd;
+       }
+       $record->save();
+       return redirect()->back()->with('message', 'Your Record is Updated Successfully');
+    }
+    public function delete_record($id)
+    {
+       $data = records::find($id);
+       $data->delete();
+       return redirect()->back();
+    }
+   
     
 
 

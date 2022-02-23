@@ -70,7 +70,7 @@
                                              <a class="btn btn-success button" >View History</a>
                                             </td>
                                             <td><a href="{{url('write_prescription_my_patients',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
-                                                                         
+                                                 
                                         </tr>
                                      @endforeach
                                     

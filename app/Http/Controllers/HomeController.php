@@ -11,28 +11,29 @@ use App\Models\Posts;
 use DB;
 class HomeController extends Controller
 {
-      public function redirect(){
-          if (Auth::id())
-          {
-              if(Auth::user()->role_id==1){
+  public function redirect(){
+    if (Auth::id())
+    {
+        if(Auth::user()->role_id==1){
 
-               return view('doctor.home');
+         return view('doctor.home');
 
-              }elseif(Auth::user()->role_id==2){
+        }elseif(Auth::user()->role_id==2){
+          $doctor = doctor::all();
+          $post  = posts::all();
+          return view('admin.home',compact('doctor'),compact('post'));
 
-                return view('admin.home');
+        }else{
+          $doctor = doctor::all();
+          $post  = posts::all();
+          return view('user.home',compact('doctor'),compact('post'));
+        }
 
-              }else{
-                $doctor = doctor::all();
-                $post  = posts::all();
-                return view('user.home',compact('doctor'),compact('post'));
-              }
-
-          }
-          else{
-              return redirect()->back;
-              }
-      }
+    }
+    else{
+        return redirect()->back;
+        }
+}
 
       public function index()
       {  
@@ -68,12 +69,6 @@ class HomeController extends Controller
 
         }
         
-         
-
-        
-          
-        
-        
         $data->f_name=$request->fname;
         $data->l_name=$request->lname;
         $data->email=$request->email;
@@ -92,7 +87,7 @@ class HomeController extends Controller
           }*/
 
           $data->save();
-          return redirect()->back()->with('message','Appointment Request Successful . We will contact you soon');
+          return redirect()->back()->with('message','Appointment Request Successful');
       }
 
       public function my_appointment()

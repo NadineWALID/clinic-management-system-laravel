@@ -34,12 +34,9 @@ Route::get('/addprescription/search', [DoctorController::class,'search'])->name(
 Route::get('/mypatients', [DoctorController::class,'index']);
 Route::get("search",[DoctorController::class,'search']);
 Route::get("search2",[DoctorController::class,'search2']);
-
-
-
-
 Route::get('/add_doctor_view', [AdminController::class,'addview']);
 Route::post('/upload_doctor', [AdminController::class,'upload']);
+Route::get('/add_appoint', [AdminController::class,'add_appoint']);
 Route::post('/appointment', [HomeController::class,'appointment']);
 Route::get('/myappointment', [HomeController::class,'my_appointment']);
 Route::get('/update_appoint/{id}', [HomeController::class,'update_appoint']);
@@ -75,3 +72,11 @@ Route::get('/show_admins', [AdminController::class,'showadmins']);
 Route::get('/deleteadmin/{id}', [AdminController::class,'deleteadmin']);
 Route::get('/updateadmin/{id}', [AdminController::class,'updateadmin']);
 Route::post('/editadmin/{id}', [AdminController::class,'editadmin']);
+//Manage Medical records
+Route::get('/record', [DoctorController::class,'record']);
+Route::post('/add_record',[DoctorController::class,'add_record']);
+Route::get('/view_records', [AdminController::class,'show_records']);
+Route::get('/show_records', [DoctorController::class,'showrecords']);
+Route::get('/update_record/{id}', [DoctorController::class,'updaterecord']);
+Route::post('/edit_record/{id}', [DoctorController::class,'edit_record']);
+Route::get('/delete_record/{id}', [DoctorController::class,'delete_record']);

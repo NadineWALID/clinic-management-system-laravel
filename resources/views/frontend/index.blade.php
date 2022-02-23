@@ -1,167 +1,76 @@
-@extends('frontend.master')
+@extends('frontend.master2')
 @section('content')
-  <div class="page-hero bg-image " style="background-image: url(../assets/img/doc.jpg); ">
-    <div class="hero-section">
-      <div class="container text-center wow zoomIn">
-        <span class="subhead" style="color:black" >Let's make your life happier</span>
-        <h1 class="display-4" style="color:black" >Healthy Living</h1>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- .page-section -->
-
-    <div class="page-section pb-0" id="aboutus">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>Welcome to Your Health <br> Center</h1>
-            <a href="about.html" class="btn btn-primary">Learn More</a>
-          </div>
-          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-            <div class="img-place custom-img-1">
-              <img src="../assets/img/bg-doctor.png" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .bg-light -->
-  </div> <!-- .bg-light -->
-
-  <div class="page-section" id="doctors">
+<div class="page-section" id="appointment">
     <div class="container">
-      <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>
+    @if(session()->has('message'))
+     
+     <div class="alert alert-success">
+     <button type="button" class="close" data-dismiss="alert">
+          x
+     </button>
+    {{session()->get('message')}}
+     </div>
 
-      <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
-        <div class="item">
-          <div class="card-doctor">
-            <div class="header">
-              <img src="../assets/img/doctors/doctor_1.jpg" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
-            </div>
-        
+@endif
+      <h1 class="text-center wow fadeInUp" style="font: size 200px;">Make an Appointment</h1>
 
-  <div class="page-section bg-light" id="news">
-    <div class="container">
-      <h1 class="text-center wow fadeInUp">Latest News</h1>
-      <div class="row mt-5">
-        <div class="col-lg-4 py-2 wow zoomIn">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-category">
-                <a href="#">Covid19</a>
-              </div>
-              <a href="blog-details.html" class="post-thumb">
-                <img src="../assets/img/blog/blog_1.jpg" alt="">
-              </a>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>
-              <div class="site-info">
-                <div class="avatar mr-2">
-                  <div class="avatar-img">
-                    <img src="../assets/img/person/person_1.jpg" alt="">
-                  </div>
-                  <span>Roger Adams</span>
-                </div>
-                <span class="mai-time"></span> 1 week ago
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 py-2 wow zoomIn">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-category">
-                <a href="#">Covid19</a>
-              </div>
-              <a href="blog-details.html" class="post-thumb">
-                <img src="../assets/img/blog/blog_2.jpg" alt="">
-              </a>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>
-              <div class="site-info">
-                <div class="avatar mr-2">
-                  <div class="avatar-img">
-                    <img src="../assets/img/person/person_1.jpg" alt="">
-                  </div>
-                  <span>Roger Adams</span>
-                </div>
-                <span class="mai-time"></span> 4 weeks ago
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 py-2 wow zoomIn">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-category">
-                <a href="#">Covid19</a>
-              </div>
-              <a href="blog-details.html" class="post-thumb">
-                <img src="../assets/img/blog/blog_3.jpg" alt="">
-              </a>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">What is the impact of eating too much sugar?</a></h5>
-              <div class="site-info">
-                <div class="avatar mr-2">
-                  <div class="avatar-img">
-                    <img src="../assets/img/person/person_2.jpg" alt="">
-                  </div>
-                  <span>Diego Simmons</span>
-                </div>
-                <span class="mai-time"></span> 2 months ago
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 text-center mt-4 wow zoomIn">
-          <a href="blog.html" class="btn btn-primary">Read More</a>
-        </div>
-
-      </div>
-    </div>
-  </div> <!-- .page-section -->
-
-  <div class="page-section" id="appointment">
-    <div class="container">
-      <h1 class="text-center wow fadeInUp" >Make an Appointment</h1>
-
-      <form class="main-form">
+      <form class="main-form" action="{{url('appointment')}}" method="POST">
+          @csrf
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" class="form-control" placeholder="Full name">
+            <input type="text" name="fname" class="form-control" placeholder="First name">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" class="form-control" placeholder="Email address..">
+            <input type="text" name="lname" class="form-control" placeholder="Last name">
+          </div>
+         
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+          <input type="text" name="email" class="form-control" placeholder="Email address..">
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <input type="text" name="phone"class="form-control" placeholder="Phone Number....">
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <textarea name="address" id="address" class="form-control" rows="6" placeholder="Address....."></textarea>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" class="form-control">
+            <label for="html">Gender :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="gender" id="departement" placeholder="Gender"class="custom-select">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Please Choose Your Doctor :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="doctor" id="departement" class="custom-select">
+                
+                @foreach($doctor as $doctors)
+              <option value="{{$doctors->id}}">{{$doctors->name}}
+            -->  speciality *{{$doctors->speciality}}*</option>
+                @endforeach
+            </select>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" class="form-control" placeholder="Mobile Number....">
+            <input type="date" name="date" class="form-control">
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" class="form-control" placeholder="Phone Number....">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label for="html">Time :</label>
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="history" id="history" class="form-control" rows="6" placeholder="Your/Your family medical history....."></textarea>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select  name="time" id="time" class="custom-select">
+            <option value="11">11</option>
+            </select>
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="medicine" id="medicine" class="form-control" rows="6" placeholder="Enter the current medicine you take...."></textarea>
-          </div>
+         
+          
+         
       </div>
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
       </form>
     </div>
   </div> <!-- .page-section -->
-
-   <!-- .banner-home -->
   @stop

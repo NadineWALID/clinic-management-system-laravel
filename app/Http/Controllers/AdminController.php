@@ -12,6 +12,8 @@ use App\Models\Patient;
 use App\Models\Posts;
 use App\Models\Admin;
 use App\Models\token;
+use App\Models\Records;
+use DB;
 
 
 class AdminController extends Controller
@@ -65,21 +67,22 @@ class AdminController extends Controller
 
    public function uploadPatient(Request $request)
    {
-      //$patient = new patient;
+      $patient = new patient;
       $user = new user;
-      $user->email = $request->email;
+      /*$user->email = $request->email;
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
       $user->name = $request->name;
       $user->lname = $request->lname;
       $user->role_id = 3;
-      $user->save();
-    /*  $patient->name = $request->name;
-      $patient->lname = $request->lname;
-      $patient->phone_number = $request->number;
+      $user->save();*/
+      $patient->blood_type = $request->blood_type;
+      $patient->height = $request->height;
+      $patient->weight = $request->weight;
       $patient->date_of_birth = $request->date_of_birth;
+      $patient->gender = $request->gender;
       $patient->id = $user->id;
-      $patient->save();*/
+      $patient->save();
 
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
    }
@@ -166,7 +169,7 @@ class AdminController extends Controller
    }
 
    public function showpatients(Request $request)
-   {
+   {  
       $search=$request['search'] ?? "";
       if($search != "")
       {
@@ -275,14 +278,12 @@ class AdminController extends Controller
    {
       $patient = user::find($id);
       // $patient2=user::find($id);
-      $patient->name = $request->name;
-      // $patient2->name=$request->name;
-      $patient->phone_no = $request->phone_number;
-      // $patient2->phone_no=$request->phone_no;
-      $patient->date_of_birth = $request->age;
-
+      $patient->blood_type = $request->blood_type;
+      $patient->height = $request->height;
+      $patient->weight = $request->weight;
+      $patient->gender = $request->gender;
+      $patient->date_of_birth = $request->date_of_birth;
       $patient->save();
-      //$patient2->save();
       return redirect()->back()->with('message', 'Patient Updated Successfully');
    }
 
@@ -346,5 +347,14 @@ class AdminController extends Controller
       $data->delete();
       return redirect()->back();
    }
-
+   public function add_appoint(){
+      $doctor=doctor::all();
+      return view('frontend.index', compact('doctor'));
+   }
+   
+   public function show_records()
+   {
+      $data = records::all();
+      return view('admin.show_records', compact('data'));
+   }
 }

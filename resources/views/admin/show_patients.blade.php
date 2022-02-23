@@ -53,21 +53,24 @@
                 <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                         <th style="color:black;">No</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">Patient's Name</th>
+                        <th style="padding:10px; color:black; margin-left:500px;">Patient's Blood Type</th>
                      <!--   <th style="padding:10px; color:black; margin-left:500px;">Patient's lastName</th> -->
-                        <th style="padding:10px; color:black;">Phone Number</th>
+                        <th style="padding:10px; color:black;">Patient's Height</th>
+                        <th style="padding:10px; color:black;">Patient's Weight</th>
                         <th style="padding:10px; color:black;">date of birth</th>
+                        <th style="padding:10px; color:black;">Patient's Gender</th>
                         <th style="padding:10px; color:black;">Update</th>
                         <th style="padding:10px; color:black;">Delete</th>
                     </tr>
 
-                    @foreach ($Pdata as $patient)
+                    @foreach ($Pdata as $patients)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             <td>{{ ++$i }}</td>
-                            <td>{{ $patient->name }} {{ $patient->lname }}</td>
-                            <!-- <td>{{ $patient->lname }}</td> -->
-                            <td>{{ $patient->phone_number }}</td>
-                            <td>{{ $patient->date_of_birth}}</td>
+                            <td>{{ $patients->blood_type }}</td>
+                            <td>{{ $patients->height }}</td>
+                            <td>{{ $patients->weight }}</td>
+                            <td>{{ $patients->date_of_birth}}</td>
+                            <td>{{ $patients->gender }}</td>
                             <td>
                                 <a class="btn btn-warning" href="{{ url('updatepatient', $patient->id) }}">Update</a>
                             </td>
