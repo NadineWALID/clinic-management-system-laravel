@@ -237,24 +237,45 @@ class DoctorController extends Controller
     {  
         if(Auth::id())
         {
-       $userid=Auth::user()->id;
+            $userid=Auth::user()->id;
+            if (patient::find($userid)===null)
+            {
+                $patient=new patient;
+                $patient->id=$userid;
+                $patient->gender=$request->gender;
+                $patient->height=$request->height;
+                $patient->weight=$request->weight;
+                $patient->blood_type=$request->blood_type;
+                $patient->date_of_birth=$request->date_of_birth;
+                $patient->save();
+            }
+           
+
+
+       
        $record=new records;
+       $record->id=$userid;
        $record->user_id=$userid;
        $record->medicine=$request->medicine;
        $record->gender=$request->gender;
-       $record->diagnosis=$request->diagnosis;
+       //$record->diagnosis=$request->diagnosis;
        $record->blood_type=$request->blood_type;
        $record->allergies=$request->allergies;
        $record->chronic_diseases=$request->chronic_diseases;
-       $labfile = $request->lab_file;
-       $lab = time() . '.' . $labfile->getClientOriginalExtension();
-       $request->lab_file->move('labs', $lab);
-       $record->lab_results = $lab;
+       if ($request->lab_file != null){
+        $labfile = $request->lab_file;
+        $lab = time() . '.' . $labfile->getClientOriginalExtension();
+        $request->lab_file->move('labs', $lab);
+        $record->lab_results = $lab;
+       }
+      
+       if ($request->rd_file != null){
+        $rd = time() . '.' . $rd_file1->getClientOriginalExtension();
+        $request->rd_file->move('Radiology', $rd);
+        $record->radiology_image = $rd;
 
-       $rd_file1 = $request->rd_file;
-       $rd = time() . '.' . $rd_file1->getClientOriginalExtension();
-       $request->rd_file->move('Radiology', $rd);
-       $record->radiology_image = $rd;
+       }
+       
        $record->save();
        return redirect()->back()->with('message', 'Record Is Added Successfully');
         }

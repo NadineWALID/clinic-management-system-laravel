@@ -8,10 +8,12 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\Posts;
+use App\Models\Records;
 use DB;
 class HomeController extends Controller
 {
   public function redirect(){
+    $data=records::find(Auth::id());
     if (Auth::id())
     {
         if(Auth::user()->role_id==1){
@@ -24,9 +26,19 @@ class HomeController extends Controller
           return view('admin.home',compact('doctor'),compact('post'));
 
         }else{
-          $doctor = doctor::all();
-          $post  = posts::all();
-          return view('user.home',compact('doctor'),compact('post'));
+          if($data === null)
+          {
+            $doctor = doctor::all();
+            $post  = posts::all();
+            return view('user.add_medical_record',compact('doctor'),compact('post'));
+
+          }
+          else{
+            $doctor = doctor::all();
+            $post  = posts::all();
+            return view('user.home',compact('doctor'),compact('post'));
+          }
+         
         }
 
     }
@@ -48,6 +60,7 @@ class HomeController extends Controller
           return view('user.home',compact('doctor'),compact('post'));
         }
       }
+     
 
       public function appointment(Request $request)
       {
@@ -144,3 +157,8 @@ class HomeController extends Controller
       }
 
 }
+
+
+
+
+

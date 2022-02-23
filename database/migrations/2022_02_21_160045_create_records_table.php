@@ -15,15 +15,14 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->nullable();
-            $table->string('medicine');
-            $table->string('radiology_image');
+            $table->string('user_id');
+            $table->string('medicine')->nullable();
+            $table->string('radiology_image')->nullable();
             $table->string('gender');
-            $table->string('diagnosis');
             $table->string('blood_type');
-            $table->string('lab_results');
-            $table->string('allergies');
-            $table->string('chronic_diseases');
+            $table->string('lab_results')->nullable();;
+            $table->string('allergies')->nullable();;
+            $table->string('chronic_diseases')->nullable();;
             $table->timestamps();
         });
     }
