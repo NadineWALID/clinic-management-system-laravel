@@ -80,17 +80,17 @@
 
                   <div style="padding:20px;">
                    <label>Email</label>
-                   <input type="email" style="color:black;" name="email" required="">
+                   <input type="email" style="color:black;" name="email" required=""  placeholder="Write Email">
                   </div>
 
                   <div style="padding:20px;">
                    <label>Password</label>
-                   <input type="password" style="color:black;" name="password"  required autocomplete="new-password">
+                   <input type="password" style="color:black;" name="password"  required autocomplete="new-password"  placeholder="Write password">
                   </div>
 
                   <div style="padding:20px; position: relative; left:-20px;">
                    <label>Speciality</label>
-                   <select id="doctorspec" name="speciality" style="color:black; width: 200px;" required="">
+                   <select id="doctorspec" name="speciality" style="color:black; width: 60%;" required="">
                        <option value="Pediatrician">Pediatrician</option>
                        <option value="Dermatologist">Dermatologist</option>
                        <option value="Cardiologist">Cardiologist</option>
@@ -110,9 +110,9 @@
                    </select>
                   </div>
 
-                  <div style="padding:20px; position: relative; left:50px;">
+                  <div style="padding:20px; position: relative;">
                    <label>Doctor Image</label>
-                   <input type="file" name="file" required="">
+                   <input type="file" name="file" required="" >
                   </div>
 
                   <div style="padding:20px; position: relative; left:10px;">

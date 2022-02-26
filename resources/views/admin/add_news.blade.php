@@ -17,8 +17,12 @@
               box-sizing: border-box;
               
             }
+            input[type=text]{
+              background: white !important;
+              border-radius: 2px;          
+            }
             input[type=file] {
-            width: 70%;
+            width: 170%;
           }
             input[type=submit] {
             width: 60%;
@@ -69,18 +73,19 @@
                    @csrf
                    <div class="col-sm-9">
                    <div style="padding:20px; position: relative;">
-                   <label>Post Title</label>	
+                   <label>Post title</label>	
 							<input type="text" name="title" style="color:black;" id="post_title" class="form-control" placeholder="Enter title here">				
 						</div>
 					
  						<div class="form-group">		
-							<textarea class="form-control" name="description" rows="15"></textarea>
+               <label> Post content</label>
+							<textarea class="form-control" name="description" rows="15" style="background: white !important; border-radius: 2px; margin:8px 0px;"></textarea>
 						</div>	
 					</div>
 					<div class="col-sm-3">
 
-          <div style="padding:20px; position: relative; left:50px;">
-                   <label>Post Image</label>
+          <div style="padding:20px; position: relative; left:30px;">
+                   <label>Post image</label>
                    <input type="file" name="image" required="">
                   </div>
 

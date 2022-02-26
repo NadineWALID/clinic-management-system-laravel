@@ -35,6 +35,7 @@
                 position: relative;
                 left: 10px;
               }
+              
             </style>
         <head>
           <!-- Required meta tags -->
@@ -63,34 +64,33 @@
                      <form action="{{url('upload_patient')}}" method="POST" enctype="multipart/form-data" id="formid">
                        @csrf
                        <div style="padding:20px; position: relative;">
-                       <label>Patient First Name</label>
+                       <label>Patient's first name</label>
                        <input type="text" style="color:black;" name="name" placeholder="Write patients's first name" required="">
                       </div>
                       <div style="padding:20px; position: relative;">
-                       <label>Patient Last Name</label>
+                       <label>last name</label>
                        <input type="text" style="color:black;" name="lname" placeholder="Write patients's last name" required="">
                       </div>
                       
                       <div style="padding:20px;">
-                       <label>Phone Number</label>
+                       <label>Phone number</label>
                        <input type="number" style="color:black;" name="number" placeholder="Write phone number" required="">
-                      </div>
-
-                     
+                      </div>                  
  
     
                       <div style="padding:20px;">
                        <label>Email</label>
-                       <input type="email" style="color:black;" name="email" required="">
+                       <input type="email" style="color:black;" name="email" required=""  placeholder="Write Email">
                       </div>
     
-                      <div style="padding:20px;">
+                      <div style="padding:10px;">
                        <label>Password</label>
-                       <input type="password" style="color:black;" name="password"  required autocomplete="new-password">
+                       <input type="password" style="color:black;" name="password"  required autocomplete="new-password" placeholder="Write password">
                       </div>
+
                       <div style="padding:20px; position: relative;">
-                       <label>Blood Type</label>
-                       <select  name="blood_type" placeholder="Blood Type"class="custom-select">
+                       <label>Blood type</label>
+                       <select  name="blood_type" placeholder="Blood Type"class="custom-select" style="width: 60% !important;">
                        <option value="o+">O+</option>
                        <option value="o-">O-</option>
                        <option value="o-">A+</option>
@@ -113,14 +113,14 @@
                       </div>
 
                       <div style="padding:20px;">
-                        <label>date of birth</label>
+                        <label>Date of birth</label>
                         <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
                        </div>
  
     
                       <div style="padding:20px;">
                        <label>Gender</label>
-                       <select  name="gender" id="departement" placeholder="Gender"class="custom-select">
+                       <select  name="gender" id="departement" placeholder="Gender"class="custom-select"  style="width: 60% !important;">
                        <option value="female">Female</option>
                        <option value="male">Male</option>
                        </select>

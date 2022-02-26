@@ -63,33 +63,33 @@
                      <form action="{{url('upload_admin')}}" method="POST" enctype="multipart/form-data" id="formid">
                        @csrf
                       <div style="padding:20px; position: relative;">
-                       <label>Receptionist First Name</label>
+                       <label>Receptionist first name</label>
                        <input type="text" style="color:black;" name="name" placeholder="Write receptionist's first name" required="">
                       </div>
                       <div style="padding:20px; position: relative;">
-                       <label> Last Name</label>
+                       <label> Last name</label>
                        <input type="text" style="color:black;" name="lname" placeholder="Write receptionist's last name" required="">
                       </div>
 
                       <div style="padding:20px;">
-                       <label>Phone Number</label>
+                       <label>Phone number</label>
                        <input type="number" style="color:black;" name="number" placeholder="Write phone number" required="">
                       </div>
 
                       <div style="padding:20px;">
-                        <label>date of birth</label>
+                        <label>Date of birth</label>
                         <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
                        </div>
 
 
                       <div style="padding:20px;">
                        <label>Email</label>
-                       <input type="email" style="color:black;" name="email" required="">
+                       <input type="email" style="color:black;" name="email" required=""  placeholder="Write Email">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Password</label>
-                       <input type="password" style="color:black;" name="password"  required autocomplete="new-password">
+                       <input type="password" style="color:black;" name="password"  required autocomplete="new-password" placeholder="Write password">
                       </div>
 
 
