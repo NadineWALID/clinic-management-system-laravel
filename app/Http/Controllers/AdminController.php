@@ -370,7 +370,8 @@ class AdminController extends Controller
    }
    public function add_appoint(){
       $doctor=doctor::all();
-      return view('frontend.index', compact('doctor'));
+      $user = user::all();
+      return view('frontend.index', compact('doctor','user'));
    }
    
    public function show_records()

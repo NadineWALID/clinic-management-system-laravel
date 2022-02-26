@@ -34,12 +34,14 @@ class HomeController extends Controller
           {
             $doctor = doctor::all();
             $post  = posts::all();
-            return view('user.add_medical_record',compact('doctor'),compact('post'));
+            $user =user::all();
+            return view('user.add_medical_record',compact('doctor'),compact('post','user'));
           }
           else{
             $doctor = doctor::all();
             $post  = posts::all();
-            return view('user.home',compact('doctor'),compact('post'));
+            $user =user::all();
+            return view('user.home',compact('doctor'),compact('post','user'));
           }
          
         }
@@ -60,7 +62,8 @@ class HomeController extends Controller
         {
           $doctor = doctor::all(); 
           $post  = posts::all();
-          return view('user.home',compact('doctor'),compact('post'));
+          $user =user::all();
+          return view('user.home',compact('doctor'),compact('post','user'));
         }
       }
      
@@ -68,6 +71,7 @@ class HomeController extends Controller
       public function appointment(Request $request)
       {
         
+        $appoint=new appointment;
         $data = new appointment;
         if(Auth::id()){
           $data->user_id=Auth::id();
