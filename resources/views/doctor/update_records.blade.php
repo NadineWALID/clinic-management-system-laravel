@@ -30,7 +30,16 @@
 
                 <div style="padding:15px;">
                     <label>Blood_type</label>
-                    <input style="color:grey;" type="text" name="blood_type" value="{{$data->blood_type}}">
+                    <select  name="blood_type" placeholder="Blood Type"class="custom-select" value="{{$data->blood_type}}">
+                       <option value="O+">O+</option>
+                       <option value="O-">O-</option>
+                       <option value="A+">A+</option>
+                       <option value="A-">A-</option>
+                       <option value="B+">B+</option>
+                       <option value="B-">B-</option>
+                       <option value="AB+">AB+</option>
+                       <option value="AB-">AB-</option>
+                       </select>
                 </div>
 
                 <div style="padding:15px;">

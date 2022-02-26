@@ -3,8 +3,8 @@
   <div class="page-hero bg-image " style="background-image: url(../assets/img/doc.jpg); ">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <span class="subhead" style="color:black" >Let's make your life happier</span>
-        <h1 class="display-4" style="color:black" >Healthy Living</h1>
+        <span class="header" style="color:#696969" >Let's make your life happier</span>
+        <h1 class="header" style="color:#696969" >Healthy Living</h1>
       </div>
     </div>
   </div>
