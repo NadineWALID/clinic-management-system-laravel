@@ -109,6 +109,7 @@
                                         <tr>
                                             
                                             <th class="border-top-0">Time</th>
+                                            <th class="border-top-0">Id</th>
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Address</th>
                                             <th class="border-top-0">View Patient's History</th>
@@ -120,17 +121,20 @@
                                     <tbody>
                                     @foreach($data as $user)
                                         <tr>
-                                       
+                                           
                                             <td>{{$user->time}}</td>
+                                            <td>
+                                            <input type="text" name="hoppa"  id="hoppa" class="hoppa" style=" visibility: hidden;position: absolute;" value="{{$user->id}}">
+                                              {{$user->id}}</td>
                                             <td class="txt-oflo" >{{$user->f_name}} {{$user->l_name}}</td>
                                             <td>{{$user->address}}</td>
                                             
                                             
                                             <td>
-                                             <a class="btn btn-success" href="{{url('addprescription')}}">View History</a>
+                                             <a class="btn btn-success button">View History</a>
                                             </td>
                                             
-                                            <td><a href="{{url('write_prescription',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
+                                            <td><a class="btn btn-success button">Write Prescription</a></td>
                                             </td>
                                             <td>
                                              <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
@@ -149,18 +153,9 @@
                 <!-- ============================================================== -->
                  <!-- PRODUCTS YEARLY SALES -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Patients History</h3>
-                            <div class="d-md-flex">
-                                <ul class="list-inline d-flex ms-auto">
-                                    
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>
+                <div name="record"  id="record" class="record">
+
+
                 </div>
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
@@ -373,3 +368,31 @@
     <script src="doctor/js/pages/dashboards/dashboard1.js"></script>
 
 @stop
+
+
+@section('scriptcontent')
+  
+<script type="text/javascript">
+       $('.button').click(function(){
+        var currentRow = $(this).closest("tr");
+        var query = currentRow.find(".hoppa").val();
+        //var query=$('.hoppa').val();
+        $.ajax({
+        url:"search2",
+        type: "GET",
+        data: {'search2':query},
+               success:function(data){
+                $('#record').html(data);
+                console.log('done');
+               }
+        
+        
+         });
+
+       });
+
+
+       
+
+</script>
+  @stop

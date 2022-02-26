@@ -6,6 +6,7 @@ use App\Models\Patient;
 use App\Models\Appointment;
 use App\Models\Records;
 use App\Models\Medication;
+use App\Models\Prescription;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -70,7 +71,7 @@ class DoctorController extends Controller
                  <td>'.$row->email.'</td>
                  <td>'.$row->phone_no.'</td>
                  <td>
-                    <a class="btn btn-success button" >View History</a>
+                    <a class="btn btn-success " >View History</a>
                 </td>
                 <td>
                      
@@ -98,6 +99,14 @@ class DoctorController extends Controller
         if($request->ajax()){
             $data = Patient::find($request->search2);
             $user = User::find($request->search2);
+            $record = Records::find($request->search2);
+            $prescription =  Prescription::join('doctors', 'prescriptions.doctor_id', '=', 'doctors.id')
+              ->join('users', 'prescriptions.doctor_id', '=', 'users.id')
+              ->select('*')
+              ->where('user_id','=',$request->search2)
+              ->get();
+            
+            
             //$output=''.$request->search2.'';
             
     
@@ -119,19 +128,83 @@ class DoctorController extends Controller
                             <!-- Comment Row -->
                             <div class="d-flex flex-row comment-row p-3 mt-0">
                             <h5 class="font-medium">Cronic Diseases:</h5> 
+                            </br>
+                            '.$record->chronic_diseases.'
                             </div>
+                            
+                            <!-- Comment Row -->
+                            <div class="d-flex flex-row comment-row p-3">
+                            <h5 class="font-medium">Allergies :</h5>
+                            </br>
+                            '.$record->allergies.'
+                            </div>
+                            
+                            <!-- Comment Row -->
                             <!-- Comment Row -->
                             <div class="d-flex flex-row comment-row p-3">
                             <h5 class="font-medium">Current Medication:</h5>
+                            </br>
+                            '.$record->medicine.'
                             </div>
+                           
                             <!-- Comment Row -->
                             <div class="d-flex flex-row comment-row p-3">
                             <h5 class="font-medium">Lab Results:</h5>
+                            </br>
+                            '.$record->lab_results.'
+                            </div>
+                           
+                            <div class="d-flex flex-row comment-row p-3">
+                            <h5 class="font-medium">Radiology Images:</h5>
+                            </br>
+                            '.$record->radiology_image.'
                             </div>
                             <!-- Comment Row -->
                             <div class="d-flex flex-row comment-row p-3">
-                            <h5 class="font-medium">Previous Prescriptions:</h5>
+                            <h5 class="box-title mb-0">Previous Prescriptions:</h5>
+                            </br>
                             </div>
+                             ';
+
+            if(count($prescription)>0){
+                $output .= '  <table class="table no-wrap" >
+                      <thead>
+                <tr>
+                    <th class="border-top-0">Speciality</th>
+                    <th class="border-top-0">Doctor</th>
+                    <th class="border-top-0">Date</th>
+                    <th class="border-top-0"></th>
+                    
+                </tr> 
+                </thead>
+                <tbody id="search_list">
+                  ';
+            foreach($prescription as $row){
+                                    $output .= '
+                                     
+                                     <tr>
+                                   
+                                     <td> '.$row->speciality.'</td>
+                                     <td> '.$row->date_of_examination.'</td>
+                                     <td>  Dr. '.$row->name.'  '.$row->lname.'</td>
+                                     <td><a class="btn"  style="background-color: #e7e7e7; color: black;">View</a><td>
+                                     </tr>
+                                     
+                                      ';
+                                      
+                                }
+                                $output.='</tbody>
+                                         </table>';
+                            }
+            else{
+                
+                $output.='<div class="d-flex flex-row comment-row p-3">none  </div>';
+               
+            }
+            
+            
+             $output.='
+                           
                         </div>
                     </div>
                 </div>
