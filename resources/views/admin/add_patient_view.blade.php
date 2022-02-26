@@ -120,38 +120,35 @@
     
                       <div style="padding:20px;">
                        <label>Gender</label>
-                       <select  name="gender" id="departement" placeholder="Gender"class="custom-select"  style="width: 60% !important;">
+                       <select name="gender" id="departement" placeholder="Gender"class="custom-select"  style="width: 60% !important;">
                        <option value="female">Female</option>
                        <option value="male">Male</option>
                        </select>
                       </div>
 
-                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                        Medications that patient is currently taking
+                       <div style="padding:20px;">
+                       <label>Medications that patient is currently taking</label>
+                       <input type="text" name="medicine" placeholder="Medicine" style="color:black;" required="">
                       </div>
-                       <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                        <input type="text" name="medicine" class="form-control" placeholder="Medicine">
-                       </div>
-                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                        Alergies (if exists)
+
+                      <div style="padding:20px;">
+                       <label>Alergies (if exists)</label>
+                       <input input type="text" name="allergies" placeholder="Allergies" style="color:black;">
                       </div>
-                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                        <input type="text" name="allergies" class="form-control" placeholder="Allergies">
+
+                      <div style="padding:20px;">
+                       <label>Chronic diseases</label>
+                       <input type="text" name="chronic_diseases" placeholder="Chronic diseases" style="color:black;" required="">
                       </div>
-                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                        Chronic diseases
-                      </div>
-                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                        <input type="text" name="chronic_diseases"class="form-control" placeholder="Chronic Diseases">
-                      </div>
+
                      <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-                    <label for="html">Lab results(if exists)</label>
+                    <label for="html">Lab results (if exists)</label>
                     </div>
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                      <input type="file" name="lab_file" >
                      </div>
                   <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-                    <label for="html">Radiology images(if exists)</label>
+                    <label for="html">Radiology images (if exists)</label>
                    </div>
                    <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                     <input type="file" name="rd_file" >
