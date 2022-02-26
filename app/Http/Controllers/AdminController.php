@@ -112,8 +112,16 @@ class AdminController extends Controller
 
    public function showappointments()
    {
-      $data = appointment::all();
-      return view('admin.showappointments', compact('data'));
+      $appoint= DB::table('appointments')
+                 ->select('*')
+                 ->get();
+
+
+         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
+                 ->get();
+          
+        
+          return view('admin.showappointments',compact('data'));
    }
 
    public function approved($id)

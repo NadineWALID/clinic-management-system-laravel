@@ -37,7 +37,7 @@
                       <td>{{$appoint->f_name}} {{$appoint->l_name}}</td>
                       <td>{{$appoint->email}}</td>
                       <td>{{$appoint->phone}}</td>
-                      <td>{{$appoint->doctor_id}}</td>
+                      <td>Dr. {{$appoint->name}} {{$appoint->lname}}</td>
                       <td>{{$appoint->date}}</td>
                       <td>{{$appoint->time}}</td>
                       <td>{{$appoint->gender}}</td>
