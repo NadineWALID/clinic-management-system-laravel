@@ -26,12 +26,12 @@
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Date of birth: </div>
         <input type="date" class="col-12 col-sm-6 py-2 wow fadeInRight" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
          
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Weight (kg): </div>
+        <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Weight(kg): </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
             <input type="text" name="weight" class="form-control" placeholder="Weight">
           </div>
 
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Height (m): </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Height(cm): </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
             <input type="text" name="height" class="form-control" placeholder="Height">
           </div>

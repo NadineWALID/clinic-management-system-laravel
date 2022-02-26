@@ -125,6 +125,37 @@
                        <option value="male">Male</option>
                        </select>
                       </div>
+
+                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                        Medications that patient is currently taking
+                      </div>
+                       <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                        <input type="text" name="medicine" class="form-control" placeholder="Medicine">
+                       </div>
+                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                        Alergies (if exists)
+                      </div>
+                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                        <input type="text" name="allergies" class="form-control" placeholder="Allergies">
+                      </div>
+                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                        Chronic diseases
+                      </div>
+                      <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                        <input type="text" name="chronic_diseases"class="form-control" placeholder="Chronic Diseases">
+                      </div>
+                     <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+                    <label for="html">Lab results(if exists)</label>
+                    </div>
+                    <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+                     <input type="file" name="lab_file" >
+                     </div>
+                  <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+                    <label for="html">Radiology images(if exists)</label>
+                   </div>
+                   <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+                    <input type="file" name="rd_file" >
+                     </div>
     
                       <div style="padding:20px; position: relative; left:10px;">
                        <input type="submit" class="btn btn-success">

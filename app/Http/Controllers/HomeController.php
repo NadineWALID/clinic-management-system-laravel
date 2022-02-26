@@ -13,25 +13,28 @@ use DB;
 class HomeController extends Controller
 {
   public function redirect(){
-    $data=records::find(Auth::id());
+    $data=Records::where('user_id', '=', Auth::user()->id);
     if (Auth::id())
     {
-        if(Auth::user()->role_id==1){
-
+        if(Auth::user()->role_id==1)
+        {
          return view('doctor.home');
 
-        }elseif(Auth::user()->role_id==2){
+        }
+
+        elseif(Auth::user()->role_id==2)
+        {
           $doctor = doctor::all();
           $post  = posts::all();
           return view('admin.home',compact('doctor'),compact('post'));
-
-        }else{
+        }
+        else
+        {
           if($data === null)
           {
             $doctor = doctor::all();
             $post  = posts::all();
             return view('user.add_medical_record',compact('doctor'),compact('post'));
-
           }
           else{
             $doctor = doctor::all();

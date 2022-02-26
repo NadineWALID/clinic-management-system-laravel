@@ -69,6 +69,7 @@ class AdminController extends Controller
    {
       $patient = new patient;
       $user = new user;
+      $record = new records;
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
@@ -83,6 +84,15 @@ class AdminController extends Controller
       $patient->gender = $request->gender;
       $patient->id = $user->id;
       $patient->save();
+      $record->user_id = $user->id;
+      $record->medicine = $request->medicine;
+      $record->radiology_image = $request->radiology_image;
+      $record->gender = $request->gender;
+      $record->blood_type = $request->blood_type;
+      $record->lab_results = $request->lab_results;
+      $record->allergies = $request->allergies;
+      $record->chronic_diseases = $request->chronic_diseases;
+      $record->save();
 
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
    }
