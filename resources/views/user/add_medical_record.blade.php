@@ -49,14 +49,14 @@
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Blood Type: </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
           <select  name="blood_type" placeholder="Blood Type"class="custom-select">
-                       <option value="o+">O+</option>
-                       <option value="o-">O-</option>
-                       <option value="o-">A+</option>
-                       <option value="o-">A-</option>
-                       <option value="o-">B+</option>
-                       <option value="o-">B-</option>
-                       <option value="o-">AB+</option>
-                       <option value="o-">AB-</option>
+                       <option value="O+">O+</option>
+                       <option value="O-">O-</option>
+                       <option value="A+">A+</option>
+                       <option value="A-">A-</option>
+                       <option value="B+">B+</option>
+                       <option value="B-">B-</option>
+                       <option value="AB+">AB+</option>
+                       <option value="AB-">AB-</option>
                        </select>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">

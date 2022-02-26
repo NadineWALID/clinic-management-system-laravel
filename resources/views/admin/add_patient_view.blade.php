@@ -91,14 +91,14 @@
                       <div style="padding:20px; position: relative;">
                        <label>Blood type</label>
                        <select  name="blood_type" placeholder="Blood Type"class="custom-select" style="width: 60% !important;">
-                       <option value="o+">O+</option>
-                       <option value="o-">O-</option>
-                       <option value="o-">A+</option>
-                       <option value="o-">A-</option>
-                       <option value="o-">B+</option>
-                       <option value="o-">B-</option>
-                       <option value="o-">AB+</option>
-                       <option value="o-">AB-</option>
+                       <option value="O+">O+</option>
+                       <option value="O-">O-</option>
+                       <option value="A+">A+</option>
+                       <option value="A-">A-</option>
+                       <option value="B+">B+</option>
+                       <option value="B-">B-</option>
+                       <option value="AB+">AB+</option>
+                       <option value="AB-">AB-</option>
                        </select>
                       </div>
                       
