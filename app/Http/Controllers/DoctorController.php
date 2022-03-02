@@ -258,7 +258,7 @@ class DoctorController extends Controller
         $date = date('d/m/Y',time());
         $doctor=Auth::id();
         $data2 = User::find($doctor);
-
+       $data2->date=$date;
 
         return view('doctor.addprescription',compact('date','data2'));
     }
@@ -285,6 +285,24 @@ class DoctorController extends Controller
          'data'=> $data
      ]);
     }
+
+
+    public function save_prescription(Request $request)
+   {
+        $doctor=Auth::id();
+        $prescription = new Prescription;
+        $prescription->date_of_examination=$request->date_of_examination;
+        $prescription->next_appointment_date=$request->next_appointment_date;
+        $prescription->doctor_id=$doctor;
+        $prescription->diagnosis=$request->diagnosis;
+        $prescription->medicine=$request->medicine;
+        $prescription->dosage=$request->dosage;
+        $prescription->save();
+  
+
+
+      return redirect()->back()->with('message', 'prescription Is Added Successfully');
+   }
     
     public function write_prescription($id)
       {

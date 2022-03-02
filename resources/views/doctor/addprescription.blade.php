@@ -26,20 +26,20 @@
 
     <div class="container" >
     <input type="text" name="search" id="search" class="form-control"  placeholder="Search Medications to Add to Prescription" />
-    </br></br>
+    </br>
     <div class="prescription" style="border:double; width:60%;  margin: auto; align-items: center;">
     </br></br>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Medica Health Center</h1>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Dr {{$data2->name}} {{$data2->lname}}</h1>
-      <form class="main-form" action="{{url('appointment')}}" method="POST" style="  margin-left: 5%;  margin-right: 5%; " >
+      <form class="main-form" action="{{url('save_prescription')}}" method="POST" style="  margin-left: 5%;  margin-right: 5%; " >
           @csrf
         <div class="row mt-5 ">
         
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Date :</label>
+            <label for="html">Date : </label>
         </div>
         <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-        <label for="html">{{$date}}</label>
+        <input type="text" name="date_of_examination" value="{{$data2->date}}" class="form-control" readonly="readonly">
             
         </div>
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
@@ -57,19 +57,23 @@
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Medication :</label>
         </div>
+        
+       
+        
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
             <input type="text" name="medicine" class="form-control" placeholder="Medicine">
           </div>
        
-         
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <input type="text" name="dosage" class="form-control" placeholder="Dosage">
           </div>
+
+        
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Next Appointment :</label>
         </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="date" name="date" class="form-control">
+            <input type="date" name="next_appointment_date" class="form-control">
           </div>
          
       </div>
@@ -84,5 +88,7 @@
       </form>
     </div>
   </div> <!-- .page-section -->
-
+ 
+  
 @stop
+

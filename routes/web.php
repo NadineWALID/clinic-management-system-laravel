@@ -30,6 +30,7 @@ Route::get('/addprescription', [DoctorController::class,'addprescription']);
 Route::get('/write_prescription/{id}', [DoctorController::class,'write_prescription']);
 Route::get('/write_prescription_my_patients/{id}', [DoctorController::class,'write_prescription_my_patients']);
 Route::get('/addprescription/search', [DoctorController::class,'search'])->name('search');;
+Route::post('/save_prescription', [DoctorController::class,'save_prescription']);
 //////////////////////////////////////\
 Route::get('/mypatients', [DoctorController::class,'index']);
 Route::get("search",[DoctorController::class,'search']);

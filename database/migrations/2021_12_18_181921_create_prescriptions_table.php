@@ -17,10 +17,12 @@ class CreatePrescriptionsTable extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->integer('doctor_id');
-            $table->integer('token_id');
-            $table->integer('date_of_examination');
-            $table->string('doctor_notes')->nullable();
-            $table->string('medication')->nullable();
+            $table->string('date_of_examination');
+            $table->string('next_appointment_date')->nullable();
+            $table->string('diagnosis')->nullable();
+            $table->string('medicine')->nullable();
+            $table->string('dosage')->nullable();
+            
             $table->timestamps();
 
         });
