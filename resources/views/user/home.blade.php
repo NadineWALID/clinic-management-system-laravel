@@ -1,5 +1,15 @@
 @extends('frontend.master')
 @section('content')
+<style>
+  #google_translate_element
+  {
+    position: relative;
+  left: 100px;
+  }
+</style>
+<body>
+<h1 >Select your language</h1>
+<div id="google_translate_element"></div>
   <div class="page-hero bg-image " style="background-image: url(../assets/img/doc.jpg); ">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
@@ -11,7 +21,6 @@
 
 
   <!-- .page-section -->
-
     <div class="page-section pb-0" id="aboutus">
       <div class="container">
         <div class="row align-items-center">
@@ -35,4 +44,13 @@
  
   @include('user.appointment')
    <!-- .banner-home -->
+   <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
   @stop

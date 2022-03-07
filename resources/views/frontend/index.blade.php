@@ -16,6 +16,7 @@
               margin: 8px 0;
               box-sizing: border-box;
               display: inline-block;
+              background-color:white;
             }
             input[type=submit] {
             width: 60%;
@@ -124,7 +125,7 @@
             <label for="html">Time :</label>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <select  name="time" id="time" class="custom-select">
+            <select  name="time" id="time" >
             <option value="11">11</option>
             <option value="11:30">11:30</option>
             <option value="12">12</option>

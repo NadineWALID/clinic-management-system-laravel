@@ -1,7 +1,14 @@
  <x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
-    
+  <style>
+      #nav{
+        position: fixed;
+        top: 16px;
+        left:0;
+        background-color:black;
+      }
+    </style>
     <head>
       <!-- Required meta tags -->
       @include('admin.adminmaster')

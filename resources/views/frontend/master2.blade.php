@@ -44,7 +44,8 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
          <a class="navbar-brand" href="#"><span class="text-primary">MED</span>ICA</a>
-
+         <h1 >Select your language</h1>
+     <div id="google_translate_element"></div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -146,6 +147,15 @@ $(document).ready(function(){
   });
 });
 </script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 @yield('scriptcontent')
 <script src="../assets/js/jquery-3.5.1.min.js"></script>
 

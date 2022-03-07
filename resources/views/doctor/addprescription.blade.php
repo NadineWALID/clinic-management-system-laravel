@@ -22,12 +22,12 @@
 @stop
 @section('content')
 
-<div class="page-section" id="appointment">
+<div class="page-section">
 
     <div class="container" >
     <input type="text" name="search" id="search" class="form-control"  placeholder="Search Medications to Add to Prescription" />
     </br>
-    <div class="prescription" style="border:double; width:60%;  margin: auto; align-items: center;">
+    <div class="prescription" style="border:double; width:60%;  margin: auto; align-items: center;"id="print-content">
     </br></br>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Medica Health Center</h1>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Dr {{$data2->name}} {{$data2->lname}}</h1>
@@ -80,15 +80,23 @@
      
       </br></br>
      </div>
-     </br></br>
-     <div >
-        <button type="submit" class="btn btn-primary"  style=" width:60%;  margin-left:20%;  ">Save and Print</button>
-     </div>
-     
-      </form>
+    </form>
     </div>
   </div> <!-- .page-section -->
- 
-  
+  <div  >
+        <button type="submit" class="btn btn-primary"  style=" width:60%;  margin-left:20%;">Save</button>
+        </br></br>
+        <button class="btn btn-primary"  style=" width:60%;  margin-left:20%;" onclick="printDiv('print-content')">Print</button>
+     </div>
+     </br></br>
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w=window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>
 @stop
 

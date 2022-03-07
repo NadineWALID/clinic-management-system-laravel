@@ -16,14 +16,21 @@
         margin: 0;
         border:0;
       }
+      #google_translate_element
+  {
+    position: relative;
+  left: 100px;
+  }
     </style>
-
+<body>
 <div class="main-panel" id="main-panel">
             <div class="content-wrapper" id="card">
               <div class="row">
               <div class="col-md-8 grid-margin stretch-card">
                   <div class="card"id="card">
                     <div class="card-body">
+      <h1 >Select your language</h1>
+         <div id="google_translate_element"></div>
                 <div class="col-12 grid-margin stretch-card">
                         <div >
                           <h4><b>Control your Dashboard</b></h4>
@@ -70,4 +77,13 @@
                       </div>
                     </div>
                   </div>
+                  <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
       </html>

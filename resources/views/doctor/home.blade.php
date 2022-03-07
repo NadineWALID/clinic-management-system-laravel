@@ -1,5 +1,6 @@
 @extends('frontend.master2')
 @section('itemsInNavBar')
+<body>
             <li class="nav-item active">
               <a class="nav-link" href="#" >Home</a>
             </li>
