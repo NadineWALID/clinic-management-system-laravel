@@ -8,6 +8,7 @@ use App\Models\Records;
 use App\Models\Medication;
 use App\Models\Prescription;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use DB;
 
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ class DoctorController extends Controller
         $data->appointmentsToday=$appointmentsToday;
         $data->data2=$data2;
         $data->date2=$date2;
+        
         return view('doctor.view_patients',compact('data'));
     }
 
@@ -71,7 +73,7 @@ class DoctorController extends Controller
                  <td>'.$row->email.'</td>
                  <td>'.$row->phone_no.'</td>
                  <td>
-                    <a class="btn btn-success " >View History</a>
+                    <a class="btn btn-success button" name="button" >View History</a>
                 </td>
                 <td>
                      
@@ -187,7 +189,7 @@ class DoctorController extends Controller
                                      <td> '.$row->speciality.'</td>
                                      <td> '.$row->date_of_examination.'</td>
                                      <td>  Dr. '.$row->name.'  '.$row->lname.'</td>
-                                     <td><a class="btn"  style="background-color: #e7e7e7; color: black;">View</a><td>
+                                     <td><a class="btn" href="'.url('view_prescription',$row->prescription_id).'"  target="_blank" style="background-color: #e7e7e7; color: black;">View</a><td>
                                      </tr>
                                      
                                       ';
@@ -251,6 +253,7 @@ class DoctorController extends Controller
          
     }
 
+
     public function homedoctor(){
         return view('doctor.home');
     }
@@ -313,6 +316,28 @@ class DoctorController extends Controller
         $date = date('d/m/Y',time());
         return view('doctor.write_prescription',compact('data','date','data2'));   
       }
+
+      public function view_prescription($id)
+      {
+        
+
+       // return redirect('/view_prescription2');
+       //return redirect('/view_prescription2','/'.compact('id'));
+       return redirect()->away('/view_prescription2'.$id.'');
+      }
+
+      public function view_prescription2($id)
+      {
+        $prescription = DB::table('prescriptions')->where('prescription_id', $id)->first();
+        $doctor = User::find($prescription->doctor_id);
+        $patient = User::find($prescription->user_id);
+    
+        return view('doctor.view_prescription',compact('prescription','doctor','patient'));
+      }
+
+      
+
+      
 
       public function write_prescription_my_patients($id)
       {

@@ -124,7 +124,7 @@
                                            
                                             <td>{{$user->time}}</td>
                                             <td>
-                                            <input type="text" name="hoppa"  id="hoppa" class="hoppa" style=" visibility: hidden;position: absolute;" value="{{$user->id}}">
+                                            <input type="text" name="hoppa"  id="hoppa" class="hoppa" style=" visibility: hidden;position: absolute;" value="{{$user->user_id}}">
                                               {{$user->id}}</td>
                                             <td class="txt-oflo" >{{$user->f_name}} {{$user->l_name}}</td>
                                             <td>{{$user->address}}</td>
