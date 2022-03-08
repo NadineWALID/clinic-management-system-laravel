@@ -17,12 +17,14 @@ class DoctorController extends Controller
 {
     public function addview(Request $request){
         $doctor=Auth::id();
+        $approved='Approved';
         $date = date('Y-m-d',time());
         $date2 = date('d/m/Y',time());
         $data= DB::table('appointments')
               ->select('*')
               ->where('doctor_id', '=', $doctor)
               ->where('date','=',$date)
+              ->where('status','=',$approved)
               ->get();
         $search_text= $request->get('search');
         $data2 = DB::table('users')
@@ -44,6 +46,14 @@ class DoctorController extends Controller
     public function record()
     {
       return view('doctor.medical_record');
+    } 
+
+    public function remove($id)
+    {
+        $data = appointment::find($id);
+        $data->status = 'Done';
+        $data->save();
+        return back();
     } 
 
     public function search(Request $request){

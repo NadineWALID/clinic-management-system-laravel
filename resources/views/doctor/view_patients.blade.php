@@ -134,10 +134,10 @@
                                              <a class="btn btn-success button">View History</a>
                                             </td>
                                             
-                                            <td><a class="btn btn-success button">Write Prescription</a></td>
+                                            <td><a class="btn btn-success button"  href="{{url('write_prescription',$user->id)}}">Write Prescription</a></td>
                                             </td>
                                             <td>
-                                             <a class="btn btn-danger" href="{{url('addprescription')}}">Remove</a>
+                                             <a class="btn btn-danger" href="{{url('remove',$user->id)}}">Remove</a>
                                             </td>                              
                                         </tr>
                                      @endforeach
