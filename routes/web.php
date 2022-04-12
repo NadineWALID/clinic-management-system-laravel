@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\FullCalenderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,3 +86,9 @@ Route::get('/show_records', [DoctorController::class,'showrecords']);
 Route::get('/update_record/{id}', [DoctorController::class,'updaterecord']);
 Route::post('/edit_record/{id}', [DoctorController::class,'edit_record']);
 Route::get('/delete_record/{id}', [DoctorController::class,'delete_record']);
+
+
+//Route::get('full-calender', [FullCalenderController::class, 'index']);
+Route::post('full-calender/action', [FullCalenderController::class, 'action']);
+Route::post('/calendar_add_appointment', [FullCalenderController::class,'appointment']);
+Route::get('new_appointments', [FullCalenderController::class, 'newindex']);

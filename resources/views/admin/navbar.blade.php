@@ -6,7 +6,7 @@
               <a class="navbar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch"id="nav">
-            <p style="color:green; font-size:40px; font-family:verdana;"id="nav">Main Dashboard</p>
+            <p style="color:green; font-size:40px; font-family:verdana;"id="nav"></p>
               <ul class="navbar-nav w-100">
             <!--    <li class="nav-item w-100">
                   <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
