@@ -88,7 +88,7 @@ class HomeController extends Controller
           }
 
         }
-        
+        $time = $request->date.' '.$request->time.':00';
         $data->f_name=$request->fname;
         $data->l_name=$request->lname;
         $data->email=$request->email;
@@ -96,15 +96,13 @@ class HomeController extends Controller
         $data->doctor_id=$request->doctor;
         $data->date=$request->date;
         $data->time=$request->time;
+        $data->start=$time;
+        $data->end=$time;
         $data->address=$request->address;
         $data->gender=$request->gender;
         $data->status='In Progress';
         $data->save();
         
-         /* if(Auth::id())
-          {
-          $data->user_id=Auth::user()->id;
-          }*/
 
           $data->save();
           return redirect()->back()->with('message','Appointment Request Successful');
