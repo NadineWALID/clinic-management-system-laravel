@@ -162,7 +162,9 @@ class HomeController extends Controller
         $data->save();
         return redirect()->back()->with('message', 'Appointment Updated Successfully');  
       }
-
+      public function diagnosis(){
+        return view ('diagnosis.index');
+      }
 }
 
 

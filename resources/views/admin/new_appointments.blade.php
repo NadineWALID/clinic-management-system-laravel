@@ -13,12 +13,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
     <style>
- .modal-content{
-  
-  width: 50%;
-  padding: 50px;
-  margin-left: auto;
-  margin-right: auto;
+       <style>
+            label
+            {
+              width: 100%;
+              margin: 8px 0;
+              display: inline-block;
+            
+            }
+            input
+            {
+              width: 60%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              
+            }
+            input[type=submit] {
+            width: 40%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+             }
+            .modal-content{
+            width: 50%;
+            padding: 50px;
+            margin-left: auto;
+            margin-right: auto;
+          }
 }
 </style>
 </head>

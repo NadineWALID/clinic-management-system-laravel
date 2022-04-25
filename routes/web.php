@@ -92,3 +92,5 @@ Route::get('/delete_record/{id}', [DoctorController::class,'delete_record']);
 Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 Route::post('/calendar_add_appointment', [FullCalenderController::class,'appointment']);
 Route::get('new_appointments', [FullCalenderController::class, 'newindex']);
+//diagnosis
+Route::get('diagnosis',[HomeController::class,'diagnosis']);

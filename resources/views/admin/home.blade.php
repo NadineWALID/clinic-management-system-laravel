@@ -6,7 +6,9 @@
         position: fixed;
         top: 16px;
         left:0;
-        background-color:black;
+        background-color:	#8099b3;
+        font-family:Arial;
+        font-size:20px
       }
     </style>
     <head>

@@ -1,23 +1,35 @@
 
 <div class="container-fluid page-body-wrapper">
           <!-- partial:partials/_navbar.html -->
-          <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <nav class="navbar p-0 fixed-top d-flex flex-row" >
             <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
               <a class="navbar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch"id="nav">
-            <p style="color:green; font-size:40px; font-family:verdana;"id="nav"></p>
-              <ul class="navbar-nav w-100">
+              <ul class="navbar-nav w-100" >
+              <h1 style="text-align:left; font-size: 45px; color:#0059b3; font-family:Helvetica; ">Medica</h1>
             <!--    <li class="nav-item w-100">
                   <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                     <input type="text" class="form-control" placeholder="Search">
                   </form>
                 </li>  -->
               </ul>
-              <ul class="navbar-nav navbar-nav-right">
-                <li class="nav-item dropdown d-none d-lg-block">
-                  <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" href="/">Home Page</a>
-                </li>
+              <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/" >Home Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#list">To Do List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/showdoctors">Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/show_patients">Patients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/show_news">News</a>
+            </li>
                      <x-app-layout>
                    </x-app-layout>
               </ul>
