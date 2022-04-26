@@ -64,9 +64,7 @@
         <option value="{{$doctors->id}}">{{$doctors->name}} {{$doctors->lname}}</option>
     @endforeach
     </select><button class="btn btn-success button" id="button" type="button">Go</button>]
-    <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
-                Appointment created Successfully! 
-    </div>
+    
     <div id="myModal" class="modal">
     <div class="modal-content" style="overflow:scroll;height:80%;">
         <span class="close" id="close">&times;</span>

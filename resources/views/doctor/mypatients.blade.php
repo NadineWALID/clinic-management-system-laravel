@@ -40,7 +40,14 @@
                                 
                             </div>
                             
-                            <input type="text" name="search" id="search" class="form-control" placeholder="Search Patients" />
+                            <form action="">
+                            <input type="search" name="search" type="search" style="width: 80%;"id="search"  value="{{$search}}" placeholder="Search Patients" />
+                            <div style="display: inline;">
+                            
+                            <button id="searchButton"  style="background-color:#3fd4ad;color: white;width:7%;padding: 14px 15px;border-radius: 5px;">Get</button>
+                            
+                            <div>
+                            </form>
                            </br>
                             <div class="table-responsive">
                                 <table class="table no-wrap" id="patients_table">
@@ -50,8 +57,7 @@
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">Phone Number</th>
-                                            <th class="border-top-0">View Patient's History</th>
-                                            <th class="border-top-0">Add a Prescription</th>
+                                            
                                             
                                         </tr>
                                     </thead>
@@ -172,6 +178,8 @@
          });
 
        });
+
+      
 
 
        

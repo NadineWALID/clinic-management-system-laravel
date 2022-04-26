@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\Appointment;
@@ -59,7 +60,7 @@ class DoctorController extends Controller
     public function search(Request $request){
         
         $doctor=Auth::id();
-        $button="button";
+        
         
         if($request->ajax()){
             $data = User :: join('tokens', 'users.id', '=', 'tokens.user_id')
@@ -82,13 +83,7 @@ class DoctorController extends Controller
                  <td>'.$row->name.' '.$row->lname.'</td>
                  <td>'.$row->email.'</td>
                  <td>'.$row->phone_no.'</td>
-                 <td>
-                    <a class="btn btn-success button" id="button" name="button" >View History</a>
-                </td>
-                <td>
-                     
-                    <a class="btn btn-success" href="'.url('write_prescription_my_patients',$row->id).'">Write a Prescription</a>
-                </td>
+                
                  </tr>
                   ';
             }
@@ -286,18 +281,37 @@ class DoctorController extends Controller
         return view('doctor.mypatients',compact('data'));
     }
   
-    function index()
+    function index(Request $request)
     {
-       // $data = DB:: table('users')->orderBy('name')->cursorPaginate(15);
-       $doctor=Auth::id();
+        $doctor=Auth::id();
+        $search=$request['search'] ?? "";
+        if($search != "")
+        {
+            
+            $data = User :: join('tokens', 'users.id', '=', 'tokens.user_id')
+            ->where ('doctor_id','like',$doctor)
+            ->where ('users.phone_no','like',"%$search%")
+            ->orwhere ('users.name','like',"%$search%")
+            ->orwhere ('users.lname','like',"%$search%")
+            ->orwhere ('users.email','like',"%$search%")
+            ->orderBy('name')->cursorPaginate(15);
+
+        }
+        else
+        {
+       
+       
        $data = User::join('tokens', 'users.id', '=', 'tokens.user_id')
                 ->where('tokens.doctor_id','=',$doctor)
                 ->orderBy('name')->cursorPaginate(15);
-               // ->get(['users.*']);
-               
-     return view('doctor.mypatients',[
+        }
+              
+        return view('doctor.mypatients', compact('data','search'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+     /*return view('doctor.mypatients',[
          'data'=> $data
-     ]);
+     ]);*/
+
     }
 
 
@@ -452,8 +466,18 @@ class DoctorController extends Controller
        return redirect()->back();
     }
    
-    
 
 
    
 }
+
+/*
+
+ <td>
+                    <a class="btn btn-success button" id="button" name="button" >View History</a>
+                </td>
+                <td>
+                     
+                    <a class="btn btn-success" href="'.url('write_prescription_my_patients',$row->id).'">Write a Prescription</a>
+                </td>
+*/
