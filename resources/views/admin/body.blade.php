@@ -2,13 +2,13 @@
 <style>
       #main-panel
       {
-        background-color:#deeaee;
+        background-color: #d9d9d9;
         margin: 0;
       }
 
       #card
       {
-        background-color: #deeaee;
+        background-color: white;
         color:#034f84;
         font-family: Arial;
         padding:20px;
@@ -25,26 +25,28 @@
 <body>
 <div class="main-panel" id="main-panel">
             <div class="content-wrapper" id="card">
+            <h1 >Select your language</h1>
+         <div id="google_translate_element"></div>
               <div class="row">
               <div class="col-md-8 grid-margin stretch-card">
                   <div class="card"id="card">
                     <div class="card-body">
-      <h1 >Select your language</h1>
-         <div id="google_translate_element"></div>
+     
                 <div class="col-12 grid-margin stretch-card">
                         <div >
-                          <h4><b>Control your Dashboard</b></h4>
+                          <h4 style="font-family:Algerian; font-size:40px; color:#f20d0d;"><b>Control your Dashboard</b></h4>
                         </div>
 
                 </div>
               </div>
+              <div id="news">
                      @include ('user.latestnews')
-                  
+                </div>
                 </div>
               </div>
             </div>
           </div>
-                    <div class="card-body">
+                    <div class="card-body" id="list">
                       <h4 style="font-size: 25px; color:#034f84;font-family: Arial;"><b>To do list</b></h4>
                       <div class="add-items d-flex">
                         <input type="text" class="form-control todo-list-input" placeholder="enter task..">

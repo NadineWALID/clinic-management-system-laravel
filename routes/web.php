@@ -94,3 +94,7 @@ Route::post('/calendar_add_appointment', [FullCalenderController::class,'appoint
 Route::post('/submit-form', [FullCalenderController::class,'store']);
 Route::post('/edit-form', [FullCalenderController::class,'edit']);
 Route::get('new_appointments', [FullCalenderController::class, 'newindex']);
+
+//diagnosis
+Route::get('diagnosis',[HomeController::class,'diagnosis']);
+
