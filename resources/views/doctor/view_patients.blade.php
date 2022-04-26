@@ -376,7 +376,7 @@
        $('.button').click(function(){
         var currentRow = $(this).closest("tr");
         var query = currentRow.find(".hoppa").val();
-        //var query=$('.hoppa').val();
+        //var query=$('#hoppa').val();
         $.ajax({
         url:"search2",
         type: "GET",

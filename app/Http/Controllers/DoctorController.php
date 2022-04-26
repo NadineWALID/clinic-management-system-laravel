@@ -59,7 +59,7 @@ class DoctorController extends Controller
     public function search(Request $request){
         
         $doctor=Auth::id();
-        
+        $button="button";
         
         if($request->ajax()){
             $data = User :: join('tokens', 'users.id', '=', 'tokens.user_id')
@@ -79,11 +79,11 @@ class DoctorController extends Controller
                  
                  <tr>
                  <td>'.$row->id.'</td>
-                 <td>'.$row->name.'</td>
+                 <td>'.$row->name.' '.$row->lname.'</td>
                  <td>'.$row->email.'</td>
                  <td>'.$row->phone_no.'</td>
                  <td>
-                    <a class="btn btn-success button" name="button" >View History</a>
+                    <a class="btn btn-success button" id="button" name="button" >View History</a>
                 </td>
                 <td>
                      
@@ -123,6 +123,7 @@ class DoctorController extends Controller
             
     
         }
+       
         $output='';
         if(($data)!= null){
            

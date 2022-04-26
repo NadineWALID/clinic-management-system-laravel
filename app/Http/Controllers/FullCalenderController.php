@@ -25,10 +25,17 @@ class FullCalenderController extends Controller
     	}
     	return view('admin.full-calender',compact('doctors'));
     }*/
-	public function appointment(Request $request)
+	
+	  public function store(Request $request)
       {
-        
-        
+       
+        $request->validate([
+            
+            'email'         => 'required|email',
+            'fname'          => 'required',
+			'lname'          => 'required',
+			'phone'        => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
+        ]);
         $time = $request->date.' '.$request->time.':00';
         $data = new appointment;
         $data->f_name=$request->fname;
@@ -37,19 +44,31 @@ class FullCalenderController extends Controller
         $data->phone=$request->phone;
         $data->doctor_id=$request->doctor_id;
         $data->date=$request->date;
-        $data->time=$request->time;
+        $data->time=$request->date;
         $data->start=$time;
         $data->end=$time;
-
-		
-        $data->address=$request->address;
+		$data->address=$request->address;
         $data->gender=$request->gender;
         $data->status='Approved';
+
         $data->save();
         
 
         //return response()->json($data);
-        return redirect()->back()->with('message','Appointment Request Successful');
+        return response()->json(['success'=>'Successfully']);
+      }
+	  public function edit(Request $request)
+      {
+       
+		$appointment = appointment::find($request->id);
+     
+        $time = $request->date.' '.$request->time.':00';
+		$appointment->start=$time;
+        $appointment->end=$time;
+        $appointment->save();
+        
+  
+        return response()->json(['success'=>'Successfully']);
       }
 	public function newindex(Request $request)
     {

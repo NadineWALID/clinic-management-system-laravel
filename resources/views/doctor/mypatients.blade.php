@@ -67,7 +67,7 @@
                                             <td>{{$user->phone_no}}</td>
                                             
                                             <td>
-                                             <a class="btn btn-success button" >View History</a>
+                                             <a class="btn btn-success button" id="button">View History</a>
                                             </td>
                                             <td><a href="{{url('write_prescription_my_patients',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
                                                  
@@ -155,7 +155,7 @@
   </script>
 
 <script type="text/javascript">
-       $('.button').click(function(){
+       $('#button').click(function(){
         var currentRow = $(this).closest("tr");
         var query = currentRow.find(".hoppa").val();
         //var query=$('.hoppa').val();
