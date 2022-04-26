@@ -91,4 +91,6 @@ Route::get('/delete_record/{id}', [DoctorController::class,'delete_record']);
 //Route::get('full-calender', [FullCalenderController::class, 'index']);
 Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 Route::post('/calendar_add_appointment', [FullCalenderController::class,'appointment']);
+Route::post('/submit-form', [FullCalenderController::class,'store']);
+Route::post('/edit-form', [FullCalenderController::class,'edit']);
 Route::get('new_appointments', [FullCalenderController::class, 'newindex']);

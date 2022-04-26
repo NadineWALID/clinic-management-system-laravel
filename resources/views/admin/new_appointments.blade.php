@@ -37,30 +37,41 @@
     @foreach($doctors as $doctors)
         <option value="{{$doctors->id}}">{{$doctors->name}} {{$doctors->lname}}</option>
     @endforeach
-    </select><button class="btn btn-success button" id="button" type="button">done</button>
+    </select><button class="btn btn-success button" id="button" type="button">Go</button>]
+    <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+                Appointment created Successfully! 
+    </div>
     <div id="myModal" class="modal">
     <div class="modal-content" style="overflow:scroll;height:80%;">
         <span class="close" id="close">&times;</span>
        
-        <form class="main-form" id="formid" action="{{url('calendar_add_appointment')}}" method="POST">
+        <form class="main-form" id="SubmitForm" >
           @csrf
+          <div class="alert alert-success" role="alert" id="failMsg" style="display: none" >
+                Failed booking appointment please check you filled all information! 
+           </div>
           <h1 class="header" >Make an Appointment on <input type="text" name="date" id="date" readonly="readonly" class="form-control" ></h1>
+
           <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
           <label class="label" for="html">First Name</label>
-            <input type="text" name="fname" class="form-control" placeholder="First name">
+            <input type="text" name="fname" id="fname" class="form-control" placeholder="First name">
+            <span class="text-danger" id="fnameErrorMsg"></span>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
           <label class="label" for="html">Last Name</label>
-            <input type="text" name="lname" class="form-control" placeholder="Last name">
+            <input type="text" name="lname" id="lname" class="form-control" placeholder="Last name">
+            <span class="text-danger" id="lnameErrorMsg"></span>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Email</label>
-          <input type="text" name="email" class="form-control" placeholder="Email address..">
+          <input type="text" name="email" id="email" class="form-control" placeholder="Email address..">
+          <span class="text-danger" id="emailErrorMsg"></span>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Phone Number</label>
-            <input type="text" name="phone"class="form-control" placeholder="Phone Number....">
+            <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number....">
+            <span class="text-danger" id="phoneErrorMsg"></span>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Address</label>
@@ -70,14 +81,14 @@
             <label class="label" for="html">Gender :</label>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <select  name="gender" id="departement" placeholder="Gender"class="custom-select">
+            <select  name="gender" id="gender" placeholder="Gender"class="custom-select">
               <option value="female">Female</option>
               <option value="male">Male</option>
             </select>
           </div>
-         
+          
             
-          <input type="text" name="doctor_id"  style=" visibility: hidden;position: absolute;" id="doctor_id"class="form-control" >
+          <input type="text" name="doctor_id"  style=" visibility: hidden;position: absolute;" id="doctor_id" class="form-control" >
             
             <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
              <label class="label" for="html">Time : </label>
@@ -104,6 +115,70 @@
         </form>
     </div>
     </div>
+    <div id="myInformation" class="modal">
+    <div class="modal-content" style="overflow:scroll;height:80%;">
+        <span class="close" id="closeInformation">&times;</span>
+        <form class="main-form" id="EditForm" >
+        <h1 class="header" >Appointment # <input type="text" name="id_info" readonly="readonly" id="id_info" class="form-control" > </h1>
+        <div class="row mt-5 ">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+          <label class="label" for="html">First Name:</label>
+          <input type="text" name="f_name_info" readonly="readonly"  id="f_name_info" class="form-control" >
+          </div>
+
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight">
+          <label class="label" for="html">Last Name:</label>
+          <input type="text" name="l_name_info" readonly="readonly"  id="l_name_info" class="form-control" >
+          </div>
+
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+          <label class="label" for="html">Phone Number:</label>
+          <input type="text" name="phone_no_info" readonly="readonly"  id="phone_no_info" class="form-control" >
+          </div>
+
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+          <label class="label" for="html">Email:</label>
+          <input type="text" name="email_info" readonly="readonly" id="email_info" class="form-control" >
+          </div>
+         
+
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+          <label class="label" for="html">Address:</label>
+          <input type="text" name="address_info" readonly="readonly"  id="address_info" class="form-control" >
+          </div>
+
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+             <label class="label" for="html">Time : </label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+          <select  name="time_info" id="time_info" placeholder="time"class="custom-select">
+          <?php 
+            for($hours=10; $hours<22; $hours++) // the interval for hours is '1'
+            for($mins=0; $mins<60; $mins+=15) // the interval for mins is '30'
+                //echo 
+               
+                echo '<option value="'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+                .str_pad($mins,2,'0',STR_PAD_LEFT).'">'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+                .str_pad($mins,2,'0',STR_PAD_LEFT).'</option>'
+         ?>
+
+           
+          
+          </select>
+          <input type="text" name="date_info" style=" visibility: hidden;position: absolute;"  id="date_info" class="form-control" >
+          <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Edit</button>
+          <button id="deleteButton" class="btn btn-primary mt-3 wow zoomIn">Delete</button>
+          </div>
+          </form>
+          
+          </div>
+
+          
+        
+       
+          
+    </div>
+    </div>
     <div id="appointment-requests" style="padding-bottom: 100px;"><div>
     <div id="appointments"><div> 
     <div id="calendar"></div>
@@ -113,10 +188,91 @@
 <script>
 
 var modalObject = document.getElementById("myModal");
+var modalObjectInformation = document.getElementById("myInformation");
 var spanObject = document.getElementById("close");
+var spanObjectInformation = document.getElementById("closeInformation");
+
+$('#SubmitForm').on('submit',function(e){
+    e.preventDefault();
+
+    let fname = $('#fname').val();
+    let lname = $('#lname').val();
+    let email = $('#email').val();
+    let phone = $('#phone').val();
+    let address = $('#address').val();
+    let gender = $('#gender').val();
+    let doctor_id = $('#doctor_id').val();
+    let time = $('#time').val();
+    let date = $('#date').val();
+    
+    $.ajax({
+      url: "/submit-form",
+      type:"POST",
+      data:{
+        "_token": "{{ csrf_token() }}",
+        fname:fname,
+        lname:lname,
+        email:email,
+        phone:phone,
+        address:address,
+        gender:gender,
+        doctor_id:doctor_id,
+        time:time,
+        date:date,
+      },
+      success:function(response){
+        $('#successMsg').show();
+        console.log(response);
+        $('#calendar').fullCalendar('refetchEvents');
+        modalObject.style.display="none";
+      },
+      error: function(response) {
+        $('#failMsg').show();
+        $('#emailErrorMsg').text(response.responseJSON.errors.email);
+        $('#fnameErrorMsg').text(response.responseJSON.errors.fname);
+        $('#lnameErrorMsg').text(response.responseJSON.errors.lname);
+        $('#phoneErrorMsg').text(response.responseJSON.errors.phone);
+        
+      },
+     
+      });
+      
+    });
+
+  $('#EditForm').on('submit',function(e){
+    e.preventDefault();
+
+    
+    let time = $('#time_info').val();
+    let id = $('#id_info').val();
+    let date = $('#date_info').val();
+    
+    $.ajax({
+      url: "/edit-form",
+      type:"POST",
+      data:{
+        "_token": "{{ csrf_token() }}",
+        id:id,
+        date:date,
+        time:time,
+      },
+      success:function(response){
+        $('#successMsg').show();
+        console.log(response);
+        $('#calendar').fullCalendar('refetchEvents');
+        modalObjectInformation.style.display="none";
+      },
+      
+     
+      });
+      
+  });
 
 spanObject.onclick =function(){
     modalObject.style.display="none";
+}
+spanObjectInformation.onclick =function(){
+    modalObjectInformation.style.display="none";
 }
 
 var doctor = $('#doctor').val();
@@ -130,8 +286,26 @@ function getDoctor(){
 $(document).ready(function () {
 
 $('#button').click(function(e) {
-    console.log(getDoctor());
+    //console.log(getDoctor());
     $('#calendar').fullCalendar('refetchEvents');
+})
+
+$('#deleteButton').click(function(e) {
+         let id = $('#id_info').val();
+         $.ajax({
+                url:"/full-calender/action",
+                type:"POST",
+                data:{
+                    id:id,
+                    type:"delete"
+                },
+                success:function(response)
+                {
+                    calendar.fullCalendar('refetchEvents');
+                    alert("Appointment Deleted Successfully");
+                    modalObjectInformation.style.display="none";
+                }
+            })
 })
 
 
@@ -147,7 +321,10 @@ var calendar = $('#calendar').fullCalendar({
     eventDataTransform: function(event) {
      //event.user_name = event.user_name;
      event.f_name = event.f_name;
+     event.l_name = event.l_name;
      event.phone_no=event.phone_no;
+     event.email=event.email;
+     event.address=event.address;
      return event;
     },
     editable:true,
@@ -215,12 +392,15 @@ var calendar = $('#calendar').fullCalendar({
             var events = [];
             for (var i=0;i<doc.length;i++){
               events.push({
-                //title: doc[i].f_name,
-                //f_name:doc[i].f_name,
+               
                 title: doc[i].f_name.concat(" ", doc[i].l_name),
                 start: doc[i].start,
                 id:doc[i].id,
-               
+                f_name:doc[i].f_name,
+                l_name:doc[i].l_name,
+                phone_no:doc[i].phone,
+                email:doc[i].email,
+                address:doc[i].address,
               })//this is displaying!!!
             }
             callback(events);
@@ -231,11 +411,25 @@ var calendar = $('#calendar').fullCalendar({
     selectHelper: true,
     eventClick:function(event)
     {
+        modalObjectInformation.style.display="block";
+        document.getElementById("id_info").value = event.id;
+        document.getElementById("f_name_info").value = event.f_name;
+        document.getElementById("l_name_info").value = event.l_name;
+        document.getElementById("phone_no_info").value = event.phone_no;
+        document.getElementById("email_info").value = event.email;
+        document.getElementById("address_info").value = event.address;
+       /* var id = event.id;
+        console.log(id);*/
+        var time = event.start.toString();
+        time = time.split(" ")[4].slice(0, -3);
         
-        if(confirm("Are you sure you want to remove this appointment?"))
+        document.getElementById("time_info").value = time;
+        var start_date = $.fullCalendar.formatDate(event.start, 'Y-MM-DD');
+        document.getElementById("date_info").value = start_date;
+
+       /* if(confirm("Do you want to remove this appointment?"))
         {
-            var id = event.id;
-            //console.log(id);
+           
             $.ajax({
                 url:"/full-calender/action",
                 type:"POST",
@@ -249,7 +443,7 @@ var calendar = $('#calendar').fullCalendar({
                     alert("Appointment Deleted Successfully");
                 }
             })
-        }
+        }*/
     },
     eventResize: function(event, delta)
     {
