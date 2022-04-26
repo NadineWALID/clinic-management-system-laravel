@@ -102,7 +102,7 @@ class DoctorController extends Controller
 
     
     public function search2(Request $request){
-        //echo "<h2>" . $request->search2 . "</h2>";
+        
         if($request->ajax()){
             $data = Patient::find($request->search2);
             $user = User::find($request->search2);
@@ -113,8 +113,8 @@ class DoctorController extends Controller
               ->where('user_id','=',$request->search2)
               ->get();
             
-            
-            //$output=''.$request->search2.'';
+            $dateToday=date("Y-m-d");
+            $age = date_diff(date_create($data->date_of_birth), date_create($dateToday));
             
     
         }
@@ -230,7 +230,7 @@ class DoctorController extends Controller
                                 <h5 class="font-medium">Height:</h5> '. $data->height.'
                                 </li>
                                 <li>
-                                <h5 class="font-medium">Age:</h5> '. $data->date_of_birth.'
+                                <h5 class="font-medium">Age:</h5> '. $age->format("%y").'
                                 </li>
                                 <li>
                                 <h5 class="font-medium">Blood Type:</h5> '. $data->blood_type.'
