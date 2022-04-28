@@ -14,11 +14,12 @@ class HomeController extends Controller
 {
   public function redirect(){
     $data=Records::where('user_id', '=', Auth::user()->id);
+    $date = date('Y-m-d',time());
     if (Auth::id())
     {
         if(Auth::user()->role_id==1)
         {
-         return view('doctor.home');
+         return view('doctor.home',compact('date'));
 
         }
 
@@ -26,7 +27,7 @@ class HomeController extends Controller
         {
           $doctor = doctor::all();
           $post  = posts::all();
-          return view('admin.home',compact('doctor'),compact('post'));
+          return view('admin.home',compact('doctor','date'),compact('post'));
         }
         else
         {
@@ -35,13 +36,13 @@ class HomeController extends Controller
             $doctor = doctor::all();
             $post  = posts::all();
             $user =user::all();
-            return view('user.add_medical_record',compact('doctor'),compact('post','user'));
+            return view('user.add_medical_record',compact('doctor','date'),compact('post','user'));
           }
           else{
             $doctor = doctor::all();
             $post  = posts::all();
             $user =user::all();
-            return view('user.home',compact('doctor'),compact('post','user'));
+            return view('user.home',compact('doctor','date'),compact('post','user'));
           }
          
         }
@@ -54,16 +55,17 @@ class HomeController extends Controller
 
       public function index()
       {  
+        $date = date('Y-m-d',time());
         if (Auth::id())
         {
-          return redirect('home');
+          return redirect('home',compact('date'));
         }
         else
         {
           $doctor = doctor::all(); 
           $post  = posts::all();
           $user =user::all();
-          return view('user.home',compact('doctor'),compact('post','user'));
+          return view('user.home',compact('doctor','date'),compact('post','user','date'));
         }
       }
      
@@ -145,11 +147,11 @@ class HomeController extends Controller
       public function update_appoint($id)
       {
         $data=appointment::find($id);
-        
-        $doctor= DB::table('doctors')
-                 ->select('*')
+        $doctor = User :: join('doctors', 'users.id', '=', 'doctors.id')
                  ->get();
-        return view('user.update_appoint',compact('data','doctor'));   
+        $date = date('Y-m-d',time());
+        
+        return view('user.update_appoint',compact('data','doctor','date'));   
       }
       public function edit_appoint(Request $request,$id)
       {
