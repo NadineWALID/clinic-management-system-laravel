@@ -119,8 +119,35 @@ class AdminController extends Controller
       return redirect()->back()->with('message', 'Admin Is Added Successfully');
    }
 
+   public function showappointments(Request $request)
+   {
+      $search=$request['search'] ?? "";
+      if($search != "")
+      {
+         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
+         // search using doctor's credentials
+                  ->where('name','LIKE',"%$search%")
+                  ->orWhere('lname','LIKE',"%$search%")
+                  ->orWhere('phone_no','LIKE',"%$search%")
+                  // search using patient's credentials
+                  ->orWhere('f_name','LIKE',"%$search%")
+                  ->orWhere('l_name','LIKE',"%$search%")
+                  ->orWhere('phone','LIKE',"%$search%")
+                  
+                  ->get();
 
-   public function showappointments()
+      }
+      else
+      {
+         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
+                           ->get();
+      }
+
+      return view('admin.showappointments', compact('data','search'))
+         ->with('i', (request()->input('page', 1) - 1) * 5);
+   }
+
+  /* public function showappointments()
    {
       $appoint= DB::table('appointments')
                  ->select('*')
@@ -129,10 +156,10 @@ class AdminController extends Controller
 
          $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
                  ->get();
-          
-        
+
+
           return view('admin.showappointments',compact('data'));
-   }
+   }*/
 
    public function approved($id)
    {
@@ -181,13 +208,13 @@ class AdminController extends Controller
          $data = User :: join('doctors', 'users.id', '=', 'doctors.id')
                 ->get();
       }
-      
+
       return view('admin.showdoctors', compact('data','search'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
    public function showpatients(Request $request)
-   {  
+   {
       $search=$request['search'] ?? "";
       if($search != "")
       {
@@ -200,10 +227,10 @@ class AdminController extends Controller
       {
          $Pdata = User :: join('patients', 'users.id', '=', 'patients.id')
                            ->get();
-         
+
          //$Pdata = patient::all();
       }
-      
+
       return view('admin.show_patients', compact('Pdata','search'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
@@ -253,7 +280,7 @@ class AdminController extends Controller
 
    public function updatepatient($id)
    {
-     
+
       $Pdata = user::find($id);
       return view('admin.update_patient', compact('Pdata'));
    }
@@ -373,7 +400,7 @@ class AdminController extends Controller
       $user = user::all();
       return view('frontend.index', compact('doctor','user'));
    }
-   
+
    public function show_records()
    {
       $data = records::all();

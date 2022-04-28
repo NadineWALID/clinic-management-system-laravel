@@ -10,6 +10,7 @@
                 padding: 25px;
                 margin-bottom: 5px;
                 background: rgb(211, 240, 208);
+                columns: black;
             }
             #searchbutton{
                 padding: 10px;
@@ -53,7 +54,7 @@
                 <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                         <th style="color:black;">No</th>
-                        
+
                      <!--   <th style="padding:10px; color:black; margin-left:500px;">Patient's lastName</th> -->
                         <th style="padding:10px; color:black;">Patient's Name</th>
                         <th style="padding:10px; color:black;">Patient's Email</th>

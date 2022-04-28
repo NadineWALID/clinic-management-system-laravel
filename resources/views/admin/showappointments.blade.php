@@ -1,21 +1,38 @@
 <x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
-    
+
     <head>
       <!-- Required meta tags -->
       @include('admin.adminmaster')
+      <style>
+          #searchinput{
+                padding: 25px;
+                margin-bottom: 5px;
+                background: rgb(211, 240, 208);
+                color: black;
+            }
+      </style>
     </head>
     <body>
       <div class="container-scroller">
         <!-- partial:partials/_sidebar.html -->
       @include('admin.sidebar')
         <!-- partial -->
-        
-        @include('admin.navbar') 
+
+        @include('admin.navbar')
           <!-- partial -->
-          
+
           <div align="center" style="padding:100px;">
+            <form action="" style=" width:1000px;">
+                <div class="form-group">
+                    <input id="searchinput" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search for doctors/patient using first name, last name or phone number">
+                    <button style="padding:10px;" class="btn btn-success">Search</button>
+                    <a href="{{url('/showappointments')}}">
+                        <button style="padding:10px;" class="btn btn-primary" type="button">Reset</button>
+                    </a>
+                </div>
+            </form>
               <table id="myTable2">
                   <tr style="background-color:rgb(138, 235, 135);">
                       <th onclick="sortTable(0)" style="padding:10px; color:black; cursor: pointer;">Patient Name</th>
@@ -114,7 +131,7 @@ function sortTable(n) {
           </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
-            
+
             <!-- partial -->
           </div>
           <!-- main-panel ends -->
