@@ -65,7 +65,7 @@ class HomeController extends Controller
           $doctor = doctor::all(); 
           $post  = posts::all();
           $user =user::all();
-          return view('user.home',compact('doctor','date'),compact('post','user','date'));
+          return view('user.home',compact('doctor','date'),compact('post','user'));
         }
       }
      

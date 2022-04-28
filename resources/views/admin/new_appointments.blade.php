@@ -13,7 +13,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
     <style>
-       <style>
+     
+    
+            td.fc-day.fc-past {
+             background-color: #EEEEEE;
+            }
+   
             label
             {
               width: 100%;
@@ -361,12 +366,17 @@ var calendar = $('#calendar').fullCalendar({
     selectHelper: true,
     select:function(start, end, allDay)
     {
+       var date_today= moment().format('Y-MM-DD');
        // $('#spanId').text(doctor);
        document.getElementById("doctor_id").value = doctor;
        var start_date = $.fullCalendar.formatDate(start, 'Y-MM-DD');
        document.getElementById("date").value = start_date;
        // $('#dateId').text(start_date);
+       if (start_date >= date_today)
+       {
         modalObject.style.display="block";
+       }
+       
         var date = new Date(start);
         var start_dateTime = $.fullCalendar.formatDate(start,'Y-MM-DD HH:mm:ss');
         document.getElementById("date_time").value = start_dateTime;
@@ -469,6 +479,12 @@ var calendar = $('#calendar').fullCalendar({
             })
         }*/
     },
+    eventConstraint: {
+            start: moment().format('Y-MM-DD HH:mm:ss'),
+            end: '2100-01-01' // hard coded goodness unfortunately
+    },
+    
+   
     eventResize: function(event, delta)
     {
         var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
