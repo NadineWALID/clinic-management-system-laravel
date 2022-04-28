@@ -24,6 +24,7 @@
                 padding: 25px;
                 margin-bottom: 5px;
                 background: rgb(211, 240, 208);
+                color: black;
             }
 
 
