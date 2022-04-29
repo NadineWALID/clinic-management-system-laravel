@@ -27,10 +27,23 @@ class FullCalenderController extends Controller
     	}
     	return view('admin.full-calender',compact('doctors'));
     }*/
-	public function appointment(Request $request)
+	
+	  public function store(Request $request)
       {
+<<<<<<< HEAD
         
 		$time = $request->date.' '.$request->time.':00';
+=======
+       
+        $request->validate([
+            
+            'email'         => 'required|email',
+            'fname'          => 'required',
+			'lname'          => 'required',
+			'phone'        => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
+        ]);
+        $time = $request->date.' '.$request->time.':00';
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
         $data = new appointment;
         $user = new user;
         $patient =new patient;
@@ -49,16 +62,40 @@ class FullCalenderController extends Controller
         $patient->date_of_birth = $request->date_of_birth;
         $data->doctor_id=$request->doctor_id;
         $data->date=$request->date;
-        $data->time=$request->time;
+        $data->time=$request->date;
         $data->start=$time;
         $data->end=$time;
+<<<<<<< HEAD
 		$data->status='Approved';
         $user->save();
         $patient->id = $user->id ;
+=======
+		$data->address=$request->address;
+        $data->gender=$request->gender;
+        $data->status='Approved';
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
         $data->save();
         $patient->save();
           return redirect()->back()->with('message','Appointment Request Successful');
         //return response()->json($data);
+<<<<<<< HEAD
+=======
+        return response()->json(['success'=>'Successfully']);
+      }
+	  public function edit(Request $request)
+      {
+       
+		$appointment = appointment::find($request->id);
+     
+        $time = $request->date.' '.$request->time.':00';
+		$appointment->start=$time;
+        $appointment->end=$time;
+        $appointment->save();
+        
+  
+        return response()->json(['success'=>'Successfully']);
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
       }
 	public function newindex(Request $request)
     {

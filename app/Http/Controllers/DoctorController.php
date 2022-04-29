@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\Appointment;
@@ -79,16 +80,10 @@ class DoctorController extends Controller
                  
                  <tr>
                  <td>'.$row->id.'</td>
-                 <td>'.$row->name.'</td>
+                 <td>'.$row->name.' '.$row->lname.'</td>
                  <td>'.$row->email.'</td>
                  <td>'.$row->phone_no.'</td>
-                 <td>
-                    <a class="btn btn-success button" name="button" >View History</a>
-                </td>
-                <td>
-                     
-                    <a class="btn btn-success" href="'.url('write_prescription_my_patients',$row->id).'">Write a Prescription</a>
-                </td>
+                
                  </tr>
                   ';
             }
@@ -107,7 +102,7 @@ class DoctorController extends Controller
 
     
     public function search2(Request $request){
-        //echo "<h2>" . $request->search2 . "</h2>";
+        
         if($request->ajax()){
             $data = Patient::find($request->search2);
             $user = User::find($request->search2);
@@ -118,11 +113,12 @@ class DoctorController extends Controller
               ->where('user_id','=',$request->search2)
               ->get();
             
-            
-            //$output=''.$request->search2.'';
+            $dateToday=date("Y-m-d");
+            $age = date_diff(date_create($data->date_of_birth), date_create($dateToday));
             
     
         }
+       
         $output='';
         if(($data)!= null){
            
@@ -234,7 +230,7 @@ class DoctorController extends Controller
                                 <h5 class="font-medium">Height:</h5> '. $data->height.'
                                 </li>
                                 <li>
-                                <h5 class="font-medium">Age:</h5> '. $data->date_of_birth.'
+                                <h5 class="font-medium">Age:</h5> '. $age->format("%y").'
                                 </li>
                                 <li>
                                 <h5 class="font-medium">Blood Type:</h5> '. $data->blood_type.'
@@ -285,18 +281,37 @@ class DoctorController extends Controller
         return view('doctor.mypatients',compact('data'));
     }
   
-    function index()
+    function index(Request $request)
     {
-       // $data = DB:: table('users')->orderBy('name')->cursorPaginate(15);
-       $doctor=Auth::id();
+        $doctor=Auth::id();
+        $search=$request['search'] ?? "";
+        if($search != "")
+        {
+            
+            $data = User :: join('tokens', 'users.id', '=', 'tokens.user_id')
+            ->where ('doctor_id','like',$doctor)
+            ->where ('users.phone_no','like',"%$search%")
+            ->orwhere ('users.name','like',"%$search%")
+            ->orwhere ('users.lname','like',"%$search%")
+            ->orwhere ('users.email','like',"%$search%")
+            ->orderBy('name')->cursorPaginate(15);
+
+        }
+        else
+        {
+       
+       
        $data = User::join('tokens', 'users.id', '=', 'tokens.user_id')
                 ->where('tokens.doctor_id','=',$doctor)
                 ->orderBy('name')->cursorPaginate(15);
-               // ->get(['users.*']);
-               
-     return view('doctor.mypatients',[
+        }
+              
+        return view('doctor.mypatients', compact('data','search'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+     /*return view('doctor.mypatients',[
          'data'=> $data
-     ]);
+     ]);*/
+
     }
 
 
@@ -451,8 +466,18 @@ class DoctorController extends Controller
        return redirect()->back();
     }
    
-    
 
 
    
 }
+
+/*
+
+ <td>
+                    <a class="btn btn-success button" id="button" name="button" >View History</a>
+                </td>
+                <td>
+                     
+                    <a class="btn btn-success" href="'.url('write_prescription_my_patients',$row->id).'">Write a Prescription</a>
+                </td>
+*/

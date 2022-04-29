@@ -175,9 +175,13 @@
           <label class="label" for="html">Address:</label>
           <input type="text" name="address_info" readonly="readonly"  id="address_info" class="form-control" >
           </div>
+<<<<<<< HEAD
       
 
           
+=======
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
              <label class="label" for="html">Time : </label>
           </div>
@@ -221,8 +225,15 @@ var modalObject = document.getElementById("myModal");
 var modalObjectInformation = document.getElementById("myInformation");
 var spanObject = document.getElementById("close");
 var spanObjectInformation = document.getElementById("closeInformation");
+<<<<<<< HEAD
 $('#SubmitForm').on('submit',function(e){
     e.preventDefault();
+=======
+
+$('#SubmitForm').on('submit',function(e){
+    e.preventDefault();
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
     let fname = $('#fname').val();
     let lname = $('#lname').val();
     let email = $('#email').val();
@@ -266,8 +277,15 @@ $('#SubmitForm').on('submit',function(e){
       });
       
     });
+<<<<<<< HEAD
   $('#EditForm').on('submit',function(e){
     e.preventDefault();
+=======
+
+  $('#EditForm').on('submit',function(e){
+    e.preventDefault();
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
     
     let time = $('#time_info').val();
     let id = $('#id_info').val();
@@ -293,12 +311,20 @@ $('#SubmitForm').on('submit',function(e){
       });
       
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 spanObject.onclick =function(){
     modalObject.style.display="none";
 }
 spanObjectInformation.onclick =function(){
     modalObjectInformation.style.display="none";
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 var doctor = $('#doctor').val();
 function doctorChosen(){
     doctor = $('#doctor').val();
@@ -311,6 +337,10 @@ $('#button').click(function(e) {
     //console.log(getDoctor());
     $('#calendar').fullCalendar('refetchEvents');
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 $('#deleteButton').click(function(e) {
          let id = $('#id_info').val();
          $.ajax({
@@ -328,6 +358,11 @@ $('#deleteButton').click(function(e) {
                 }
             })
 })
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 $.ajaxSetup({
     headers:{
         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
@@ -445,6 +480,10 @@ var calendar = $('#calendar').fullCalendar({
         document.getElementById("time_info").value = time;
         var start_date = $.fullCalendar.formatDate(event.start, 'Y-MM-DD');
         document.getElementById("date_info").value = start_date;
+<<<<<<< HEAD
+=======
+
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
        /* if(confirm("Do you want to remove this appointment?"))
         {
            
@@ -462,11 +501,19 @@ var calendar = $('#calendar').fullCalendar({
                 }
             })
         }*/
+<<<<<<< HEAD
     },
     eventConstraint: {
             start: moment().format('Y-MM-DD HH:mm:ss'),
             end: '2100-01-01' // hard coded goodness unfortunately
     },
+=======
+    },
+    eventConstraint: {
+            start: moment().format('Y-MM-DD HH:mm:ss'),
+            end: '2100-01-01' // hard coded goodness unfortunately
+    },
+>>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
     
    
     eventResize: function(event, delta)
