@@ -50,7 +50,7 @@
 
                 <div style="padding:15px;">
                     <label>Phone Number</label>
-                    <input style="color:grey;" type="text" name="phone_number" value="{{$data->phone_number}}">
+                    <input style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$data->phone_number}}">
                 </div>
 
                 <div style="padding:15px;">

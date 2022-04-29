@@ -71,10 +71,15 @@
                        <label>last name</label>
                        <input type="text" style="color:black;" name="lname" placeholder="Write patients's last name" required="">
                       </div>
+
+                      <div style="padding:20px; position: relative;">
+                       <label>address</label>
+                       <input type="text" style="color:black;" name="address" placeholder="Write patients's address" required="">
+                      </div>
                       
                       <div style="padding:20px;">
                        <label>Phone number</label>
-                       <input type="number" style="color:black;" name="number" placeholder="Write phone number" required="">
+                       <input type="number" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
                       </div>                  
  
     
@@ -145,13 +150,13 @@
                     <label for="html">Lab results (if exists)</label>
                     </div>
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-                     <input type="file" name="lab_file" >
+                     <input type="file" name="lab_file">
                      </div>
                   <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
                     <label for="html">Radiology images (if exists)</label>
                    </div>
                    <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-                    <input type="file" name="rd_file" >
+                    <input type="file" name="rd_file" id="rd_file" >
                      </div>
     
                       <div style="padding:20px; position: relative; left:10px;">

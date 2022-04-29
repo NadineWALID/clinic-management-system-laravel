@@ -17,16 +17,10 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->string('user_id')->nullable();
             $table->integer('doctor_id');
-            $table->string('f_name');
-            $table->string('l_name');
-            $table->string('email')->nullable();
-            $table->string('phone');
             $table->string('date');
             $table->dateTime('start')->nullable();
             $table->dateTime('end')->nullable();
             $table->string('time');
-            $table->string('gender');
-            $table->string('address')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

@@ -71,7 +71,7 @@
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Phone Number</label>
-            <input type="text" name="phone"class="form-control" placeholder="Phone Number....">
+            <input type="text" name="phone"class="form-control" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Phone Number....">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Address</label>
@@ -100,6 +100,34 @@
              @endforeach
                 @endforeach
             </select>
+          </div>
+          <div style="padding:20px; position: relative;">
+               <label>Blood type</label>
+              <select  name="blood_type" placeholder="Blood Type"class="custom-select" style="width: 60% !important;">
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              </select>
+              </div>
+                      
+           <div style="padding:20px;">
+              <label>Height(cm)</label>
+              <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
+              </div>
+
+          <div style="padding:20px;">
+              <label>Weight(kg)</label>
+              <input type="number" style="color:black;" name="weight" placeholder="Write weight(kg)" required="">
+              </div>
+
+          <div style="padding:20px;">
+              <label>Date of birth</label>
+              <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Date</label>

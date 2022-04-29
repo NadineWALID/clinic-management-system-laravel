@@ -26,7 +26,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="phone_no" value="{{ __('Phone number') }}" />
-                <x-jet-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')" required />
+                <x-jet-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')"  pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required />
             </div>
 
             <div class="mt-4">

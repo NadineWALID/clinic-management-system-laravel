@@ -51,7 +51,7 @@
 
                     <div style="padding:15px; position: relative;">
                         <label>Phone Number</label>
-                        <input size="23" style="color:grey;" type="text" name="phone_number" value="{{$Adata->phone_number}}">
+                        <input size="23" style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$Adata->phone_number}}">
                     </div>
 
                     <div style="padding:20px; position: relative;">

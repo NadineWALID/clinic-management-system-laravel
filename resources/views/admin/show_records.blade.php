@@ -53,8 +53,8 @@
                             <td>{{ $record->diagnosis }}</td>
                             <td>{{ $record->medicine }}</td>
                             <td>{{ $record->blood_type }}</td>
-                            <td><img src="labs/{{$record->lab_results }}" width="100%" height="500px"></td>
-                            <td><img src=" Radiology/{{$record->radiology_image }}" width="100%" height="500px"></td>
+                            <td><a href="labs/{{$record->lab_results }}" width="100%" height="500px">view</a></td>
+                            <td><a href=" Radiology/{{$record->radiology_image }}" width="100%" height="500px">view</a></td>
                             <td>{{ $record->allergies }}</td>
                             <td>{{ $record->chronic_diseases }}</td>
                             <td>

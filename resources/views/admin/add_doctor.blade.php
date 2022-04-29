@@ -75,7 +75,7 @@
                   
                   <div style="padding:20px;">
                    <label>Phone Number</label>
-                   <input type="text" style="color:black;" name="number" placeholder="Write phone number" required="">
+                   <input type="text" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
                   </div>
 
                   <div style="padding:20px;">

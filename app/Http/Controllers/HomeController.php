@@ -9,6 +9,7 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\Posts;
 use App\Models\Records;
+use App\Models\Patient;
 use DB;
 class HomeController extends Controller
 {
@@ -71,8 +72,6 @@ class HomeController extends Controller
       public function appointment(Request $request)
       {
         
-        $appoint=new appointment;
-        $data = new appointment;
         if(Auth::id()){
           $data->user_id=Auth::id();
         }else{
@@ -89,22 +88,32 @@ class HomeController extends Controller
 
         }
         $time = $request->date.' '.$request->time.':00';
-        $data->f_name=$request->fname;
-        $data->l_name=$request->lname;
-        $data->email=$request->email;
-        $data->phone=$request->phone;
+        $data = new appointment;
+        $user = new user;
+        $patient =new patient;
+
+        $user->name=$request->fname;
+        $user->lname=$request->lname;
+        $user->email=$request->email;
+        $user->phone_no=$request->phone;
+        $user->password=NULL;
+        $user->role_id = 3;
+		    $patient->address=$request->address;
+        $patient->gender=$request->gender;
+        $patient->weight = $request->weight;
+        $patient->height = $request->height;
+        $patient->blood_type = $request->blood_type;
+        $patient->date_of_birth = $request->date_of_birth;
         $data->doctor_id=$request->doctor;
         $data->date=$request->date;
         $data->time=$request->time;
         $data->start=$time;
         $data->end=$time;
-        $data->address=$request->address;
-        $data->gender=$request->gender;
         $data->status='In Progress';
+        $user->save();
+        $patient->id = $user->id ;
         $data->save();
-        
-
-          $data->save();
+        $patient->save();
           return redirect()->back()->with('message','Appointment Request Successful');
       }
 
@@ -113,10 +122,7 @@ class HomeController extends Controller
         if(Auth::id())
         {
           $userid=Auth::user()->id;
-          $appoint=new appointment;
-          
-         
-                           
+          $appoint=new appointment;                 
          $appoint= DB::table('appointments')
                  ->select('*')
                  ->where('user_id','=',$userid)

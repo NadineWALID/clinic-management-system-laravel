@@ -77,6 +77,7 @@ class AdminController extends Controller
       $user->lname = $request->lname;
       $user->role_id = 3;
       $user->save();
+      $patient->address = $request->address;
       $patient->blood_type = $request->blood_type;
       $patient->height = $request->height;
       $patient->weight = $request->weight;
@@ -86,10 +87,17 @@ class AdminController extends Controller
       $patient->save();
       $record->user_id = $user->id;
       $record->medicine = $request->medicine;
-      $record->radiology_image = $request->radiology_image;
+      $image=$request->rd_file;
+      $imagename = time() . '.' . $image->getClientOriginalExtension();
+      $request->rd_file->move('Radiology', $imagename);
+      $record->radiology_image  = $imagename;
+   
+      $image2=$request->lab_file;
+      $imagename2 = time() . '.' . $image2->getClientOriginalExtension();
+      $request->lab_file->move('labs', $imagename2);
+      $record->lab_results  = $imagename2;
       $record->gender = $request->gender;
       $record->blood_type = $request->blood_type;
-      $record->lab_results = $request->lab_results;
       $record->allergies = $request->allergies;
       $record->chronic_diseases = $request->chronic_diseases;
       $record->save();
@@ -326,6 +334,7 @@ class AdminController extends Controller
    {
       $patient = user::find($id);
       // $patient2=user::find($id);
+      $patient->address = $request->address;
       $patient->blood_type = $request->blood_type;
       $patient->height = $request->height;
       $patient->weight = $request->weight;

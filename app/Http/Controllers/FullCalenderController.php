@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\User;
+use App\Models\Patient;
 
 class FullCalenderController extends Controller
 {
@@ -28,28 +30,35 @@ class FullCalenderController extends Controller
 	public function appointment(Request $request)
       {
         
-        
-        $time = $request->date.' '.$request->time.':00';
+		$time = $request->date.' '.$request->time.':00';
         $data = new appointment;
-        $data->f_name=$request->fname;
-        $data->l_name=$request->lname;
-        $data->email=$request->email;
-        $data->phone=$request->phone;
+        $user = new user;
+        $patient =new patient;
+
+        $user->name=$request->fname;
+        $user->lname=$request->lname;
+        $user->email=$request->email;
+        $user->phone_no=$request->phone;
+        $user->password=NULL;
+        $user->role_id = 3;
+		$patient->address=$request->address;
+        $patient->gender=$request->gender;
+        $patient->weight = $request->weight;
+        $patient->height = $request->height;
+        $patient->blood_type = $request->blood_type;
+        $patient->date_of_birth = $request->date_of_birth;
         $data->doctor_id=$request->doctor_id;
         $data->date=$request->date;
         $data->time=$request->time;
         $data->start=$time;
         $data->end=$time;
-
-		
-        $data->address=$request->address;
-        $data->gender=$request->gender;
-        $data->status='Approved';
+		$data->status='Approved';
+        $user->save();
+        $patient->id = $user->id ;
         $data->save();
-        
-
+        $patient->save();
+          return redirect()->back()->with('message','Appointment Request Successful');
         //return response()->json($data);
-        return redirect()->back()->with('message','Appointment Request Successful');
       }
 	public function newindex(Request $request)
     {

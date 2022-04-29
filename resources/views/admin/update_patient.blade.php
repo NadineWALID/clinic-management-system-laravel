@@ -68,6 +68,12 @@
                         <label>date of birth</label>
                         <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
                        </div>
+
+                       
+                      <div style="padding:20px;">
+                        <label>address</label>
+                        <input type="text" style="color:black;" name="address" required="">
+                       </div>
  
     
                       <div style="padding:20px;">
