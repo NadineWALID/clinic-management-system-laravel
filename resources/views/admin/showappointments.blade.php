@@ -12,6 +12,14 @@
                 background: rgb(211, 240, 208);
                 color: black;
             }
+            th,
+            td {
+                width: 150px;
+                text-align: center;
+                border: 1px solid rgba(26, 27, 26, 0.904);
+                padding: 5px;
+            }
+
       </style>
     </head>
     <body>
@@ -41,8 +49,6 @@
                       <th onclick="sortTable(4)" style="padding:10px; color:black; cursor: pointer;">Doctor Name</th>
                       <th onclick="sortTable(5)" style="padding:10px; color:black; cursor: pointer;">Date</th>
                       <th style="padding:10px; color:black;">Time</th>
-                      <th style="padding:10px; color:black;">Gender</th>
-                      <th style="padding:10px; color:black;">Address</th>
                       <th onclick="sortTable(8)" style="padding:10px; color:black; cursor: pointer;">Status</th>
                       <th style="padding:10px; color:black;">Approve Appointment</th>
                       <th style="padding:10px; color:black;">Cancel Appointment</th>
@@ -51,14 +57,12 @@
 
                   @foreach($data as $appoint)
                   <tr align="center" style="background-color:rgb(23, 73, 29);">
-                      <td>{{$appoint->f_name}} {{$appoint->l_name}}</td>
+                      <td>{{$appoint->name}} {{$appoint->lname}}</td>
                       <td>{{$appoint->email}}</td>
-                      <td>{{$appoint->phone}}</td>
+                      <td>{{$appoint->phone_no}}</td>
                       <td>Dr. {{$appoint->name}} {{$appoint->lname}}</td>
                       <td>{{$appoint->date}}</td>
                       <td>{{$appoint->time}}</td>
-                      <td>{{$appoint->gender}}</td>
-                      <td>{{$appoint->address}}</td>
                       <td>{{$appoint->status}}</td>
                       <td>
                           <a class="btn btn-success" href="{{url('approved',$appoint->id)}}">Approve</a>

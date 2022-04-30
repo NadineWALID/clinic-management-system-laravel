@@ -64,14 +64,14 @@ class AdminController extends Controller
       $doctor->speciality = $request->speciality;
       $doctor->id = $user->id;
       $doctor->save();
-      
+
 
       return redirect()->back()->with('message', 'Doctor Is Added Successfully');
       }
       else{
          return redirect()->back()->with('message', 'This Email and Phone are already regestered on system');
       }
-      
+
    }
 
    public function uploadPatient(Request $request)
@@ -79,7 +79,7 @@ class AdminController extends Controller
       $patient = new patient;
       $user = new user;
       $record = new records;
-      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first(); 
+      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
       if($old_user===null){ //patient not saved on system
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
@@ -100,7 +100,7 @@ class AdminController extends Controller
       $imagename = time() . '.' . $image->getClientOriginalExtension();
       $request->rd_file->move('Radiology', $imagename);
       $record->radiology_image  = $imagename;
-   
+
       $image2=$request->lab_file;
       $imagename2 = time() . '.' . $image2->getClientOriginalExtension();
       $request->lab_file->move('labs', $imagename2);
@@ -121,9 +121,9 @@ class AdminController extends Controller
 
    public function uploadAdmin(Request $request)
    {
-      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first(); 
+      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
       if($old_user===null){ //patient not saved on system
-      
+
       $user = new user;
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
@@ -132,7 +132,7 @@ class AdminController extends Controller
       $user->lname = $request->lname;
       $user->role_id = 2;
       $user->save();
-     
+
 
 
       return redirect()->back()->with('message', 'Admin Is Added Successfully');
@@ -147,22 +147,17 @@ class AdminController extends Controller
       $search=$request['search'] ?? "";
       if($search != "")
       {
-         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
-         // search using doctor's credentials
+         $data = User :: join('appointments', 'users.id', '=', 'appointments.user_id')
+         // search
                   ->where('name','LIKE',"%$search%")
                   ->orWhere('lname','LIKE',"%$search%")
                   ->orWhere('phone_no','LIKE',"%$search%")
-                  // search using patient's credentials
-                  ->orWhere('f_name','LIKE',"%$search%")
-                  ->orWhere('l_name','LIKE',"%$search%")
-                  ->orWhere('phone','LIKE',"%$search%")
-                  
                   ->get();
 
       }
       else
       {
-         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
+         $data = User :: join('appointments', 'users.id', '=', 'appointments.user_id')
                            ->get();
       }
 
@@ -170,19 +165,6 @@ class AdminController extends Controller
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
-  /* public function showappointments()
-   {
-      $appoint= DB::table('appointments')
-                 ->select('*')
-                 ->get();
-
-
-         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
-                 ->get();
-
-
-          return view('admin.showappointments',compact('data'));
-   }*/
 
    public function approved($id)
    {
@@ -193,7 +175,7 @@ class AdminController extends Controller
          $create = token::firstOrCreate(array('user_id' => $data->user_id,'doctor_id' => $data->doctor_id));
          $create->save();
       }
-     
+
       $data->save();
       return redirect()->back();
    }
@@ -287,7 +269,7 @@ class AdminController extends Controller
 
    public function deleteadmin($id)
    {
-      
+
       $Adata2 = user::find($id);
       $Adata2->delete();
       return redirect()->back();
@@ -310,9 +292,9 @@ class AdminController extends Controller
 
    public function updateadmin($id)
    {
-      
+
       $Adata = user::find($id);
-      
+
       return view('admin.update_admin', compact('Adata'));
    }
 
@@ -357,7 +339,7 @@ class AdminController extends Controller
          $record->save();
       }
       $patient->save();
-      
+
       return redirect()->back()->with('message', 'Patient Updated Successfully');
    }
 

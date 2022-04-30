@@ -38,7 +38,7 @@
                         <th style="padding:10px; color:black; margin-left:500px;">Receptionist's Name</th>
                       <!--  <th style="padding:10px; color:black; margin-left:500px;">last name</th> -->
                         <th style="padding:10px; color:black;">Phone Number</th>
-                        <th style="padding:10px; color:black;">date of birth</th>
+                     <!--   <th style="padding:10px; color:black;">date of birth</th>  -->
                         <th style="padding:10px; color:black;">Update</th>
                         <th style="padding:10px; color:black;">Delete</th>
                     </tr>
@@ -47,9 +47,7 @@
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             <td>{{ ++$i }}</td>
                             <td>{{ $admin->name }} {{ $admin->lname }}</td>
-                          <!--  <td>{{ $admin->lname }}</td>  -->
-                            <td>{{ $admin->phone_number }}</td>
-                            <td>{{ $admin->date_of_birth}}</td>
+                            <td>{{ $admin->phone_no }}</td>
                             <td>
                                 <a class="btn btn-warning" href="{{ url('updateadmin', $admin->id) }}">Update</a>
                             </td>
