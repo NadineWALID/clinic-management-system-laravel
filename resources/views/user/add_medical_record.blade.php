@@ -23,24 +23,22 @@
          
                       
         <div class="row mt-5 ">
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Date of birth: </div>
-        <input type="date" class="col-12 col-sm-6 py-2 wow fadeInRight" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
-         
+        
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Weight(kg): </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="weight" class="form-control" placeholder="Weight">
+            <input type="text" name="weight" id="weight" class="form-control" required="" placeholder="Weight">
           </div>
 
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Height(cm): </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="height" class="form-control" placeholder="Height">
+            <input type="text" name="height" id="height" class="form-control" required="" placeholder="Height">
           </div>
 
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Gender :</label>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <select  name="gender" id="departement" placeholder="Gender"class="custom-select">
+            <select  name="gender" id="gender" placeholder="Gender"class="custom-select">
               <option value="female">Female</option>
               <option value="male">Male</option>
             </select>
@@ -66,13 +64,13 @@
           <input type="text" name="medicine" class="form-control" placeholder="Medicine">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-           Please Enter Your Alergies if exists:
+           Please Enter Your Alergies if exists (If Exists):
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <input type="text" name="allergies" class="form-control" placeholder="Allergies">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-           Please Enter Any Chronic Diseases You Have:
+           Please Enter Any Chronic Diseases You Have (If Exists):
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <input type="text" name="chronic_diseases"class="form-control" placeholder="Chronic Diseases">
@@ -96,7 +94,7 @@
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Next</button>
         
       </form>
-      
+      <a href="{{url('skip_medical_record')}}" class="btn btn-primary mt-3 wow zoomIn">Skip </a>
     </div>
   </div> <!-- .page-section -->
   

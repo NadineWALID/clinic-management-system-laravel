@@ -11,9 +11,6 @@
               <a class="nav-link" href="{{url('addprescription')}}" >Add Prescription</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('record')}}" >Add Medical Record</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{{url('mypatients')}}">My Patients</a>
             </li>
             <li class="nav-item active">

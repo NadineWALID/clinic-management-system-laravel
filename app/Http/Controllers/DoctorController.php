@@ -380,7 +380,7 @@ class DoctorController extends Controller
         if(Auth::id())
         {
             $userid=Auth::user()->id;
-            if (patient::find($userid)===null)
+          /*  if (patient::find($userid)===null)
             {
                 $patient=new patient;
                 $patient->id=$userid;
@@ -390,7 +390,7 @@ class DoctorController extends Controller
                 $patient->blood_type=$request->blood_type;
                 $patient->date_of_birth=$request->date_of_birth;
                 $patient->save();
-            }
+            }*/
            
 
 
@@ -398,12 +398,31 @@ class DoctorController extends Controller
        $record=new records;
        $record->id=$userid;
        $record->user_id=$userid;
-       $record->medicine=$request->medicine;
-       $record->gender=$request->gender;
-       //$record->diagnosis=$request->diagnosis;
        $record->blood_type=$request->blood_type;
-       $record->allergies=$request->allergies;
-       $record->chronic_diseases=$request->chronic_diseases;
+       $record->height=$request->height;
+       $record->weight=$request->weight;
+       if($request->medicine == null)
+       {
+        $record->medicine='none';
+       }
+       else{
+        $record->medicine=$request->medicine;
+       }
+       if($record->allergies == null)
+       {
+        $record->allergies='none';
+       }
+       else{
+        $record->allergies=$request->allergies;
+       }
+       if($record->chronic_diseases == null)
+       {
+        $record->chronic_diseases='none';
+       }
+       else{
+        $record->chronic_diseases=$request->chronic_diseases;
+       }
+
        if ($request->lab_file != null){
         $labfile = $request->lab_file;
         $lab = time() . '.' . $labfile->getClientOriginalExtension();

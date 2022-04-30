@@ -14,7 +14,7 @@ use DB;
 class HomeController extends Controller
 {
   public function redirect(){
-    $data=Records::where('user_id', '=', Auth::user()->id);
+    
     $date = date('Y-m-d',time());
     if (Auth::id())
     {
@@ -32,6 +32,8 @@ class HomeController extends Controller
         }
         else
         {
+          $data=Records::find(Auth::id());
+
           if($data === null)
           {
             $doctor = doctor::all();
@@ -169,6 +171,13 @@ class HomeController extends Controller
       }
       public function diagnosis(){
         return view ('diagnosis.index');
+      }
+      public function skip(){
+        $date = date('Y-m-d',time());
+        $doctor = doctor::all();
+        $post  = posts::all();
+        $user =user::all();
+        return view('user.home',compact('doctor','date','post','user'));
       }
 }
 

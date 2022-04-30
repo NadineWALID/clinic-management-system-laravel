@@ -48,6 +48,7 @@ Route::get('/myappointment', [HomeController::class,'my_appointment']);
 Route::get('/update_appoint/{id}', [HomeController::class,'update_appoint']);
 Route::post('/edit_appoint/{id}', [HomeController::class,'edit_appoint']);
 Route::get('/edit_appoint/{id}', [HomeController::class,'edit_appoint']);
+Route::get('/skip_medical_record', [HomeController::class,'skip']);
 Route::get('/showappointments', [AdminController::class,'showappointments']);
 Route::get('/approved/{id}', [AdminController::class,'approved']);
 Route::get('/canceled/{id}', [AdminController::class,'canceled']);
