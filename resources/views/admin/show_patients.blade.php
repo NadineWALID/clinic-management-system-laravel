@@ -59,9 +59,6 @@
                         <th style="padding:10px; color:black;">Patient's Name</th>
                         <th style="padding:10px; color:black;">Patient's Email</th>
                         <th style="padding:10px; color:black;">Phone Number</th>
-                        <th style="padding:10px; color:black; margin-left:500px;">Patient's Blood Type</th>
-                        <th style="padding:10px; color:black;">Patient's Height</th>
-                        <th style="padding:10px; color:black;">Patient's Weight</th>
                         <th style="padding:10px; color:black;">date of birth</th>
                         <th style="padding:10px; color:black;">Patient's Gender</th>
                         <th style="padding:10px; color:black;">Update</th>
@@ -74,9 +71,6 @@
                             <td>{{ $patients->name }}</td>
                             <td>{{ $patients->lname }}</td>
                             <td>{{ $patients->phone_no }}</td>
-                            <td>{{ $patients->blood_type }}</td>
-                            <td>{{ $patients->height }}</td>
-                            <td>{{ $patients->weight }}</td>
                             <td>{{ $patients->date_of_birth}}</td>
                             <td>{{ $patients->gender }}</td>
                             <td>

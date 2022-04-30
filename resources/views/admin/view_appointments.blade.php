@@ -51,8 +51,8 @@ th, td {
                       <td>{{ $doctor->name }} {{ $doctor->lname }}
                         speciality:{{$doctor->speciality}}
                       </td>
-                      <td>Name:{{$appoint->f_name}} {{$appoint->l_name}} <br>
-                        hone: {{$appoint->phone}}
+                      <td>Name:{{$appoint->name}} {{$appoint->lname}} <br>
+                        hone: {{$appoint->phone_no}}
                       </td>
                       <td>
                           <a class="btn btn-success" href="{{url('approved',$appoint->id)}}">Approve</a>

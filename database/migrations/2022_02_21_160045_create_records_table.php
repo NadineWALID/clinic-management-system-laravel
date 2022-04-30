@@ -18,7 +18,8 @@ class CreateRecordsTable extends Migration
             $table->string('user_id');
             $table->string('medicine')->nullable();
             $table->string('radiology_image')->nullable();
-            $table->string('gender');
+            $table->string('height');
+            $table->string('weight');
             $table->string('blood_type');
             $table->string('lab_results')->nullable();;
             $table->string('allergies')->nullable();;

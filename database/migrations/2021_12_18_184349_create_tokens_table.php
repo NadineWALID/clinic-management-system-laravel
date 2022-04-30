@@ -14,10 +14,11 @@ class CreateTokensTable extends Migration
     public function up()
     {
         Schema::create('tokens', function (Blueprint $table) {
-            $table->token_id();
-            $table->integer('doctor_id');
+            $table->id('token_id');
             $table->integer('user_id');
+            $table->string('doctor_id');
             $table->timestamps();
+            
         });
     }
 

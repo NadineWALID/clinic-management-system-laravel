@@ -40,17 +40,17 @@
                 @csrf
                 <div style="padding:20px; position: relative;">
                    <label>Doctor First Name</label>
-                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's first name" required="">
+                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's first name" required="" value="{{$data->name}}">
                   </div>
                   
                   <div style="padding:20px; position: relative;">
                    <label>Doctor Last Name</label>
-                   <input type="text" style="color:black;" name="lname" placeholder="Write Doctor's last name" required="">
+                   <input type="text" style="color:black;" name="lname" placeholder="Write Doctor's last name" required="" value="{{$data->lname}}">
                   </div>
 
                 <div style="padding:15px;">
                     <label>Phone Number</label>
-                    <input style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$data->phone_number}}">
+                    <input style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$data->phone_no}}">
                 </div>
 
                 <div style="padding:15px;">

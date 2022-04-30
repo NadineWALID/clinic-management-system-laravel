@@ -8,7 +8,7 @@
   }
 </style>
 <body>
-<h1 >Select your language</h1>
+
 <div id="google_translate_element"></div>
   <div class="page-hero bg-image " style="background-image: url(../assets/img/doc.jpg); ">
     <div class="hero-section">

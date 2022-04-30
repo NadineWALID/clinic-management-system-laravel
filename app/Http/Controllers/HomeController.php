@@ -37,13 +37,13 @@ class HomeController extends Controller
             $doctor = doctor::all();
             $post  = posts::all();
             $user =user::all();
-            return view('user.add_medical_record',compact('doctor','date'),compact('post','user'));
+            return view('user.add_medical_record',compact('doctor','date','post','user'));
           }
           else{
             $doctor = doctor::all();
             $post  = posts::all();
             $user =user::all();
-            return view('user.home',compact('doctor','date'),compact('post','user'));
+            return view('user.home',compact('doctor','date','post','user'));
           }
          
         }
@@ -66,7 +66,7 @@ class HomeController extends Controller
           $doctor = doctor::all(); 
           $post  = posts::all();
           $user =user::all();
-          return view('user.home',compact('doctor','date'),compact('post','user'));
+          return view('user.home',compact('doctor','date','post','user'));
         }
       }
      
@@ -75,7 +75,7 @@ class HomeController extends Controller
       {
         
         if(Auth::id()){
-          $data->user_id=Auth::id();
+          $id_user=Auth::id();
         }else{
           $user = User::where('email', '=', $request->email)->first();
           if ($user === null) {
@@ -83,39 +83,38 @@ class HomeController extends Controller
           }
 
           if ($user === null){
+            $user = new user;
+            $patient =new patient;
+            $user->name=$request->fname;
+            $user->lname=$request->lname;
+            $user->email=$request->email;
+            $user->phone_no=$request->phone;
+            $user->password=NULL;
+            $user->role_id = 3;
+            $user->save();
+            $patient->address=$request->address;
+            $patient->gender=$request->gender;
+            $patient->date_of_birth = $request->date_of_birth;
+            $patient->id = $user->id ;
+            $patient->save();
+            $id_user= $user->id ;
 
           }else{
-            $data->user_id=$user->id;
+            $id_user=$user->id;
           }
 
         }
         $time = $request->date.' '.$request->time.':00';
-        $data = new appointment;
-        $user = new user;
-        $patient =new patient;
-
-        $user->name=$request->fname;
-        $user->lname=$request->lname;
-        $user->email=$request->email;
-        $user->phone_no=$request->phone;
-        $user->password=NULL;
-        $user->role_id = 3;
-		    $patient->address=$request->address;
-        $patient->gender=$request->gender;
-        $patient->weight = $request->weight;
-        $patient->height = $request->height;
-        $patient->blood_type = $request->blood_type;
-        $patient->date_of_birth = $request->date_of_birth;
+        $data = new appointment; 
         $data->doctor_id=$request->doctor;
+        $data->user_id=$id_user;
         $data->date=$request->date;
         $data->time=$request->time;
         $data->start=$time;
         $data->end=$time;
         $data->status='In Progress';
-        $user->save();
-        $patient->id = $user->id ;
         $data->save();
-        $patient->save();
+        
           return redirect()->back()->with('message','Appointment Request Successful');
       }
 

@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\User;
 use App\Models\Patient;
+use App\Models\Token;
 
 class FullCalenderController extends Controller
 {
@@ -30,12 +31,10 @@ class FullCalenderController extends Controller
 	
 	  public function store(Request $request)
       {
-<<<<<<< HEAD
         
 		$time = $request->date.' '.$request->time.':00';
-=======
        
-        $request->validate([
+       $request->validate([
             
             'email'         => 'required|email',
             'fname'          => 'required',
@@ -43,44 +42,44 @@ class FullCalenderController extends Controller
 			'phone'        => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
         ]);
         $time = $request->date.' '.$request->time.':00';
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
         $data = new appointment;
-        $user = new user;
-        $patient =new patient;
+        
+       
+        $old_user = User::where('phone_no', '=', $request->phone)->first(); 
+        if($old_user===null){ //patient not saved on system
+            $user = new user;
+            $patient =new patient;
+            $user->name=$request->fname;
+            $user->lname=$request->lname;
+            $user->email=$request->email;
+            $user->phone_no=$request->phone;
+            $user->password=NULL;
+            $user->role_id = 3;
+            $user->save();
+            $patient->address=$request->address;
+            $patient->gender=$request->gender;
+            $patient->date_of_birth = $request->date_of_birth;
+            $patient->id = $user->id ;
+            $patient->save();
+            $id_user=$patient->id;
+        }
+        else{  //patient already saved on system
+            $id_user=$old_user->id;
+        }
 
-        $user->name=$request->fname;
-        $user->lname=$request->lname;
-        $user->email=$request->email;
-        $user->phone_no=$request->phone;
-        $user->password=NULL;
-        $user->role_id = 3;
-		$patient->address=$request->address;
-        $patient->gender=$request->gender;
-        $patient->weight = $request->weight;
-        $patient->height = $request->height;
-        $patient->blood_type = $request->blood_type;
-        $patient->date_of_birth = $request->date_of_birth;
+       
+		$data->user_id=$id_user;
         $data->doctor_id=$request->doctor_id;
         $data->date=$request->date;
-        $data->time=$request->date;
+        $data->time=$request->time;
         $data->start=$time;
         $data->end=$time;
-<<<<<<< HEAD
 		$data->status='Approved';
-        $user->save();
-        $patient->id = $user->id ;
-=======
-		$data->address=$request->address;
-        $data->gender=$request->gender;
-        $data->status='Approved';
-
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
         $data->save();
-        $patient->save();
-          return redirect()->back()->with('message','Appointment Request Successful');
-        //return response()->json($data);
-<<<<<<< HEAD
-=======
+
+        $create = token::firstOrCreate(array('user_id' => $id_user,'doctor_id' => $request->doctor_id));
+        $create->save();
+
         return response()->json(['success'=>'Successfully']);
       }
 	  public function edit(Request $request)
@@ -95,7 +94,6 @@ class FullCalenderController extends Controller
         
   
         return response()->json(['success'=>'Successfully']);
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
       }
 	public function newindex(Request $request)
     {
@@ -114,9 +112,10 @@ class FullCalenderController extends Controller
 						->where('doctor_id', '=', $request->doctor)
 						->get();*/
 
-                    $data = Appointment::whereDate('start', '>=', "2022-04-01 00:00:00" )
-					    ->whereDate('end',   '<=', "2022-05-01 00:00:00")
-						->where('doctor_id', '=', $request->doctor)
+                    $data = User:: join('appointments', 'users.id', '=', 'appointments.user_id')
+                        ->whereDate('appointments.start', '>=', "2022-04-30 00:00:00" )
+					    ->whereDate('appointments.end',   '<=', "2022-05-30 00:00:00")
+						->where('appointments.doctor_id', '=', $request->doctor)
 						->get();
                     
 				   return response()->json($data);

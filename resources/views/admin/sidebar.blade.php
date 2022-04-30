@@ -76,14 +76,7 @@
                 <span class="menu-title">Edit post</span>
               </a>
             </li>
-            <li class="nav-item menu-items">
-              <a class="nav-link" href="{{url('add_appoint')}}">
-                <span class="menu-icon">
-                  <i class="mdi mdi-file-document-box"></i>
-                </span>
-                <span class="menu-title">Add Appointments</span>
-              </a>
-            </li>
+           
             <li class="nav-item menu-items">
               <a class="nav-link" href="{{url('view_records')}}">
                 <span class="menu-icon">

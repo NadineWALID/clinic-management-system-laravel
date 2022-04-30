@@ -47,6 +47,9 @@ class AdminController extends Controller
    {
       $doctor = new doctor;
       $user = new user;
+      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
+      if ($old_user===null)
+      {
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
@@ -61,8 +64,14 @@ class AdminController extends Controller
       $doctor->speciality = $request->speciality;
       $doctor->id = $user->id;
       $doctor->save();
+      
 
       return redirect()->back()->with('message', 'Doctor Is Added Successfully');
+      }
+      else{
+         return redirect()->back()->with('message', 'This Email and Phone are already regestered on system');
+      }
+      
    }
 
    public function uploadPatient(Request $request)
@@ -70,6 +79,8 @@ class AdminController extends Controller
       $patient = new patient;
       $user = new user;
       $record = new records;
+      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first(); 
+      if($old_user===null){ //patient not saved on system
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
       $user->phone_no = $request->number;
@@ -78,13 +89,11 @@ class AdminController extends Controller
       $user->role_id = 3;
       $user->save();
       $patient->address = $request->address;
-      $patient->blood_type = $request->blood_type;
-      $patient->height = $request->height;
-      $patient->weight = $request->weight;
       $patient->date_of_birth = $request->date_of_birth;
       $patient->gender = $request->gender;
       $patient->id = $user->id;
       $patient->save();
+      $record->id=$user->id;
       $record->user_id = $user->id;
       $record->medicine = $request->medicine;
       $image=$request->rd_file;
@@ -96,18 +105,25 @@ class AdminController extends Controller
       $imagename2 = time() . '.' . $image2->getClientOriginalExtension();
       $request->lab_file->move('labs', $imagename2);
       $record->lab_results  = $imagename2;
-      $record->gender = $request->gender;
+      $record->height = $request->height;
+      $record->weight = $request->weight;
       $record->blood_type = $request->blood_type;
       $record->allergies = $request->allergies;
       $record->chronic_diseases = $request->chronic_diseases;
       $record->save();
 
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
+      }
+      else{
+         return redirect()->back()->with('message', 'This Email and Phone are already regestered on system');
+      }
    }
 
    public function uploadAdmin(Request $request)
    {
-      $admin = new admin;
+      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first(); 
+      if($old_user===null){ //patient not saved on system
+      
       $user = new user;
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
@@ -116,15 +132,14 @@ class AdminController extends Controller
       $user->lname = $request->lname;
       $user->role_id = 2;
       $user->save();
-      $admin->name = $request->name;
-      $admin->lname = $request->lname;
-      $admin->phone_number = $request->number;
-      $admin->date_of_birth = $request->date_of_birth;
-      $admin->id = $user->id;
-      $admin->save();
+     
 
 
       return redirect()->back()->with('message', 'Admin Is Added Successfully');
+      }
+      else{
+         return redirect()->back()->with('message', 'This Email and Phone are already regestered on system');
+      }
    }
 
    public function showappointments(Request $request)
@@ -176,8 +191,9 @@ class AdminController extends Controller
       $data->status = 'Approved';
       if ($data->user_id != null) {
          $create = token::firstOrCreate(array('user_id' => $data->user_id,'doctor_id' => $data->doctor_id));
+         $create->save();
       }
-
+     
       $data->save();
       return redirect()->back();
    }
@@ -245,7 +261,7 @@ class AdminController extends Controller
 
    public function showadmins()
    {
-      $Adata = admin::all();
+      $Adata=User::where('role_id', '=','2')->get();
       return view('admin.show_admins', compact('Adata'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
@@ -271,9 +287,8 @@ class AdminController extends Controller
 
    public function deleteadmin($id)
    {
-      $Adata = admin::find($id);
+      
       $Adata2 = user::find($id);
-      $Adata->delete();
       $Adata2->delete();
       return redirect()->back();
    }
@@ -295,12 +310,9 @@ class AdminController extends Controller
 
    public function updateadmin($id)
    {
-      $Adata = admin::find($id);
-      $user = user::find($id);
-      $user->name = $Adata->name;
-      $user->lname = $Adata->lname;
-      $user->phone_no = $Adata->phone_number;
-      $user->save();
+      
+      $Adata = user::find($id);
+      
       return view('admin.update_admin', compact('Adata'));
    }
 
@@ -333,22 +345,27 @@ class AdminController extends Controller
    public function editpatient(Request $request, $id)
    {
       $patient = user::find($id);
-      // $patient2=user::find($id);
+      $record = record::find($id);
       $patient->address = $request->address;
-      $patient->blood_type = $request->blood_type;
-      $patient->height = $request->height;
-      $patient->weight = $request->weight;
       $patient->gender = $request->gender;
       $patient->date_of_birth = $request->date_of_birth;
+      if ($record != null)
+      {
+         $record->blood_type = $request->blood_type;
+         $record->height = $request->height;
+         $record->weight = $request->weight;
+         $record->save();
+      }
       $patient->save();
+      
       return redirect()->back()->with('message', 'Patient Updated Successfully');
    }
 
    public function editadmin(Request $request, $id)
    {
-      $admin = admin::find($id);
+      $admin = user::find($id);
       $admin->name = $request->name;
-      $admin->phone_number = $request->phone_number;
+      $admin->phone_no = $request->phone_number;
 
       $admin->save();
       return redirect()->back()->with('message', 'Admin Updated Successfully');

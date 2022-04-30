@@ -41,23 +41,24 @@
                     @csrf
                     <div style="padding:20px; position: relative;">
                     <label>Receptionist's first name</label>
-                       <input size="23" type="text" style="color:black;" name="name" placeholder="Write receptionist's first name" required="">
+                       <input size="23" type="text" style="color:black;" name="name" placeholder="Write receptionist's first name" required="" value="{{$Adata->name}}">
                       </div>
 
                       <div style="padding:20px; position: relative;">
                        <label>Last name</label>
-                       <input size="23" type="text" style="color:black;" name="lname" placeholder="Write receptionist's last name" required="">
+                       <input size="23" type="text" style="color:black;" name="lname" placeholder="Write receptionist's last name" required="" value="{{$Adata->lname}}">
                       </div>
 
                     <div style="padding:15px; position: relative;">
                         <label>Phone Number</label>
-                        <input size="23" style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$Adata->phone_number}}">
+                        <input size="23" style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$Adata->phone_no}}">
+                    </div>
+                    <div style="padding:15px; position: relative;">
+                        <label>Email</label>
+                        <input size="23" style="color:grey;" type="text" name="email"  value="{{$Adata->email}}">
                     </div>
 
-                    <div style="padding:20px; position: relative;">
-                        <label>Date of birth</label>
-                        <input size="30" type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01"value="{{$Adata->date_of_birth}}">
-                       </div>
+          
 
                     <div style="padding:15px; position: relative;">
                         <input width="70px" height="30px" type="submit" class="btn btn-success">

@@ -115,7 +115,12 @@
               <option value="male">Male</option>
             </select>
           </div>
-          
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <label class="label" for="html">Date of Birth :</label>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+              <input type="date" style="color:black;" name="date_of_birth" id="date_of_birth" required="" >
+          </div>
             
           <input type="text" name="doctor_id"  style=" visibility: hidden;position: absolute;" id="doctor_id" class="form-control" >
             
@@ -171,17 +176,9 @@
           </div>
          
 
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-          <label class="label" for="html">Address:</label>
-          <input type="text" name="address_info" readonly="readonly"  id="address_info" class="form-control" >
-          </div>
-<<<<<<< HEAD
-      
-
+         
           
-=======
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
              <label class="label" for="html">Time : </label>
           </div>
@@ -221,25 +218,22 @@
 </div>
 </div>  
 <script>
+
 var modalObject = document.getElementById("myModal");
 var modalObjectInformation = document.getElementById("myInformation");
 var spanObject = document.getElementById("close");
 var spanObjectInformation = document.getElementById("closeInformation");
-<<<<<<< HEAD
-$('#SubmitForm').on('submit',function(e){
-    e.preventDefault();
-=======
 
 $('#SubmitForm').on('submit',function(e){
     e.preventDefault();
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
     let fname = $('#fname').val();
     let lname = $('#lname').val();
     let email = $('#email').val();
     let phone = $('#phone').val();
     let address = $('#address').val();
     let gender = $('#gender').val();
+    let date_of_birth = $('#date_of_birth').val();
     let doctor_id = $('#doctor_id').val();
     let time = $('#time').val();
     let date = $('#date').val();
@@ -253,8 +247,9 @@ $('#SubmitForm').on('submit',function(e){
         lname:lname,
         email:email,
         phone:phone,
-        address:address,
         gender:gender,
+        address:address,
+        date_of_birth:date_of_birth,
         doctor_id:doctor_id,
         time:time,
         date:date,
@@ -277,15 +272,10 @@ $('#SubmitForm').on('submit',function(e){
       });
       
     });
-<<<<<<< HEAD
-  $('#EditForm').on('submit',function(e){
-    e.preventDefault();
-=======
 
   $('#EditForm').on('submit',function(e){
     e.preventDefault();
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
     
     let time = $('#time_info').val();
     let id = $('#id_info').val();
@@ -311,20 +301,14 @@ $('#SubmitForm').on('submit',function(e){
       });
       
   });
-<<<<<<< HEAD
-=======
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 spanObject.onclick =function(){
     modalObject.style.display="none";
 }
 spanObjectInformation.onclick =function(){
     modalObjectInformation.style.display="none";
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 var doctor = $('#doctor').val();
 function doctorChosen(){
     doctor = $('#doctor').val();
@@ -332,15 +316,14 @@ function doctorChosen(){
 function getDoctor(){
     return doctor;
 }
+
 $(document).ready(function () {
+
 $('#button').click(function(e) {
     //console.log(getDoctor());
     $('#calendar').fullCalendar('refetchEvents');
 })
-<<<<<<< HEAD
-=======
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 $('#deleteButton').click(function(e) {
          let id = $('#id_info').val();
          $.ajax({
@@ -358,16 +341,16 @@ $('#deleteButton').click(function(e) {
                 }
             })
 })
-<<<<<<< HEAD
-=======
 
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
 $.ajaxSetup({
     headers:{
         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
+
 var calendar = $('#calendar').fullCalendar({
     eventDataTransform: function(event) {
      //event.user_name = event.user_name;
@@ -408,11 +391,13 @@ var calendar = $('#calendar').fullCalendar({
         {
         var ph_no = prompt('Phone Number :');
         
+
         if(ph_no)
         {
             var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
             var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
             var doctor = $('#doctor').val();
+
             $.ajax({
                 url:"/full-calender/action",
                 type:"POST",
@@ -447,14 +432,14 @@ var calendar = $('#calendar').fullCalendar({
             for (var i=0;i<doc.length;i++){
               events.push({
                
-                title: doc[i].f_name.concat(" ", doc[i].l_name),
+                title: doc[i].name.concat(" ", doc[i].l_name),
                 start: doc[i].start,
                 id:doc[i].id,
-                f_name:doc[i].f_name,
+                f_name:doc[i].name,
                 l_name:doc[i].l_name,
                 phone_no:doc[i].phone,
                 email:doc[i].email,
-                address:doc[i].address,
+                //address:doc[i].address,
               })//this is displaying!!!
             }
             callback(events);
@@ -471,7 +456,7 @@ var calendar = $('#calendar').fullCalendar({
         document.getElementById("l_name_info").value = event.l_name;
         document.getElementById("phone_no_info").value = event.phone_no;
         document.getElementById("email_info").value = event.email;
-        document.getElementById("address_info").value = event.address;
+        
        /* var id = event.id;
         console.log(id);*/
         var time = event.start.toString();
@@ -480,10 +465,7 @@ var calendar = $('#calendar').fullCalendar({
         document.getElementById("time_info").value = time;
         var start_date = $.fullCalendar.formatDate(event.start, 'Y-MM-DD');
         document.getElementById("date_info").value = start_date;
-<<<<<<< HEAD
-=======
 
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
        /* if(confirm("Do you want to remove this appointment?"))
         {
            
@@ -501,19 +483,11 @@ var calendar = $('#calendar').fullCalendar({
                 }
             })
         }*/
-<<<<<<< HEAD
     },
     eventConstraint: {
             start: moment().format('Y-MM-DD HH:mm:ss'),
             end: '2100-01-01' // hard coded goodness unfortunately
     },
-=======
-    },
-    eventConstraint: {
-            start: moment().format('Y-MM-DD HH:mm:ss'),
-            end: '2100-01-01' // hard coded goodness unfortunately
-    },
->>>>>>> fc7c1d7b1885f81f314731874a3f1b8cf3eaebc8
     
    
     eventResize: function(event, delta)
@@ -562,10 +536,15 @@ var calendar = $('#calendar').fullCalendar({
             }
         })
     },
+
     
   
 });
+
 });
+
+
+
   
 </script>
 </body>

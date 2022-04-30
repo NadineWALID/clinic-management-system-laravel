@@ -111,7 +111,8 @@
                                             <th class="border-top-0">Time</th>
                                             <th class="border-top-0">Id</th>
                                             <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Address</th>
+                                            <th class="border-top-0">Email</th>
+                                            <th class="border-top-0">Phone Number</th>
                                             <th class="border-top-0">View Patient's History</th>
                                             <th class="border-top-0">Add a Prescription</th>
                                             <th class="border-top-0">Remove</th>
@@ -126,8 +127,9 @@
                                             <td>
                                             <input type="text" name="hoppa"  id="hoppa" class="hoppa" style=" visibility: hidden;position: absolute;" value="{{$user->user_id}}">
                                               {{$user->id}}</td>
-                                            <td class="txt-oflo" >{{$user->f_name}} {{$user->l_name}}</td>
-                                            <td>{{$user->address}}</td>
+                                            <td class="txt-oflo" >{{$user->name}} {{$user->lname}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->phone_no}}</td>
                                             
                                             
                                             <td>

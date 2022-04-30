@@ -21,11 +21,11 @@ class DoctorController extends Controller
         $approved='Approved';
         $date = date('Y-m-d',time());
         $date2 = date('d/m/Y',time());
-        $data= DB::table('appointments')
+        $data= User::join('appointments', 'users.id', '=', 'appointments.user_id')
               ->select('*')
-              ->where('doctor_id', '=', $doctor)
-              ->where('date','=',$date)
-              ->where('status','=',$approved)
+              ->where('appointments.doctor_id', '=', $doctor)
+              ->where('appointments.date','=',$date)
+              ->where('appointments.status','=',$approved)
               ->get();
         $search_text= $request->get('search');
         $data2 = DB::table('users')
@@ -120,10 +120,10 @@ class DoctorController extends Controller
         }
        
         $output='';
-        if(($data)!= null){
+        if(($record)!= null){
            
             
-                $output .= '
+               $output .= '
                  
                 <div class="row">
                 <!-- .col -->
@@ -203,7 +203,8 @@ class DoctorController extends Controller
                                 }
                                 $output.='</tbody>
                                          </table>';
-                            }
+                              }
+                              
             else{
                 
                 $output.='<div class="d-flex flex-row comment-row p-3">none  </div>';
@@ -224,16 +225,16 @@ class DoctorController extends Controller
                         <div class="card-body">
                             <ul class="chatonline">
                                 <li>
-                                <h5 class="font-medium">Weight:</h5> '. $data->weight.'
+                                <h5 class="font-medium">Weight:</h5> '. $record->weight.'
                                 </li>
                                 <li>
-                                <h5 class="font-medium">Height:</h5> '. $data->height.'
+                                <h5 class="font-medium">Height:</h5> '. $record->height.'
                                 </li>
                                 <li>
                                 <h5 class="font-medium">Age:</h5> '. $age->format("%y").'
                                 </li>
                                 <li>
-                                <h5 class="font-medium">Blood Type:</h5> '. $data->blood_type.'
+                                <h5 class="font-medium">Blood Type:</h5> '. $record->blood_type.'
                                 </li>
                                 <li>
                                 <h5 class="font-medium">Gender:</h5> '. $data->gender.'
@@ -250,7 +251,7 @@ class DoctorController extends Controller
 
             
 
-        }else{
+       }else{
             $output .='<h3 class="box-title mb-0">User does not have record</h3>';
 
         }  
