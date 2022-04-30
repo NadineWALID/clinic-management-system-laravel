@@ -33,7 +33,7 @@ class HomeController extends Controller
         else
         {
           $data=Records::find(Auth::id());
-
+          $patient=Patient::find(Auth::id());
           if($data === null)
           {
             $doctor = doctor::all();
@@ -61,7 +61,10 @@ class HomeController extends Controller
         $date = date('Y-m-d',time());
         if (Auth::id())
         {
-          return redirect('home',compact('date'));
+          $doctor = doctor::all(); 
+          $post  = posts::all();
+          $user =user::all();
+          return view('user.home',compact('doctor','date','post','user'));
         }
         else
         {
