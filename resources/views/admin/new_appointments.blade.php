@@ -436,7 +436,7 @@ var calendar = $('#calendar').fullCalendar({
                 start: doc[i].start,
                 id:doc[i].id,
                 f_name:doc[i].name,
-                l_name:doc[i].l_name,
+                l_name:doc[i].lname,
                 phone_no:doc[i].phone,
                 email:doc[i].email,
                 //address:doc[i].address,

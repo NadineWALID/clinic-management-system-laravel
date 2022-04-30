@@ -45,7 +45,7 @@ class FullCalenderController extends Controller
         $data = new appointment;
         
        
-        $old_user = User::where('phone_no', '=', $request->phone)->first(); 
+        $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first(); 
         if($old_user===null){ //patient not saved on system
             $user = new user;
             $patient =new patient;
