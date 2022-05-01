@@ -15,7 +15,7 @@
             <td style="padding:10px; color:black;">Dr. {{$appoints->name}} {{$appoints->lname}}</td>
             <td style="padding:10px; color:black;">{{$appoints->date}}</td>
             <td style="padding:10px; color:black;">{{$appoints->status}}</td>
-            <td><a href="{{url('cancel_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
+            <td><a href="{{url('delete_app',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
             <td><a href="{{url('update_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to edit this appointment')" class="btn btn-danger">Edit</a></td>
         </tr>
         @endforeach

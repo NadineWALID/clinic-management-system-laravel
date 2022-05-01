@@ -56,15 +56,19 @@
                   </tr>
 
                   @foreach($data as $appoint)
+                  @foreach($user as $users)
+                  @if($appoint->doctor_id == $users->id)
                   <tr align="center" style="background-color:rgb(23, 73, 29);">
                       <td>{{$appoint->name}} {{$appoint->lname}}</td>
                       <td>{{$appoint->email}}</td>
                       <td>{{$appoint->phone_no}}</td>
-                      <td>Dr. {{$appoint->name}} {{$appoint->lname}}</td>
+                      <td>Dr. {{$users->name}} {{$users->lname}}</td>
                       <td>{{$appoint->date}}</td>
                       <td>{{$appoint->time}}</td>
                       <td>{{$appoint->status}}</td>
                       <td>
+                    @endif
+                    @endforeach    
                           <a class="btn btn-success" href="{{url('approved',$appoint->id)}}">Approve</a>
                       </td>
                       <td>

@@ -115,6 +115,7 @@ class AdminController extends Controller
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
       }
       else{
+         
          return redirect()->back()->with('message', 'This Email and Phone are already regestered on system');
       }
    }
@@ -144,6 +145,7 @@ class AdminController extends Controller
 
    public function showappointments(Request $request)
    {
+      $user=user::all();
       $search=$request['search'] ?? "";
       if($search != "")
       {
@@ -161,7 +163,7 @@ class AdminController extends Controller
                            ->get();
       }
 
-      return view('admin.showappointments', compact('data','search'))
+      return view('admin.showappointments', compact('data','search','user'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 
