@@ -473,7 +473,7 @@ class DoctorController extends Controller
        $rdfile = $request->rd_file;
        if ($rdfile) {
           $rd = time() . '.' . $rdfile->getClientOriginalExtension();
-          $request->rd_file->move('labs', $rd);
+          $request->rd_file->move('Radiology', $rd);
           $record->radiology_image = $rd;
        }
        $record->save();

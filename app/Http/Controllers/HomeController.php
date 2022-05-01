@@ -83,7 +83,6 @@ class HomeController extends Controller
         
         if(Auth::id()){
           $id_user=Auth::id();
-<<<<<<< HEAD
           $patient =new patient;
           $patient->address=$request->address;
           $patient->gender=$request->gender;
@@ -94,7 +93,6 @@ class HomeController extends Controller
          }
          else
           $patient->save();
-=======
           $old_patient=patient::find($id_user);
           if ( $old_patient === null){///not registered as patient
             $patient =new patient;
@@ -103,7 +101,6 @@ class HomeController extends Controller
             $patient->date_of_birth = $request->date_of_birth;
             $patient->save();
           } 
->>>>>>> e2b9619d4c1fff91ef78d98d117a49f4c9853f5e
         }
         else{
           $user = User::where('email', '=', $request->email)->orwhere('phone_no', '=', $request->phone)->first(); 

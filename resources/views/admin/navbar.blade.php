@@ -19,9 +19,6 @@
               <a class="nav-link" href="/home" >Home Page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="#list">To Do List</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link " href="/showdoctors">Doctors</a>
             </li>
             <li class="nav-item">
@@ -29,6 +26,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/show_news">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/new_appointments">Appointments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/view_records">Medical Records</a>
             </li>
                      <x-app-layout>
                    </x-app-layout>

@@ -1,4 +1,5 @@
 @extends('frontend.master2')
+@section('content')
         <style>
             label
             {
@@ -31,6 +32,7 @@
                 <div style="padding:15px;">
                     <label>Blood_type</label>
                     <select  name="blood_type" placeholder="Blood Type"class="custom-select" value="{{$data->blood_type}}">
+                     <option value="{{$data->blood_type}}">{{$data->blood_type}}</option>
                        <option value="O+">O+</option>
                        <option value="O-">O-</option>
                        <option value="A+">A+</option>
@@ -62,11 +64,12 @@
                     <select  name="gender" style="color:black; width: 200px;" required="">
                        <option value="male">Male</option>
                        <option value="female">Female</option>
+        </select>
                 </div>
-
+                
                 <div style="padding:15px;">
                     <label>Last Lab  Results</label>
-                    <img height="150" width="150" src="labs/{{$data->lab_results}}">
+                    <a href="{{asset('labs')}}/{{$data->lab_results }}" width="100%" height="500px">Last Lab Results</a>
                 </div>
 
                 <div style="padding:15px;">
@@ -76,7 +79,8 @@
                 
                 <div style="padding:15px;">
                     <label>Radiology Images</label>
-                    <img height="150" width="150" src="labs/{{$data->lab_results}}">
+                    <br>
+                    <a height="150" width="150" href="{{asset('Radiology')}}/{{$data->radiology_image}}">Last Radiology Images</a>
                 </div>
 
                 <div style="padding:15px;">
@@ -94,4 +98,4 @@
         </div>
         <!-- page-body-wrapper ends -->
       </div>
-
+@stop
