@@ -58,16 +58,20 @@
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
           <label class="label" for="html">First Name</label>
+<<<<<<< HEAD
             <input type="text" name="fname" class="form-control" placeholder="First name">
+=======
+            <input type="text" name="fname" class="form-control" required="" placeholder="First name" >
+>>>>>>> e2b9619d4c1fff91ef78d98d117a49f4c9853f5e
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
           <label class="label" for="html">Last Name</label>
-            <input type="text" name="lname" class="form-control" placeholder="Last name">
+            <input type="text" name="lname" class="form-control"  required="" placeholder="Last name">
           </div>
          
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Email</label>
-          <input type="text" name="email" class="form-control" placeholder="Email address..">
+          <input type="text" name="email" class="form-control" pattern="[^ @]*@[^ @]*"  required="" placeholder="Email address..">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Phone Number</label>
@@ -75,7 +79,11 @@
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Address</label>
+<<<<<<< HEAD
             <textarea name="address" id="address" class="form-control" rows="6" placeholder="Address....." ></textarea>
+=======
+            <textarea name="address" id="address" class="form-control" required="" rows="6" placeholder="Address....."></textarea>
+>>>>>>> e2b9619d4c1fff91ef78d98d117a49f4c9853f5e
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label class="label" for="html">Gender :</label>

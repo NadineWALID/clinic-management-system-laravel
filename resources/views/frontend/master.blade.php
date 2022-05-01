@@ -79,17 +79,10 @@
 
 
           <ul class="navbar-nav ml-auto">
-            @if(Route::has('login'))
-            @auth
+           
             <li class="nav-item active">
               <a class="nav-link" href="/home" >Home</a>
             </li>
-            @else
-            <li class="nav-item active">
-              <a class="nav-link" href="/" >Home</a>
-            </li>
-            @endauth
-            @endif
             <li class="nav-item">
               <a class="nav-link" href="#aboutus">About Us</a>
             </li>
@@ -144,7 +137,6 @@
 @endif
 
   @yield('content')
-  
   <footer class="page-footer" id="footer">
     <div class="container">
       <div class="row px-md-3">

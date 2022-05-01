@@ -80,7 +80,7 @@
 
                   <div style="padding:20px;">
                    <label>Email</label>
-                   <input type="email" style="color:black;" name="email" required=""  placeholder="Write Email">
+                   <input type="email" style="color:black;" name="email" pattern="[^ @]*@[^ @]*" required=""  placeholder="Write Email">
                   </div>
 
                   <div style="padding:20px;">

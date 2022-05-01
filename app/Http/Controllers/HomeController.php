@@ -83,6 +83,7 @@ class HomeController extends Controller
         
         if(Auth::id()){
           $id_user=Auth::id();
+<<<<<<< HEAD
           $patient =new patient;
           $patient->address=$request->address;
           $patient->gender=$request->gender;
@@ -93,12 +94,19 @@ class HomeController extends Controller
          }
          else
           $patient->save();
+=======
+          $old_patient=patient::find($id_user);
+          if ( $old_patient === null){///not registered as patient
+            $patient =new patient;
+            $patient->address=$request->address;
+            $patient->gender=$request->gender;
+            $patient->date_of_birth = $request->date_of_birth;
+            $patient->save();
+          } 
+>>>>>>> e2b9619d4c1fff91ef78d98d117a49f4c9853f5e
         }
         else{
-          $user = User::where('email', '=', $request->email)->first();
-          if ($user === null) {
-            $user = User::where('phone_no', '=', $request->mobile)->first(); 
-          }
+          $user = User::where('email', '=', $request->email)->orwhere('phone_no', '=', $request->phone)->first(); 
 
           if ($user === null){
             $user = new user;
@@ -123,17 +131,25 @@ class HomeController extends Controller
           }
 
         }
+
         $time = $request->date.' '.$request->time.':00';
-        $data = new appointment; 
-        $data->doctor_id=$request->doctor;
-        $data->user_id=$id_user;
-        $data->date=$request->date;
-        $data->time=$request->time;
-        $data->start=$time;
-        $data->end=$time;
-        $data->status='In Progress';
-        $data->save();
-        return redirect()->back()->with('message','Appointment Request Successful');
+        $existing_app = Appointment::where('start', '=', $time)->where('doctor_id', '=',$request->doctor )->first();
+        if ($existing_app === null){
+          $data = new appointment; 
+          $data->doctor_id=$request->doctor;
+          $data->user_id=$id_user;
+          $data->date=$request->date;
+          $data->time=$request->time;
+          $data->start=$time;
+          $data->end=$time;
+          $data->status='In Progress';
+          $data->save();
+          return redirect()->back()->with('message','Appointment Request Successful');
+        }
+        else{
+          return redirect()->back()->with('message','Please Choose Another Time');
+        }
+        
       }
 
       public function my_appointment()

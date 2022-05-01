@@ -76,20 +76,15 @@
                        <input type="number" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
                       </div>
 
-                      <div style="padding:20px;">
-                        <label>Date of birth</label>
-                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
-                       </div>
-
 
                       <div style="padding:20px;">
                        <label>Email</label>
-                       <input type="email" style="color:black;" name="email" required=""  placeholder="Write Email">
+                       <input type="email" style="color:black;" name="email"  pattern="[^ @]*@[^ @]*" required=""  placeholder="Write Email">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Password</label>
-                       <input type="password" style="color:black;" name="password"  required autocomplete="new-password" placeholder="Write password">
+                       <input type="password" style="color:black;" name="password" required="" required autocomplete="new-password" placeholder="Write password">
                       </div>
 
 
