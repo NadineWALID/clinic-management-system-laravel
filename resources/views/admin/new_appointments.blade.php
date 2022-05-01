@@ -66,9 +66,9 @@
     Please Choose The Doctor:
     <select  name="doctor" id="doctor" onchange="doctorChosen()" class="custom-select">
     @foreach($doctors as $doctors)
-        <option value="{{$doctors->id}}">{{$doctors->name}} {{$doctors->lname}}</option>
+        <option value="{{$doctors->id}}">Dr {{$doctors->name}} {{$doctors->lname}}</option>
     @endforeach
-    </select><button class="btn btn-success button" id="button" type="button">Go</button>]
+    </select><button class="btn btn-success button" id="button" type="button">Go</button>
     
     <div id="myModal" class="modal">
     <div class="modal-content" style="overflow:scroll;height:80%;">
