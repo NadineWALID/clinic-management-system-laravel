@@ -32,8 +32,8 @@ class AdminController extends Controller
 
    public function add_patient_view()
    {
-
-      return view('admin.add_patient_view');
+      $date = date('Y-m-d',time());
+      return view('admin.add_patient_view',compact('date'));
    }
 
    public function add_admin_view()
@@ -349,7 +349,9 @@ class AdminController extends Controller
    {
       $admin = user::find($id);
       $admin->name = $request->name;
+      $admin->lname = $request->lname;
       $admin->phone_no = $request->phone_number;
+      $admin->email = $request->email;
 
       $admin->save();
       return redirect()->back()->with('message', 'Admin Updated Successfully');

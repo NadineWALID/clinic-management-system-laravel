@@ -85,7 +85,7 @@
     
                       <div style="padding:20px;">
                        <label>Email</label>
-                       <input type="email" style="color:black;" name="email" required=""  placeholder="Write Email">
+                       <input type="email" style="color:black;" name="email" required="" pattern="[^ @]*@[^ @]*" placeholder="Write Email">
                       </div>
     
                       <div style="padding:10px;">
@@ -119,7 +119,7 @@
 
                       <div style="padding:20px;">
                         <label>Date of birth</label>
-                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
+                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="{{$date}}">
                        </div>
  
     

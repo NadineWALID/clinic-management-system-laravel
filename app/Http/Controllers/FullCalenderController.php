@@ -99,6 +99,7 @@ class FullCalenderController extends Controller
     {
         $doctors = Doctor::join('users', 'users.id', '=', 'doctors.id')
                ->get();
+        $date = date('Y-m-d',time());
 		if($request->ajax())
 			{
 				   $doctor = $request->doctor;
@@ -123,7 +124,7 @@ class FullCalenderController extends Controller
 			
 		}
     	
-    	return view('admin.new_appointments',compact('doctors'));
+    	return view('admin.new_appointments',compact('doctors','date'));
     }
 	
 
