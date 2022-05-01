@@ -89,6 +89,7 @@ class HomeController extends Controller
           $patient->date_of_birth = $request->date_of_birth;
           if($patient->id !== $id_user){
           $patient->id = $id_user;
+          $patient->save();
          }
          else
           $patient->save();

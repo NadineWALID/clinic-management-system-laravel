@@ -79,7 +79,7 @@
 					
  						<div class="form-group">		
                <label> Post content</label>
-							<textarea class="form-control" name="description" rows="15" style="background: white !important; border-radius: 2px; margin:8px 0px;"></textarea>
+							<textarea class="form-control" name="description" rows="15" style="color:black; background: white !important; border-radius: 2px; margin:8px 0px;"></textarea>
 						</div>	
 					</div>
 					<div class="col-sm-3">

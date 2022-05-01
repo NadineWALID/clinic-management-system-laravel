@@ -115,7 +115,6 @@ class AdminController extends Controller
       return redirect()->back()->with('message', 'Patient Is Added Successfully');
       }
       else{
-         
          return redirect()->back()->with('message', 'This Email and Phone are already regestered on system');
       }
    }
