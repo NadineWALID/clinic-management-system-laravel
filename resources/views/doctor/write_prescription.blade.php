@@ -26,7 +26,7 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Medica Health Center</h1>
       <h1 class="text-center wow fadeInUp" style="font: size 200px;">Dr {{$data2->name}} {{$data2->lname}}</h1>
-      <form class="main-form" action="{{url('appointment')}}" method="POST">
+      <form class="main-form" action="{{url('save_prescription',[$user_id])}}" method="POST">
           @csrf
         <div class="row mt-5 ">
         
@@ -34,41 +34,41 @@
             <label for="html">Date :</label>
         </div>
         <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-        <label for="html">{{$date}}</label>
+        <input type="text" name="date_of_examination" class="form-control" value="{{$date}}" readonly="readonly" placeholder="Medicine">
             
         </div>
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Name :</label>
         </div>
         <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-        <label for="html">{{$data->f_name}} {{$data->l_name}}</label>
+        <label for="html">{{$data->name}} {{$data->lname}}</label>
             
         </div>
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Diagnosis :</label>
         </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="diagnosis" id="diagnosis" class="form-control" rows="6" ></textarea>
+            <textarea name="diagnosis" id="diagnosis" required="" class="form-control" rows="6" ></textarea>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" name="medicine" class="form-control" placeholder="Medicine">
+            <input type="text" name="medicine" required="" class="form-control" placeholder="Medicine">
           </div>
        
          
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-          <input type="text" name="dosage" class="form-control" placeholder="Dosage">
+          <input type="text" name="dosage" required="" class="form-control" placeholder="Dosage">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Next Appointment :</label>
         </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="date" name="date" class="form-control">
+            <input type="date" name="next_appointment_date" required="" class="form-control">
           </div>
       </div>
-        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Save and Print</button>
+        <button type="submit" class="btn btn-primary mt-3 wow zoomIn" >Save </button>
         
       </form>
     </div>
   </div> <!-- .page-section -->
-
+ 
 @stop
