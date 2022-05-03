@@ -5,7 +5,8 @@
         <tr style="background-color:teal;">
             <th onclick="sortTable(0)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Doctor Name</th>
             <th onclick="sortTable(1)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Date</th>
-            <th onclick="sortTable(2)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Status</th>
+            <th onclick="sortTable(2)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Time</th>
+            <th onclick="sortTable(3)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Status</th>
             <th style="padding:10px; font-size:20px; color:darkred;">Cancel Appointment</th>
             <th style="padding:10px; font-size:20px; color:darkred;">Edit Appointment</th>
         </tr>
@@ -14,6 +15,7 @@
         <tr style="background-color:greenyellow;" align="center">
             <td style="padding:10px; color:black;">Dr. {{$appoints->name}} {{$appoints->lname}}</td>
             <td style="padding:10px; color:black;">{{$appoints->date}}</td>
+            <td style="padding:10px; color:black;">{{$appoints->time}}</td>
             <td style="padding:10px; color:black;">{{$appoints->status}}</td>
             <td><a href="{{url('delete_app',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
             <td><a href="{{url('update_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to edit this appointment')" class="btn btn-danger">Edit</a></td>

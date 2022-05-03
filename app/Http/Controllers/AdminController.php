@@ -47,7 +47,7 @@ class AdminController extends Controller
    {
       $doctor = new doctor;
       $user = new user;
-      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
+      $old_user = User::where('phone_no', '=', $request->number)->orwhere('email', '=', $request->email)->first();
       if ($old_user===null)
       {
       $user->email = $request->email;
@@ -79,7 +79,7 @@ class AdminController extends Controller
       $patient = new patient;
       $user = new user;
       $record = new records;
-      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
+      $old_user = User::where('phone_no', '=', $request->number)->orwhere('email', '=', $request->email)->first();
       if($old_user===null){ //patient not saved on system
       $user->email = $request->email;
       $user->password = Hash::make($request->password);

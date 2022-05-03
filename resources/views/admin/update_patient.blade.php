@@ -37,7 +37,7 @@
 
                 @endif
 
-                <form action="{{url('editpatient',[$Pdata->id,$Pdata2->id])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('editpatient',[$Pdata->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div style="padding:20px; position: relative;">
                     <div style="padding:20px; position: relative; width:200px;">

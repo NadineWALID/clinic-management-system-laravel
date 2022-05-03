@@ -45,7 +45,7 @@ class HomeController extends Controller
             $doctor = doctor::all();
             $post  = posts::all();
             $user =user::all();
-            $patient=patient::all();
+            $patient=patient::find(Auth::id());
             return view('user.home',compact('doctor','date','post','user','patient'));
           }
          
@@ -64,15 +64,14 @@ class HomeController extends Controller
           $doctor = doctor::all(); 
           $post  = posts::all();
           $user =user::all();
-          $patient=patient::all();
+          $patient=patient::find(Auth::id());
           return view('user.home',compact('doctor','date','post','user','patient'));
         }
         else
         {
           $doctor = doctor::all(); 
           $post  = posts::all();
-          $user =user::all();
-          $patient=patient::all();
+          
           return view('user.home',compact('doctor','date','post','user','patient'));
         }
       }
@@ -83,24 +82,15 @@ class HomeController extends Controller
         
         if(Auth::id()){
           $id_user=Auth::id();
+          $old_patient=patient::find($id_user);
+          if ( $old_patient === null){///not registered as patient
           $patient =new patient;
           $patient->address=$request->address;
           $patient->gender=$request->gender;
           $patient->date_of_birth = $request->date_of_birth;
-          if($patient->id !== $id_user){
           $patient->id = $id_user;
           $patient->save();
-         }
-         else
-          $patient->save();
-          $old_patient=patient::find($id_user);
-          if ( $old_patient === null){///not registered as patient
-            $patient =new patient;
-            $patient->address=$request->address;
-            $patient->gender=$request->gender;
-            $patient->date_of_birth = $request->date_of_birth;
-            $patient->save();
-          } 
+          }
         }
         else{
           $user = User::where('email', '=', $request->email)->orwhere('phone_no', '=', $request->phone)->first(); 
@@ -182,21 +172,33 @@ class HomeController extends Controller
       }
       public function update_appoint($id)
       {
+        $id_user=Auth::id();
         $data=appointment::find($id);
+        $user = User::find( $id_user);
+        $patient = Patient::find( $id_user);
         $doctor = User :: join('doctors', 'users.id', '=', 'doctors.id')
                  ->get();
         $date = date('Y-m-d',time());
         
-        return view('user.update_appoint',compact('data','doctor','date'));   
+        return view('user.update_appoint',compact('data','doctor','date','user','patient'));   
       }
       public function edit_appoint(Request $request,$id)
       {
-        $data=appointment::find($id);
-        $data->date=$request->date;
-        $data->doctor_id=$request->doctor;
-        $data->time=$request->time;
-        $data->save();
-        return redirect()->back()->with('message', 'Appointment Updated Successfully');  
+        $time = $request->date.' '.$request->time.':00';
+        $existing_app = Appointment::where('start', '=', $time)->where('doctor_id', '=',$request->doctor )->first();
+        if ($existing_app === null){
+          $data=appointment::find($id);
+          $data->date=$request->date;
+          $data->doctor_id=$request->doctor;
+          $data->time=$request->time;
+          $data->start=$time;
+          $data->save();
+          return redirect()->back()->with('message','Appointment Updated Successfully');
+        }
+        else{
+          return redirect()->back()->with('message','Please Choose Another Time');
+        }
+       
       }
       public function diagnosis(){
         return view ('diagnosis.index');

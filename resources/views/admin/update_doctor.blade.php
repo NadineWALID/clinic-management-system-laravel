@@ -36,7 +36,7 @@
 
             @endif
 
-            <form action="{{url('editdoctor',[$data->id,$data2->id])}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('editdoctor',[$data->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div style="padding:20px; position: relative;">
                    <label>Doctor First Name</label>
