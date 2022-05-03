@@ -37,12 +37,12 @@
 
                 @endif
 
-                <form action="{{url('editpatient',$Pdata->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('editpatient',[$Pdata->id,$Pdata2->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div style="padding:20px; position: relative;">
-                    <div style="padding:20px; position: relative;">
+                    <div style="padding:20px; position: relative; width:200px;">
                        <label>Blood Type</label>
-                       <select  name="blood_type" placeholder="Blood Type"class="custom-select">
+                       <select  name="blood_type" placeholder="Blood Type"class="custom-select" value="{{$Pdata2->blood_type}}">
                        <option value="O+">O+</option>
                        <option value="O-">O-</option>
                        <option value="A+">A+</option>
@@ -56,27 +56,27 @@
 
                       <div style="padding:20px;">
                        <label>Height(cm)</label>
-                       <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
+                       <input type="number" style="color:grey;" name="height" placeholder="Write height(cm)" required="" value="{{$Pdata2->height}}">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Weight(kg)</label>
-                       <input type="number" style="color:black;" name="weight" placeholder="Write weight(kg)" required="">
+                       <input type="number" style="color:grey;" name="weight" placeholder="Write weight(kg)" required="" value="{{$Pdata2->weight}}">
                       </div>
 
                       <div style="padding:20px;">
                         <label>date of birth</label>
-                        <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
+                        <input type="date" style="color:grey;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01" value="{{$Pdata->date_of_birth}}">
                        </div>
 
 
                       <div style="padding:20px;">
                         <label>address</label>
-                        <input type="text" style="color:black;" name="address" required="">
+                        <input type="text" style="color:grey;" name="address" required="" value="{{$Pdata->address}}">
                        </div>
 
 
-                      <div style="padding:20px;">
+                      <div style="padding:20px; width:200px;">
                        <label>Gender</label>
                        <select  name="gender" placeholder="Gender"class="custom-select">
                        <option value="female">Female</option>
