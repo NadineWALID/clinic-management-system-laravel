@@ -281,7 +281,8 @@ class AdminController extends Controller
    public function updatedoctor($id)
    {
       $data = doctor::find($id);
-      return view('admin.update_doctor', compact('data'));
+      $data2 = user::find($id);
+      return view('admin.update_doctor', compact(['data','data2']));
    }
 
    public function updatepatient($id)
@@ -309,7 +310,7 @@ class AdminController extends Controller
       $user->name = $request->name;
       $user->lname = $request->lname;
       // $doctor2->name=$request->name;
-      $user->phone_number = $request->phone_number;
+      $user->phone_no = $request->phone_number;
       // $doctor2->phone_no=$request->phone_no;
       $doctor->speciality = $request->speciality;
 
@@ -321,6 +322,7 @@ class AdminController extends Controller
       }
 
       $doctor->save();
+      $user->save();
       //$doctor2->save();
       return redirect()->back()->with('message', 'Doctor Updated Successfully');
    }

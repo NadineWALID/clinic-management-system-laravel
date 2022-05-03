@@ -13,10 +13,10 @@ class FullCalenderController extends Controller
 {
    /* public function index(Request $request)
     {
-		
+
         $doctors = Doctor::join('users', 'users.id', '=', 'doctors.id')
                ->get();
-		
+
     	if($request->ajax())
     	{
 			$doctor = $request->doctor;
@@ -28,14 +28,14 @@ class FullCalenderController extends Controller
     	}
     	return view('admin.full-calender',compact('doctors'));
     }*/
-	
+
 	  public function store(Request $request)
       {
-        
+
 		$time = $request->date.' '.$request->time.':00';
-       
+
        $request->validate([
-            
+
             'email'         => 'required|email',
             'fname'          => 'required',
 			'lname'          => 'required',
@@ -43,9 +43,9 @@ class FullCalenderController extends Controller
         ]);
         $time = $request->date.' '.$request->time.':00';
         $data = new appointment;
-        
-       
-        $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first(); 
+
+
+        $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
         if($old_user===null){ //patient not saved on system
             $user = new user;
             $patient =new patient;
@@ -67,7 +67,7 @@ class FullCalenderController extends Controller
             $id_user=$old_user->id;
         }
 
-       
+
 		$data->user_id=$id_user;
         $data->doctor_id=$request->doctor_id;
         $data->date=$request->date;
@@ -84,15 +84,16 @@ class FullCalenderController extends Controller
       }
 	  public function edit(Request $request)
       {
-       
+
 		$appointment = appointment::find($request->id);
-     
+
         $time = $request->date.' '.$request->time.':00';
 		$appointment->start=$time;
         $appointment->end=$time;
+        $appointment->time=$request->time;
         $appointment->save();
-        
-  
+
+
         return response()->json(['success'=>'Successfully']);
       }
 	public function newindex(Request $request)
@@ -103,7 +104,7 @@ class FullCalenderController extends Controller
 		if($request->ajax())
 			{
 				   $doctor = $request->doctor;
-			
+
 				   /*$data= DB::table('appointments')
                          ->select('*')
                          ->where('doctor_id', '=', $doctor)
@@ -118,15 +119,15 @@ class FullCalenderController extends Controller
 					    ->whereDate('appointments.end',   '<=', "2022-05-30 00:00:00")
 						->where('appointments.doctor_id', '=', $request->doctor)
 						->get();
-                    
+
 				   return response()->json($data);
-			
-			
+
+
 		}
-    	
+
     	return view('admin.new_appointments',compact('doctors','date'));
     }
-	
+
 
     public function action(Request $request)
     {
@@ -148,7 +149,7 @@ class FullCalenderController extends Controller
     		if($request->type == 'update')
     		{
     			$event = Appointment::find($request->id)->update([
-    				
+
     				'start'		=>	$request->start,
     				'end'		=>	$request->end
     			]);
