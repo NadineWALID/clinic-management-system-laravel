@@ -96,21 +96,21 @@ class AdminController extends Controller
       $record->id=$user->id;
       $record->user_id = $user->id;
       $record->medicine = $request->medicine;
-      $image=$request->file;
+      $image=$request->rd_file;
       if($image != null)
       {
       $imagename = time() . '.' . $image->getClientOriginalExtension();
-      $request->file->move('Radiology', $imagename);
+      $request->rd_file->move('Radiology', $imagename);
       $record->radiology_image  = $imagename;
     }
 
-      $image2=$request->file;
-      if($image != null)
+      $image2=$request->lab_file;
+      if($image2 != null)
       {
       $imagename2 = time() . '.' . $image2->getClientOriginalExtension();
-      $request->file->move('labs', $imagename2);
+      $request->lab_file->move('labs', $imagename2);
       $record->lab_results  = $imagename2;
-    }
+      }
       $record->height = $request->height;
       $record->weight = $request->weight;
       $record->blood_type = $request->blood_type;
