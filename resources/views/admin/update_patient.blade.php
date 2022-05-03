@@ -43,17 +43,17 @@
                     <div style="padding:20px; position: relative;">
                        <label>Blood Type</label>
                        <select  name="blood_type" placeholder="Blood Type"class="custom-select">
-                       <option value="o+">O+</option>
-                       <option value="o-">O-</option>
-                       <option value="o-">A+</option>
-                       <option value="o-">A-</option>
-                       <option value="o-">B+</option>
-                       <option value="o-">B-</option>
-                       <option value="o-">AB+</option>
-                       <option value="o-">AB-</option>
+                       <option value="O+">O+</option>
+                       <option value="O-">O-</option>
+                       <option value="A+">A+</option>
+                       <option value="A-">A-</option>
+                       <option value="B+">B+</option>
+                       <option value="B-">B-</option>
+                       <option value="AB+">AB+</option>
+                       <option value="AB-">AB-</option>
                        </select>
                       </div>
-                      
+
                       <div style="padding:20px;">
                        <label>Height(cm)</label>
                        <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
@@ -69,13 +69,13 @@
                         <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01">
                        </div>
 
-                       
+
                       <div style="padding:20px;">
                         <label>address</label>
                         <input type="text" style="color:black;" name="address" required="">
                        </div>
- 
-    
+
+
                       <div style="padding:20px;">
                        <label>Gender</label>
                        <select  name="gender" placeholder="Gender"class="custom-select">

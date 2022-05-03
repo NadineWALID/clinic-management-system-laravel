@@ -96,15 +96,21 @@ class AdminController extends Controller
       $record->id=$user->id;
       $record->user_id = $user->id;
       $record->medicine = $request->medicine;
-      $image=$request->rd_file;
+      $image=$request->file;
+      if($image != null)
+      {
       $imagename = time() . '.' . $image->getClientOriginalExtension();
-      $request->rd_file->move('Radiology', $imagename);
+      $request->file->move('Radiology', $imagename);
       $record->radiology_image  = $imagename;
+    }
 
-      $image2=$request->lab_file;
+      $image2=$request->file;
+      if($image != null)
+      {
       $imagename2 = time() . '.' . $image2->getClientOriginalExtension();
-      $request->lab_file->move('labs', $imagename2);
+      $request->file->move('labs', $imagename2);
       $record->lab_results  = $imagename2;
+    }
       $record->height = $request->height;
       $record->weight = $request->weight;
       $record->blood_type = $request->blood_type;
@@ -288,8 +294,9 @@ class AdminController extends Controller
    public function updatepatient($id)
    {
 
-      $Pdata = user::find($id);
-      return view('admin.update_patient', compact('Pdata'));
+      $Pdata = patient::find($id);
+      $Pdata2 = records::find($id);
+      return view('admin.update_patient', compact(['Pdata','Pdata2']));
    }
 
    public function updateadmin($id)
@@ -329,8 +336,8 @@ class AdminController extends Controller
 
    public function editpatient(Request $request, $id)
    {
-      $patient = user::find($id);
-      $record = record::find($id);
+      $patient = patient::find($id);
+      $record = records::find($id);
       $patient->address = $request->address;
       $patient->gender = $request->gender;
       $patient->date_of_birth = $request->date_of_birth;
