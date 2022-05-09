@@ -13,7 +13,7 @@
               padding: 12px 20px;
               margin: 8px 0;
               box-sizing: border-box;
-              
+
             }
             input[type=submit] {
             width: 40%;
@@ -35,7 +35,7 @@
                 position: relative;
                 left: 10px;
               }
-              
+
             </style>
         <head>
           <!-- Required meta tags -->
@@ -46,20 +46,20 @@
             <!-- partial:partials/_sidebar.html -->
           @include('admin.sidebar')
             <!-- partial -->
-            
-            @include('admin.navbar') 
+
+            @include('admin.navbar')
               <!-- partial -->
-          
+
                  <div class="container" Align="center" style="padding-top: 100px;">
                  @if(session()->has('message'))
-     
+
                        <div class="alert alert-success">
                        <button type="button" class="close" data-dismiss="alert">
                             x
                        </button>
                       {{session()->get('message')}}
                        </div>
-    
+
                 @endif
                      <form action="{{url('upload_patient')}}" method="POST" enctype="multipart/form-data" id="formid">
                        @csrf
@@ -76,18 +76,18 @@
                        <label>address</label>
                        <input type="text" style="color:black;" name="address" placeholder="Write patients's address" required="">
                       </div>
-                      
+
                       <div style="padding:20px;">
                        <label>Phone number</label>
                        <input type="number" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
-                      </div>                  
- 
-    
+                      </div>
+
+
                       <div style="padding:20px;">
                        <label>Email</label>
                        <input type="email" style="color:black;" name="email" required="" pattern="[^ @]*@[^ @]*" placeholder="Write Email">
                       </div>
-    
+
                       <div style="padding:10px;">
                        <label>Password</label>
                        <input type="password" style="color:black;" name="password"  required autocomplete="new-password" placeholder="Write password">
@@ -106,7 +106,7 @@
                        <option value="AB-">AB-</option>
                        </select>
                       </div>
-                      
+
                       <div style="padding:20px;">
                        <label>Height(cm)</label>
                        <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
@@ -121,8 +121,8 @@
                         <label>Date of birth</label>
                         <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="{{$date}}">
                        </div>
- 
-    
+
+
                       <div style="padding:20px;">
                        <label>Gender</label>
                        <select name="gender" id="departement" placeholder="Gender"class="custom-select"  style="width: 60% !important;">
@@ -150,7 +150,7 @@
                     <label for="html">Lab results (if exists)</label>
                     </div>
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-                     <input type="file" name="lab_file">
+                     <input type="file" name="lab_file" >
                      </div>
                   <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
                     <label for="html">Radiology images (if exists)</label>
@@ -158,15 +158,15 @@
                    <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                     <input type="file" name="rd_file" id="rd_file" >
                      </div>
-    
+
                       <div style="padding:20px; position: relative; left:10px;">
                        <input type="submit" class="btn btn-success">
                       </div>
-    
+
                      </form>
-    
+
                  </div>
-              
+
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">

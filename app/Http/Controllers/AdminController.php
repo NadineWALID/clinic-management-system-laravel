@@ -47,7 +47,7 @@ class AdminController extends Controller
    {
       $doctor = new doctor;
       $user = new user;
-      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
+      $old_user = User::where('phone_no', '=', $request->number)->orwhere('email', '=', $request->email)->first();
       if ($old_user===null)
       {
       $user->email = $request->email;
@@ -79,7 +79,7 @@ class AdminController extends Controller
       $patient = new patient;
       $user = new user;
       $record = new records;
-      $old_user = User::where('phone_no', '=', $request->phone)->orwhere('email', '=', $request->email)->first();
+      $old_user = User::where('phone_no', '=', $request->number)->orwhere('email', '=', $request->email)->first();
       if($old_user===null){ //patient not saved on system
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
@@ -96,15 +96,21 @@ class AdminController extends Controller
       $record->id=$user->id;
       $record->user_id = $user->id;
       $record->medicine = $request->medicine;
-      $image=$request->rd_file;
+      $image=$request->file;
+      if($image != null)
+      {
       $imagename = time() . '.' . $image->getClientOriginalExtension();
-      $request->rd_file->move('Radiology', $imagename);
+      $request->file->move('Radiology', $imagename);
       $record->radiology_image  = $imagename;
+    }
 
-      $image2=$request->lab_file;
+      $image2=$request->file;
+      if($image != null)
+      {
       $imagename2 = time() . '.' . $image2->getClientOriginalExtension();
-      $request->lab_file->move('labs', $imagename2);
+      $request->file->move('labs', $imagename2);
       $record->lab_results  = $imagename2;
+    }
       $record->height = $request->height;
       $record->weight = $request->weight;
       $record->blood_type = $request->blood_type;
@@ -281,14 +287,16 @@ class AdminController extends Controller
    public function updatedoctor($id)
    {
       $data = doctor::find($id);
-      return view('admin.update_doctor', compact('data'));
+      $data2 = user::find($id);
+      return view('admin.update_doctor', compact(['data','data2']));
    }
 
    public function updatepatient($id)
    {
 
-      $Pdata = user::find($id);
-      return view('admin.update_patient', compact('Pdata'));
+      $Pdata = patient::find($id);
+      $Pdata2 = records::find($id);
+      return view('admin.update_patient', compact(['Pdata','Pdata2']));
    }
 
    public function updateadmin($id)
@@ -309,7 +317,7 @@ class AdminController extends Controller
       $user->name = $request->name;
       $user->lname = $request->lname;
       // $doctor2->name=$request->name;
-      $user->phone_number = $request->phone_number;
+      $user->phone_no = $request->phone_number;
       // $doctor2->phone_no=$request->phone_no;
       $doctor->speciality = $request->speciality;
 
@@ -321,14 +329,15 @@ class AdminController extends Controller
       }
 
       $doctor->save();
+      $user->save();
       //$doctor2->save();
       return redirect()->back()->with('message', 'Doctor Updated Successfully');
    }
 
    public function editpatient(Request $request, $id)
    {
-      $patient = user::find($id);
-      $record = record::find($id);
+      $patient = patient::find($id);
+      $record = records::find($id);
       $patient->address = $request->address;
       $patient->gender = $request->gender;
       $patient->date_of_birth = $request->date_of_birth;

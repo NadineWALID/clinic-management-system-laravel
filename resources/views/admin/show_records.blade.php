@@ -36,8 +36,8 @@
             <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                        
-                        <th style="padding:10px; color:black;">Diagnosis</th>
-                        <th style="padding:10px; color:black;">Medicine</th>
+                       
+                        <th style="padding:10px; color:black;">Current Medication</th>
                         <th style="padding:10px; color:black;">Blood Type</th>
                         <th style="padding:10px; color:black;">Lab_results</th>
                         <th style="padding:10px; color:black;">Radiology_image</th>
@@ -52,7 +52,7 @@
                     @foreach ($data as $record)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             
-                            <td>{{ $record->diagnosis }}</td>
+                           
                             <td>{{ $record->medicine }}</td>
                             <td>{{ $record->blood_type }}</td>
                             <td><a href="labs/{{$record->lab_results }}" width="100%" height="500px">view</a></td>

@@ -316,10 +316,11 @@ class DoctorController extends Controller
     }
 
 
-    public function save_prescription(Request $request)
+    public function save_prescription(Request $request,$id)
    {
         $doctor=Auth::id();
         $prescription = new Prescription;
+        $prescription->user_id=$id;
         $prescription->date_of_examination=$request->date_of_examination;
         $prescription->next_appointment_date=$request->next_appointment_date;
         $prescription->doctor_id=$doctor;
@@ -335,12 +336,15 @@ class DoctorController extends Controller
     
     public function write_prescription($id)
       {
-        $data=appointment::find($id);
+        $data = User :: join('appointments', 'users.id', '=', 'appointments.user_id')
+                ->where ('appointments.id','=',$id)
+                ->first();
+        //$data=appointment::find($id);
         $doctor=Auth::id();
         $data2 = User::find($doctor);
-       
         $date = date('d/m/Y',time());
-        return view('doctor.write_prescription',compact('data','date','data2'));   
+        $user_id=$data->user_id;
+        return view('doctor.write_prescription',compact('data','date','data2','user_id'));   
       }
 
       public function view_prescription($id)

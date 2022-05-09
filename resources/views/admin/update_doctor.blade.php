@@ -1,7 +1,7 @@
 <x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
-    
+
     <head>
       <!-- Required meta tags -->
       <base href="/public">
@@ -20,13 +20,13 @@
         <!-- partial:partials/_sidebar.html -->
       @include('admin.sidebar')
         <!-- partial -->
-        
-        @include('admin.navbar') 
+
+        @include('admin.navbar')
           <!-- partial -->
         <div class="container" align="center" style="padding:100px;">
 
         @if(session()->has('message'))
- 
+
                    <div class="alert alert-success">
                    <button type="button" class="close" data-dismiss="alert">
                         x
@@ -36,26 +36,26 @@
 
             @endif
 
-            <form action="{{url('editdoctor',$data->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('editdoctor',[$data->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div style="padding:20px; position: relative;">
                    <label>Doctor First Name</label>
-                   <input type="text" style="color:black;" name="name" placeholder="Write Doctor's first name" required="" value="{{$data->name}}">
+                   <input type="text" style="color:grey;" name="name" placeholder="Write Doctor's first name" required="" value="{{$data2->name}}">
                   </div>
-                  
+
                   <div style="padding:20px; position: relative;">
                    <label>Doctor Last Name</label>
-                   <input type="text" style="color:black;" name="lname" placeholder="Write Doctor's last name" required="" value="{{$data->lname}}">
+                   <input type="text" style="color:grey;" name="lname" placeholder="Write Doctor's last name" required="" value="{{$data2->lname}}">
                   </div>
 
                 <div style="padding:15px;">
                     <label>Phone Number</label>
-                    <input style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$data->phone_no}}">
+                    <input style="color:grey;" type="text" name="phone_number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$data2->phone_no}}">
                 </div>
 
                 <div style="padding:15px;">
                     <label>Speciality</label>
-                    <select id="doctorspec" name="speciality" style="color:black; width: 200px;" required="">
+                    <select id="doctorspec" name="speciality" style="color:grey; width: 200px;" required="" value="{{$data->speciality}}">
                        <option value="Pediatrician">Pediatrician</option>
                        <option value="Dermatologist">Dermatologist</option>
                        <option value="Cardiologist">Cardiologist</option>

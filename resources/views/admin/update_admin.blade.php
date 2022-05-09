@@ -41,12 +41,12 @@
                     @csrf
                     <div style="padding:20px; position: relative;">
                     <label>Receptionist's first name</label>
-                       <input size="23" type="text" style="color:black;" name="name" placeholder="Write receptionist's first name" required="" value="{{$Adata->name}}">
+                       <input size="23" type="text" style="color:grey;" name="name" placeholder="Write receptionist's first name" required="" value="{{$Adata->name}}">
                       </div>
 
                       <div style="padding:20px; position: relative;">
                        <label>Last name</label>
-                       <input size="23" type="text" style="color:black;" name="lname" placeholder="Write receptionist's last name" required="" value="{{$Adata->lname}}">
+                       <input size="23" type="text" style="color:grey;" name="lname" placeholder="Write receptionist's last name" required="" value="{{$Adata->lname}}">
                       </div>
 
                     <div style="padding:15px; position: relative;">
@@ -58,7 +58,7 @@
                         <input size="23" style="color:grey;" type="text" name="email"  value="{{$Adata->email}}">
                     </div>
 
-          
+
 
                     <div style="padding:15px; position: relative;">
                         <input width="70px" height="30px" type="submit" class="btn btn-success">
