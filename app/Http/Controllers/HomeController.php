@@ -61,11 +61,23 @@ class HomeController extends Controller
         $date = date('Y-m-d',time());
         if (Auth::id())
         {
-          $doctor = doctor::all(); 
-          $post  = posts::all();
-          $user =user::all();
-          $patient=patient::all();
-          return view('user.home',compact('doctor','date','post','user','patient'));
+          if(Auth::user()->role_id==1)
+          {
+            return view ('doctor.home',compact('data'));
+          }
+          elseif(Auth::user()->role_id==2)
+          {
+            $doctor=doctor::all();
+            $post=posts::all();
+            return view ('admin.home',compact('doctor','date'),compact('post'));
+          }
+          else{
+            $doctor =doctor::all();
+            $post =posts::all();
+            $user=users::all();
+            $patient=patient::find(Auth::id());
+            return view ('user.home',compact('doctor','date','post','user','patient'));
+          }
         }
         else
         {
@@ -77,7 +89,6 @@ class HomeController extends Controller
         }
       }
      
-
       public function appointment(Request $request)
       {
         

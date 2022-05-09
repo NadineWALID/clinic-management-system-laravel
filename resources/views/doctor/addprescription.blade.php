@@ -14,10 +14,7 @@
             </li>
             <li class="nav-item active">
             <x-app-layout></x-app-layout>
-            </li>
-
-            
-            
+            </li>          
             
 @stop
 @section('content')

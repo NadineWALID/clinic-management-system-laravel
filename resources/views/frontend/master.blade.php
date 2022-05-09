@@ -36,6 +36,14 @@
   <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
   <link rel="stylesheet" href="../assets/css/theme.css">
+  <!--Web app part-->
+  <link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+<meta name="msapplication-starturl" content="/">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="theme-color" content="#77ef67">
 </head>
 <body>
 
@@ -229,3 +237,11 @@ $(document).ready(function(){
 
 </body>
 </html>
+<script src="{{ asset('/sw.js') }}"></script>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
