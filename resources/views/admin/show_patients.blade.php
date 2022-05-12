@@ -44,6 +44,7 @@
 
             <form action="">
                 <div class="form-group">
+                <div id="google_translate_element"></div>
                     <input id="searchinput" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search patients">
                     <button id="searchbutton" class="btn btn-success">Search</button>
                     <a href="{{url('/show_patients')}}">
@@ -57,7 +58,7 @@
 
                      <!--   <th style="padding:10px; color:black; margin-left:500px;">Patient's lastName</th> -->
                         <th style="padding:10px; color:black;">Patient's Name</th>
-                        <th style="padding:10px; color:black;">Patient's Email</th>
+                        <th style="padding:10px; color:black;">Patient's last name</th>
                         <th style="padding:10px; color:black;">Phone Number</th>
                         <th style="padding:10px; color:black;">date of birth</th>
                         <th style="padding:10px; color:black;">Patient's Gender</th>
@@ -111,6 +112,14 @@
         <!-- Custom js for this page -->
         <script src="admin/assets/js/dashboard.js"></script>
         <!-- End custom js for this page -->
+        <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </body>
 
     </html>

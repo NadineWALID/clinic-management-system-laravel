@@ -32,7 +32,7 @@
             @include('admin.navbar')
             <!-- partial -->
             <div align="center" style="padding:100px;">
-
+            <div id="google_translate_element"></div>
             <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
                        
@@ -99,6 +99,14 @@
         <!-- Custom js for this page -->
         <script src="admin/assets/js/dashboard.js"></script>
         <!-- End custom js for this page -->
+        <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </body>
 
     </html>

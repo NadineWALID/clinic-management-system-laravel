@@ -32,6 +32,7 @@
           <!-- partial -->
 
           <div align="center" style="padding:100px;">
+          <div id="google_translate_element"></div>
             <form action="" style=" width:1000px;">
                 <div class="form-group">
                     <input id="searchinput" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search for doctors/patient using first name, last name or phone number">
@@ -167,6 +168,14 @@ function sortTable(n) {
       <!-- Custom js for this page -->
       <script src="admin/assets/js/dashboard.js"></script>
       <!-- End custom js for this page -->
+      <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </body>
     </html>
   </x-app-layout>
