@@ -13,6 +13,7 @@ use App\Models\Posts;
 use App\Models\Admin;
 use App\Models\token;
 use App\Models\Records;
+use App\Models\Prescription;
 use DB;
 
 
@@ -425,5 +426,26 @@ class AdminController extends Controller
    {
       $data = records::all();
       return view('admin.show_records', compact('data'));
+   }
+   public function view_prescriptions(Request $request)
+   {
+      $search=$request['search'] ?? "";
+      if($search != "")
+      {
+         $Pdata = user::join('patients', 'users.id', '=', 'patients.id')
+                  ->where('name','LIKE',"%$search%")
+                  ->orWhere('lname','LIKE',"%$search%")
+                  ->orWhere('phone_no','LIKE',"%$search%")->get();     
+      }
+      else
+      {
+         $Pdata = User :: join('patients', 'users.id', '=', 'patients.id')
+                           ->get();
+
+         //$Pdata = patient::all();
+      }
+      $data= prescription::all();
+      return view('admin.show_prescriptions',compact('Pdata','search','data'))
+      ->with('i', (request()->input('page', 1) - 1) * 5);
    }
 }

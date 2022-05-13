@@ -86,6 +86,14 @@
               </a>
             </li>
             <li class="nav-item menu-items">
+              <a class="nav-link" href="{{url('view_prescriptions')}}">
+                <span class="menu-icon">
+                  <i class="mdi mdi-file-document-box"></i>
+                </span>
+                <span class="menu-title">Prescriptions</span>
+              </a>
+            </li>
+            <li class="nav-item menu-items">
               <a class="nav-link" href="{{url('new_appointments')}}">
                 <span class="menu-icon">
                   <i class="mdi mdi-file-document-box"></i>

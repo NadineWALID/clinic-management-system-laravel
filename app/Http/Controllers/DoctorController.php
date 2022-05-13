@@ -366,9 +366,6 @@ class DoctorController extends Controller
       }
 
       
-
-      
-
       public function write_prescription_my_patients($id)
       {
         $data=user::find($id);

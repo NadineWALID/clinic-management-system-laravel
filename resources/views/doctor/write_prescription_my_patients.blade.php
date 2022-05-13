@@ -51,7 +51,7 @@
             <textarea name="diagnosis" id="diagnosis" required=""  placeholder="Diagnosis" class="form-control" rows="6" ></textarea>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" name="medicine" required="" class="form-control" placeholder="Medicine">
+            <textarea name="medicine" required="" class="form-control" placeholder="Medicine"></textarea>
           </div>
        
          

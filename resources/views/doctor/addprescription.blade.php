@@ -55,10 +55,8 @@
             <label for="html">Medication :</label>
         </div>
         
-       
-        
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" name="medicine" required="" class="form-control" placeholder="Medicine">
+            <textarea name="medicine" required="" class="form-control" placeholder="Medicine"></textarea>
           </div>
        
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">

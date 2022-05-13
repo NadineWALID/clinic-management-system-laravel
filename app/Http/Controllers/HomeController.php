@@ -10,6 +10,7 @@ use App\Models\Appointment;
 use App\Models\Posts;
 use App\Models\Records;
 use App\Models\Patient;
+use App\Models\Prescription;
 use DB;
 class HomeController extends Controller
 {
@@ -163,19 +164,33 @@ class HomeController extends Controller
           $date = date('Y-m-d',time());
           $userid=Auth::user()->id;
           $name=Auth::user()->name;
-          $appoint=new appointment;                 
-         $appoint= DB::table('appointments')
+          $appoint=new appointment;   
+          $prescription=new prescription; 
+          $patients=new patient;             
+          $appoint= DB::table('appointments')
                  ->select('*')
                  ->where('user_id','=',$userid)
                  ->get();
-
-
+          $prescription= DB::table('prescriptions')
+                 ->select('*')
+                 ->where('user_id','=',$userid)
+                 ->get();
+           $patients=DB::table('patients')
+                    ->select('*')
+                    ->where('id','=',$userid)
+                    ->get();      
          $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
                  ->where ('appointments.user_id','like',$userid)
                  ->get();
+         $p = User :: join('prescriptions','users.id','=','prescriptions.user_id')
+             ->where('prescriptions.user_id','like',$userid)
+             ->get();
+         $patient=User :: join('patients','users.id','=','patients.id')
+                    ->where('patients.id','like',$userid)
+                    ->get();    
           $appointscount =$data->count();
         
-          return view('user.my_appointment',compact('data','name','date','appointscount'));
+          return view('user.my_appointment',compact('data','name','date','appointscount','p','patient'));
         }
         else
         {

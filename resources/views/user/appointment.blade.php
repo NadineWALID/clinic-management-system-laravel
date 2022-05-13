@@ -121,8 +121,8 @@
             <label for="html">Time :</label>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-          <select  name="time" id="time" placeholder="time"class="custom-select">
-          <?php 
+          <select  name="time" id="times" placeholder="time"class="custom-select">
+          <!-- 
             for($hours=10; $hours<22; $hours++) // the interval for hours is '1'
             for($mins=0; $mins<60; $mins+=15) // the interval for mins is '30'
                 //echo 
@@ -130,13 +130,26 @@
                 echo '<option value="'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
                 .str_pad($mins,2,'0',STR_PAD_LEFT).'">'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
                 .str_pad($mins,2,'0',STR_PAD_LEFT).'</option>'
-         ?> 
-          
+          -->
+          <option value="10:00">10:00</option>
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30</option>
           </select>
           </div>
       </div>
-        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
+      <div>
+        
+      </div>
+        <button type="submit" id="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
       </form>
     </div>
   </div> <!-- .page-section -->
-  
+  @section('scriptcontent')
+<script type="text/javascript">
+    $('#submit').click(function() {
+        // get the selected option and remove it from the DOM
+        $('#times option:selected').remove();
+    });
+  </script>
+@stop
