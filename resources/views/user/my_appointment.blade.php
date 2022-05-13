@@ -1,82 +1,403 @@
-@extends('user.master')
-@section('content')
-<div align="center" style="padding:70px;">
-    <table id="myTable2">
-        <tr style="background-color:teal;">
-            <th onclick="sortTable(0)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Doctor Name</th>
-            <th onclick="sortTable(1)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Date</th>
-            <th onclick="sortTable(2)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Time</th>
-            <th onclick="sortTable(3)" style="padding:10px; font-size:20px; color:black; cursor: pointer;">Status</th>
-            <th style="padding:10px; font-size:20px; color:darkred;">Cancel Appointment</th>
-            <th style="padding:10px; font-size:20px; color:darkred;">Edit Appointment</th>
-        </tr>
+@extends('frontend.master2')
 
-        @foreach($data as $appoints)
-        <tr style="background-color:greenyellow;" align="center">
-            <td style="padding:10px; color:black;">Dr. {{$appoints->name}} {{$appoints->lname}}</td>
-            <td style="padding:10px; color:black;">{{$appoints->date}}</td>
-            <td style="padding:10px; color:black;">{{$appoints->time}}</td>
-            <td style="padding:10px; color:black;">{{$appoints->status}}</td>
-            <td><a href="{{url('delete_app',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')" class="btn btn-danger">Cancel</a></td>
-            <td><a href="{{url('update_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to edit this appointment')" class="btn btn-danger">Edit</a></td>
-        </tr>
-        @endforeach
-        <script>
-function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable2");
-  switching = true;
-  // Set the sorting direction to ascending:
-  dir = "asc";
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // Start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /* Check if the two rows should switch place,
-      based on the direction, asc or desc: */
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          // If so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          // If so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      // Each time a switch is done, increase this count by 1:
-      switchcount ++;
-    } else {
-      /* If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again. */
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
-</script>
-    </table>
-</div>
+@section('itemsInNavBar')
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url('/')}}" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#aboutus">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#doctors">Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="#news">News</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#appointment">Make an Appointment</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="http://localhost/diagnosis/index.php">Free Symptoms Checker</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#footer">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" >My Information</a>
+            </li> 
+            <x-app-layout></x-app-layout>
+            </li>
+            
+            
 @stop
+@section('content')
+
+
+   <!-- ================Search Bar======================= -->
+   <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+       
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Three charts -->
+                <!-- ============================================================== -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h2 class="box-title">Hello!</h2>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-success">{{$name}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Today's Date</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash2"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-purple">{{$date}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Upcomming Appointments</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash3"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-info">{{$appointscount}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+               
+                <!-- RECENT SALES -->
+                <!-- ============================================================== -->
+
+                
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            <div class="d-md-flex mb-3">
+                                <h3 class="box-title mb-0">List of Appointments</h3>
+                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
+                                
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table no-wrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">Date</th>
+                                            <th class="border-top-0">Time</th>
+                                            <th class="border-top-0">Doctor</th>
+                                            <th class="border-top-0">Status</th>
+                                            <th class="border-top-0">Edit</th>
+                                            <th class="border-top-0">Remove</th>
+                                           
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($data as $appoints)
+                                        <tr>
+                                           
+                                            <td>{{$appoints->date}}</td>
+                                            <td>{{$appoints->time}}</td>
+                                            <td class="txt-oflo" >Dr. {{$appoints->name}} {{$appoints->lname}}</td>
+                                            <td>{{$appoints->status}}</td>
+                                           
+                                            
+                                            
+                                            <td><a class="btn btn-success button"  href="{{url('update_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to edit this appointment')">Edit</a></td>
+                                            </td>
+                                            <td>
+                                             <a class="btn btn-danger" href="{{url('delete_app',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')">Remove</a>
+                                            </td>                              
+                                        </tr>
+                                     @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <!-- ============================================================== -->
+                 <!-- PRODUCTS YEARLY SALES -->
+                <!-- ============================================================== -->
+                <div name="record"  id="record" class="record">
+
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- Recent Comments -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- .col -->
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="card white-box p-0">
+                            <div class="card-body">
+                                <h3 class="box-title mb-0">My Record</h3>
+                            </div>
+                            <div class="comment-widgets">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row p-3 mt-0">
+                                    <div class="p-2"><img src="doctor/plugins/images/users/varun.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text ps-2 ps-md-3 w-100">
+                                        <h5 class="font-medium">James Anderson</h5>
+                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <div class="comment-footer d-md-flex align-items-center">
+                                             <span class="badge bg-primary rounded">Pending</span>
+                                             
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row p-3">
+                                    <div class="p-2"><img src="doctor/plugins/images/users/genu.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text ps-2 ps-md-3 active w-100">
+                                        <h5 class="font-medium">Michael Jorden</h5>
+                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <div class="comment-footer d-md-flex align-items-center">
+
+                                            <span class="badge bg-success rounded">Approved</span>
+                                            
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row p-3">
+                                    <div class="p-2"><img src="doctor/plugins/images/users/ritesh.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text ps-2 ps-md-3 w-100">
+                                        <h5 class="font-medium">Johnathan Doeting</h5>
+                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <div class="comment-footer d-md-flex align-items-center">
+
+                                            <span class="badge rounded bg-danger">Rejected</span>
+                                            
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="card white-box p-0">
+                            <div class="card-heading">
+                                <h3 class="box-title mb-0">My Information</h3>
+                            </div>
+                            <div class="card-body">
+                                <ul class="chatonline">
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="doctor/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Varun Dhavan <small
+                                                        class="d-block text-success d-block">online</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="doctor/plugins/images/users/genu.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Genelia
+                                                    Deshmukh <small class="d-block text-warning">Away</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="doctor/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Ritesh
+                                                    Deshmukh <small class="d-block text-danger">Busy</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="doctor/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Arijit
+                                                    Sinh <small class="d-block text-muted">Offline</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="doctor/plugins/images/users/govinda.jpg" alt="user-img"
+                                                class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Govinda
+                                                    Star <small class="d-block text-success">online</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="call-chat">
+                                            <button class="btn btn-success text-white btn-circle btn" type="button">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-circle btn" type="button">
+                                                <i class="far fa-comments text-white"></i>
+                                            </button>
+                                        </div>
+                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
+                                                src="doctor/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">John
+                                                    Abraham<small class="d-block text-success">online</small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+           
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="doctor/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app-style-switcher.js"></script>
+    <script src="doctor/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="doctor/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="doctor/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="doctor/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="doctor/plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="doctor/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="doctor/js/pages/dashboards/dashboard1.js"></script>
+
+@stop
+
+
+@section('scriptcontent')
+  
+<script type="text/javascript">
+       $('.button').click(function(){
+        var currentRow = $(this).closest("tr");
+        var query = currentRow.find(".hoppa").val();
+        //var query=$('#hoppa').val();
+        $.ajax({
+        url:"search2",
+        type: "GET",
+        data: {'search2':query},
+               success:function(data){
+                $('#record').html(data);
+                console.log('done');
+               }
+        
+        
+         });
+
+       });
+
+
+       
+
+</script>
+  @stop

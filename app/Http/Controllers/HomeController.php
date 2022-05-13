@@ -160,7 +160,9 @@ class HomeController extends Controller
       {
         if(Auth::id())
         {
+          $date = date('Y-m-d',time());
           $userid=Auth::user()->id;
+          $name=Auth::user()->name;
           $appoint=new appointment;                 
          $appoint= DB::table('appointments')
                  ->select('*')
@@ -171,9 +173,9 @@ class HomeController extends Controller
          $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
                  ->where ('appointments.user_id','like',$userid)
                  ->get();
-          
+          $appointscount =$data->count();
         
-          return view('user.my_appointment',compact('data'));
+          return view('user.my_appointment',compact('data','name','date','appointscount'));
         }
         else
         {
