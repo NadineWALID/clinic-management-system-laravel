@@ -218,8 +218,9 @@
             <label for="html">Date of Birth:</label>
           {{ $patients->date_of_birth}}
           </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Gender:</label>
+          <div class="d-flex flex-row comment-row p-3">
+                <h5 class="font-medium">Gender :</h5>
+                </br>
           {{ $patients->gender }}
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">

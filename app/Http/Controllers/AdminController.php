@@ -46,6 +46,7 @@ class AdminController extends Controller
 
    public function upload(Request $request)
    {
+      $working_hours = $request->start_time.'-'.$request->end_time;
       $doctor = new doctor;
       $user = new user;
       $old_user = User::where('phone_no', '=', $request->number)->orwhere('email', '=', $request->email)->first();
@@ -64,6 +65,7 @@ class AdminController extends Controller
       $doctor->image = $imagename;
       $doctor->speciality = $request->speciality;
       $doctor->id = $user->id;
+      $doctor->working_hours =$working_hours;
       $doctor->save();
 
 

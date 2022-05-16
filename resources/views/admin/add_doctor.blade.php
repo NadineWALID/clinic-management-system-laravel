@@ -114,7 +114,41 @@
                    <label>Doctor Image</label>
                    <input type="file" name="file" required="" >
                   </div>
+                  <div style="padding:20px; position: relative;">
+                   <label>Working Hours</label>
+                  </div>
+                  <div style="padding:20px; position: relative;">
+                  <label>From:</label>
+                  <select  name="start_time" id="start_time" placeholder="time" style="color:black; width: 60%;" required="">
+                  <?php 
+                    for($hours=10; $hours<22; $hours++) // the interval for hours is '1'
+                    for($mins=0; $mins<60; $mins+=15) // the interval for mins is '30'
+                    //echo 
+               
+                    echo '<option value="'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+                    .str_pad($mins,2,'0',STR_PAD_LEFT).'">'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+                    .str_pad($mins,2,'0',STR_PAD_LEFT).'</option>'
+                   ?>
+                   </select>
+                  </div>
 
+                  <div style="padding:20px; position: relative;">
+                  <label>To:</label>
+                  <select  name="end_time" id="end_time" placeholder="time"style="color:black; width: 60%;" required="">
+                  <?php 
+                    for($hours=10; $hours<22; $hours++) // the interval for hours is '1'
+                    for($mins=0; $mins<60; $mins+=15) // the interval for mins is '30'
+                    //echo 
+               
+                    echo '<option value="'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+                    .str_pad($mins,2,'0',STR_PAD_LEFT).'">'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+                    .str_pad($mins,2,'0',STR_PAD_LEFT).'</option>'
+                   ?>
+                   </select>
+                  </div>
+           
+          
+                 </select>
                   <div style="padding:20px; position: relative; left:10px;">
                    <input type="submit" class="btn btn-success">
                   </div>
