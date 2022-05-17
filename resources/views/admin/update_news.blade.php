@@ -50,7 +50,7 @@
 
                 <div style="padding:15px;">
                     <label>Old Photo</label>
-                    <img height="150" width="150" src="postimage/{{$data->image}}">
+                    <img style="max-width:100%;height:auto;" width="150" src="postimage/{{$data->image}}">
                 </div>
 
                 <div style="padding:15px;">

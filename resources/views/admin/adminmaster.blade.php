@@ -1,5 +1,17 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <style>
+      #nav{
+        position: fixed;
+        top: 16px;
+        left:0;
+        background-color:	#8099b3;
+        font-family:Arial;
+        font-size:20px
+      }
+    </style>
 <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Dashboard</title>
       <!-- plugins:css -->
       <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -17,3 +29,4 @@
       <link rel="stylesheet" href="admin/assets/css/style.css">
       <!-- End layout styles -->
       <link rel="shortcut icon" href="admin/assets/images/favicon.png" />
+</html>

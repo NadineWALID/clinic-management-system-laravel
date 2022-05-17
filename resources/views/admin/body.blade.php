@@ -22,6 +22,9 @@
   left: 100px;
   }
     </style>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
 <body>
 <div class="main-panel" id="main-panel">
             <div class="content-wrapper" id="card">
@@ -46,7 +49,7 @@
               </div>
             </div>
           </div>
-                    <div class="card-body" id="list">
+                    <!-- <div class="card-body" id="list">
                       <h4 style="font-size: 25px; color:#034f84;font-family: Arial;"><b>To do list</b></h4>
                       <div class="add-items d-flex">
                         <input type="text" class="form-control todo-list-input" placeholder="enter task..">
@@ -75,10 +78,10 @@
                             </div>
                             <i class="remove mdi mdi-close-box"></i>
                           </li>
-                        </ul>
+                        </ul>-->
                       </div>
                     </div>
-                  </div>
+                  </div> 
                   <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}

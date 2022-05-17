@@ -68,7 +68,6 @@ class AdminController extends Controller
       $doctor->working_hours =$working_hours;
       $doctor->save();
 
-
       return redirect()->back()->with('message', 'Doctor Is Added Successfully');
       }
       else{
@@ -323,14 +322,14 @@ class AdminController extends Controller
       $user->phone_no = $request->phone_number;
       // $doctor2->phone_no=$request->phone_no;
       $doctor->speciality = $request->speciality;
-
+      $working_hours = $request->start_time.'-'.$request->end_time;
       $image = $request->file;
       if ($image) {
          $imagename = time() . '.' . $image->getClientOriginalExtension();
          $request->file->move('doctorimage', $imagename);
          $doctor->image = $imagename;
       }
-
+      $doctor->working_hours =$working_hours;
       $doctor->save();
       $user->save();
       //$doctor2->save();

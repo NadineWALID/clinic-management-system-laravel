@@ -42,8 +42,8 @@
                             <td>{{ $doctor->diagnosis }}</td>
                             <td>{{ $doctor->medicine }}</td>
                             <td>{{ $doctor->blood_type }}</td>
-                            <td><img src="{{ labs/$record->lab_results }}" width="100%" height="500px"></td>
-                            <td><img src="{{ Radiology/$record->radiology_image }}" width="100%" height="500px"></td>
+                            <td><img src="{{ labs/$record->lab_results }}" style="max-width:100%;height:auto;"></td>
+                            <td><img src="{{ Radiology/$record->radiology_image }}" style="max-width:100%;height:auto;"></td>
                             <td>{{ $doctor->allergies }}</td>
                             <td>{{ $doctor->chronic_diseases }}</td>
                             <td>

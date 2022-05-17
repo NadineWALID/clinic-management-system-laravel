@@ -49,7 +49,7 @@
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
                             <td>{{ $posts->title }}</td>
                             <td>{{ $posts->description }}</td>
-                            <td><img height="100" width="100" src="postimage/{{ $posts->image }}"></td>
+                            <td><img style="max-width:100%;height:auto;" src="postimage/{{ $posts->image }}"></td>
                             <td>
                                 <a class="btn btn-warning" href="{{ url('update_post', $posts->id) }}">Update</a>
                             </td>

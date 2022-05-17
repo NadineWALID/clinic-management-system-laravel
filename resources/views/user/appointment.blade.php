@@ -1,76 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  * {
+  box-sizing: border-box;
+}
             label
             {
-              width: 100%;
-              margin: 8px 0;
+              padding: 12px 12px 12px 0;
               display: inline-block;
               
             }
-            input
+            input, select, textarea
             {
-              width: 60%;
-              padding: 12px 18px;
-              margin: 8px 0;
-              box-sizing: border-box;
-              display: inline-block;
+              width: 100%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              resize: vertical;
             }
             input[type=submit] {
             width: 60%;
             background-color: #4CAF50;
             color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            float: right;
+            
              }
+             .container {
+          border-radius: 5px;
+          padding: 20px;
+        }
              .header {
            text-align: center;
            color: black;
            font-size: 40px;
            font-family:Arial;
             }
-            #formid
+            /* #formid
             {
-              display:inline-block;
-              width:800px;
-              height:800px; 
+              display:inline-block; 
               position: relative;
               left: 30%;
-            }
-        </style>
-        <style>
+            } */
      
-    
      td.fc-day.fc-past {
       background-color: #EEEEEE;
      }
-
-     label
-     {
-       width: 100%;
-       margin: 8px 0;
-       display: inline-block;
-     
-     }
-     input
-     {
-       width: 60%;
-       padding: 12px 20px;
-       margin: 8px 0;
-       box-sizing: border-box;
-       
-     }
-     input[type=submit] {
-     width: 40%;
-     background-color: #4CAF50;
-     color: white;
-     padding: 14px 20px;
-     margin: 8px 0;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-      }
      .modal-content{
      width: 50%;
      padding: 50px;
@@ -80,7 +60,20 @@
    .modal{
      margin-top: 150px;
    }
+   /* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
 </style>
 <body>
 <div class="page-section" id="appointment">
@@ -144,7 +137,7 @@
              @foreach($doctor as $doctors)
              @if ($doctors->id == $users->id)
               <option value="{{$doctors->id}}">{{$users->name}} {{$users->lname}}
-            -->  speciality *{{$doctors->speciality}}*</option>
+            &#8594 {{$doctors->speciality}}</option>
              @endif
              @endforeach
                 @endforeach

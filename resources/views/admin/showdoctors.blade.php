@@ -58,6 +58,7 @@
                      <!--   <th style="padding:10px; color:black;">Doctor's Last Name</th>  -->
                         <th style="padding:10px; color:black;">Phone Number</th>
                         <th style="padding:10px; color:black;">Speciality</th>
+                        <th style="padding:10px; color:black;">Working Hours</th>
                         <th style="padding:10px; color:black;">Photo</th>
                         <th style="padding:10px; color:black;">Update</th>
                         <th style="padding:10px; color:black;">Delete</th>
@@ -70,7 +71,8 @@
                            <!-- <td>{{ $doctor->lname }}</td> -->
                             <td>{{ $doctor->phone_no }}</td>
                             <td>{{ $doctor->speciality }}</td>
-                            <td><img height="100" width="100" src="doctorimage/{{ $doctor->image }}"></td>
+                            <td>{{$doctor->working_hours}}</td>
+                            <td><img style="max-width:100%;height:auto;" src="doctorimage/{{ $doctor->image }}"></td>
                             <td>
                                 <a class="btn btn-warning" href="{{ url('updatedoctor', $doctor->id) }}">Update</a>
                             </td>

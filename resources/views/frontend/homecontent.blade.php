@@ -19,7 +19,7 @@
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
             <div class="img-place custom-img-1">
-              <img src="../assets/img/bg-doctor.png" alt="">
+              <img src="../assets/img/bg-doctor.png" style="max-width:100%;height:auto;"alt="">
             </div>
           </div>
         </div>

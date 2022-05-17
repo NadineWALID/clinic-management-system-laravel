@@ -3,13 +3,14 @@
   <style>
     #navbarSupport {
   position: fixed;
-  top: 6;
+   top: 6;
   left: 0;
   z-index: 9999;
   width: 100%;
-  height: 50px;
+  height: 50px; 
    background-color: white;
 }
+
 #titlee{
   position: relative;
   left: 100px;
@@ -19,7 +20,7 @@
 }
 #socialmediafooter{
   margin-left: -340px;
-
+  float:left;
 }
 #socialmediaicons{
   margin-left: -380px;
@@ -42,7 +43,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
 <meta name="msapplication-starturl" content="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="theme-color" content="#77ef67">
 </head>
 <body>
@@ -62,21 +62,12 @@
               <a href="#" id="google_translate_element" style="width:2%;margin-right:0px;margin-left:20%;"></a>
             </div>
           </div>
-          <div class="col-sm-4 text-right text-sm" >
-            <div class="social-mini-button">
-              <a href="#"><span class="mai-logo-facebook-f"></span></a>
-              <a href="#"><span class="mai-logo-twitter"></span></a>
-              <a href="#"><span class="mai-logo-dribbble"></span></a>
-              <a href="#"><span class="mai-logo-instagram"></span></a>
-              
-            </div>
-          </div>
+          
         </div> <!-- .row -->
       </div> <!-- .container -->
     </div> <!-- .topbar -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -89,7 +80,7 @@
           <ul class="navbar-nav ml-auto">
            
             <li class="nav-item active">
-              <a class="nav-link" href="/home" >Home</a>
+              <a class="nav-link" href="/" >Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#aboutus">About Us</a>
@@ -237,11 +228,11 @@ $(document).ready(function(){
 
 </body>
 </html>
-<script src="{{ asset('/sw.js') }}"></script>
+<!-- <script src="{{ asset('/sw.js') }}"></script>
 <script>
     if (!navigator.serviceWorker.controller) {
         navigator.serviceWorker.register("/sw.js").then(function (reg) {
             console.log("Service worker has been registered for scope: " + reg.scope);
         });
     }
-</script>
+</script> -->
