@@ -94,6 +94,7 @@ Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 Route::post('/calendar_add_appointment', [FullCalenderController::class,'appointment']);
 Route::post('/submit-form', [FullCalenderController::class,'store']);
 Route::post('/send-date', [FullCalenderController::class,'subdate']);
+Route::post('/send-start-end', [FullCalenderController::class,'sub_start_end']);
 Route::post('/edit-form', [FullCalenderController::class,'edit']);
 Route::get('new_appointments', [FullCalenderController::class, 'newindex']);
 

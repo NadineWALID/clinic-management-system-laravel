@@ -132,7 +132,8 @@
             <label class="label" for="html">Please Choose Your Doctor :</label>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <select  name="doctor" id="doctor" onchange="doctorChosen()" class="custom-select">
+            <select  name="doctor" id="doctor" required="" onchange="doctorChosen()" class="custom-select">
+            <option value="">Choose Doctor</option>
             @foreach($user as $users)
              @foreach($doctor as $doctors)
              @if ($doctors->id == $users->id)
@@ -159,7 +160,7 @@
           </div>
           <button class="btn btn-primary mt-3 wow zoomIn" id="button" type="button">See Available Time</button>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-          <select  name="time" id="times" placeholder="time"class="custom-select">
+          <select  name="time" id="times" required="" placeholder="time"class="custom-select">
           <!-- 
             for($hours=10; $hours<22; $hours++) // the interval for hours is '1'
             for($mins=0; $mins<60; $mins+=15) // the interval for mins is '30'
@@ -169,7 +170,7 @@
                 .str_pad($mins,2,'0',STR_PAD_LEFT).'">'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
                 .str_pad($mins,2,'0',STR_PAD_LEFT).'</option>'
           -->
-          <option>--:--</option>
+          <option value="">--:--</option>
          
           </select>
           </div>
@@ -199,34 +200,51 @@ var modalObjectInformation = document.getElementById("myInformation");
 var spanObjectInformation = document.getElementById("closeInformation");
 var arr = [];
 var taken_times=[];
+let start_time=12;
+let end_time=14;
 var select = document.getElementById("times");
-for (var hours = 10; hours < 22; hours++) {
-  for (var mins = 0; mins < 60; mins+=15) {
-    var arr_value= hours+":"+mins;
-    if (mins==0)
-    {
-      arr_value= hours+":"+mins+"0";
-    }
-    arr.push(arr_value);
-    
-  }
-}
 function doctorChosen(){
     while (select.options.length > 0) {
         select.remove(0);
     }
-    arr=[];
-    for (var hours = 10; hours < 22; hours++) {
-    for (var mins = 0; mins < 60; mins+=15) {
-     var arr_value= hours+":"+mins;
-     if (mins==0)
-     {
-       arr_value= hours+":"+mins+"0";
-     }
-     arr.push(arr_value);
+    let doctor = $('#doctor').val();
+    let date = $('#date').val();
+    $.ajax({
+      url: "/send-start-end",
+      type:"POST",
+      data:{
+        "_token": "{{ csrf_token() }}",
+        doctor:doctor,
+        date:date,
+      },
+      success:function(response){
+        for (var i=0;i<response.length;i++){
+          let text=response[i].working_hours;
+          const myArray = text.split("-");
+          start_time=parseInt(myArray[0]);
+          end_time=parseInt(myArray[1]);
+          //console.log(start_time);
+          //console.log(end_time);
+          arr=[];
+         for (var hours = start_time; hours < end_time ; hours++) {
+              for (var mins = 0; mins < 60; mins+=15) {
+                   var arr_value= hours+":"+mins;
+                   if (mins==0)
+                   {
+                     arr_value= hours+":"+mins+"0";
+                   }
+                   arr.push(arr_value);
     
-   }
-}
+              }
+         }
+        }
+        
+      },
+      error: function(response) {
+        console.log("fail");
+      },
+    })
+    
 }
 spanObjectInformation.onclick =function(){
     modalObjectInformation.style.display="none";
@@ -234,10 +252,10 @@ spanObjectInformation.onclick =function(){
 
   $('#button').click(function(e) {
     //modalObjectInformation.style.display="block";
+    taken_times=[];
     while (select.options.length > 0) {
         select.remove(0);
     }
-    taken_times=[];
     let date = $('#date').val();
     let doctor = $('#doctor').val();
     $.ajax({
@@ -250,14 +268,14 @@ spanObjectInformation.onclick =function(){
       },
       success:function(response){
         for (var i=0;i<response.length;i++){
-          console.log(response[i].time);
+          //console.log(response[i].time);
           taken_times.push(response[i].time);
         }
-        arr = arr.filter(val => !taken_times.includes(val));
+        const newarr = arr.filter(val => !taken_times.includes(val));
         for(var i = 0; i < arr.length; i++) {
           var el = document.createElement("option");
-          el.textContent = arr[i];
-          el.value = arr[i];
+          el.textContent = newarr[i];
+          el.value = newarr[i];
           select.appendChild(el);
         }
         //modalObject.style.display="none";

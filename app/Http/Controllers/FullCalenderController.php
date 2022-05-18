@@ -28,12 +28,26 @@ class FullCalenderController extends Controller
     	}
     	return view('admin.full-calender',compact('doctors'));
     }*/
-
+    public function sub_start_end(Request $request)
+      {
+          
+          /*$doctor=$request->doctor;
+          $doctor_info=Doctor::find($doctor);*/
+         
+          $doctor=$request->doctor;
+          $data=Doctor::where('id', '=',$doctor)
+                 ->get();
+          return response()->json($data);
+      }
     public function subdate(Request $request)
       {
           $date=$request->date;
           $doctor=$request->doctor;
-          $data=Appointment::where('doctor_id', '=',$doctor)
+          $data = Appointment:: join('doctors', 'appointments.doctor_id', '=', 'doctors.id')
+                 ->where('appointments.date', '=',$date)
+                 ->where('appointments.doctor_id', '=',$doctor)
+                 ->get();
+        /*  $data=Appointment::where('doctor_id', '=',$doctor)
                  ->where('date', '=',$date)
                  ->get();
                 
