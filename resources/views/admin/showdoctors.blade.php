@@ -1,24 +1,36 @@
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Required meta tags -->
         @include('admin.adminmaster')
-
-
         <style>
             table {
-                border-collapse: separate;
+                border-collapse: collapse; 
                 border-spacing: 0 15px;
             }
-
             th,
             td {
                 width: 150px;
                 text-align: center;
                 border: 1px solid rgba(26, 27, 26, 0.904);
                 padding: 5px;
+            }
+            @media screen and (max-width: 600px) {
+            table {width:100%;}
+            thead {display: block;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
             }
             #searchinput{
                 padding: 25px;
@@ -40,7 +52,7 @@
 
             @include('admin.navbar')
             <!-- partial -->
-            <div align="center" style="padding:100px;">
+            <div align="center" style="padding:100px">
 
             <form action="" style=" width:1000px;">
                 <div class="form-group">

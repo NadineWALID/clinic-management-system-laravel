@@ -1,21 +1,26 @@
 <x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
-  <style>
+  <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>   
+           * {
+              box-sizing: border-box;
+             }
             label
             {
-              width: 100%;
-              margin: 8px 0;
+              padding: 12px 12px 12px 0;
               display: inline-block;
             
             }
-            input
+            input, select, textarea
             {
               width: 60%;
               padding: 12px 20px;
               margin: 8px 0;
               box-sizing: border-box;
-              
+              border-radius: 4px;
+              resize: vertical;
             }
             input[type=submit] {
             width: 40%;
@@ -27,18 +32,17 @@
             border-radius: 4px;
             cursor: pointer;
              }
-            #formid
-            {
-              display:inline-block;
-              width:800px;
-              height:740px;
+             @media screen and (max-width: 600px) {
+             input[type=submit] {
+             width: 100%;
+            margin-top: 0;
             }
-              #doctorspec{
-                position: relative;
-                left: 10px;
-              }
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
         </style>
-    <head>
       <!-- Required meta tags -->
       @include('admin.adminmaster')
     </head>
@@ -66,30 +70,42 @@
                    @csrf
                   <div style="padding:20px; position: relative;">
                    <label>Doctor First Name</label>
+                   </div>
+                      <div>
                    <input type="text" style="color:black;" name="name" placeholder="Write Doctor's first name" required="">
                   </div>
                   <div style="padding:20px; position: relative;">
                    <label>Doctor Last Name</label>
+                   </div>
+                      <div>
                    <input type="text" style="color:black;" name="lname" placeholder="Write Doctor's last name" required="">
                   </div>
                   
                   <div style="padding:20px;">
                    <label>Phone Number</label>
+                   </div>
+                      <div>
                    <input type="text" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
                   </div>
 
                   <div style="padding:20px;">
                    <label>Email</label>
+                   </div>
+                      <div>
                    <input type="email" style="color:black;" name="email" pattern="[^ @]*@[^ @]*" required=""  placeholder="Write Email">
                   </div>
 
                   <div style="padding:20px;">
                    <label>Password</label>
+                   </div>
+                      <div>
                    <input type="password" style="color:black;" name="password"  required autocomplete="new-password"  placeholder="Write password">
                   </div>
 
                   <div style="padding:20px; position: relative; left:-20px;">
                    <label>Speciality</label>
+                   </div>
+                      <div>
                    <select id="doctorspec" name="speciality" style="color:black; width: 60%;" required="">
                        <option value="Pediatrician">Pediatrician</option>
                        <option value="Dermatologist">Dermatologist</option>
@@ -112,6 +128,8 @@
 
                   <div style="padding:20px; position: relative;">
                    <label>Doctor Image</label>
+                   </div>
+                      <div>
                    <input type="file" name="file" required="" >
                   </div>
                   <div style="padding:20px; position: relative;">
@@ -158,13 +176,13 @@
              </div>
           
             <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
+            <!-- partial:partials/_footer.html 
             <footer class="footer">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>
               </div>
-            </footer>
+            </footer>-->
             <!-- partial -->
           </div>
           <!-- main-panel ends -->

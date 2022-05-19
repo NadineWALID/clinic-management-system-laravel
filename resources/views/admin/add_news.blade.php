@@ -1,31 +1,32 @@
 <x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
+  <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+             * {
+              box-sizing: border-box;
+             }
             label
             {
-              width: 100%;
-              margin: 8px 0;
+              padding: 12px 12px 12px 0;
               display: inline-block;
             
             }
-            input
+            input [type=file,text], select, textarea
             {
               width: 60%;
               padding: 12px 20px;
               margin: 8px 0;
               box-sizing: border-box;
-              
+              border-radius: 4px;
+              resize: vertical;
             }
             input[type=text]{
-              background: white !important;
-              border-radius: 2px;          
+              background: white !important;      
             }
-            input[type=file] {
-            width: 170%;
-          }
             input[type=submit] {
-            width: 60%;
+            width: 40%;
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -34,18 +35,17 @@
             border-radius: 4px;
             cursor: pointer;
              }
-            #formid
-            {
-              display:inline-block;
-              width:800px;
-              height:740px;
+             @media screen and (max-width: 600px) {
+             input[type=submit] {
+             width: 100%;
+            margin-top: 0;
             }
-              #doctorspec{
-                position: relative;
-                left: 10px;
-              }
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
         </style>
-    <head>
       <!-- Required meta tags -->
       @include('admin.adminmaster')
     </head>
@@ -98,13 +98,13 @@
              </div>
           
             <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
+            <!-- partial:partials/_footer.html 
             <footer class="footer">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>
               </div>
-            </footer>
+            </footer>-->
             <!-- partial -->
           </div>
           <!-- main-panel ends -->

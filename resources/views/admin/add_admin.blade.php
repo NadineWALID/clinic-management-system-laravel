@@ -1,18 +1,24 @@
 <x-app-layout>
     <!DOCTYPE html>
       <html lang="en">
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       <style>
-                 label
-            {
-              width: 100%;
-              display: inline-block;
+            * {
+             box-sizing: border-box;
             }
-            input
+            label
             {
-              width: 60%;
-              padding: 12px 20px;
+              padding: 12px 12px 12px 0;
+               display: inline-block;
+            }
+            input,select,textarea
+            {
+              width: 50%;
               margin: 8px 0;
               box-sizing: border-box;
+              padding: 12px;
+              resize: vertical;
 
             }
             input[type=submit] {
@@ -25,18 +31,21 @@
             border-radius: 4px;
             cursor: pointer;
              }
-            #formid
-            {
-              display:inline-block;
-              width:800px;
-              height:740px;
+             @media screen and (max-width: 600px) {
+             input[type=submit] {
+             width: 100%;
+            margin-top: 0;
             }
-              #doctorspec{
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
+              /* #doctorspec{
                 position: relative;
                 left: 10px;
-              }
+              } */
             </style>
-        <head>
           <!-- Required meta tags -->
           @include('admin.adminmaster')
         </head>
@@ -64,26 +73,36 @@
                        @csrf
                       <div style="padding:20px; position: relative;">
                        <label>Receptionist first name</label>
+                      </div>
+                      <div>
                        <input type="text" style="color:black;" name="name" placeholder="Write receptionist's first name" required="">
                       </div>
                       <div style="padding:20px; position: relative;">
                        <label> Last name</label>
+                       </div>
+                      <div>
                        <input type="text" style="color:black;" name="lname" placeholder="Write receptionist's last name" required="">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Phone number</label>
+                       </div>
+                      <div>
                        <input type="number" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
                       </div>
 
 
                       <div style="padding:20px;">
                        <label>Email</label>
+                       </div>
+                      <div>
                        <input type="email" style="color:black;" name="email"  pattern="[^ @]*@[^ @]*" required=""  placeholder="Write Email">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Password</label>
+                       </div>
+                      <div>
                        <input type="password" style="color:black;" name="password" required="" required autocomplete="new-password" placeholder="Write password">
                       </div>
 
@@ -97,13 +116,13 @@
                  </div>
 
                 <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
+                <!-- partial:partials/_footer.html
                 <footer class="footer">
                   <div class="d-sm-flex justify-content-center justify-content-sm-between">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>
                   </div>
-                </footer>
+                </footer>-->
                 <!-- partial -->
               </div>
               <!-- main-panel ends -->

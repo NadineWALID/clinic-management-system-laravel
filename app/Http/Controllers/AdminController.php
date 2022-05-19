@@ -298,6 +298,8 @@ class AdminController extends Controller
 
       $Pdata = patient::find($id);
       $Pdata2 = records::find($id);
+      $Pdata->save();
+
       return view('admin.update_patient', compact(['Pdata','Pdata2']));
    }
 
@@ -350,8 +352,7 @@ class AdminController extends Controller
          $record->weight = $request->weight;
          $record->save();
       }
-      $patient->save();
-
+      
       return redirect()->back()->with('message', 'Patient Updated Successfully');
    }
 

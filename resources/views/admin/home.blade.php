@@ -4,11 +4,13 @@
   <style>
       #nav{
         position: fixed;
-        top: 16px;
+        top: 13px;
         left:0;
         background-color:	#8099b3;
+        overflow: hidden;
         font-family:Arial;
-        font-size:20px
+        font-size:17px;
+        padding: 5px;
       }
     </style>
     <head>
@@ -25,13 +27,13 @@
           <!-- partial -->
          @include('admin.body')
             <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
+            <!-- partial:partials/_footer.html 
             <footer class="footer">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>
               </div>
-            </footer>
+            </footer>-->
             <!-- partial -->
           </div>
           <!-- main-panel ends -->

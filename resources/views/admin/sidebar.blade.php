@@ -1,5 +1,29 @@
+<!DOCTYPE html>
+      <html lang="en">
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
    <!-- partial:partials/_sidebar.html -->
-   <nav class="sidebar sidebar-offcanvas" id="sidebar">
+   <nav class="sidebar" id="sidebar">
           <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
           </div>
           <ul class="nav">
@@ -103,3 +127,4 @@
             </li>
           </ul>
         </nav>
+</html>

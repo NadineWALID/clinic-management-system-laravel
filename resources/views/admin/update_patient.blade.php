@@ -11,7 +11,35 @@
                     display:inline-block;
                     width:200px;
                 }
-
+                input, select, textarea
+            {
+              width: 60%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              border-radius: 4px;
+              resize: vertical;
+            }
+            input[type=submit] {
+            width: 40%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+             }
+             @media screen and (max-width: 600px) {
+             input[type=submit] {
+             width: 100%;
+            margin-top: 0;
+            }
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
             </style>
 
           @include('admin.adminmaster')
@@ -40,45 +68,28 @@
                 <form action="{{url('editpatient',[$Pdata->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div style="padding:20px; position: relative;">
-                    <div style="padding:20px; position: relative; width:200px;">
-                       <label>Blood Type</label>
-                       <select  name="blood_type" placeholder="Blood Type"class="custom-select" value="{{$Pdata2->blood_type}}">
-                       <option value="O+">O+</option>
-                       <option value="O-">O-</option>
-                       <option value="A+">A+</option>
-                       <option value="A-">A-</option>
-                       <option value="B+">B+</option>
-                       <option value="B-">B-</option>
-                       <option value="AB+">AB+</option>
-                       <option value="AB-">AB-</option>
-                       </select>
-                      </div>
-
-                      <div style="padding:20px;">
-                       <label>Height(cm)</label>
-                       <input type="number" style="color:grey;" name="height" placeholder="Write height(cm)" required="" value="{{$Pdata2->height}}">
-                      </div>
-
-                      <div style="padding:20px;">
-                       <label>Weight(kg)</label>
-                       <input type="number" style="color:grey;" name="weight" placeholder="Write weight(kg)" required="" value="{{$Pdata2->weight}}">
-                      </div>
-
                       <div style="padding:20px;">
                         <label>date of birth</label>
+                      </div>
+                      <div>
                         <input type="date" style="color:grey;" name="date_of_birth" required="" min="1900-01-01" max="2023-01-01" value="{{$Pdata->date_of_birth}}">
                        </div>
 
 
                       <div style="padding:20px;">
                         <label>address</label>
+                        </div>
+                      <div>
                         <input type="text" style="color:grey;" name="address" required="" value="{{$Pdata->address}}">
                        </div>
 
 
                       <div style="padding:20px; width:200px;">
                        <label>Gender</label>
+                       </div>
+                      <div>
                        <select  name="gender" placeholder="Gender"class="custom-select">
+                        <option value="{{$Pdata->gender}}">{{$Pdata->gender}}</option>
                        <option value="female">Female</option>
                        <option value="male">Male</option>
                        </select>

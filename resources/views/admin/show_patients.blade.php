@@ -3,9 +3,36 @@
     <html lang="en">
 
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Required meta tags -->
         @include('admin.adminmaster')
         <style>
+        table {
+                border-collapse: collapse; 
+                border-spacing: 0 15px;
+            }
+            th,
+            td {
+                width: 150px;
+                text-align: center;
+                border: 1px solid rgba(26, 27, 26, 0.904);
+                padding: 5px;
+            }
+            @media screen and (max-width: 600px) {
+            table {width:100%;}
+             thead {display: none;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
+            }
             #searchinput{
                 padding: 25px;
                 margin-bottom: 5px;
@@ -15,20 +42,6 @@
             #searchbutton{
                 padding: 10px;
             }
-            table {
-                border-collapse: separate;
-                border-spacing: 0 15px;
-            }
-
-
-            th,
-            td {
-                width: 150px;
-                text-align: center;
-                border: 1px solid rgba(26, 27, 26, 0.904);
-                padding: 5px;
-            }
-
         </style>
     </head>
 

@@ -1,19 +1,25 @@
 <x-app-layout>
     <!DOCTYPE html>
       <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       <style>
+             * {
+              box-sizing: border-box;
+              }
                  label
             {
-              width: 100%;
+              padding: 12px 12px 12px 0;
               display: inline-block;
             }
-            input
+            input, select, textarea
             {
               width: 60%;
               padding: 12px 20px;
               margin: 8px 0;
               box-sizing: border-box;
-
+              border-radius: 4px;
+              resize: vertical;
             }
             input[type=submit] {
             width: 40%;
@@ -25,19 +31,17 @@
             border-radius: 4px;
             cursor: pointer;
              }
-            #formid
-            {
-              display:inline-block;
-              width:800px;
-              height:740px;
+             @media screen and (max-width: 600px) {
+             input[type=submit] {
+             width: 100%;
+            margin-top: 0;
             }
-              #doctorspec{
-                position: relative;
-                left: 10px;
-              }
-
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
             </style>
-        <head>
           <!-- Required meta tags -->
           @include('admin.adminmaster')
         </head>
@@ -65,36 +69,50 @@
                        @csrf
                        <div style="padding:20px; position: relative;">
                        <label>Patient's first name</label>
+                       </div>
+                      <div>
                        <input type="text" style="color:black;" name="name" placeholder="Write patients's first name" required="">
                       </div>
                       <div style="padding:20px; position: relative;">
                        <label>last name</label>
+                       </div>
+                      <div>
                        <input type="text" style="color:black;" name="lname" placeholder="Write patients's last name" required="">
                       </div>
 
                       <div style="padding:20px; position: relative;">
                        <label>address</label>
+                       </div>
+                      <div>
                        <input type="text" style="color:black;" name="address" placeholder="Write patients's address" required="">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Phone number</label>
+                       </div>
+                      <div>
                        <input type="number" style="color:black;" name="number" placeholder="Write phone number" pattern="0[0-9]{3}[0-9]{3}[0-9]{4}" required="">
                       </div>
 
 
                       <div style="padding:20px;">
                        <label>Email</label>
+                       </div>
+                      <div>
                        <input type="email" style="color:black;" name="email" required="" pattern="[^ @]*@[^ @]*" placeholder="Write Email">
                       </div>
 
                       <div style="padding:10px;">
                        <label>Password</label>
+                       </div>
+                      <div>
                        <input type="password" style="color:black;" name="password"  required autocomplete="new-password" placeholder="Write password">
                       </div>
 
                       <div style="padding:20px; position: relative;">
                        <label>Blood type</label>
+                       </div>
+                      <div>
                        <select  name="blood_type" placeholder="Blood Type"class="custom-select" style="width: 60% !important;">
                        <option value="O+">O+</option>
                        <option value="O-">O-</option>
@@ -109,22 +127,30 @@
 
                       <div style="padding:20px;">
                        <label>Height(cm)</label>
+                       </div>
+                      <div>
                        <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Weight(kg)</label>
+                       </div>
+                      <div>
                        <input type="number" style="color:black;" name="weight" placeholder="Write weight(kg)" required="">
                       </div>
 
                       <div style="padding:20px;">
                         <label>Date of birth</label>
+                        </div>
+                      <div>
                         <input type="date" style="color:black;" name="date_of_birth" required="" min="1900-01-01" max="{{$date}}">
                        </div>
 
 
                       <div style="padding:20px;">
                        <label>Gender</label>
+                       </div>
+                      <div>
                        <select name="gender" id="departement" placeholder="Gender"class="custom-select"  style="width: 60% !important;">
                        <option value="female">Female</option>
                        <option value="male">Male</option>
@@ -133,16 +159,22 @@
 
                        <div style="padding:20px;">
                        <label>Medications that patient is currently taking</label>
+                       </div>
+                      <div>
                        <input type="text" name="medicine" placeholder="Medicine" style="color:black;" required="">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Alergies (if exists)</label>
+                       </div>
+                      <div>
                        <input input type="text" name="allergies" placeholder="Allergies" style="color:black;">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Chronic diseases</label>
+                       </div>
+                      <div>
                        <input type="text" name="chronic_diseases" placeholder="Chronic diseases" style="color:black;" required="">
                       </div>
 
@@ -168,13 +200,13 @@
                  </div>
 
                 <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
+                <!-- partial:partials/_footer.html 
                 <footer class="footer">
                   <div class="d-sm-flex justify-content-center justify-content-sm-between">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>
                   </div>
-                </footer>
+                </footer>-->
                 <!-- partial -->
               </div>
               <!-- main-panel ends -->
