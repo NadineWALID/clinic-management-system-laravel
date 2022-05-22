@@ -24,10 +24,6 @@
             <form action="{{url('edit_record',$data->id)}}" method="POST"  enctype="multipart/form-data">
                 @csrf
                 <div style="padding:20px; position: relative;">
-                   <label>Diagnosis</label>
-                   <input type="text" style="color:black;" name="diagnosis" value="{{$data->diagnosis}}" required="">
-                  </div>
-                  
 
                 <div style="padding:15px;">
                     <label>Blood_type</label>

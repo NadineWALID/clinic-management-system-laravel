@@ -99,7 +99,7 @@
                        <label>Email</label>
                        </div>
                       <div>
-                       <input type="email" style="color:black;" name="email" required="" pattern="[^ @]*@[^ @]*" placeholder="Write Email">
+                       <input type="email" style="color:black;" name="email" required=""  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Write Email">
                       </div>
 
                       <div style="padding:10px;">
@@ -126,17 +126,17 @@
                       </div>
 
                       <div style="padding:20px;">
-                       <label>Height(cm)</label>
+                       <label>Height(cm) (optional)</label>
                        </div>
                       <div>
-                       <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
+                       <input type="number" style="color:black;" name="height" placeholder="0" required="">
                       </div>
 
                       <div style="padding:20px;">
-                       <label>Weight(kg)</label>
+                       <label>Weight(kg) (optional)</label>
                        </div>
                       <div>
-                       <input type="number" style="color:black;" name="weight" placeholder="Write weight(kg)" required="">
+                       <input type="number" style="color:black;" name="weight" placeholder="0 " required="">
                       </div>
 
                       <div style="padding:20px;">
@@ -161,21 +161,21 @@
                        <label>Medications that patient is currently taking</label>
                        </div>
                       <div>
-                       <input type="text" name="medicine" placeholder="Medicine" style="color:black;" required="">
+                       <input type="text" name="medicine" placeholder="Medicine" style="color:black;" value="none" required="">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Alergies (if exists)</label>
                        </div>
                       <div>
-                       <input input type="text" name="allergies" placeholder="Allergies" style="color:black;">
+                       <input input type="text" name="allergies" placeholder="Allergies"value="none" style="color:black;">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Chronic diseases</label>
                        </div>
                       <div>
-                       <input type="text" name="chronic_diseases" placeholder="Chronic diseases" style="color:black;" required="">
+                       <input type="text" name="chronic_diseases" placeholder="Chronic diseases" value="none" style="color:black;" required="">
                       </div>
 
                      <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">

@@ -1,6 +1,8 @@
 
     <!DOCTYPE html>
     <html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             table {
                 border-collapse: separate;
@@ -14,8 +16,23 @@
                 border: 1px solid rgba(26, 27, 26, 0.904);
                 padding: 5px;
             }
+            @media screen and (max-width: 600px) {
+            table {width:100%;}
+             thead {display: none;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
+            }
         </style>
-
+       </head>
     <body>
         <div class="container-scroller">
             <div align="center" style="padding:100px;">

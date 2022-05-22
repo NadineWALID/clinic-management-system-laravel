@@ -21,14 +21,14 @@
                       
         <div class="row mt-5 ">
         
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Weight(kg): </div>
+        <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Weight(kg)(optional): </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="weight" id="weight" class="form-control" required="" placeholder="Weight">
+            <input type="text" name="weight" id="weight" class="form-control" value="0 (not determined)" required="" placeholder="Weight">
           </div>
 
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Height(cm): </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">Height(cm)(optional): </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="height" id="height" class="form-control" required="" placeholder="Height">
+            <input type="text" name="height" id="height" class="form-control" value="0 (not determined)" required="" placeholder="Height">
           </div>
 
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">

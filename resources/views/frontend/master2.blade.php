@@ -11,7 +11,35 @@
   <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
   <link rel="stylesheet" href="../assets/css/theme.css">
+  <style>
+    @media only screen and (max-width:500px) {
+  /* For mobile phones: */
   
+    table {width:100%;}
+             thead {display: none;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
+}
+@media screen and (max-width: 600px) {
+             input{
+             width: 100%;
+            margin-top: 0;
+            }
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
+  </style>
   
 </head>
 <body>

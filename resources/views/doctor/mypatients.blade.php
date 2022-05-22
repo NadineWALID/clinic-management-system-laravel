@@ -44,7 +44,7 @@
                             <input type="search" name="search" type="search" style="width: 80%;"id="search"  value="{{$search}}" placeholder="Search Patients" />
                             <div style="display: inline;">
                             
-                            <!--<button id="searchButton"  style="background-color:#3fd4ad;color: white;width:7%;padding: 14px 15px;border-radius: 5px;">Get</button>-->
+                            <button id="searchButton"  style="background-color:#3fd4ad;color: white;width:7%;padding: 14px 15px;border-radius: 5px;">Get</button>
                             
                             <div>
                             </form>

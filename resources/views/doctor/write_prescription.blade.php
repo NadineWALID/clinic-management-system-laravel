@@ -66,9 +66,21 @@
           </div>
       </div>
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn" >Save </button>
-        
+      </br>
+        <button class="btn btn-primary"  style=" width:40%;  margin-left:20%;" onclick="printDiv('print-content')">Print</button>
+     </div>
+     </br></br>
+
       </form>
     </div>
   </div> <!-- .page-section -->
- 
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w=window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>
 @stop

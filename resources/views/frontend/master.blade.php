@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Medica</title>
+  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <!--Web app part-->
+  <link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+<meta name="msapplication-starturl" content="/">
+<meta name="theme-color" content="#77ef67">
   <style>
     #navbarSupport {
   position: fixed;
@@ -26,24 +43,37 @@
   margin-left: -380px;
 
 }
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .input, #navbarSupport{
+    width: 100%;
+  }
+    table {width:100%;}
+             thead {display: none;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
+}
+@media screen and (max-width: 600px) {
+             input{
+             width: 100%;
+            margin-top: 0;
+            }
+            }
+            .container {
+            border-radius: 5px;
+            padding: 20px;
+            }
     </style>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Medica</title>
-  <link rel="stylesheet" href="../assets/css/maicons.css">
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <!--Web app part-->
-  <link rel="manifest" href="/manifest.json">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
-<meta name="msapplication-starturl" content="/">
-<meta name="theme-color" content="#77ef67">
+
 </head>
 <body>
 

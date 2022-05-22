@@ -140,9 +140,6 @@ class AdminController extends Controller
       $user->lname = $request->lname;
       $user->role_id = 2;
       $user->save();
-
-
-
       return redirect()->back()->with('message', 'Admin Is Added Successfully');
       }
       else{
@@ -161,6 +158,7 @@ class AdminController extends Controller
                   ->where('name','LIKE',"%$search%")
                   ->orWhere('lname','LIKE',"%$search%")
                   ->orWhere('phone_no','LIKE',"%$search%")
+                  ->orWhere(DB::raw("concat(name, ' ',lname)"), 'LIKE', "%".$search."%")
                   ->get();
 
       }
@@ -215,6 +213,7 @@ class AdminController extends Controller
                            ->orwhere ('users.lname','like',"%$search%")
                            ->orwhere ('users.email','like',"%$search%")
                            ->orwhere ('doctors.speciality','like',"%$search%")
+                           ->orWhere(DB::raw("concat(users.name, ' ', users.lname)"), 'LIKE', "%".$search."%")
                            ->get();
          //$data = doctor::where('name','LIKE',"%$search%")->orWhere('lname','LIKE',"%$search%")->orWhere('phone_number','LIKE',"%$search%")->orWhere('speciality','LIKE',"%$search%")->get();
       }
@@ -236,7 +235,8 @@ class AdminController extends Controller
          $Pdata = user::join('patients', 'users.id', '=', 'patients.id')
                   ->where('name','LIKE',"%$search%")
                   ->orWhere('lname','LIKE',"%$search%")
-                  ->orWhere('phone_no','LIKE',"%$search%")->get();
+                  ->orWhere('phone_no','LIKE',"%$search%")
+                  ->orWhere(DB::raw("concat(name, ' ', lname)"), 'LIKE', "%".$search."%")->get();
       }
       else
       {
@@ -437,7 +437,9 @@ class AdminController extends Controller
          $Pdata = user::join('patients', 'users.id', '=', 'patients.id')
                   ->where('name','LIKE',"%$search%")
                   ->orWhere('lname','LIKE',"%$search%")
-                  ->orWhere('phone_no','LIKE',"%$search%")->get();     
+                  ->orWhere('phone_no','LIKE',"%$search%")
+                  ->orWhere(DB::raw("concat(name, ' ',lname)"), 'LIKE', "%".$search."%")
+                  ->get();     
       }
       else
       {
