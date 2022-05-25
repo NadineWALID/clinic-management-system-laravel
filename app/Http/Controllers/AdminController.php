@@ -298,9 +298,11 @@ class AdminController extends Controller
 
       $Pdata = patient::find($id);
       $Pdata2 = records::find($id);
+      $record=records::all();
+      $patient=patient::all();
       $Pdata->save();
 
-      return view('admin.update_patient', compact(['Pdata','Pdata2']));
+      return view('admin.update_patient', compact(['Pdata','Pdata2','record','patient']));
    }
 
    public function updateadmin($id)
@@ -352,7 +354,7 @@ class AdminController extends Controller
          $record->weight = $request->weight;
          $record->save();
       }
-      
+      $patient->save();
       return redirect()->back()->with('message', 'Patient Updated Successfully');
    }
 
@@ -424,10 +426,29 @@ class AdminController extends Controller
       return view('frontend.index', compact('doctor','user'));
    }
 
-   public function show_records()
+   public function show_records(Request $request)
    {
+      $search=$request['search'] ?? "";
+      if($search != "")
+      {
+         $Pdata = user::join('patients', 'users.id', '=', 'patients.id')
+                  ->where('name','LIKE',"%$search%")
+                  ->orWhere('lname','LIKE',"%$search%")
+                  ->orWhere('phone_no','LIKE',"%$search%")
+                  ->orWhere(DB::raw("concat(name, ' ',lname)"), 'LIKE', "%".$search."%")
+                  ->get();     
+      }
+      else
+      {
+         $Pdata = User :: join('patients', 'users.id', '=', 'patients.id')
+                           ->get();
+
+         //$Pdata = patient::all();
+      }
       $data = records::all();
-      return view('admin.show_records', compact('data'));
+      $user =user::all();
+      return view('admin.show_records', compact('data','user','search','Pdata'))
+      ->with('i', (request()->input('page', 1) - 1) * 5);
    }
    public function view_prescriptions(Request $request)
    {

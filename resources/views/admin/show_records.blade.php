@@ -34,7 +34,12 @@
              visibility:hidden;   
             }
             }
-
+            #searchinput{
+                padding: 25px;
+                margin-bottom: 5px;
+                background: rgb(211, 240, 208);
+                color: black;
+            }
         </style>
     </head>
 
@@ -48,10 +53,19 @@
             <!-- partial -->
             <div align="center" style="padding:100px;">
             <div id="google_translate_element"></div>
+            <form action="" style=" width:1000px;">
+                <div class="form-group">
+                    <input id="searchinput" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search records">
+                    <button style="padding:10px;" class="btn btn-success">Search</button>
+                    <a href="{{url('/view_records')}}">
+                        <button style="padding:10px;" class="btn btn-primary" type="button">Reset</button>
+                    </a>
+                </div>
+            </form>
             <table style=" width:1000px;">
                     <tr style="background-color:rgb(138, 235, 135);">
-                       
-                       
+                        <th style="padding:10px; color:black;">No.</th>
+                        <th style="padding:10px; color:black;">Patient Name</th>
                         <th style="padding:10px; color:black;">Current Medication</th>
                         <th style="padding:10px; color:black;">Blood Type</th>
                         <th style="padding:10px; color:black;">Lab_results</th>
@@ -65,9 +79,11 @@
                     </tr>
 
                     @foreach ($data as $record)
+                    @foreach ($Pdata as $patient)
+                    @if($record->user_id == $patient->id)
                         <tr align="center" style="background-color:rgb(23, 73, 29);">
-                            
-                           
+                            <td>{{++$i}}</td>
+                            <td>{{$patient->name}} {{$patient->lname}}</td>
                             <td>{{ $record->medicine }}</td>
                             <td>{{ $record->blood_type }}</td>
                             <td><a href="labs/{{$record->lab_results }}" width="100%" height="500px">view</a></td>
@@ -84,6 +100,8 @@
                                     onclick="return confirm('Are you sure you want to delete this ')">Delete</a>
                             </td>
                         </tr>
+                        @endif
+                        @endforeach
                     @endforeach
                 </table>
             </div>

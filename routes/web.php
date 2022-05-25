@@ -83,7 +83,6 @@ Route::post('/editadmin/{id}', [AdminController::class,'editadmin']);
 Route::get('/record', [DoctorController::class,'record']);
 Route::post('/add_record',[DoctorController::class,'add_record']);
 Route::get('/view_records', [AdminController::class,'show_records']);
-Route::get('/show_records', [DoctorController::class,'showrecords']);
 Route::get('/update_record/{id}', [DoctorController::class,'updaterecord']);
 Route::post('/edit_record/{id}', [DoctorController::class,'edit_record']);
 Route::get('/delete_record/{id}', [DoctorController::class,'delete_record']);

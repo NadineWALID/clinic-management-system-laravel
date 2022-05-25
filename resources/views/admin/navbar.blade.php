@@ -3,7 +3,10 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-
+#lagout{
+  background-color:white;
+  color:black;
+}
 @media screen and (max-width: 600px) {
   #nav.responsive {position: relative;}
   #nav.responsive .icon {
@@ -16,6 +19,10 @@
     display: block;
     text-align: left;
   }
+  #lagout{
+  background-color:white;
+  color:black;
+}
 }
 </style>
 </head>
@@ -35,6 +42,10 @@
                 </li>  -->
               </ul>
               <ul class="navbar-nav ml-auto">
+                <li>
+                <x-app-layout id="logout">
+                   </x-app-layout>
+                </li>
             <li class="nav-item active">
               <a class="nav-link" href="/home" >Home Page</a>
             </li>
@@ -53,8 +64,7 @@
             <!-- <li class="nav-item">
               <a class="nav-link " href="/view_records">Medical Records</a>
             </li> -->
-                     <x-app-layout >
-                   </x-app-layout>
+                   
               </ul>
               <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                 <span class="mdi mdi-format-line-spacing"></span>

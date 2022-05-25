@@ -94,9 +94,67 @@
                        <option value="male">Male</option>
                        </select>
                       </div>
+                      @if($Pdata2 != null)
+                      <div style="padding:15px;">
+                    <label>Blood_type</label>
+                    <select  name="blood_type" placeholder="Blood Type"class="custom-select" value="{{$Pdata2->blood_type}}">
+                     <option value="{{$Pdata2->blood_type}}">{{$Pdata2->blood_type}}</option>
+                       <option value="O+">O+</option>
+                       <option value="O-">O-</option>
+                       <option value="A+">A+</option>
+                       <option value="A-">A-</option>
+                       <option value="B+">B+</option>
+                       <option value="B-">B-</option>
+                       <option value="AB+">AB+</option>
+                       <option value="AB-">AB-</option>
+                       </select>
+                </div>
+                <div style="padding:20px;">
+                       <label>Height(cm) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="height" value="{{$Pdata2->height}}" placeholder="0" required="">
+                      </div>
+
+                      <div style="padding:20px;">
+                       <label>Weight(kg) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="weight" value="{{$Pdata2->weight}}"placeholder="0 " required="">
+                      </div>
+                      @else 
+                      <label>Blood_type</label>
+                    <select  name="blood_type" placeholder="Blood Type"class="custom-select">
+                       <option value="O+">O+</option>
+                       <option value="O-">O-</option>
+                       <option value="A+">A+</option>
+                       <option value="A-">A-</option>
+                       <option value="B+">B+</option>
+                       <option value="B-">B-</option>
+                       <option value="AB+">AB+</option>
+                       <option value="AB-">AB-</option>
+                       </select>
+                </div>
+                <div style="padding:20px;">
+                       <label>Height(cm) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="height" placeholder="0" required="">
+                      </div>
+
+                      <div style="padding:20px;">
+                       <label>Weight(kg) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="weight" placeholder="0 " required="">
+                      </div>
+                      @endif
+                      
                     <div style="padding:15px;">
                         <input type="submit" class="btn btn-success">
                     </div>
+                   
+
                 </form>
             </div>
                 <!-- partial -->

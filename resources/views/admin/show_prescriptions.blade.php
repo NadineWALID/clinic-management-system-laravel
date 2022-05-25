@@ -62,7 +62,7 @@
                 <div id="google_translate_element"></div>
                     <input id="searchinput" type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search patients">
                     <button id="searchbutton" class="btn btn-success">Search</button>
-                    <a href="{{url('/show_patients')}}">
+                    <a href="{{url('/view_prescriptions')}}">
                         <button style="padding:10px;" class="btn btn-primary" type="button">Reset</button>
                     </a>
                 </div>

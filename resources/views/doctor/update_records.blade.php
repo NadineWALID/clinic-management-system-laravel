@@ -40,6 +40,20 @@
                        </select>
                 </div>
 
+                <div style="padding:20px;">
+                       <label>Height(cm) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="height" placeholder="0" required="">
+                      </div>
+
+                      <div style="padding:20px;">
+                       <label>Weight(kg) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="weight" placeholder="0 " required="">
+                      </div>
+
                 <div style="padding:15px;">
                     <label>Medicine</label>
                     <input style="color:grey;" type="text" name="medicine" value="{{$data->medicine}}">
