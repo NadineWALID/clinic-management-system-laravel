@@ -294,28 +294,6 @@
             </div>
             </div>
 
-<<<<<<< HEAD
-            <div class="d-flex flex-row comment-row p-3">
-            <div class="call-chat">
-            <h5 class="font-medium">Gender :</h5>
-            </br>
-            {{ $patients->gender }}
-            </div>
-            </div>
-            
-            <div class="d-flex flex-row comment-row p-3">
-            <div class="call-chat">
-            <h5 class="font-medium">Address:</h5>
-            </br>
-            {{ $patients->address }}
-            </div>
-            </div>
-            
-        
-         
-         
-          
-=======
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="html">Phone number :</label>
           {{ $patients->phone_no }}
@@ -332,7 +310,6 @@
             <label for="html">Address:</label>
           {{ $patients->address }}
           </div>
->>>>>>> 8619c0e1e67023a4db2272e1d0638e1159f6fc53
         </div>
         </div>
         </div>

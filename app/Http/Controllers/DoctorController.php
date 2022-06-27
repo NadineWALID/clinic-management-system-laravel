@@ -250,7 +250,7 @@ class DoctorController extends Controller
                                 <h5 class="font-medium">Gender:</h5> '. $data->gender.'
                                 </li>
                                 <li>
-                                <h5 class="font-medium">Gender:</h5> '. $data->address.'
+                                <h5 class="font-medium">Address:</h5> '. $data->address.'
                                 </li>
                                
                             </ul>
