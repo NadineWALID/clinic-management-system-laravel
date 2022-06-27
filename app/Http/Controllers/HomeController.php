@@ -171,6 +171,7 @@ class HomeController extends Controller
                  ->select('*')
                  ->where('user_id','=',$userid)
                  ->get();
+          $record= Records::find($userid);
           $prescription= DB::table('prescriptions')
                  ->select('*')
                  ->where('user_id','=',$userid)
@@ -182,15 +183,20 @@ class HomeController extends Controller
          $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
                  ->where ('appointments.user_id','like',$userid)
                  ->get();
-         $p = User :: join('prescriptions','users.id','=','prescriptions.user_id')
+        $p =  Prescription::where('prescriptions.user_id','=',$userid)
+                 ->join('doctors', 'prescriptions.doctor_id', '=', 'doctors.id')
+                 ->join('users', 'prescriptions.doctor_id', '=', 'users.id')
+                 ->select('*')
+                 ->get();
+        /* $p = User :: join('prescriptions','users.id','=','prescriptions.user_id')
              ->where('prescriptions.user_id','like',$userid)
-             ->get();
+             ->get();*/
          $patient=User :: join('patients','users.id','=','patients.id')
                     ->where('patients.id','like',$userid)
                     ->get();    
           $appointscount =$data->count();
         
-          return view('user.my_appointment',compact('data','name','date','appointscount','p','patient'));
+          return view('user.my_appointment',compact('data','name','date','appointscount','p','patient','record'));
         }
         else
         {

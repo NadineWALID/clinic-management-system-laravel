@@ -139,7 +139,7 @@
                                             <td><a class="btn btn-success button"  href="{{url('update_appoint',$appoints->id)}}"onclick="return confirm('Are you sure you want to edit this appointment')">Edit</a></td>
                                             </td>
                                             <td>
-                                             <a class="btn btn-danger" href="{{url('delete_app',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')">Remove</a>
+                                             <a class="btn btn-danger" href="{{url('delete_app',$appoints->id)}}"onclick="return confirm('Are you sure you want to cancel this appointment')">Cancel</a>
                                             </td>                              
                                         </tr>
                                      @endforeach
@@ -162,38 +162,103 @@
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
                 <!-- ============================================================== -->
-                <div class="row">
+            <div class="row">
                     <!-- .col -->
             <div class="col-md-12 col-lg-8 col-sm-12">
             <div class="card white-box p-0">
             <div class="card-body">
-                @foreach($p as $prescription)
             <h3 class="box-title mb-0">My Record</h3>
             </div>
             <div class="comment-widgets">
             <!-- Comment Row -->
-            <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Date : </label>
-           {{$prescription->date_of_examination}}
-        </div>
+            @if ($record!=null)
 
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Diagnosis :</label>
-                  {{$prescription->diagnosis}}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Medication :</label>
-          {{$prescription->medicine}}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Dosage:</label>
-          {{$prescription->dosage}}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Next Appointment :</label>
-          {{$prescription->next_appointment_date}}
-          </div>
-         @endforeach
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+                    <h5 class="font-medium">Cronic Diseases:</h5> 
+                       {{$record->chronic_diseases}}
+            </div>
+            </div>
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+                    <h5 class="font-medium">Allergies:</h5>
+                       {{$record->allergies}}
+            </div>
+            </div>
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+                    <h5 class="font-medium">Current Medication:</h5>
+                       {{$record->medicine}}
+            </div>
+            </div>
+
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+                    <h5 class="font-medium">Blood Type:</h5>
+                       {{$record->blood_type}}
+            </div>
+            </div>
+
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+                    <h5 class="font-medium">Lab Results:</h5>
+            @if ($record->lab_results!=null)
+            <a class="btn" href="labs/'.$record->lab_results.'" style="color:blue;text-decoration: underline;">view</a>
+            @else
+                     not available
+            @endif
+
+            </div>
+            </div>
+
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+                    <h5 class="font-medium">Radiology Image:</h5>
+            @if ($record->radiology_image!=null)
+            <a class="btn" href="labs/'.$record->radiology_image.'" style="color:blue;text-decoration: underline;">view</a>
+            @else
+                     not available
+            @endif
+
+            </div>
+            </div>
+            
+
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            @if ($p!=null)
+            <table class="table no-wrap" >
+                      <thead>
+                <tr>
+                     <th class="border-top-0">Date</th>
+                    <th class="border-top-0">Speciality</th>
+                    <th class="border-top-0">Doctor</th>
+                    
+                    <th class="border-top-0"></th>
+                    
+                </tr> 
+                </thead>
+                <tbody id="search_list">
+                @foreach($p as $prescription)
+                <tr>
+                <td> {{$prescription->date_of_examination}}</td>
+                <td> {{$prescription->speciality}}</td>
+                <td>  Dr. {{$prescription->name}}  {{$prescription->lname}}</td>
+                <td><a class="btn" href="{{url('view_prescription',$prescription->prescription_id)}}"  target="_blank" style="background-color: #e7e7e7; color: black;">View</a><td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
+            @else
+            <div class="d-flex flex-row comment-row p-3">none  </div>
+            @endif
+            </div>
+            @else
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <div class="comment-text ps-2 ps-md-3 w-100">
+             You didn't set your record yet!
+            </div>
+            </div>
+            @endif
             </div>
                 </div>
                     </div>
@@ -205,28 +270,46 @@
             @foreach($patient as $patients)
             <div class="comment-widgets">
             <!-- Comment Row -->
-            <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Name : </label>
-        {{ $patients->name }} {{ $patients->lname }}
-        </div>
+            <div class="d-flex flex-row comment-row p-3">
+            <div class="call-chat">
+            <h5 class="font-medium">Name : </h5>
+            </br>
+            {{ $patients->name }} {{ $patients->lname }}
+            </div>
+            </div>
 
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Phone number :</label>
-          {{ $patients->phone_no }}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Date of Birth:</label>
-          {{ $patients->date_of_birth}}
-          </div>
-          <div class="d-flex flex-row comment-row p-3">
-                <h5 class="font-medium">Gender :</h5>
-                </br>
-          {{ $patients->gender }}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Address:</label>
-          {{ $patients->address }}
-          </div>
+            <div class="d-flex flex-row comment-row p-3">
+            <div class="call-chat">
+            <h5 class="font-medium">Phone number :</h5>
+            </br>
+            {{ $patients->phone_no }}
+            </div>
+            </div>
+          
+            <div class="d-flex flex-row comment-row p-3">
+            <div class="call-chat">
+            <h5 class="font-medium">Date of Birth:</h5>
+            </br>
+            {{ $patients->date_of_birth}}
+            </div>
+            </div>
+
+            <div class="d-flex flex-row comment-row p-3">
+            <div class="call-chat">
+            <h5 class="font-medium">Gender :</h5>
+            </br>
+            {{ $patients->gender }}
+            </div>
+            </div>
+            
+            <div class="d-flex flex-row comment-row p-3">
+            <div class="call-chat">
+            <h5 class="font-medium">Address:</h5>
+            </br>
+            {{ $patients->address }}
+            </div>
+            </div>
+            
         </div>
         </div>
         </div>

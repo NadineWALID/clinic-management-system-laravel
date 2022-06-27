@@ -145,7 +145,7 @@ class FullCalenderController extends Controller
 
                     $data = User:: join('appointments', 'users.id', '=', 'appointments.user_id')
                         ->whereDate('appointments.start', '>=', "2022-04-30 00:00:00" )
-					    ->whereDate('appointments.end',   '<=', "2022-05-30 00:00:00")
+					    ->whereDate('appointments.end',   '<=', "2022-08-30 00:00:00")
 						->where('appointments.doctor_id', '=', $request->doctor)
 						->get();
 

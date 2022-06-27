@@ -158,14 +158,23 @@ class DoctorController extends Controller
                             <!-- Comment Row -->
                             <div class="d-flex flex-row comment-row p-3">
                             <h5 class="font-medium">Lab Results:</h5>
-                            </br>
-                            '.$record->lab_results.'
+                            </br>';
+                            if ($record->lab_results!=null)
+                            {$output.='<a class="btn" href="labs/'.$record->lab_results.'" style="color:blue;text-decoration: underline;">view</a>';}
+                            else
+                            {$output.='not available';}
+                            $output.='
+
                             </div>
                            
                             <div class="d-flex flex-row comment-row p-3">
                             <h5 class="font-medium">Radiology Images:</h5>
-                            </br>
-                            '.$record->radiology_image.'
+                            </br>';
+                            if ($record->radiology_image!=null)
+                            {$output.='<a class="btn" href="Radiology/'.$record->radiology_image.'"  style="color:blue;text-decoration: underline;">view</a>';}
+                            else
+                            {$output.='not available';}
+                            $output.='
                             </div>
                             <!-- Comment Row -->
                             <div class="d-flex flex-row comment-row p-3">
@@ -225,7 +234,7 @@ class DoctorController extends Controller
                         <div class="card-body">
                             <ul class="chatonline">
                                 <li>
-                                <h5 class="font-medium">Weight:</h5> '. $record->weight.'
+                                <h5 class="font-medium">Weight:</h5> </br>'. $record->weight.'
                                 </li>
                                 <li>
                                 <h5 class="font-medium">Height:</h5> '. $record->height.'
@@ -238,6 +247,9 @@ class DoctorController extends Controller
                                 </li>
                                 <li>
                                 <h5 class="font-medium">Gender:</h5> '. $data->gender.'
+                                </li>
+                                <li>
+                                <h5 class="font-medium">Gender:</h5> '. $data->address.'
                                 </li>
                                
                             </ul>
