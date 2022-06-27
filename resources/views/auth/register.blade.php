@@ -21,7 +21,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" :value="old('email')" required />
             </div>
 
             <div class="mt-4">
@@ -42,8 +42,8 @@
             <div class="mt-4">
                 <x-jet-label for="role_id" value="{{ __('Register As') }}" />
                 <select name="role_id">
-                   <!-- <option value="1">Doctor</option>
-                    <option value="2">Receptionist</option>!-->
+                   <!--<option value="1">Doctor</option>
+                    <option value="2">Receptionist</option>-->
                     <option value="3">Patient</option>
 
                 </select>

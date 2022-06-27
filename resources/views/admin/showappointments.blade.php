@@ -19,8 +19,22 @@
                 border: 1px solid rgba(26, 27, 26, 0.904);
                 padding: 5px;
             }
-
-      </style>
+            @media screen and (max-width: 600px) {
+            table {width:100%;}
+            thead {display: block;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
+            }
+  </style>
     </head>
     <body>
       <div class="container-scroller">
@@ -44,6 +58,7 @@
             </form>
               <table id="myTable2">
                   <tr style="background-color:rgb(138, 235, 135);">
+                  <th style="padding:10px; color:black;">No.</th>
                       <th onclick="sortTable(0)" style="padding:10px; color:black; cursor: pointer;">Patient Name</th>
                       <th style="padding:10px; color:black;">Email</th>
                       <th style="padding:10px; color:black;">Phone Number</th>
@@ -60,6 +75,7 @@
                   @foreach($user as $users)
                   @if($appoint->doctor_id == $users->id)
                   <tr align="center" style="background-color:rgb(23, 73, 29);">
+                      <td>{{++$i}}</td>
                       <td>{{$appoint->name}} {{$appoint->lname}}</td>
                       <td>{{$appoint->email}}</td>
                       <td>{{$appoint->phone_no}}</td>

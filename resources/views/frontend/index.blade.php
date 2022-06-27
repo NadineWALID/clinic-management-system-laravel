@@ -163,13 +163,13 @@
         </div>
                 
      <div style="padding:20px;">
-        <label>Height(cm)</label>
-        <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" required="">
+        <label>Height(cm)(optional)</label>
+        <input type="number" style="color:black;" name="height" placeholder="Write height(cm)" value="0 not determined" required="">
         </div>
 
     <div style="padding:20px;">
-        <label>Weight(kg)</label>
-        <input type="number" style="color:black;" name="weight" placeholder="Write weight(kg)" required="">
+        <label>Weight(kg)(optinal)</label>
+        <input type="number" style="color:black;" name="weight" placeholder="Write weight(kg)" value="0 not determined" required="">
         </div>
 
     <div style="padding:20px;">

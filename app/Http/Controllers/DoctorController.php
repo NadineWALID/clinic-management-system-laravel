@@ -69,6 +69,7 @@ class DoctorController extends Controller
                            ->orwhere ('users.name','like','%'.$request->search.'%')
                            ->orwhere ('users.lname','like','%'.$request->search.'%')
                            ->orwhere ('users.email','like','%'.$request->search.'%')
+                           ->orWhere(DB::raw("concat(users.name, ' ',users.lname)"), 'LIKE', "%".$request->search."%")
                            ->get();
     
         }
@@ -307,6 +308,7 @@ class DoctorController extends Controller
             ->orwhere ('users.name','like',"%$search%")
             ->orwhere ('users.lname','like',"%$search%")
             ->orwhere ('users.email','like',"%$search%")
+            ->orWhere(DB::raw("concat(users.name, ' ',users.lname)"), 'LIKE', "%".$search."%")
             ->orderBy('name')->cursorPaginate(15);
 
         }
@@ -444,7 +446,8 @@ class DoctorController extends Controller
        }
       
        if ($request->rd_file != null){
-        $rd = time() . '.' . $rd_file1->getClientOriginalExtension();
+        $rd_file=$request->rd_file;   
+        $rd = time() . '.' . $rd_file->getClientOriginalExtension();
         $request->rd_file->move('Radiology', $rd);
         $record->radiology_image = $rd;
 

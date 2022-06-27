@@ -94,7 +94,7 @@
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
           <label class="label" for="html">Email</label>
-          <input type="text" name="email" id="email" class="form-control" pattern="[^ @]*@[^ @]*"  required="" placeholder="Email address..">
+          <input type="text" name="email" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  required="" placeholder="Email address..">
           <span class="text-danger" id="emailErrorMsg"></span>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">

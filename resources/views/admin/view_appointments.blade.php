@@ -1,8 +1,12 @@
 <x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
+     <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+          <!-- Required meta tags -->
+          @include('admin.adminmaster')
   <style>
- table, th, td {
+ table{
   border: 1px solid ;
   border-collapse: collapse;
   color: #92a8d1;
@@ -16,11 +20,22 @@ th, td {
   style:padding:10px;
   color:black;
 }
-
+@media screen and (max-width: 600px) {
+            table {width:100%;}
+            thead {display: block;}
+            tr:nth-of-type(2n) {background-color: inherit;}
+            tr td:first-child {font-size:1.3em;}
+            tbody td {display: block;  text-align:center;}
+            tbody td:before { 
+            content: attr(data-th); 
+            display: block;
+            text-align:center;  
+            }
+            th{
+             visibility:hidden;   
+            }
+            }
   </style>
-    <head>
-      <!-- Required meta tags -->
-      @include('admin.adminmaster')
     </head>
     <body>
       <div class="container-scroller">

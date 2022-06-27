@@ -45,7 +45,8 @@
 
                 <div style="padding:15px;">
                     <label>Description</label>
-                    <textarea style="color:grey;" type="text" name="description" value="{{$data->description}}"></textarea>
+
+                    <textarea style="color:grey;" type="text" name="description" required autocomplete="description" autofocus>{{$data->description}}</textarea>
                 </div>
 
                 <div style="padding:15px;">

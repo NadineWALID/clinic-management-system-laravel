@@ -22,7 +22,7 @@
             thead {display: block;}
             tr:nth-of-type(2n) {background-color: inherit;}
             tr td:first-child {font-size:1.3em;}
-            tbody td {display: block;  text-align:center;}
+            tbody td {display: block;  text-align:center; position: absolute;}
             tbody td:before { 
             content: attr(data-th); 
             display: block;

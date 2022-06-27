@@ -24,10 +24,6 @@
             <form action="{{url('edit_record',$data->id)}}" method="POST"  enctype="multipart/form-data">
                 @csrf
                 <div style="padding:20px; position: relative;">
-                   <label>Diagnosis</label>
-                   <input type="text" style="color:black;" name="diagnosis" value="{{$data->diagnosis}}" required="">
-                  </div>
-                  
 
                 <div style="padding:15px;">
                     <label>Blood_type</label>
@@ -43,6 +39,20 @@
                        <option value="AB-">AB-</option>
                        </select>
                 </div>
+
+                <div style="padding:20px;">
+                       <label>Height(cm) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="height" placeholder="0" required="">
+                      </div>
+
+                      <div style="padding:20px;">
+                       <label>Weight(kg) (optional)</label>
+                       </div>
+                      <div>
+                       <input type="number" style="color:black;" name="weight" placeholder="0 " required="">
+                      </div>
 
                 <div style="padding:15px;">
                     <label>Medicine</label>

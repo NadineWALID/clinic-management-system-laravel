@@ -92,7 +92,7 @@
                    <label>Email</label>
                    </div>
                       <div>
-                   <input type="email" style="color:black;" name="email" pattern="[^ @]*@[^ @]*" required=""  placeholder="Write Email">
+                   <input type="email" style="color:black;" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required=""  placeholder="Write Email">
                   </div>
 
                   <div style="padding:20px;">

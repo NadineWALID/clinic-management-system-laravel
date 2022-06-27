@@ -55,7 +55,7 @@
                     </div>
                     <div style="padding:15px; position: relative;">
                         <label>Email</label>
-                        <input size="23" style="color:grey;" type="text" name="email"  value="{{$Adata->email}}">
+                        <input size="23" style="color:grey;" type="text" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="{{$Adata->email}}">
                     </div>
 
 
