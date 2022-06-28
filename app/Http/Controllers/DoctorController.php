@@ -395,27 +395,38 @@ class DoctorController extends Controller
         if(Auth::id())
         {
             $userid=Auth::user()->id;
-          /*  if (patient::find($userid)===null)
+            $r=Records::find($userid);
+            if($r!=null)
             {
-                $patient=new patient;
-                $patient->id=$userid;
-                $patient->gender=$request->gender;
-                $patient->height=$request->height;
-                $patient->weight=$request->weight;
-                $patient->blood_type=$request->blood_type;
-                $patient->date_of_birth=$request->date_of_birth;
-                $patient->save();
-            }*/
-           
-
-
-       
-       $record=new records;
-       $record->id=$userid;
-       $record->user_id=$userid;
-       $record->blood_type=$request->blood_type;
-       $record->height=$request->height;
-       $record->weight=$request->weight;
+                $r->blood_type=$request->blood_type;
+                $r->height=$request->height;
+                $r->weight=$request->weight;
+                $r->medicine=$request->medicine;
+                $r->allergies=$request->allergies;
+                $r->chronic_diseases=$request->chronic_diseases;
+                if ($request->lab_file != null){
+                    $labfile = $request->lab_file;
+                    $lab = time() . '.' . $labfile->getClientOriginalExtension();
+                    $request->lab_file->move('labs', $lab);
+                    $r->lab_results = $lab;
+                   }
+                if ($request->rd_file != null){
+                    $rd_file=$request->rd_file;   
+                    $rd = time() . '.' . $rd_file->getClientOriginalExtension();
+                    $request->rd_file->move('Radiology', $rd);
+                    $r->radiology_image = $rd;
+            
+                    }
+                $r->save();
+                
+            }
+            else{
+                $record=new records;
+                $record->id=$userid;
+                $record->user_id=$userid;
+                $record->blood_type=$request->blood_type;
+                $record->height=$request->height;
+                $record->weight=$request->weight;
        if($request->medicine == null)
        {
         $record->medicine='none';
@@ -451,10 +462,15 @@ class DoctorController extends Controller
         $request->rd_file->move('Radiology', $rd);
         $record->radiology_image = $rd;
 
-       }
+        }
        
-       $record->save();
-       return redirect()->back()->with('message', 'Record Is Added Successfully');
+        $record->save();
+
+            }
+           
+
+        
+       return redirect('/myappointment');
         }
     }  
 

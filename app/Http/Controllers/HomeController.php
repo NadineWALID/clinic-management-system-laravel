@@ -251,6 +251,11 @@ class HomeController extends Controller
         $patient=patient::all();
         return view('user.home',compact('doctor','date','post','user','patient'));
       }
+      public function add_medical_record(){
+        $id_user=Auth::id();
+        $record=Records::find($id_user);
+        return view('user.add_medical_record',compact('record'));
+      }
 }
 
 

@@ -172,7 +172,38 @@
             <div class="comment-widgets">
             <!-- Comment Row -->
             @if ($record!=null)
-
+            <div class="table-responsive">
+            <table class="table no-wrap">
+                <tbody>
+                <tr>
+                    <td>
+                    <div class="d-flex flex-row comment-row p-3 mt-0">
+                     <div class="comment-text ps-2 ps-md-3 w-100">
+                     <h5 class="font-medium">Weight:</h5>
+                       {{$record->weight}}
+                     </div>
+                     </div>
+                    </td>
+                    <td>
+                    <div class="d-flex flex-row comment-row p-3 mt-0">
+                     <div class="comment-text ps-2 ps-md-3 w-100">
+                     <h5 class="font-medium">Height:</h5>
+                       {{$record->height}}
+                     </div>
+                     </div>
+                    </td>
+                    <td>
+                     <div class="d-flex flex-row comment-row p-3 mt-0">
+                     <div class="comment-text ps-2 ps-md-3 w-100">
+                     <h5 class="font-medium">Blood Type:</h5>
+                       {{$record->blood_type}}
+                     </div>
+                     </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
             <div class="d-flex flex-row comment-row p-3 mt-0">
             <div class="comment-text ps-2 ps-md-3 w-100">
                     <h5 class="font-medium">Cronic Diseases:</h5> 
@@ -192,12 +223,7 @@
             </div>
             </div>
 
-            <div class="d-flex flex-row comment-row p-3 mt-0">
-            <div class="comment-text ps-2 ps-md-3 w-100">
-                    <h5 class="font-medium">Blood Type:</h5>
-                       {{$record->blood_type}}
-            </div>
-            </div>
+            
 
             <div class="d-flex flex-row comment-row p-3 mt-0">
             <div class="comment-text ps-2 ps-md-3 w-100">
@@ -252,10 +278,14 @@
             <div class="d-flex flex-row comment-row p-3">none  </div>
             @endif
             </div>
+            <div class="d-flex flex-row comment-row p-3 mt-0">
+            <a class="btn"href="{{url('addmedicalrecord')}}"  target="_blank" style="background-color: #e7e7e7; color: black;">Edit Record</a>
+            </div>
             @else
             <div class="d-flex flex-row comment-row p-3 mt-0">
             <div class="comment-text ps-2 ps-md-3 w-100">
              You didn't set your record yet!
+             <a class="btn" href="{{url('addmedicalrecord')}}"  target="_blank" style="background-color: #e7e7e7; color: black;">Add Record</a>
             </div>
             </div>
             @endif
@@ -294,7 +324,6 @@
             </div>
             </div>
 
-<<<<<<< HEAD
             <div class="d-flex flex-row comment-row p-3">
             <div class="call-chat">
             <h5 class="font-medium">Gender :</h5>
@@ -315,24 +344,6 @@
          
          
           
-=======
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Phone number :</label>
-          {{ $patients->phone_no }}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Date of Birth:</label>
-          {{ $patients->date_of_birth}}
-          </div>
-          <div class="d-flex flex-row comment-row p-3">
-                <h5 class="font-medium">Gender :</h5>
-          {{ $patients->gender }}
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="html">Address:</label>
-          {{ $patients->address }}
-          </div>
->>>>>>> 6f211d35262f8c03b4d5f74d93561203480e312d
         </div>
         </div>
         </div>
