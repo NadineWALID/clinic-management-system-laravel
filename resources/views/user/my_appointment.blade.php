@@ -22,8 +22,8 @@
             <li class="nav-item">
             <a class="nav-link" href="#footer">Contact Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" >My Information</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="#" >My Appointments</a>
             </li> 
             <x-app-layout></x-app-layout>
             </li>
@@ -339,9 +339,12 @@
             {{ $patients->address }}
             </div>
             </div>
-            
-        
-         
+
+            <div class="d-flex flex-row comment-row p-3">
+            <div class="call-chat">
+            <a class="btn" href="{{url('editInfo',$patients->id)}}"   target="_blank" style="background-color: #e7e7e7; color: black;">Edit My Information</a>
+            </div>
+            </div>
          
           
         </div>
@@ -351,6 +354,9 @@
                     <!-- /.col -->
             </div>
             </div>
+
+
+           
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -393,28 +399,5 @@
 
 
 @section('scriptcontent')
-  
-<script type="text/javascript">
-       $('.button').click(function(){
-        var currentRow = $(this).closest("tr");
-        var query = currentRow.find(".hoppa").val();
-        //var query=$('#hoppa').val();
-        $.ajax({
-        url:"search2",
-        type: "GET",
-        data: {'search2':query},
-               success:function(data){
-                $('#record').html(data);
-                console.log('done');
-               }
-        
-        
-         });
 
-       });
-
-
-       
-
-</script>
-  @stop
+@stop

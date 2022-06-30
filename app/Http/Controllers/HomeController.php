@@ -165,23 +165,21 @@ class HomeController extends Controller
           $userid=Auth::user()->id;
           $name=Auth::user()->name;
           $appoint=new appointment;   
-          $prescription=new prescription; 
+         
           $patients=new patient;             
           $appoint= DB::table('appointments')
                  ->select('*')
                  ->where('user_id','=',$userid)
                  ->get();
           $record= Records::find($userid);
-          $prescription= DB::table('prescriptions')
-                 ->select('*')
-                 ->where('user_id','=',$userid)
-                 ->get();
-           $patients=DB::table('patients')
+         
+          $patients=DB::table('patients')
                     ->select('*')
                     ->where('id','=',$userid)
                     ->get();      
-         $data = User :: join('appointments', 'users.id', '=', 'appointments.doctor_id')
-                 ->where ('appointments.user_id','like',$userid)
+         $data = User :: where ('appointments.user_id','like',$userid)
+                 ->where('appointments.date','>=',$date)
+                 ->join('appointments', 'users.id', '=', 'appointments.doctor_id')
                  ->get();
         $p =  Prescription::where('prescriptions.user_id','=',$userid)
                  ->join('doctors', 'prescriptions.doctor_id', '=', 'doctors.id')
@@ -210,6 +208,34 @@ class HomeController extends Controller
           $data->delete();
           return redirect()->back();
       }
+      public function edit_my_info($id)
+      {
+        $user=User::where('users.id','=',$id)
+             ->join('patients','patients.id','=','users.id')
+             ->get();
+
+        $date = date('Y-m-d',time());
+
+        return view('user.edit_my_info',compact('user','date'));
+      }
+      public function  submit_edit_form(Request $request){
+        $user_id=Auth::id();
+        $user=User::find($user_id);
+        $patient= Patient::find($user_id);
+
+        $user->name=$request->fname;
+        $user->lname=$request->lname;
+        $user->phone_no=$user->phone_no;
+        $user->save();
+
+        $patient->gender=$request->gender;
+        $patient->address=$request->address;
+        $patient->date_of_birth=$request->date_of_birth;
+        $patient->save();
+        
+        return redirect('/myappointment');
+      }
+     
       public function update_appoint($id)
       {
         $id_user=Auth::id();
