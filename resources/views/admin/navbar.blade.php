@@ -42,10 +42,7 @@
                 </li>  -->
               </ul>
               <ul class="navbar-nav ml-auto">
-                <li>
-                <x-app-layout id="logout">
-                   </x-app-layout>
-                </li>
+               
             <li class="nav-item active">
               <a class="nav-link" href="/home" >Home Page</a>
             </li>
@@ -61,6 +58,10 @@
             <li class="nav-item">
               <a class="nav-link " href="/new_appointments">Appointments</a>
             </li>
+            <li>
+                <x-app-layout id="logout">
+                   </x-app-layout>
+                </li>
             <!-- <li class="nav-item">
               <a class="nav-link " href="/view_records">Medical Records</a>
             </li> -->

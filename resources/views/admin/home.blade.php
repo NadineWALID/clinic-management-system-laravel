@@ -1,66 +1,102 @@
- <x-app-layout>
-<!DOCTYPE html>
-  <html lang="en">
-  <style>
-      #nav{
-        position: fixed;
-        top: 13px;
-        left:0;
-        background-color:	#8099b3;
-        overflow: hidden;
-        font-family:Arial;
-        font-size:17px;
-        padding: 5px;
-      }
-    </style>
-    <head>
-      <!-- Required meta tags -->
-      @include('admin.adminmaster')
-    </head>
-    <body>
-      <div class="container-scroller">
-        <!-- partial:partials/_sidebar.html -->
-      @include('admin.sidebar')
-        <!-- partial -->
-        
-        @include('admin.navbar') 
-          <!-- partial -->
-         @include('admin.body')
-            <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html 
-            <footer class="footer">
-              <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>
-              </div>
-            </footer>-->
-            <!-- partial -->
-          </div>
-          <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
+@extends('frontend.master2')
+@section('itemsInNavBar')
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url('/')}}" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('/new_appointments')}}">My Dashboard</a>
+            </li>
+            <li class="nav-item">
+           
+            </li>
+            
+           
+            
+            
+@stop
+@section('content')
+
+<body>
+
+<div id="google_translate_element"></div>
+  <div class="page-hero bg-image " style="background-image: url(../assets/img/doc.jpg); ">
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn" style="color:black;">
+        <span class="header"  >Let's make your life happier</span>
+        <h1 class="header"  >Healthy Living</h1>
       </div>
-      <!-- container-scroller -->
-      <!-- plugins:js -->
-      <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
-      <!-- endinject -->
-      <!-- Plugin js for this page -->
-      <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
-      <script src="admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
-      <script src="admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-      <script src="admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-      <script src="admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-      <!-- End plugin js for this page -->
-      <!-- inject:js -->
-      <script src="admin/assets/js/off-canvas.js"></script>
-      <script src="admin/assets/js/hoverable-collapse.js"></script>
-      <script src="admin/assets/js/misc.js"></script>
-      <script src="admin/assets/js/settings.js"></script>
-      <script src="admin/assets/js/todolist.js"></script>
-      <!-- endinject -->
-      <!-- Custom js for this page -->
-      <script src="admin/assets/js/dashboard.js"></script>
-      <!-- End custom js for this page -->
-    </body>
-    </html>
-  </x-app-layout>
+    </div>
+  </div>
+
+
+  <!-- .page-section -->
+    <div class="page-section pb-0" id="aboutus">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 py-3 wow fadeInUp">
+            <h1>Welcome to Your Health <br> Center</h1>
+            <p class="text-grey mb-4">We offer you great services that would ease your boring routine of managing the health clincs appointments,news and work</p>
+          </div>
+          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+            <div class="img-place custom-img-1">
+              <img src="../assets/img/bg-doctor.png" style="max-width:100%;height:auto;" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .bg-light -->
+  </div> <!-- .bg-light -->
+
+  
+  <div class="page-section" id="news">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Latest News</h1>
+      <div class="row mt-5">
+      <a class="btn" id="edit" href="{{ url('/add_post_view') }}"  target="_blank" style="background-color: #e7e7e7; width:100%; color: black;">Add a New Post</a>
+        @foreach($post as $posts)
+        <div class="col-lg-4 py-2 wow zoomIn">
+          <div class="card-blog">
+            <div class="header">
+            <img style="max-width:100%;height:auto;" src="postimage/{{$posts->image}}" alt="">
+            </div>
+            <div class="body">
+            <p class="text-xl mb-0">{{$posts->title}}</p>
+              <span class="text-sm text-grey">{{$posts->description}}</span>
+          </div>
+          <a class="btn" id="edit" href="{{ url('update_post', $posts->id) }}"  target="_blank" style="background-color: #e7e7e7; width:100%; color: black;">Edit</a>
+          <a  id="delete" href="{{ url('deletepost', $posts->id) }}"  target="_blank" class="btn btn-danger" style="width:100%;">Delete Post</a>
+       </div>
+      </div> 
+      @endforeach
+       </div>
+    </div>
+  </div>
+ 
+   <!-- .banner-home -->
+   <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}
+  , 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+  @stop
+
+@section('scriptcontent')
+<script>
+var modalObjectInformation = document.getElementById("myInformation");
+var spanObjectInformation = document.getElementById("closeInformation");
+
+$('#edit').click(function(e) {
+  modalObjectInformation.style.display="block";
+})
+
+spanObjectInformation.onclick =function(){
+    modalObjectInformation.style.display="none";
+}
+
+
+</script>
+@stop
