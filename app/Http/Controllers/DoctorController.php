@@ -281,9 +281,10 @@ class DoctorController extends Controller
         $date = date('d/m/Y',time());
         $doctor=Auth::id();
         $data2 = User::find($doctor);
-       $data2->date=$date;
+        $patient_name=null; //User(patient)
+        $user_id=null;
 
-        return view('doctor.addprescription',compact('date','data2'));
+        return view('doctor.addprescription',compact('date','data2','patient_name','user_id'));
     }
     public function mypatients(){
         $doctor=Auth::id();
@@ -350,15 +351,16 @@ class DoctorController extends Controller
     
     public function write_prescription($id)
       {
-        $data = User :: join('appointments', 'users.id', '=', 'appointments.user_id')
-                ->where ('appointments.id','=',$id)
+        $data = User :: where ('appointments.id','=',$id)
+                ->join('appointments', 'users.id', '=', 'appointments.user_id')
                 ->first();
         //$data=appointment::find($id);
         $doctor=Auth::id();
         $data2 = User::find($doctor);
         $date = date('d/m/Y',time());
         $user_id=$data->user_id;
-        return view('doctor.write_prescription',compact('data','date','data2','user_id'));   
+        $patient_name= $data->name.$data->lname;
+        return view('doctor.addprescription',compact('date','data2','user_id','patient_name'));   
       }
 
       public function view_prescription($id)
@@ -385,9 +387,11 @@ class DoctorController extends Controller
         $data=user::find($id);
         $doctor=Auth::id();
         $data2 = User::find($doctor);
-       
+        $user_id=$id;
+        $patient_name= $data->name.$data->lname;
         $date = date('d/m/Y',time());
-        return view('doctor.write_prescription_my_patients',compact('data','date','data2'));   
+
+        return view('doctor.addprescription',compact('date','data2','user_id','patient_name'));
       }
       
       public function add_record(Request $request)
