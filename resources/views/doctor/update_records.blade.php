@@ -44,14 +44,14 @@
                        <label>Height(cm) (optional)</label>
                        </div>
                       <div>
-                       <input type="number" style="color:black;" name="height" placeholder="0" required="">
+                       <input type="number" style="color:black;" name="height" placeholder="0" required="" value="{{$data->height}}">
                       </div>
 
                       <div style="padding:20px;">
                        <label>Weight(kg) (optional)</label>
                        </div>
                       <div>
-                       <input type="number" style="color:black;" name="weight" placeholder="0 " required="">
+                       <input type="number" style="color:black;" name="weight" placeholder="0 " required="" value="{{$data->weight}}">
                       </div>
 
                 <div style="padding:15px;">
@@ -67,14 +67,6 @@
                 <div style="padding:15px;">
                     <label>Chronic Diseases</label>
                     <input style="color:grey;" type="text" name="chronic_diseases" value="{{$data->chronic_diseases}}">
-                </div>
-
-                <div style="padding:15px;">
-                    <label>Gender</label>
-                    <select  name="gender" style="color:black; width: 200px;" required="">
-                       <option value="male">Male</option>
-                       <option value="female">Female</option>
-        </select>
                 </div>
                 
                 <div style="padding:15px;">

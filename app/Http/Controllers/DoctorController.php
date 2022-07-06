@@ -495,8 +495,8 @@ class DoctorController extends Controller
     {
        $record = records::find($id);
        $record->medicine = $request->medicine;
-       $record->gender = $request->gender;
-       $record->diagnosis=$request->diagnosis;
+       $record->height =$request->height;
+       $record->weight =$request->weight;
        $record->blood_type=$request->blood_type;
        $record->allergies=$request->allergies;
        $record->chronic_diseases=$request->chronic_diseases;
