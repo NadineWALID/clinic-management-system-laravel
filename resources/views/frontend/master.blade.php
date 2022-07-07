@@ -124,9 +124,9 @@
             <li class="nav-item">
             <a class="nav-link" href="#appointment">Make an Appointment</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
             <a class="nav-link" href="http://localhost/diagnosis/index.php">Free Symptoms Checker</a>
-            </li>
+            </li> -->
             <li class="nav-item">
             <a class="nav-link" href="#footer">Contact Us</a>
             </li>

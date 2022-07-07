@@ -13,6 +13,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{url('mypatients')}}">My Patients</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="http://localhost/diagnosis/index.php">Free Symptoms Checker</a>
+            </li>
             <li class="nav-item active">
             <x-app-layout></x-app-layout>
             </li>
