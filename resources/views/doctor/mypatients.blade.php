@@ -71,10 +71,8 @@
                                             <td class="txt-oflo" >{{$user->name}} {{$user->lname}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->phone_no}}</td>
-                                            
-                                            <td>
-                                             <a class="btn btn-success button" id="button">View History</a>
-                                            </td>
+
+                                            <td><button id="{{$user->id}}" class="btn btn-success button" onClick="reply_click(this.id)">View History</button></td>
                                             <td><a href="{{url('write_prescription_my_patients',$user->id)}}" class="btn btn-success">Write Prescription</a></td>
                                                  
                                         </tr>
@@ -161,10 +159,26 @@
   </script>
 
 <script type="text/javascript">
-       $('#button').click(function(){
+   function reply_click(clicked_id)
+   {
+      var query=clicked_id;
+      $.ajax({
+        url:"search2",
+        type: "GET",
+        data: {'search2':query},
+               success:function(data){
+                $('#record').html(data);
+                console.log('done');
+               }
+        
+        
+         });
+     
+   }
+       $('#button').click(function(user_id){
         var currentRow = $(this).closest("tr");
         var query = currentRow.find(".hoppa").val();
-        console.log(query);
+        console.log(user_id);
         //var query=$('.hoppa').val();
         $.ajax({
         url:"search2",
