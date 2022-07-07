@@ -40,7 +40,8 @@ class HomeController extends Controller
             $post  = posts::all();
             $user =user::all();
             $patient=patient::all();
-            return view('user.add_medical_record',compact('doctor','date','post','user','patient'));
+            $record=null;
+            return view('user.add_medical_record',compact('doctor','date','post','user','patient','record'));
           }
           else{
             $doctor = doctor::all();
